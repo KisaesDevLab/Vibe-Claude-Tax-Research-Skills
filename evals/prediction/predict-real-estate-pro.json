@@ -1,0 +1,47 @@
+{
+  "skill_name": "predict-real-estate-pro",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "w2-doctor-claiming-reps",
+      "prompt": "Married couple. Husband is a cardiologist with a 2,400-hour-per-year W-2 hospital employment. Wife works part-time bookkeeping (≈400 hours W-2). They own 6 long-term residential rentals; spouses claim wife is the REPS-qualifying spouse with 800 hours/year on properties (mostly weekends). They want to deduct $120K of suspended rental losses against current-year W-2. Aggregation election was filed in 2018. Will the wife qualify as a real-estate professional?",
+      "expected_output": "Predicts MODERATE-to-LOW confidence the wife qualifies. §469(c)(7) is per-spouse, so the husband's W-2 is irrelevant. The wife's 400 hours W-2 vs 800 hours RE clears prong 1 (more than half) and clears prong 2 (>750). Each property's material participation is collapsed into one activity by the §1.469-9(g) election filed in 2018, which solves the per-property problem. Hakkak/Bailey log discipline is the controlling risk: if the 800 hours are reconstructive, the band drops. Recommend a 2024 contemporaneous log audit immediately.",
+      "expectations": [
+        "Identifies §469(c)(7)(B) per-spouse rule; husband's W-2 is irrelevant",
+        "Walks both prongs explicitly with hours math",
+        "Confirms aggregation election filed in 2018 binds material participation",
+        "Cites Hakkak (T.C. Memo. 2020-46) or Bailey (T.C. Memo. 2001-296) on log discipline",
+        "Confidence band assigned with rationale; flags log-quality decay risk",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "str-loophole-not-reps",
+      "prompt": "Single taxpayer, full-time W-2 software engineer (1,800 hours). Owns one Airbnb in Tahoe rented for an average of 4-day stays, generating $80K loss in year 1 from cost segregation. Logs 350 hours self-managing — turnover, repairs, tenant comms. They ask: do they need to qualify as a real-estate professional?",
+      "expected_output": "Predicts NO REPS needed and material participation likely satisfied. Treas. Reg. §1.469-1T(e)(3)(ii) excludes ≤ 7-day average use from 'rental activity'. The Airbnb is therefore a non-rental trade or business, and §469(c)(7) (REPS) does NOT apply. Material-participation analysis under §1.469-5T applies: 350 hours likely passes test 4 (>100 hours significant participation if aggregate of significant-participation activities >500 hours) ONLY if other significant-participation activities exist. More likely passes test 3 (>100 hours and not less than any other individual) given solo management. Watch out for test 1 (>500) which is a higher bar. Confidence MODERATE.",
+      "expectations": [
+        "Correctly identifies STR carve-out from §1.469-1T(e)(3)(ii)",
+        "Explains REPS is NOT required for STRs",
+        "Walks §1.469-5T tests, identifying which ones apply",
+        "Cites Treas. Reg. §1.469-1T(e)(3)(ii) and §1.469-5T",
+        "Discusses test 3 (≥ any other individual) given solo management",
+        "Confidence band with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "no-aggregation-multi-property",
+      "prompt": "Retired engineer (no W-2). 8 single-family rental properties; 200-300 hours per property managing. Claims REPS in 2024. No aggregation election ever filed. Material participation per property is below 500 hours but well above 100 each. Will REPS qualification carry the day?",
+      "expected_output": "Predicts LOW confidence that REPS losses can be deducted in 2024. Without §1.469-9(g) aggregation, EACH property must independently satisfy one of §1.469-5T's seven tests. 200-300 hours per property does not pass test 1 (>500) but may pass test 3 (>100 + ≥ any other individual). If a property manager or vendor logs comparable hours, test 3 fails. Hardy v. Commissioner, T.C. Memo. 2017-16 illustrates the consequence. Recommend immediate §301.9100-2 / §301.9100-3 late-election relief inquiry; if denied, file aggregation prospectively for 2025.",
+      "expectations": [
+        "Identifies missing §1.469-9(g) aggregation as the central problem",
+        "Walks each §1.469-5T test for per-property analysis",
+        "Cites Hardy v. Commissioner, T.C. Memo. 2017-16",
+        "Discusses §301.9100-2 and §301.9100-3 late-election relief paths",
+        "Confidence band with rationale (LOW)",
+        "Recommends prospective fix for 2025",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

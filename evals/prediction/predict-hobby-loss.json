@@ -1,0 +1,46 @@
+{
+  "skill_name": "predict-hobby-loss",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "horse-breeding-presumption-met",
+      "prompt": "Client breeds Quarter Horses on a 40-acre Texas ranch. Reports gross income > deductions in 2 of the last 7 years (2020 and 2024). Maintains separate bank account, written breeding plan, consults a veterinarian and a bloodstock agent, devotes 20+ hrs/week. Has $400K AGI from a software company. The IRS has questioned the activity for 2022 and 2023 (loss years). Is this a §183 hobby?",
+      "expected_output": "Predicts for-profit (NOT a hobby) with HIGH or MODERATE confidence. §183(d)(1)(B) horse-special rule presumption is satisfied (2 of 7). Factors 1, 2, 3, 4 favor for-profit; factor 8 (other income) and factor 9 (potential personal pleasure) cut the other way but do not control. Cite Engdahl, Faulconer, Treas. Reg. §1.183-2(b).",
+      "expectations": [
+        "Identifies and applies §183(d) horse-special 2-of-7 presumption",
+        "Walks all nine factors of Treas. Reg. §1.183-2(b)",
+        "Cites at least one supporting case (Engdahl, Faulconer, or comparable)",
+        "Notes burden-shift consequence of presumption",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "boat-charter-personal-use",
+      "prompt": "Client claims a Schedule C boat-charter business: 38' sport-fisher in Florida. Five years of losses ($45K to $90K each year). Owner uses the boat personally 30 weekends per year. No written charter agreements; bookings logged on a phone calendar. Average of 6 paid charters per year. AGI from W-2 employment is $250K. Should the activity continue to be reported on Schedule C?",
+      "expected_output": "Predicts hobby with HIGH or MODERATE confidence against for-profit. §183(d) presumption fails (no 3-of-5 profit years). Factor 9 (personal pleasure) dominant; factor 1 (manner) and factor 6 (history of losses) also weigh against. Recommend Form 5213 election only if the activity will be restructured prospectively. Discuss Donoghue and Wesinger as on-point Tax Court Memo authority. Disclosure: not relevant for return position; restructuring or reporting on Schedule 1 / Form 1040 line 8j as hobby income with no deduction (post-TCJA suspension of §67(a) misc itemized).",
+      "expectations": [
+        "§183(d) presumption explicitly checked and found NOT satisfied",
+        "All nine factors walked with explicit factor 9 emphasis",
+        "Cites Donoghue, Wesinger, or comparable boat/yacht authority",
+        "Notes post-TCJA loss of misc itemized deduction for hobby expenses",
+        "Confidence band assigned with rationale",
+        "Form 5213 election option mentioned",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "fine-art-painter-Churchman-pattern",
+      "prompt": "Client is a working fine-art painter. Has been painting full-time for 12 years. Six straight years of losses, then four years of $20-40K profits, then two losses again. Maintains gallery relationships, exhibits at three juried shows annually, keeps inventory and depreciation schedules, holds an MFA. Spouse's W-2 covers household expenses. Is the activity a §183 hobby?",
+      "expected_output": "Predicts for-profit with MODERATE-to-HIGH confidence. Pattern matches Churchman v. Commissioner, 68 T.C. 696 (1977). §183(d) 3-of-5 presumption may be available depending on the specific year tested; even if not, factors 2, 3, 5 favor strongly. Factor 4 (asset appreciation — original works can appreciate) also supports. Note that artists historically receive sympathetic treatment when business records and professional commitment are documented.",
+      "expectations": [
+        "Cites Churchman v. Commissioner",
+        "Walks Treas. Reg. §1.183-2(b) factors with artist-specific emphasis",
+        "Addresses §183(d) presumption testing",
+        "Identifies factor 4 (appreciation) as relevant for fine art",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

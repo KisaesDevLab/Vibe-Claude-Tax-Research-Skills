@@ -1,0 +1,47 @@
+{
+  "skill_name": "predict-1031-qualification",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "vacation-home-personal-use",
+      "prompt": "Client owns a Lake Tahoe condo. Used personally 60 nights last year and rented short-term 100 nights. Wants to 1031 into a Florida rental property. The condo has $400K of unrealized gain.",
+      "expected_output": "Predicts 1031 qualification is LOW-confidence vulnerable. Rev. Proc. 2008-16 vacation-home safe harbor requires personal use ≤ 14 days OR 10% of rented days, AND ≥ 14 days rental in each of the prior two years. 60 nights personal use blows the safe harbor. Without it, the held-for-investment determination is fact-driven; a Tax Court would weigh personal use against rental use. Recommend a 24-month restructuring path: increase rental days, reduce personal days below the safe-harbor caps, then exchange. Confidence band LOW under current facts.",
+      "expectations": [
+        "Identifies Rev. Proc. 2008-16 vacation-home safe harbor",
+        "Walks the 14-days / 10%-of-rented-days test",
+        "Notes the 24-month look-back / look-forward windows",
+        "Suggests restructuring path",
+        "Cites IRC §1031(a)(1) held-for-investment requirement",
+        "Confidence band assigned with rationale (LOW)",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "qi-disqualified-cpa",
+      "prompt": "Client wants to use his longtime CPA (the same firm that has prepared returns for 8 years) as the QI for a $2M relinquished apartment building exchange. The CPA's son-in-law owns the QI corporation. Will this work?",
+      "expected_output": "Predicts §1031 will FAIL with HIGH confidence. The CPA is a disqualified person under Treas. Reg. §1.1031(k)-1(k)(2) — agent of the taxpayer within the 2-year period ending on the date of transfer. The CPA's son-in-law's QI corporation is also disqualified by relation to a disqualified person under §1.1031(k)-1(k)(4). Constructive receipt deemed; entire gain recognized. Recommend an unrelated commercial QI; review prior-2-year representation history for the proposed alternative.",
+      "expectations": [
+        "Identifies CPA as disqualified person under §1.1031(k)-1(k)(2)",
+        "Identifies QI-by-relation disqualification under §1.1031(k)-1(k)(4)",
+        "Notes 2-year look-back window",
+        "Concludes constructive receipt and full gain recognition",
+        "Confidence band HIGH for failure",
+        "Recommends unrelated commercial QI",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "tight-180-day-deadline",
+      "prompt": "Client transferred relinquished property on November 15, 2024. Identified replacement on December 20, 2024 (35 days). Closing on replacement scheduled for May 5, 2025. Client is calendar-year and has not yet filed for an extension on his 2024 return.",
+      "expected_output": "Predicts §1031 will FAIL absent extension with HIGH confidence. 180 days from November 15, 2024 = May 14, 2025 — closing on May 5 is timely under the 180-day calendar. BUT the 180-day rule is also capped at the due date (with extensions) of the 2024 return. The 2024 individual return is due April 15, 2025 without extension. If client does not file Form 4868 by April 15, 2025, the §1031 deadline collapses to April 15, 2025, missing the May 5 closing. Recommend immediate Form 4868 extension filing before April 15.",
+      "expectations": [
+        "Computes the 180-day calendar deadline",
+        "Identifies the return-due-date cap under §1031(a)(3)(B)",
+        "Recognizes the role of Form 4868 to preserve the 180-day window",
+        "Cites IRC §1031(a)(3) and Treas. Reg. §1.1031(k)-1(b)(2)",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}
