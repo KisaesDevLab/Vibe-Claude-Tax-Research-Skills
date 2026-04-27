@@ -1,0 +1,45 @@
+{
+  "skill_name": "return-summary-1040",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "high-income-w2-with-rentals",
+      "prompt": "Summarize: TY2024 MFJ. Total income $475K (wages $390K, dividends $25K, capital gains $35K, Schedule E rental loss $25K suspended). AGI $470K. Standard deduction. Total tax $112K. Withholding $98K. No estimated payments.",
+      "expected_output": "Single-paragraph summary with AGI, TI, total tax, effective rate, marginal rate, refund/balance. Top red flags: NIIT exposure (>$250K MFJ), additional Medicare (>$250K MFJ), withholding gap of $14K likely triggers §6654 estimated-tax penalty without safe harbor, suspended Schedule E losses (route to predict-real-estate-pro / predict-material-participation). Top planning hooks: backdoor Roth, possible PTET if pass-through K-1s.",
+      "expectations": [
+        "Reports AGI, TI, total tax, effective rate, marginal rate",
+        "Flags NIIT (§1411)",
+        "Flags additional Medicare (§3101(b)(2))",
+        "Flags §6654 estimated-tax safe-harbor gap",
+        "Flags suspended Schedule E losses with route to material-participation / RE-pro skills",
+        "JSON sidecar validates",
+        "Verification checklist included"
+      ]
+    },
+    {
+      "id": "schedule-c-side-business-with-losses",
+      "prompt": "Summarize: TY2024 single, full-time W-2 wages $90K, Schedule C side business (photography) net loss -$12K (third year of losses; gross receipts $4K). Standard deduction. AGI $78K. Total tax ~$10K. Withholding $11K, refund $1K.",
+      "expected_output": "Summary with key figures. Top red flag: §183 hobby-loss exposure — 3 of 5 years with losses triggers presumption rebuttable analysis. Route to predict-hobby-loss. No QBI red-flag because the activity has losses. No NIIT exposure at this AGI.",
+      "expectations": [
+        "Reports AGI, TI, total tax, effective rate, marginal rate",
+        "Flags hobby-loss exposure (§183)",
+        "Routes to predict-hobby-loss",
+        "Confirms no §1411 NIIT exposure (below thresholds)",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "scorp-owner-low-w2-high-distribution",
+      "prompt": "Summarize: TY2024 MFJ. K-1 from S-corp (sole owner) line 1 $250K. W-2 from same S-corp $50K. Schedule E nonpassive $250K. AGI $310K with QBI deduction $50K. TI $235K. Total tax ~$48K.",
+      "expected_output": "Summary with key figures. Flags: reasonable-comp red flag (W-2 only $50K vs. ordinary income $250K from owner-operated S-corp). Route to predict-reasonable-comp. NIIT analysis confirms nonpassive K-1 generally not subject to NIIT. QBI deduction is taken; verify wage limitation under §199A(b)(2).",
+      "expectations": [
+        "Reports AGI, TI, total tax, effective rate, marginal rate",
+        "Flags S-corp reasonable-comp red flag",
+        "Routes to predict-reasonable-comp",
+        "Notes nonpassive K-1 NIIT exclusion",
+        "Verifies §199A wage-limitation applicability",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

@@ -41,27 +41,27 @@ Validation: `./scripts/validate.sh phase 0`
 - [x] Write .github/workflows/validate.yml
 - [x] Write .claude-plugin/plugin.json skeleton
 - [x] Write .claude-plugin/marketplace.json skeleton
-- [ ] Commit: `chore(p0): bootstrap shared/ + scripts + CI skeleton`
-- [ ] Push to build; open draft PR to main
+- [x] Commit: `chore(p0): bootstrap shared/ + scripts + CI skeleton`
+- [x] Push to build; open draft PR to main
 
 ## Phase 1 — Three flagship skills + dispatcher + eval harness
 
 Validation: `./scripts/validate.sh phase 1 && ./scripts/run-evals.sh phase 1`
 
-- [ ] skills/cpa-pack-index/SKILL.md (always-on dispatcher; routes
+- [x] skills/cpa-pack-index/SKILL.md (always-on dispatcher; routes
       Public-Law popular names like "OBBBA"/"TCJA" to irc-section-lookup)
-- [ ] skills/tax-research-federal/SKILL.md (flagship)
-- [ ] skills/tax-research-federal/references/{authority-weights.md, retrieval-checklist.md, legislative-history.md}
-- [ ] skills/predict-worker-classification/SKILL.md (flagship)
-- [ ] skills/predict-worker-classification/references/{factors-20.md,case-law.md}
-- [ ] skills/return-summary-1040/SKILL.md (flagship)
-- [ ] skills/return-summary-1040/references/{line-keys.md,red-flags.md}
-- [ ] evals/research/tax-research-federal.json (≥ 3 cases; include 1
+- [x] skills/tax-research-federal/SKILL.md (flagship)
+- [x] skills/tax-research-federal/references/{authority-weights.md, retrieval-checklist.md, legislative-history.md}
+- [x] skills/predict-worker-classification/SKILL.md (flagship)
+- [x] skills/predict-worker-classification/references/{factors-20.md,case-law.md}
+- [x] skills/return-summary-1040/SKILL.md (flagship)
+- [x] skills/return-summary-1040/references/{line-keys.md,red-flags.md}
+- [x] evals/research/tax-research-federal.json (≥ 3 cases; include 1
       legislative-history case exercising JCT/Greenbook/CBO citations)
-- [ ] evals/prediction/predict-worker-classification.json (≥ 3 cases)
-- [ ] evals/summary/return-summary-1040.json (≥ 3 cases)
-- [ ] CI green
-- [ ] Commit: `feat(p1): three flagships + dispatcher + eval harness`
+- [x] evals/prediction/predict-worker-classification.json (≥ 3 cases)
+- [x] evals/summary/return-summary-1040.json (≥ 3 cases)
+- [x] CI green
+- [x] Commit: `feat(p1): three flagships + dispatcher + eval harness`
 
 ## Phase 2 — Prediction (11) + research (4) + 1 summary + notice
 

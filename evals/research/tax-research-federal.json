@@ -1,0 +1,49 @@
+{
+  "skill_name": "tax-research-federal",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "199A-sstb-physician",
+      "prompt": "Research §199A QBI deduction availability for a physician operating as an S-corporation. Taxable income $400K MFJ, 9th Circuit. The S-corp pays the physician $250K W-2; nets $300K ordinary business income.",
+      "expected_output": "memo identifying §199A as the operative section, the specified service trade or business (SSTB) limitation under §199A(d)(2), the threshold amount under §199A(e)(2) and the phase-in range, and the result that the QBI deduction phases out completely once taxable income exceeds the upper threshold for an SSTB.",
+      "expectations": [
+        "Cites IRC §199A(a), §199A(d)(2), §199A(e)(2) (or year-appropriate cross-references)",
+        "Cites Treas. Reg. §1.199A-5 for SSTB definition",
+        "Quotes ≤75 words from each cited authority",
+        "Flags chevron_replaced: true on any Treasury Reg interpreting ambiguous statute",
+        "Confidence band assigned (HIGH for taxable income above the upper threshold)",
+        "JSON sidecar validates against shared/output-schema.json",
+        "Verification checklist appendix included",
+        "References shared/citation-discipline.md and shared/compliance.md"
+      ]
+    },
+    {
+      "id": "163j-interest-limitation-real-estate",
+      "prompt": "Real-estate development partnership with $50M average annual gross receipts and $5M business interest expense. Should they elect out of §163(j) under §163(j)(7)(B) as a real property trade or business? Tax year 2024.",
+      "expected_output": "memo explaining §163(j) gross-receipts test, the elective opt-out for real-property trades or businesses, the longer ADS recovery period that follows, and the conclusion that the election is generally beneficial when interest expense exceeds the §163(j) limit by enough to outweigh the slower depreciation. Should reference TCJA enactment of current §163(j) and OBBBA amendments if any are in effect for the tax year.",
+      "expectations": [
+        "Cites IRC §163(j)(1), §163(j)(7)(A)(ii), §163(j)(7)(B)",
+        "Cites Treas. Reg. §1.163(j)-9 for elective opt-out",
+        "References shared/legislation-tracking.md for TCJA / OBBBA changes",
+        "Populates public_laws_consulted[] in JSON sidecar",
+        "Notes ADS-life trade-off (residential 30y, commercial 40y per §168(g)(2))",
+        "Confidence band MODERATE or HIGH with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "obbba-section-174-amortization",
+      "prompt": "What did the One Big Beautiful Bill Act (OBBBA) change about §174 R&E expenditure treatment? Client is a software firm with $2M annual R&D spend. What should they do for their 2025 return?",
+      "expected_output": "memo invoking the legislation-tracking workflow per shared/legislation-tracking.md: identify OBBBA via the USC Popular Name Tool, retrieve the Classification Table for OBBBA, identify §174 as an affected section, compare pre-OBBBA TCJA-era 5-year amortization (§174 as amended by TCJA) with the OBBBA modification, and recommend implementation steps. Should cite JCT explanation if available and note that Treasury Decisions implementing OBBBA may not yet be issued.",
+      "expectations": [
+        "Invokes the legislation-tracking workflow",
+        "Populates public_laws_consulted[] with OBBBA entry including classification_tables_url",
+        "Cites IRC §174 (current text) and notes TCJA-era version",
+        "Cites JCT explanation or notes its absence with sentinel",
+        "Confidence band reflects staleness of post-OBBBA Treasury guidance",
+        "Verification checklist flags negative-treatment-review residual responsibility",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}
