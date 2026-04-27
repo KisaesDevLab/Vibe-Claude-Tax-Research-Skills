@@ -1,0 +1,47 @@
+{
+  "skill_name": "predict-reasonable-cause",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "fta-eligible-clean-history",
+      "prompt": "Client filed her 2023 individual return on April 28, 2024 (13 days late) — software glitch on the first attempt to e-file plus a busy week. Owed $4,200 of tax; paid in full on May 1, 2024. The IRS assessed a §6651(a)(1) FTF penalty of $210 and a §6651(a)(2) FTP of $30 plus interest. Compliance for 2020, 2021, 2022 is clean. No FTA used in the prior 3 years. Will an abatement request succeed?",
+      "expected_output": "Predicts FTA grant with HIGH confidence. IRM 20.1.1.3.6 first-time abatement applies: penalty type ✓ (§6651(a)(1) and (a)(2)); compliance for prior 3 years ✓; no FTA used in prior 3 years ✓; single-period penalty ✓. Recommend phone call to IRS taxpayer-service line OR written request citing IRM 20.1.1.3.6 and asking for FTA. Reasonable-cause based on software glitch is also available as a backup but FTA is the cleaner path. Note: §6662 accuracy penalties would not be FTA-eligible if assessed; only §6651 family.",
+      "expectations": [
+        "Identifies FTA as primary pathway",
+        "Walks all four FTA conditions",
+        "Cites IRM 20.1.1.3.6",
+        "Notes reasonable-cause as backup",
+        "Recommends phone or written request",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "boyle-attorney-missed-deadline",
+      "prompt": "Client's CPA missed the September 15, 2024 extended deadline for client's S-corp Form 1120-S; client had provided all the information by July. Penalty under §6699 of $13,200 (12 shareholders × $220 × 5 months). Client wants an abatement based on CPA's failure. Will reasonable-cause work?",
+      "expected_output": "Predicts reasonable-cause request will FAIL with HIGH confidence under Boyle. United States v. Boyle, 469 U.S. 241 (1985) bars reliance on a tax professional for the FILING DATE itself as reasonable cause. The CPA's failure to meet the deadline does not transfer responsibility from the client. McMahan carve-out for substantive advice does not apply — this is purely a ministerial-task failure. Recommend FTA if the §6699 partnership / S-corp filing penalty is FTA-eligible (verify IRM 20.1.1.3.6 status — IRS expanded FTA to §6698 partnership and §6699 S-corp penalties in recent guidance). Otherwise, the client's recourse is against the CPA, not the IRS.",
+      "expectations": [
+        "Identifies and cites Boyle, 469 U.S. 241 (1985)",
+        "Distinguishes McMahan substantive-advice carve-out (inapplicable)",
+        "Notes CPA's professional liability as the alternative recourse",
+        "Considers FTA path for §6699 penalty",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "serious-illness-documentation",
+      "prompt": "Client suffered a stroke in February 2024, was hospitalized for 6 weeks, and required 4 months of rehab. He filed his 2023 return on July 30, 2024 (3.5 months late) and paid $11K of tax due. The IRS assessed §6651(a)(1) FTF of $1,375 (5% × 4 months) and §6651(a)(2) FTP of $220. Has used FTA for tax year 2020. What is the abatement outlook?",
+      "expected_output": "Predicts reasonable-cause grant with HIGH confidence. FTA unavailable (used in prior 3 years). §6651 reasonable cause under Treas. Reg. §301.6651-1(c)(1): serious-illness exception is well-established when contemporaneous medical documentation is available. February stroke + 4-month rehab covers the April 15 filing deadline. Document with hospital records, physician letters, rehab records. §6651(a)(2) FTP also abated on the same grounds. Note that interest is generally NOT abatable except under narrow §6404(e)(1) ministerial-act provisions, which do not apply here.",
+      "expectations": [
+        "Identifies FTA as unavailable",
+        "Routes to §6651 reasonable cause",
+        "Cites Treas. Reg. §301.6651-1(c)(1)",
+        "Documents medical-evidence requirement",
+        "Notes interest generally non-abatable (§6404(e)(1) limits)",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

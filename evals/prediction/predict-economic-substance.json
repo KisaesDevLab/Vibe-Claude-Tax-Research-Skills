@@ -1,0 +1,47 @@
+{
+  "skill_name": "predict-economic-substance",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "routine-1031-not-relevant",
+      "prompt": "Client wants to do a §1031 like-kind exchange of two apartment buildings, deferring $800K of gain. The structures are vanilla — properly identified, QI-safe-harbor, real-estate-only. Should I worry about §7701(o) economic substance?",
+      "expected_output": "Predicts §7701(o) NOT relevant with HIGH confidence. §1031 is a congressionally-blessed deferral provision; routine application is the kind of choice §7701(o)(5)(C) preserves as outside the doctrine's reach. Notice 2014-58 confirms that the doctrine targets fact patterns 'similar to' pre-codification cases (ACM, Coltec, STARS). A vanilla like-kind exchange is not such a pattern. Standard §6662(a) accuracy-penalty exposure remains, but no §6662(b)(6) ESD penalty risk.",
+      "expectations": [
+        "Identifies §7701(o)(5)(C) relevance filter",
+        "Cites Notice 2014-58",
+        "Distinguishes §1031 as congressionally-blessed",
+        "Confirms no §6662(b)(6) exposure for routine §1031",
+        "Confidence band assigned (HIGH for non-relevance)",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "captive-insurance-irc-831b-pattern",
+      "prompt": "Client wants to set up an §831(b) micro-captive insurance company. Premiums of $2.0M/year deducted by operating LLC; captive elects §831(b). The captive will invest in life-insurance products on the owner's spouse and a related LLC's life-settlement contracts. Will this withstand §7701(o)?",
+      "expected_output": "Predicts §7701(o) FAILURE with HIGH confidence. The structure exhibits multiple Dirty-Dozen / Listed-Transaction red flags. Notice 2016-66 designated §831(b) micro-captives as transactions of interest; subsequent IRS enforcement has produced settlements at scale (Avrahami, Reserve Mechanical, Caylor Land). Investments in related-party life-settlement contracts compound the related-party / circular-flow concerns. Recommend DO NOT proceed; if client insists, file Form 8886 (reportable transaction). Confidence band SPECULATIVE — recommend declining the engagement under SSTS §1.1 / Circular 230 §10.37.",
+      "expectations": [
+        "Identifies micro-captive as Dirty-Dozen / Notice 2016-66 transaction of interest",
+        "Cites Avrahami v. Commissioner, 149 T.C. 144 (2017)",
+        "Cites Reserve Mechanical Corp. v. Commissioner, T.C. Memo. 2018-86",
+        "Notes §6707A reportable-transaction penalty exposure",
+        "Confidence band SPECULATIVE",
+        "Recommends declining engagement / Form 8886 disclosure",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "supply-chain-restructuring-real-purpose",
+      "prompt": "Multinational client wants to restructure its supply chain by moving regional warehousing to a new Mexican subsidiary. The restructuring will produce real operational efficiencies (60-day reduction in delivery times to LATAM customers) AND a §250 FDII benefit on incremental U.S. exports. Pre-tax operating savings projected at $4M/year; FDII benefit estimated at $1.5M/year. Will §7701(o) be a problem?",
+      "expected_output": "Predicts §7701(o) PASSES with HIGH confidence. Two-prong analysis: (A) objective — 60-day delivery reduction is a meaningful change in economic position apart from federal tax; (B) subjective — operational supply-chain rationale is a substantial non-tax purpose. Pre-tax profit ($4M operational savings) substantially exceeds tax benefit ($1.5M FDII), satisfying §7701(o)(2)(A). §250 FDII is a congressionally-blessed export-incentive provision; routine claims are not within the doctrine's pre-codification fact patterns. Document contemporaneous projections and operational metrics for the audit-defense file.",
+      "expectations": [
+        "Walks both prongs of §7701(o)(1)",
+        "Quantifies pre-tax profit vs tax benefit (§7701(o)(2)(A))",
+        "Identifies §250 FDII as congressionally-blessed",
+        "Cites §7701(o)(5)(C) relevance limitation",
+        "Confidence band HIGH for ESD passage",
+        "Recommends contemporaneous documentation",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}
