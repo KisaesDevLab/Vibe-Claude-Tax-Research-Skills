@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/KisaesDevLab/vibe-claude-tax-research-skills/shared/output-schema.json",
+  "title": "Vibe CPA Skill Output Sidecar",
+  "type": "object",
+  "required": ["skill", "version", "generated_at", "task", "conclusion",
+               "confidence_band", "authorities", "verification_checklist"],
+  "properties": {
+    "skill": { "type": "string" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "task": {
+      "type": "object",
+      "required": ["intake", "issue"],
+      "properties": {
+        "intake": { "type": "object" },
+        "issue": { "type": "string" },
+        "taxpayer_circuit": { "type": "string" },
+        "taxpayer_state": { "type": "string", "pattern": "^[A-Z]{2}$" },
+        "tax_year": { "type": "integer" }
+      }
+    },
+    "analysis": { "type": "string" },
+    "conclusion": { "type": "string" },
+    "confidence_band": {
+      "type": "string",
+      "enum": ["HIGH", "MODERATE", "LOW", "SPECULATIVE"]
+    },
+    "band_rationale": { "type": "string" },
+    "disclosure_recommended": { "type": "boolean" },
+    "penalty_exposure": { "type": "string" },
+    "authorities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["authority_type", "citation", "url",
+                     "retrieved_date", "quoted_text", "weight"],
+        "properties": {
+          "authority_type": {
+            "type": "string",
+            "enum": [
+              "IRC", "TreasReg", "TreasuryDecision", "StatutesAtLarge",
+              "RevRul", "RevProc", "Notice", "Announcement",
+              "PLR", "TAM", "CCA", "GCM", "AOD", "FSA",
+              "OfficeMemo", "InfoLetter",
+              "IRSPub", "IRM", "ATG", "ISPPaper", "IRSNewsRelease",
+              "JCT_BlueBook", "LegHistory", "Greenbook", "CBOReport",
+              "SCOTUS", "CtAppeals", "TaxCt", "DistCt", "CtFedClaims",
+              "StateStatute", "StateReg", "StateAdmin", "StateCt",
+              "Treaty", "Form", "Instructions"
+            ]
+          },
+          "citation": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "retrieved_date": { "type": "string", "format": "date" },
+          "quoted_text": { "type": "string", "maxLength": 600 },
+          "pin_cite": { "type": "string" },
+          "weight": {
+            "type": "string",
+            "enum": ["primary_statute", "binding_judicial", "regulation",
+                     "binding_circuit", "judicial", "irs_published",
+                     "legislative_history", "written_determinations",
+                     "persuasive_non_authority", "not_authority"]
+          },
+          "weight_override_rationale": { "type": "string" },
+          "chevron_replaced": { "type": "boolean" }
+        }
+      }
+    },
+    "public_laws_consulted": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["public_law", "popular_name"],
+        "properties": {
+          "public_law": { "type": "string" },
+          "popular_name": { "type": "string" },
+          "classification_tables_url": { "type": "string", "format": "uri" },
+          "affected_irc_sections": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "state_files_consulted": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["state_code", "skill", "status"],
+        "properties": {
+          "state_code": { "type": "string", "pattern": "^[A-Z]{2}$" },
+          "skill": { "type": "string" },
+          "status": { "type": "string", "enum": ["stub", "draft", "reviewed", "verified"] },
+          "last_reviewed": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "unresolved_citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["proposition", "search", "date"],
+        "properties": {
+          "proposition": { "type": "string" },
+          "search": { "type": "string" },
+          "date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "staleness_warnings": { "type": "array", "items": { "type": "string" } },
+    "negative_treatment_review_required": {
+      "type": "boolean",
+      "description": "True for high-stakes positions; flags the residual practitioner responsibility for citator check (free-source pack cannot detect implicit overrules)"
+    },
+    "verification_checklist": {
+      "type": "object",
+      "required": ["ssts_1_1", "ssts_2_3", "circ230_10_22",
+                   "circ230_10_35", "circ230_10_37"],
+      "additionalProperties": { "type": "boolean" }
+    },
+    "disclosure_forms": {
+      "type": "array",
+      "items": { "enum": ["8275", "8275-R", "8886", "none"] }
+    }
+  }
+}

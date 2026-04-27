@@ -1,0 +1,47 @@
+{
+  "skill_name": "predict-worker-classification",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "trucking-owner-operator",
+      "prompt": "Trucking company hires a driver who owns his own tractor, pays for his own diesel, fuel, and tolls, hauls for two other carriers as well, and is paid by the load. The contract calls him an independent contractor. Should the company issue 1099-NEC or W-2?",
+      "expected_output": "predicts contractor with HIGH or MODERATE confidence under the federal common-law test. Three-category analysis weighs financial-control factors (significant investment in tractor, unreimbursed expenses, services to other carriers, payment by job) heavily toward contractor. §530 not implicated unless the company has a history. State analysis only required for ABC-test states.",
+      "expectations": [
+        "Applies three-category test (behavioral, financial, relationship)",
+        "Cross-references Rev. Rul. 87-41 twenty factors",
+        "Cites IRC §3121(d)(2) and Treas. Reg. §31.3121(d)-1",
+        "Notes §530 federal-only limitation",
+        "If California taxpayer, applies ABC test from Cal. Lab. Code §2775",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "tech-consultant-w2-likely",
+      "prompt": "A software company has a 'contractor' working 40 hours per week, full time, only for them, on a company laptop, attending all the company stand-ups and weekly all-hands, with the company controlling the project priorities and code-review process. The company has been issuing 1099-NEC for two years.",
+      "expected_output": "predicts employee with HIGH confidence. Behavioral and financial control factors all weigh toward employee. §530 reasonable-basis analysis required given the two-year history; industry-practice prong likely fails. Recommend reclassification to W-2 prospectively and consider Form SS-8 / VCSP exposure.",
+      "expectations": [
+        "Applies three-category test",
+        "Specifically identifies the §530 historic-treatment prong and analyzes",
+        "Recommends VCSP (Voluntary Classification Settlement Program) as a route",
+        "References Rev. Proc. 2013-22 (VCSP) [verify current Rev. Proc.]",
+        "Confidence band HIGH for employee",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "california-ab5-rideshare",
+      "prompt": "California-based rideshare driver. Fleet vehicle is leased through the platform. Driver chooses hours but app routes pickups. Platform is a transportation network company. Driver is currently issued 1099-NEC.",
+      "expected_output": "Federal common-law test may tilt to contractor; California ABC test (Cal. Lab. Code §2775) likely fails Prong B (driver work is in the usual course of the platform's business). Note Prop 22 carve-out for app-based drivers if relevant. State conclusion: employee for state employment-tax / wage purposes; federal conclusion: contractor with §530 plausibility. Cap state confidence at LOW until per-state CA file is promoted from stub.",
+      "expectations": [
+        "Applies federal three-category test AND California ABC test",
+        "Cites Cal. Lab. Code §2775 and Dynamex (4 Cal. 5th 903)",
+        "Notes Prop 22 (Cal. Bus. & Prof. Code §7448–7467) carve-out for app-based drivers",
+        "Loads skills/tax-research-state-income/references/states/CA.md",
+        "Caps state confidence at LOW for stub-status state file",
+        "Two distinct conclusions: federal vs state",
+        "JSON sidecar populates state_files_consulted[]"
+      ]
+    }
+  ]
+}
