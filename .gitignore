@@ -1,0 +1,16 @@
+# Claude Code local
+.claude/settings.local.json
+.claude/.session/
+CLAUDE.local.md
+.cache/
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+.env
+.env.*
+!.env.example
+dist/
+build-artifacts/
+evals/runs/

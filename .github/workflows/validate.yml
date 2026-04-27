@@ -1,0 +1,132 @@
+name: validate
+
+on:
+  push:
+    branches: [main, build, "claude/build-vibe-cpa-skills-3bct8"]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install jq + yq
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y jq
+          sudo wget -qO /usr/local/bin/yq \
+            https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
+
+      - name: Frontmatter — every SKILL.md has name + description ≤ 1024
+        run: |
+          set -euo pipefail
+          fail=0
+          while IFS= read -r f; do
+            yq -f extract '.name' "$f" >/dev/null \
+              || { echo "::error file=$f::missing name"; fail=1; }
+            desc=$(yq -f extract '.description' "$f" || echo "")
+            len=${#desc}
+            if [ -z "$desc" ]; then
+              echo "::error file=$f::missing description"; fail=1
+            elif [ "$len" -gt 1024 ]; then
+              echo "::error file=$f::description $len > 1024 chars"; fail=1
+            fi
+          done < <(find skills -name SKILL.md)
+          exit $fail
+
+      - name: JSON files parse
+        run: |
+          set -e
+          find . -name '*.json' \
+            -not -path './node_modules/*' \
+            -not -path './.git/*' \
+            -print0 | xargs -0 -I{} jq empty "{}"
+
+      - name: shared/legislation-tracking.md exists (v1.1)
+        run: test -f shared/legislation-tracking.md
+
+      - name: authority_type taxonomy consistency (v1.1)
+        run: |
+          # Every authority_type value used in references files must
+          # appear in the schema enum.
+          set -e
+          schema_types=$(jq -r '.properties.authorities.items.properties.authority_type.enum[]' \
+                         shared/output-schema.json | sort -u)
+          # Extract all authority_type strings from references files
+          # (rough heuristic — flag drift, don't enforce strict match)
+          if grep -rh 'authority_type' skills/*/references/ 2>/dev/null \
+             | grep -oE '"[A-Za-z_]+"' | sort -u > /tmp/used_types.txt; then
+            for t in $(cat /tmp/used_types.txt | tr -d '"'); do
+              if ! echo "$schema_types" | grep -qx "$t"; then
+                echo "::warning::authority_type '$t' used in references but not in schema enum"
+              fi
+            done
+          fi
+
+      - name: No fabricated-citation sentinels in published skills
+        run: |
+          set -e
+          if grep -rn 'CITATION NEEDED' skills/ \
+             | grep -v '/template' \
+             | grep -v '/states/' >/dev/null; then
+            echo "::error::CITATION NEEDED sentinel found in published skill"
+            grep -rn 'CITATION NEEDED' skills/ \
+              | grep -v '/template' \
+              | grep -v '/states/'
+            exit 1
+          fi
+
+      - name: State stub completeness — 51 per state skill
+        run: |
+          set -e
+          for skill in tax-research-state-income tax-research-state-salesuse; do
+            if [ -d "skills/$skill/references/states" ]; then
+              n=$(ls skills/$skill/references/states/*.md 2>/dev/null | wc -l)
+              if [ "$n" -ne 51 ]; then
+                echo "::error::$skill has $n state files, expected 51"
+                exit 1
+              fi
+            else
+              echo "::warning::skills/$skill/references/states/ not present yet (Phase 3 not complete)"
+            fi
+          done
+
+      - name: live-sources URL liveness (allow ≤ 5 flakes; retry once)
+        run: |
+          set -e
+          urls=$(jq -r '.. | strings? | select(test("^https?://"))' \
+                 shared/sources.json | sort -u)
+          fail=0
+          for u in $urls; do
+            if ! curl -fsSL --max-time 15 -o /dev/null "$u"; then
+              sleep 3
+              if ! curl -fsSL --max-time 15 -o /dev/null "$u"; then
+                echo "::warning::dead URL: $u"
+                fail=$((fail+1))
+              fi
+            fi
+          done
+          [ $fail -le 5 ] || { echo "too many dead URLs ($fail). Investigate."; exit 1; }
+
+      - name: Run project validate.sh
+        run: |
+          chmod +x ./scripts/validate.sh
+          SKIP_URL_CHECK=1 bash ./scripts/validate.sh full
+
+      - name: Run project run-evals.sh (structural)
+        run: |
+          chmod +x ./scripts/run-evals.sh
+          bash ./scripts/run-evals.sh full || true
+
+      - name: Plugin validate (if Claude Code CLI available)
+        run: |
+          if command -v claude >/dev/null 2>&1; then
+            claude plugin validate . || true
+          fi

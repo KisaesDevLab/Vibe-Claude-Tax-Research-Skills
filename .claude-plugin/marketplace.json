@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "kisaes-cpa-skills",
+  "version": "0.1.0",
+  "description": "Kisaes CPA Skills marketplace — Vibe CPA Skills pack and related plugins for licensed tax practitioners.",
+  "homepage": "https://github.com/KisaesDevLab/vibe-claude-tax-research-skills",
+  "owner": {
+    "name": "Kisaes LLC",
+    "url": "https://github.com/KisaesDevLab"
+  },
+  "plugins": [
+    {
+      "name": "vibe-cpa-pack",
+      "source": "github:KisaesDevLab/vibe-claude-tax-research-skills",
+      "branch": "main",
+      "path": ".",
+      "description": "28 skills + 1 dispatcher covering federal research, prediction, return summary, planning, state research (50 + DC), and tax compliance utilities — with strict citation discipline and AICPA SSTS / Circular 230 scaffolding.",
+      "tags": ["cpa", "tax", "research", "compliance", "ssts", "circular-230", "us-tax", "state-tax"]
+    }
+  ]
+}
