@@ -32,13 +32,20 @@ ok()   { echo "OK   $*"; PASS=$((PASS+1)); }
 fail() { echo "FAIL $*"; FAIL=$((FAIL+1)); }
 
 JQ_PRESENT=0
-if command -v jq >/dev/null 2>&1; then JQ_PRESENT=1; fi
+PY=""
+if command -v jq >/dev/null 2>&1; then
+  JQ_PRESENT=1
+elif command -v python3 >/dev/null 2>&1 && python3 -c '' >/dev/null 2>&1; then
+  PY="python3"
+elif command -v python >/dev/null 2>&1 && python -c '' >/dev/null 2>&1; then
+  PY="python"
+fi
 
 validate_eval_file() {
   local f="$1"
   if [ "$JQ_PRESENT" -eq 0 ]; then
-    if command -v python3 >/dev/null 2>&1; then
-      python3 - "$f" <<'PY'
+    if [ -n "$PY" ]; then
+      "$PY" - "$f" <<'PY'
 import json, sys
 p = sys.argv[1]
 d = json.load(open(p))
@@ -55,7 +62,7 @@ PY
       [ $? -eq 0 ] && ok "$f" || fail "$f"
       return
     fi
-    fail "no jq or python3 available; cannot validate $f"
+    fail "no jq or python available; cannot validate $f"
     return
   fi
   if ! jq -e 'type == "object"
