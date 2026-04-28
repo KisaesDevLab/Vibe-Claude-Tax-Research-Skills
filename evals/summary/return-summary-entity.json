@@ -1,0 +1,49 @@
+{
+  "skill_name": "return-summary-entity",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "s-corp-watson-pattern-summary",
+      "prompt": "Iowa S-corp consulting practice (one shareholder-officer). Form 1120-S 2024: gross receipts $480K (Line 1a), ordinary business income $310K (Line 21). Schedule K Box 1: $310K. Officer compensation (Form 1125-E): $30,000. Distributions (Schedule M-2 Column (a) decrease): $260,000. AAA beginning $40K, ending $90K. No C-corp E&P.",
+      "expected_output": "Summarizes 2024 1120-S: gross receipts $480K, ordinary income $310K, officer W-2 $30K, distributions $260K, ending AAA $90K. Flags TWO red flags routed: (1) Watson reasonable-comp pattern — W-2 of $30K is 9.7% of $310K ordinary income, well below industry comparables for an Iowa CPA / consultant; route to `predict-reasonable-comp`. (2) Distributions exceed AAA + basis if shareholder's stock basis was less than $40K beginning; this would trigger §1368(b) capital gain or §1368(c) E&P-step (no E&P here, so basis-step). Need shareholder's stock-basis schedule to fully assess. NO tax-position advice; routes to `predict-reasonable-comp` and `tax-research-entity` (subchapter-s).",
+      "expectations": [
+        "Extracts and reports core figures (gross receipts, ordinary income, officer W-2, distributions, AAA)",
+        "Identifies Watson reasonable-comp pattern",
+        "Routes to `predict-reasonable-comp`",
+        "Identifies §1368 distribution-vs-AAA-vs-basis sequence",
+        "Routes to `tax-research-entity` for §1368 questions",
+        "Flags need for shareholder stock-basis schedule",
+        "Confidence band assigned (extraction confidence)",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "partnership-704c-tracking-gap",
+      "prompt": "Multi-member LLC taxed as partnership. Form 1065 2024: gross receipts $2.1M, ordinary business income $640K. Two equal partners, A and B. A contributed appreciated real estate (FMV $800K, basis $400K) at formation 2 years ago. Schedule B Question 12 (§704(b) special allocations) marked 'No'. Schedule K-1 Part II shows tax-basis capital accounts; no §704(c) layer indicated. Schedule M-2 ending capital reconciles to Schedule L equity.",
+      "expected_output": "Summarizes 2024 1065: gross receipts $2.1M, ordinary income $640K, two equal partners, A and B. Flags: (1) §704(c) built-in gain on A's contributed real estate ($400K) is NOT visibly tracked — Schedule K-1 Part II should show §704(c) layer per §1.704-3 method (traditional, traditional-with-curative, or remedial); the absence is a documentation red flag. (2) §704(c)(1)(B) and §737 7-year disguised-sale window started at formation; 2 years in. (3) §704(b) Question 12 marked No suggests no special allocations, but §704(c) is mandatory regardless of §704(b) elections. Route to `tax-research-entity` (subchapter-k). Flag for partnership-engagement review.",
+      "expectations": [
+        "Extracts core figures",
+        "Identifies §704(c) tracking gap on contributed appreciated property",
+        "Identifies §704(c)(1)(B) / §737 7-year window",
+        "Distinguishes §704(b) (special allocations) from §704(c) (built-in gain — mandatory)",
+        "Routes to `tax-research-entity` (subchapter-k)",
+        "Confidence band assigned",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "c-corp-section-382-ownership-change",
+      "prompt": "Form 1120 2024: gross receipts $5.2M, total income $5.5M, NOL deduction $200K (Line 29a), taxable income $50K, total tax $10,500. Schedule G Q3 indicates new 60% shareholder (acquired in March 2024). Prior-year NOL carryforward at beginning of 2024 was $1.4M. Schedule J shows §382 limitation calculation referenced.",
+      "expected_output": "Summarizes 2024 1120: gross receipts $5.2M, total income $5.5M, NOL utilized $200K, TI $50K, total tax $10,500 (effective ~ 21% on TI). Flag: §382 ownership change indicated — 60% shareholder acquired in March 2024 likely triggered an ownership change (50% over 3-year testing period). The $200K NOL utilized may be subject to §382 limitation; the $1.4M remaining carryforward is similarly subject. Schedule J reference confirms practitioner aware. Route to `tax-research-entity` for ownership-change-date determination, §382 limit computation, and Reg. §1.382-3 ownership-change-detection rules. Flag NOL-carryforward-tracking schedule maintenance.",
+      "expectations": [
+        "Extracts core figures including NOL utilization",
+        "Identifies §382 ownership-change trigger",
+        "Notes 50%-over-3-year testing-period rule",
+        "Routes to `tax-research-entity`",
+        "Notes §382 limit computational complexity",
+        "Confidence band assigned",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

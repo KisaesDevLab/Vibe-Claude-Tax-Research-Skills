@@ -1,0 +1,50 @@
+{
+  "skill_name": "notice-response",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "cp2000-disagree-1099-double-counted",
+      "prompt": "Client received CP2000 dated March 15, 2025, proposing $14,200 of additional tax on a 2023 individual return based on $42,000 of unreported income from a Form 1099-K. The taxpayer contends the $42,000 is the GROSS payments through Stripe; the NET (after refunds and chargebacks) was $36,500, which was reported on Schedule C as $36,500. Today is March 30, 2025.",
+      "expected_output": "Identifies CP2000 with 30-day deadline (April 14, 2025); 15 days remain. Strategy: disagree with substantiation. Draft response showing (1) Form 1099-K reports gross payments per §6050W; (2) Schedule C properly reports net of refunds and chargebacks (or gross with refunds as a deduction line); (3) provide Stripe annual statement, refund-and-chargeback log, and reconciliation tying to Schedule C Line 1 (or Line 2 for refunds-from-receipts). Cite §6050W (third-party-payment-network reporting), §61 (gross income), and §62 / §162 / §63 framework as relevant. Recommend response by certified mail with return receipt; calendar a 45-day follow-up if no IRS response. NOT a stat notice; if IRS proceeds with adjustment, a Letter 3219 will follow with 90-day Tax Court rights.",
+      "expectations": [
+        "Identifies CP2000 type and 30-day deadline",
+        "Strategy: disagree with substantiation",
+        "References §6050W gross-vs-net reporting nature",
+        "Recommends specific substantiating documents",
+        "Notes CP2000 NOT a stat notice; CP3219A or Letter 3219 may follow",
+        "Confidence band assigned",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "letter-3219-90-day-protective",
+      "prompt": "Client received Letter 3219 (Statutory Notice of Deficiency) dated February 1, 2025, proposing $85,000 of tax + $17,000 penalty for 2022. The taxpayer disputes the substantive adjustments. Today is April 20, 2025. Client missed the 90-day window because the notice was lost in office mail; only just discovered.",
+      "expected_output": "Identifies Letter 3219 with 90-day Tax Court petition deadline (May 2, 2025; 90 days from February 1) — 12 days remain. JURISDICTIONAL. PRIORITY action: prepare and file Tax Court petition immediately, even on a protective basis with claim that the substantive merits will be developed in proceedings. Filing in Tax Court suspends collection. Note: §6213(a) deadline does NOT toll for ongoing administrative discussions; missed deadline is fatal under Hallmark Research Collective, 159 T.C. No. 6 (2022). Recommend Tax Court counsel engagement for petition drafting (Tax Court Rule 34); the firm can file pro se but a tax-controversy practitioner should review. Calendar deadline for petition filing.",
+      "expectations": [
+        "Identifies Letter 3219 / 90-day deadline as JURISDICTIONAL",
+        "Computes deadline accurately",
+        "Recommends protective petition filing",
+        "Cites Hallmark Research Collective on jurisdictionality",
+        "Notes filing in Tax Court suspends collection",
+        "Recommends counsel engagement",
+        "Confidence band assigned",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "cp14-fta-screen-then-installment",
+      "prompt": "Client received CP14 dated April 18, 2025, showing a balance due of $8,400 for 2024 individual tax. The client has been compliant for the prior 3 years (timely returns and payments). She cannot pay the full $8,400 today but can pay $400/month. Today is April 25, 2025.",
+      "expected_output": "Identifies CP14 with 21-day pay-or-contact window. Two-step strategy: (1) FTA screen — if any §6651 family penalty was assessed (FTF or FTP), file abatement request under IRM 20.1.1.3.6 (eligibility likely met given 3-year compliance). FTA on FTP can save up to ~$420 (assume 5 months × 0.5% × $8,400). (2) Installment agreement — taxpayer qualifies for streamlined installment agreement (under $50K total liability); apply via Form 9465 or via online payment agreement (OPA) tool. $400 / month over 21 months covers principal; interest under §6601 continues to accrue at the federal short-term rate + 3%. The CP14 is a collection notice, NOT a CDP notice — CDP rights attach later if levy is threatened (Letter 1058 / CP90).",
+      "expectations": [
+        "Identifies CP14 21-day window",
+        "Routes to FTA per IRM 20.1.1.3.6",
+        "Routes to streamlined installment agreement (under $50K)",
+        "References Form 9465 / OPA",
+        "Notes interest continues to accrue under §6601",
+        "Distinguishes CP14 from CDP-rights notices",
+        "Confidence band assigned",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

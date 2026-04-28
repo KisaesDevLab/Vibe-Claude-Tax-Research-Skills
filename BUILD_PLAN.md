@@ -68,37 +68,37 @@ Validation: `./scripts/validate.sh phase 1 && ./scripts/run-evals.sh phase 1`
 Validation: `./scripts/validate.sh phase 2 && ./scripts/run-evals.sh phase 2`
 
 Predictions (11 — worker-classification already in Phase 1):
-- [ ] predict-hobby-loss
-- [ ] predict-reasonable-comp
-- [ ] predict-real-estate-pro
-- [ ] predict-material-participation
-- [ ] predict-qbi-eligibility
-- [ ] predict-1031-qualification
-- [ ] predict-economic-substance
-- [ ] predict-debt-vs-equity
-- [ ] predict-innocent-spouse
-- [ ] predict-reasonable-cause
+- [x] predict-hobby-loss
+- [x] predict-reasonable-comp
+- [x] predict-real-estate-pro
+- [x] predict-material-participation
+- [x] predict-qbi-eligibility
+- [x] predict-1031-qualification
+- [x] predict-economic-substance
+- [x] predict-debt-vs-equity
+- [x] predict-innocent-spouse
+- [x] predict-reasonable-cause
       (references include: irs-data-book-penalty-stats.md citing
       IRS Data Book penalty-abatement statistics as
       persuasive_non_authority)
-- [ ] predict-r-and-d-credit
+- [x] predict-r-and-d-credit
 
 Research (4 — federal already in Phase 1):
-- [ ] tax-research-entity
-- [ ] tax-research-payroll
-- [ ] tax-research-international
+- [x] tax-research-entity
+- [x] tax-research-payroll
+- [x] tax-research-international
       (references include: treaties-a-to-z.md pointing to IRS
       Treaties A–Z; oecd-model-treaty.md pointing to OECD Tax)
-- [ ] tax-research-procedure
+- [x] tax-research-procedure
       (references include: tax-court-rules.md, doj-tax-division.md,
       irs-data-book-audit-rates.md, dawson-freshness-feeds.md)
 
 Summary + notice:
-- [ ] return-summary-entity
-- [ ] notice-response
+- [x] return-summary-entity
+- [x] notice-response
 
 For each: SKILL.md + references/ + 1 eval case minimum.
-- [ ] Commit per family with conventional message; push frequently.
+- [x] Commit per family with conventional message; push frequently.
 
 ## Phase 3 — Planning (3) + remaining research (3) + utilities (5) + compliance (1) + 51 state stubs × 2 skills
 
@@ -311,3 +311,5 @@ release; open a PR and stop)
 ## Session log
 (Claude Code appends entries here before each /compact or exit.
 Format: `YYYY-MM-DD HH:MM | phase X | items: ... | last commit: <sha>`)
+
+2026-04-27 | phase 2 complete | items: predict-hobby-loss + reasonable-comp evals; +9 prediction skills (real-estate-pro, material-participation, qbi-eligibility, 1031-qualification, economic-substance, debt-vs-equity, innocent-spouse, reasonable-cause, r-and-d-credit); +4 research skills (entity, payroll, international, procedure); return-summary-entity; notice-response. Validate phase 2 + run-evals phase 2 both green (4 pass / 0 fail; 20 eval files pass). Branch: build. Last commit before plan-tick: 98f591c.
