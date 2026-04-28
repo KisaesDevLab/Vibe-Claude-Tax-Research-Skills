@@ -304,11 +304,12 @@ Validation: `./scripts/run-evals.sh full`
 Validation: `gh release view v1.0.0-beta` (DO NOT auto-create the
 release; open a PR and stop)
 
-- [ ] Open PR build → main: `gh pr create --base main --head build --fill`
-- [ ] Wait for CI green
-- [ ] In PR body, request Kurt's review and tag-creation approval
-- [ ] Add a final BUILD_PLAN.md session-log entry
-- [ ] STOP. Kurt merges, tags v1.0.0-beta, and creates the release.
+- [x] Open PR build → main: PR #3 (re-titled "Phase 7 — release
+      (v1.0.0-beta): full Vibe CPA Skills pack")
+- [ ] Wait for CI green (Kurt-side)
+- [x] In PR body, request Kurt's review and tag-creation approval
+- [x] Add a final BUILD_PLAN.md session-log entry
+- [x] STOP. Kurt merges, tags v1.0.0-beta, and creates the release.
 
 ---
 
