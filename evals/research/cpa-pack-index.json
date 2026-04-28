@@ -1,0 +1,52 @@
+{
+  "skill_name": "cpa-pack-index",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "route-federal-research",
+      "prompt": "I need to research §199A QBI deduction qualification for a CPA solo practitioner.",
+      "expected_output": "Routes to `tax-research-federal` (for federal-tax research with authority hierarchy walk) and `predict-qbi-eligibility` (for §199A-specific prediction). Loads shared/citation-discipline.md, authority-hierarchy.md, confidence-bands.md, compliance.md before delegating.",
+      "expectations": [
+        "Identifies federal-research as the primary skill",
+        "Routes to `tax-research-federal`",
+        "Optionally routes to `predict-qbi-eligibility` for QBI-specific analysis",
+        "Loads shared/ files before routing"
+      ]
+    },
+    {
+      "id": "route-public-law-popular-name",
+      "prompt": "What did OBBBA do to §168(k) bonus depreciation?",
+      "expected_output": "Routes to `irc-section-lookup` for the Public-Law-to-USC workflow per shared/legislation-tracking.md. The popular-name 'OBBBA' triggers the Popular Name Tool lookup, Classification Tables fetch, and USLM verification of post-amendment §168(k) text.",
+      "expectations": [
+        "Identifies Public-Law popular name 'OBBBA'",
+        "Routes to `irc-section-lookup`",
+        "References shared/legislation-tracking.md workflow",
+        "Identifies §168(k) as the affected USC section"
+      ]
+    },
+    {
+      "id": "route-state-tax",
+      "prompt": "I have a California S-corp client; need to know about CA PTET deadline and mechanics.",
+      "expected_output": "Routes to `tax-research-state-income` (state-router protocol identifies CA from the 'California' / 'CA PTET' triggers). Loads skills/tax-research-state-income/references/states/CA.md (status: stub at v1.0.0-beta). Caps state confidence at LOW per the stub-decay rule. Practitioner should also consult `planning-strategy-library/references/strategies/ptet-election.md` for the strategy framework.",
+      "expectations": [
+        "Identifies CA state trigger",
+        "Routes to `tax-research-state-income`",
+        "Loads CA per-state file",
+        "Notes stub-status confidence cap",
+        "Optionally cross-references planning-strategy-library"
+      ]
+    },
+    {
+      "id": "route-multi-skill-complex",
+      "prompt": "MFJ couple, $480K combined W-2, has S-corp side business with low owner W-2 and high distributions. Iowa resident. What's the planning posture?",
+      "expected_output": "Multi-skill routing: (1) `predict-reasonable-comp` for Watson framework analysis (Iowa = 8th Cir.); (2) `planning-actions-1040` for individual planning; (3) `planning-actions-entity` for S-corp planning; (4) `tax-research-state-income/IA.md` for state PTET / state credit analysis. Loads shared/ files; loads relevant per-state file with stub-status decay caveat.",
+      "expectations": [
+        "Identifies multiple skill routing",
+        "Routes to `predict-reasonable-comp` for Watson analysis",
+        "Routes to planning skills",
+        "Routes to state research with IA per-state file",
+        "Notes Watson 8th Cir. binding under Golsen"
+      ]
+    }
+  ]
+}

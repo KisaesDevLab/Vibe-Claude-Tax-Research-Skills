@@ -1,0 +1,46 @@
+{
+  "skill_name": "predict-qbi-eligibility",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "below-threshold-consultant",
+      "prompt": "MFJ couple, taxable income before QBI of $300,000. One spouse is a sole-proprietor management consultant grossing $200K. Wants to claim §199A. Tax year 2024.",
+      "expected_output": "Predicts HIGH confidence the full 20% QBI deduction is available. Couple is below the 2024 MFJ phase-in floor of $383,900. SSTB classification of consulting is irrelevant below the threshold. W-2 / UBIA limits also do not apply. Compute deduction as 20% of QBI subject to the 20%-of-(TI - net cap gains) overall limit.",
+      "expectations": [
+        "Identifies threshold gate as dispositive",
+        "Notes 2024 MFJ phase-in floor (verify Rev. Proc. for year-specific number)",
+        "Confirms SSTB / W-2 / UBIA limits inapplicable below threshold",
+        "Cites IRC §199A(b)(2) and §199A(e)",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "above-threshold-cpa-firm-sstb",
+      "prompt": "Single CPA solo practitioner. Schedule C net income $260,000. Taxable income before QBI of $290,000. Tax year 2024. Pays no W-2 wages. Wants to claim §199A.",
+      "expected_output": "Predicts NO §199A deduction with HIGH confidence. Accounting is an enumerated SSTB under §199A(d)(2)(A) and Treas. Reg. §1.199A-5(b)(2)(iv). Single threshold for 2024: phase-in $191,950 to $241,950; complete disqualification above $241,950. Taxpayer's TI of $290,000 exceeds the upper threshold. Note: 'enrolled agents' and 'return preparers' are also captured even if not state-licensed CPAs. The phase-in band would have allowed a partial deduction; full disqualification kicks in here.",
+      "expectations": [
+        "Identifies accounting as enumerated SSTB",
+        "Cites Treas. Reg. §1.199A-5(b)(2)(iv)",
+        "Walks 2024 single-filer phase-in band",
+        "Concludes full SSTB disqualification above upper threshold",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "rental-safe-harbor-questionable",
+      "prompt": "Investor with three single-family rentals. Tracks 220 hours/year of rental services across all three properties. No separate books for each. No statement attached to prior return. Wants §199A on rental income.",
+      "expected_output": "Predicts the Rev. Proc. 2019-38 safe harbor is NOT available with HIGH confidence: hour count below 250 (across all three combined as one enterprise — and even then below 250); separate books absent; statement not attached. Without the safe harbor, §199A still possible if the rental activity rises to a §162 trade or business under common-law factors (Higgins, Groetzinger). Recommend (1) elect to treat each separately or aggregate prospectively; (2) implement separate books and 250-hour log discipline for next year; (3) for current year, build a §162 case if facts support, with LOW confidence and Form 8275 disclosure.",
+      "expectations": [
+        "Identifies all three Rev. Proc. 2019-38 prerequisites failed",
+        "Cites Rev. Proc. 2019-38",
+        "Discusses fallback §162 trade-or-business analysis",
+        "Cites Higgins or Groetzinger for §162 framework",
+        "Recommends prospective fix",
+        "Confidence band assigned (LOW or below)",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

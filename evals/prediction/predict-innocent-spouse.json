@@ -1,0 +1,45 @@
+{
+  "skill_name": "predict-innocent-spouse",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "streamlined-divorced-stay-at-home",
+      "prompt": "Client divorced 2 years ago. During marriage, ex-husband ran an unreported cash side business; the IRS audited their joint 2021 return and assessed $48K of additional tax. Client was a stay-at-home mother, did not work outside the home, signed returns without review. Currently receives child support but minimal other income; would not be able to pay $48K. No abuse — relationship was simply traditional. Filed Form 8857 for §6015 relief.",
+      "expected_output": "Predicts streamlined relief under Rev. Proc. 2013-34 §4.02 with HIGH confidence. (1) divorced ✓; (2) economic hardship — unable to pay $48K on child-support income ✓; (3) no knowledge of erroneous item — stay-at-home mother, signed without review, traditional household ✓. Streamlined relief means full §6015(f) relief without further facts-and-circumstances weighing. File Form 8857 with documentation of marital status, financial situation, and signing pattern.",
+      "expectations": [
+        "Identifies streamlined relief under Rev. Proc. 2013-34 §4.02",
+        "Walks all three streamlined conditions",
+        "Cites §6015(f) and Rev. Proc. 2013-34",
+        "Confidence band HIGH",
+        "Form 8857 process described",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "abuse-override-knowledge",
+      "prompt": "Married client. Husband has a history of physical and financial abuse — controlling all bank accounts, intimidating client into silence on financial matters. Joint 2020 return overstated charitable deductions by $35K; client knew the deductions were inflated but signed anyway under threat. They are now separated 18 months. Filed Form 8857. What is the relief outlook?",
+      "expected_output": "Predicts §6015(f) equitable relief likely available with MODERATE-to-HIGH confidence under abuse-override. Knowledge factor would normally cut against relief, but Rev. Proc. 2013-34 §4.03(2)(c)(ii) explicitly treats abuse as overriding the knowledge factor when the requesting spouse signed under fear of retaliation. Document the abuse history with police reports / therapy records / affidavits. Marital status (separated 18 months) and abuse override the negative knowledge factor. Cite Pullins v. Commissioner, 136 T.C. 432 (2011).",
+      "expectations": [
+        "Identifies abuse-override under Rev. Proc. 2013-34 §4.03(2)(c)(ii)",
+        "Cites Pullins v. Commissioner",
+        "Discusses documentation of abuse",
+        "Notes that Form 8857 has confidential abuse disclosure section",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "section-6015c-actual-knowledge-bar",
+      "prompt": "Client divorced 4 years ago. Joint 2018 return showed $80K of unreported gambling winnings (form W-2G ignored). Client and ex were both at the casino frequently; client clearly knew about the winnings. Wants to use §6015(c) separation-of-liability allocation since divorce > 12 months ago. Form 8857 filed within the 2-year window.",
+      "expected_output": "Predicts §6015(c) separation allocation will FAIL with HIGH confidence due to actual-knowledge bar. §6015(c)(3)(C) bars allocation for items of which the requesting spouse had ACTUAL knowledge. Client's frequent casino attendance establishes actual knowledge of the gambling winnings. §6015(b) similarly fails (knowledge / reason to know). §6015(f) equitable relief is the residual path, but the knowledge factor is significant; absent abuse or significant economic hardship, equitable relief is unlikely. Confidence band LOW for §6015(f).",
+      "expectations": [
+        "Identifies §6015(c)(3)(C) actual-knowledge bar",
+        "Cites §6015(b) parallel knowledge requirement",
+        "Routes to §6015(f) equitable relief as fallback",
+        "Walks the §6015(f) factor analysis with knowledge as anti-relief",
+        "Confidence band LOW for §6015(f) absent abuse",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

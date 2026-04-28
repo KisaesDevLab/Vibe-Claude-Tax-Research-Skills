@@ -1,0 +1,48 @@
+{
+  "skill_name": "tax-research-state-income",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "ny-convenience-of-employer-remote",
+      "prompt": "Client lives in NJ but works for a NY-based employer. Worked entirely from home in NJ during 2024. Wages $190K. Wants to know whether NY can tax the income.",
+      "expected_output": "Loads tax-research-state-income/references/states/NY.md (status: stub at v1.0.0-beta). Identifies NY 'convenience of the employer' rule (TSB-M-06(5)I and similar): NY taxes a non-resident's wages allocated to NY office days unless the work outside NY is for the employer's necessity (not the employee's convenience). Most remote-work-from-home is treated as 'convenience' by NY. Result: NY can tax substantially all of the $190K. NJ provides credit for taxes paid to NY (route to tax-research-state-income/NJ). Cap state confidence at LOW because NY file is `status: stub`. Recommend live retrieval from NY DTF website.",
+      "expectations": [
+        "Loads NY per-state file",
+        "Identifies convenience-of-employer rule",
+        "Notes NJ credit for taxes paid to NY",
+        "Caps confidence at LOW for stub-status state file",
+        "References live retrieval from NY DTF",
+        "Documents `state_files_consulted[]` with status and last_reviewed",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "ca-ptet-deadline",
+      "prompt": "California S-corp client, 2 owners, $400K net ordinary income. Owners want to elect CA PTET for 2024. Today is May 1, 2024. What's the deadline and mechanics?",
+      "expected_output": "Loads tax-research-state-income/references/states/CA.md. Identifies CA PTET (Cal. Rev. & Tax. Code §17052.10): election made on Form 3804 with payment by June 15 of the tax year (for calendar-year entities). For 2024 election, June 15, 2024 deadline. Election rate: 9.3%. Owner-level credit at federal taxable-income reduction. Coordination with §164 SALT cap (Notice 2020-75). Cap state confidence at LOW because CA file is `status: stub`. Recommend live retrieval from FTB.",
+      "expectations": [
+        "Loads CA per-state file",
+        "Identifies CA PTET deadline (June 15)",
+        "Cites Cal. Rev. & Tax. Code §17052.10",
+        "Notes Notice 2020-75 federal-deduction framework",
+        "Caps confidence at LOW for stub-status state file",
+        "Documents `state_files_consulted[]`",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "wa-cap-gains-tax",
+      "prompt": "Washington State resident sold long-term-held publicly-traded stock with $400K of long-term capital gain in 2024. Has there been a state-level tax on this since the 2021 Washington enactment?",
+      "expected_output": "Loads tax-research-state-income/references/states/WA.md. WA has a 7% capital-gains tax (Wash. Rev. Code §82.87) on long-term capital gains > $262K standard deduction (2024 — verify year-specific). Stock sales generally subject to the tax; some exclusions (qualified small business under WA-specific definition, sale of family-owned business). Quinn v. State, 1 Wn.3d 222 (2023) upheld the tax against state-constitutional challenge. Federal return: 0/15/20% capital gains + NIIT 3.8% on top. Cap state confidence at LOW for stub-status state file.",
+      "expectations": [
+        "Loads WA per-state file",
+        "Identifies WA cap-gains tax statute",
+        "Cites Quinn v. State, 1 Wn.3d 222 (2023)",
+        "Computes the layered federal + state liability",
+        "Caps confidence at LOW for stub-status state file",
+        "Documents `state_files_consulted[]`",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

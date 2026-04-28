@@ -1,0 +1,47 @@
+{
+  "skill_name": "predict-debt-vs-equity",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "shareholder-advance-no-documentation",
+      "prompt": "Sole shareholder advanced $1.2M to his C-corp over three years. No promissory note. Recorded as 'Note payable — shareholder' on the corporate books. No interest paid. No repayments. The corporation took $144K of interest deductions over the three years using a 4% rate accrual. IRS audit underway. Will the loan hold up as debt? Taxpayer is in the 11th Circuit (Florida).",
+      "expected_output": "Predicts recharacterization to equity with HIGH confidence. Slappey Drive 13-factor analysis (11th Cir. binding): no fixed maturity, no enforceable obligation (no note), no actual interest payments, identity of interest between creditor and stockholder, no external borrowing capacity at this leverage. The corporation will lose the $144K of interest deductions; the recharacterized 'loan' becomes a capital contribution / E&P-affecting transaction. Recommend immediate documentation cleanup is too late for the audit period; for prospective advances, formalize with note + scheduled payments + AFR rate.",
+      "expectations": [
+        "Identifies 11th Cir. Slappey Drive as binding under Golsen",
+        "Walks the relevant Slappey factors with explicit emphasis on no documentation, no payments",
+        "Quantifies the deduction loss ($144K)",
+        "Notes E&P / constructive-distribution consequences",
+        "Confidence band HIGH for equity recharacterization",
+        "Recommends prospective documentation",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "well-documented-shareholder-loan",
+      "prompt": "Sole shareholder loaned $500K to his closely-held S-corp three years ago. Written promissory note, 7% rate (above AFR), 5-year term, monthly interest payments paid via auto-debit, secured by corporate equipment with a UCC filing. Board resolution authorizing the loan. Corporation has D/E ratio of 1.5:1. Has the corporation maintained debt characterization?",
+      "expected_output": "Predicts debt characterization holds with HIGH confidence. Walking Roth Steel factors: written note ✓, fixed maturity ✓, fixed rate ≥ AFR ✓, actual payments ✓, security agreement ✓, board authorization ✓, D/E ratio reasonable. Identity of interest exists (closely-held) but not dispositive given the documentation. §385(c)(1) consistency: confirm S-corp's K-1 interest expense matches shareholder's interest income on Schedule B. Maintain the audit-defense file.",
+      "expectations": [
+        "Identifies the relevant binding circuit's factor list",
+        "Walks each factor with the supporting fact",
+        "Cites §385(c)(1) consistency rule",
+        "Notes D/E ratio analysis",
+        "Confidence band HIGH for debt characterization",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "intercompany-funded-acquisition",
+      "prompt": "U.S. parent corporation in the consolidated group made a $200M loan to its U.S. subsidiary which used the proceeds to acquire stock of a foreign target. The loan is documented with a market-rate note and quarterly payments. Are §1.385-3 covered-debt-instrument rules a problem?",
+      "expected_output": "Predicts §1.385-3 may apply with MODERATE confidence. The rule applies to debt issued by a member of an expanded affiliated group ($50M aggregate threshold) in connection with funded distributions or stock acquisitions within the EAG. Funded stock-of-foreign-target acquisition can implicate §1.385-3(b) per-se rules unless an exception applies (e.g., the funded distribution / acquisition is not within the expanded group, or the §1.385-3(c) exceptions apply). Practitioner should walk through the per-se rule, the funding rule, and applicable exceptions. If §1.385-3 applies, the debt is recharacterized as stock for federal-tax purposes.",
+      "expectations": [
+        "Identifies §1.385-3 covered-debt-instrument rules",
+        "Notes EAG-member issuer requirement and $50M threshold",
+        "Walks per-se / funding rule structure",
+        "Discusses §1.385-3(c) exceptions framework",
+        "Confidence band assigned (MODERATE) reflecting fact-pattern complexity",
+        "Recommends multinational-tax specialist review",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

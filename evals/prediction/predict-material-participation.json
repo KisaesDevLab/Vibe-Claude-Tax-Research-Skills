@@ -1,0 +1,48 @@
+{
+  "skill_name": "predict-material-participation",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "spa-aggregation-six-rentals",
+      "prompt": "Single taxpayer, retired. No W-2. Owns six STRs (avg use 5 days). Logs 130 hours per property managing turnover, repairs, listing optimization. None individually exceeds 500 hours. No property manager. They want each property to be nonpassive so depreciation losses offset other income. Which §1.469-5T test applies?",
+      "expected_output": "Predicts test 4 (significant-participation activity aggregation) likely applies with MODERATE-to-HIGH confidence. Each property is an SPA (>100 hours). Aggregate across six = 780 hours, exceeding 500. Note: STRs are not 'rental activity' under §1.469-1T(e)(3)(ii), so REPS not relevant. Document each property's logs separately. Test 1 is unavailable per-property; test 3 may also apply per-property if no other individual logs comparable hours.",
+      "expectations": [
+        "Identifies test 4 SPA aggregation as the controlling test",
+        "Performs the aggregate-hour calculation",
+        "Notes STR carve-out from rental activity status",
+        "Cites Treas. Reg. §1.469-5T(a)(4) and §1.469-5T(c)",
+        "Discusses test 3 as alternative per-property",
+        "Confidence band with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "limited-partner-restriction",
+      "prompt": "Taxpayer holds a 5% limited-partner interest in a Delaware LP that owns commercial real estate. Spends 250 hours per year reviewing reports, attending the annual meeting, and consulting on tenant decisions. Wants nonpassive treatment to deduct losses. The partnership agreement explicitly restricts the partner to limited-partner rights.",
+      "expected_output": "Predicts LOW confidence of nonpassive treatment. §1.469-5T(e)(2) restricts a limited partner to tests 1, 5, and 6. 250 hours fails test 1 (>500). Test 5 (5 of 10) and test 6 (personal-service activity, 3 prior years) require historical patterns; commercial real estate is not a personal-service activity, so test 6 unavailable. Activities described are largely investor-type (review of statements) excluded from test 7 — but test 7 unavailable to LP anyway. Garnett / Thompson LLC-as-GP exception inapplicable to a true LP. Recommend treatment as passive.",
+      "expectations": [
+        "Identifies §1.469-5T(e)(2) limited-partner restriction",
+        "Walks tests 1, 5, 6 explicitly",
+        "Notes test 6 unavailability for non-personal-service activity",
+        "Notes investor-type exclusion under §1.469-5T(b)(2)(ii)",
+        "Distinguishes true LP from Garnett / Thompson LLC member-manager",
+        "Confidence band assigned (LOW or below)",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "test-3-solo-managed-business",
+      "prompt": "Taxpayer founded an e-commerce business in 2020. Logs 280 hours/year on the business: vendor selection, ad strategy, fulfillment oversight. Has one part-time contractor (180 hours) and one VA in the Philippines (120 hours/year tracked). Wants nonpassive treatment of K-1 losses.",
+      "expected_output": "Predicts test 3 likely applies with MODERATE-to-HIGH confidence. Test 1 (>500 hours) fails. Test 3 requires >100 hours AND ≥ any other individual. Taxpayer at 280 hours exceeds the contractor (180) and VA (120). Document the contractor and VA hour estimates carefully — if a vendor/manager could be shown to log more hours, test 3 fails. If both prongs hold, the activity is nonpassive. Note that test 4 SPA aggregation also possible if other SPAs exist.",
+      "expectations": [
+        "Identifies test 3 (>100 hours AND ≥ any other) as primary",
+        "Performs the comparison with contractor and VA hours",
+        "Cites Treas. Reg. §1.469-5T(a)(3)",
+        "Notes documentation requirement for other-individual hours",
+        "Discusses test 4 aggregation as alternative",
+        "Confidence band with rationale",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

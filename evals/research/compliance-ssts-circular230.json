@@ -1,0 +1,48 @@
+{
+  "skill_name": "compliance-ssts-circular230",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "ssts-1.1-substantial-authority",
+      "prompt": "Engagement: client wants to take a §199A position relying on a 2020 PLR addressing similar facts but with no on-point Tax Court or Court of Appeals authority. Confidence band has been assigned MODERATE (~ 40%). Disclosure on Form 8275? SSTS § 1.1 / Circular 230 § 10.37 implications?",
+      "expected_output": "Walks compliance checklist. SSTS § 1.1: MODERATE band (~ 40%) meets substantial-authority standard (≥ 33-40% probability), so position satisfies SSTS § 1.1 without disclosure under § 1.1(a). Note however: PLR is `written_determinations` weight; per shared/confidence-bands.md decay rule, drop one band when PLR is closest authority, so band might be LOW reasonable-basis under that rule. If LOW, disclosure required. Recommend: (1) confirm band assignment (PLR-only authority typically caps at MODERATE then drops to LOW under decay rule); (2) Form 8275 disclosure for LOW/reasonable-basis path; (3) document the substantial-authority analysis if MODERATE retained. Circular 230 § 10.37: written advice must reasonably consider all relevant facts and authorities; a PLR-only basis without searching for Tax Court / Court of Appeals authority may not satisfy § 10.37(a)(1)(iii) reasonable-effort prong. Recommend exhaustive primary-authority search before issuing written advice. Circular 230 §§ 10.22 / 10.35 / 10.37 satisfied subject to those steps.",
+      "expectations": [
+        "Walks SSTS § 1.1 substantial-authority vs reasonable-basis distinction",
+        "Applies confidence-band decay rule for PLR-as-closest-authority",
+        "Recommends Form 8275 if band drops to LOW",
+        "Walks Circular 230 § 10.37 reasonable-effort prong",
+        "Cites SSTS § 1.1, Circ. 230 §§ 10.22 / 10.35 / 10.37",
+        "JSON sidecar validates with verification_checklist populated",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "form-8886-listed-transaction",
+      "prompt": "Client has decided to set up a §831(b) micro-captive insurance company. The structure has Notice 2016-66 transaction-of-interest concerns. What disclosure obligations apply?",
+      "expected_output": "Walks compliance checklist. CRITICAL: §831(b) micro-captives are designated transactions of interest under Notice 2016-66 (and listed-transaction status pending in some IRS guidance — verify current). Form 8886 disclosure required (§6011 reportable-transaction). §6707A non-disclosure penalty: 75% of decrease in tax shown on return; max $200K per transaction; min $10K. Substantial economic-substance concerns under §7701(o); §6662(b)(6) 20% / (i) 40% strict-liability accuracy penalty for ESD-failed transactions; §6664(c)(2) bars reasonable-cause defense for §6662(b)(6). SSTS § 1.1: practitioner cannot recommend a SPECULATIVE-band position; this is recommend-do-not-proceed territory. Circular 230 § 10.37(a)(2): no audit-lottery considerations. Recommend: (1) decline engagement OR engage with extensive disclosure; (2) Form 8886 disclosure; (3) Form 8275 disclosure to avoid §6662(i) 40% rate; (4) document SSTS §1.1 / Circ 230 §10.37 advice that the practitioner advised against.",
+      "expectations": [
+        "Identifies Notice 2016-66 transaction of interest",
+        "Identifies Form 8886 §6011 reportable-transaction obligation",
+        "Cites §6707A non-disclosure penalty",
+        "Identifies §7701(o) ESD concerns",
+        "Cites §6662(b)(6), §6662(i), §6664(c)(2)",
+        "Walks SSTS § 1.1 / Circ. 230 § 10.37 framework",
+        "Recommends decline-engagement option",
+        "JSON sidecar validates with disclosure_forms array",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "circular-230-10.37-written-advice",
+      "prompt": "Client requests a written tax-advice memo concluding that their proposed structure produces a substantial federal tax benefit. What Circular 230 § 10.37 standards apply?",
+      "expected_output": "Walks Circular 230 § 10.37 reasonable-practitioner standard. Six elements:\n1. Reasonable factual and legal assumptions used.\n2. All relevant facts and circumstances reasonably considered.\n3. Reasonable efforts made to identify and ascertain facts.\n4. No unreasonable reliance on representations / projections / appraisals.\n5. Applicable law and authorities related to the facts.\n6. No 'audit lottery' considerations.\n\nDocument each element in the memo's audit-defense file. Cite Circular 230 § 10.37, AICPA SSTS § 1.1. Recommend internal peer review before delivery; SSTS § 1.1(a)(2) practitioner-judgment items often benefit from co-counsel input. For high-stakes positions, include the negative-treatment-review residual responsibility for the practitioner.",
+      "expectations": [
+        "Walks Circ. 230 § 10.37 six-element framework",
+        "Cites Circ. 230 § 10.37, SSTS § 1.1",
+        "Recommends peer review",
+        "Notes negative-treatment-review residual responsibility",
+        "JSON sidecar validates with verification_checklist populated"
+      ]
+    }
+  ]
+}

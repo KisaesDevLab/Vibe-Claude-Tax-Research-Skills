@@ -1,0 +1,47 @@
+{
+  "skill_name": "form-line-explainer",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "w2-box1-vs-box3",
+      "prompt": "On a W-2, what's the difference between Box 1 and Box 3? My client's Box 1 is $5,200 less than Box 3.",
+      "expected_output": "Explains that Box 1 = federal-income-tax-withholding wages (§3401(a)) and Box 3 = OASDI wages (§3121(a), capped at the OASDI base). The most common cause of Box 1 < Box 3 is §401(k) elective deferrals (Box 12 code D), which reduce Box 1 but NOT Box 3 because §3121(a) does not exclude elective deferrals from FICA wages. Cite §3121(a), §3401(a), §401(k). Confirm the $5,200 reconciles to a Box 12-D entry; if not, investigate other Box 1 / Box 3 differences such as §125 cafeteria-plan elections (which reduce BOTH) or HSA / FSA contributions.",
+      "expectations": [
+        "Distinguishes §3401(a) from §3121(a)",
+        "Identifies §401(k) deferrals as common cause",
+        "Notes §125 cafeteria plan reduces both",
+        "Cites §3121(a), §3401(a), §401(k)",
+        "Tags W-2 Form Instructions as persuasive_non_authority",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "schedule-c-line-31-versus-line-29",
+      "prompt": "On Schedule C, what's the difference between Line 29 (tentative profit) and Line 31 (net profit)?",
+      "expected_output": "Line 29 = tentative profit (Line 7 gross income minus Line 28 total expenses). Line 30 = expenses for business use of home (Form 8829). Line 31 = net profit / loss = Line 29 − Line 30. Net profit on Line 31 carries to Schedule 1 Line 3 (other income on Form 1040) AND to Schedule SE for self-employment tax computation. Cite §183(d) hobby-loss screen (3 of 5 years), §469 passive-activity considerations (typically inapplicable to active SE), §1402 SE income, §62 deductions for AGI. Form 8829 cited under §280A home-office rule.",
+      "expectations": [
+        "Distinguishes Line 29 (tentative) from Line 31 (net)",
+        "Explains Form 8829 home-office adjustment",
+        "Notes flow to Schedule SE",
+        "Cites §1402, §280A, §62",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "form-8606-pro-rata",
+      "prompt": "What does Form 8606 do for a Traditional IRA with mixed pre-tax and after-tax basis?",
+      "expected_output": "Form 8606 tracks basis in nondeductible Traditional IRA contributions and triggers the pro-rata rule under §408(d)(2) for any partial-conversion / partial-withdrawal scenarios. Each year:\n- Line 1: nondeductible contributions for the current year.\n- Line 2: total basis from prior years.\n- Line 3: Line 1 + Line 2.\n- Line 4-13: pro-rata calculation when distributions are taken — non-taxable portion = (basis ÷ total IRA value at year end + distributions) × distribution amount.\n- Line 14: remaining basis to carry to next year.\nThe pro-rata rule means that even if a taxpayer contributes nondeductible $7K and immediately converts to Roth, if other Traditional IRA balances exist, the conversion is partially taxable. Cite §408(d)(2), §408(o) (nondeductible contributions), §408A(d)(3) (Roth conversions).",
+      "expectations": [
+        "Identifies Form 8606 basis-tracking purpose",
+        "Cites §408(d)(2) pro-rata rule",
+        "Walks the pro-rata calculation",
+        "Cites §408(o), §408A(d)(3)",
+        "Notes basis carryforward",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

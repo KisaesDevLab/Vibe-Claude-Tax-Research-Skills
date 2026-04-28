@@ -1,0 +1,46 @@
+{
+  "skill_name": "tax-research-state-salesuse",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "saas-multistate-nexus",
+      "prompt": "SaaS company headquartered in Delaware with no physical presence in any state. 2024 sales: NY $400K, CA $1.2M, TX $250K, FL $90K, MA $180K. Where does the company have to collect sales tax?",
+      "expected_output": "Loads tax-research-state-salesuse/references/states/{NY,CA,TX,FL,MA}.md. Per-state Wayfair economic-nexus thresholds (verify year-specific):\n- NY: > $500K AND > 100 transactions; $400K does NOT cross — verify total-transaction count.\n- CA: > $500K (no transaction count); $1.2M EXCEEDS — collect.\n- TX: > $500K; $250K does not cross.\n- FL: > $100K (no transaction count); $90K does not cross.\n- MA: > $100K AND > 100 transactions; $180K likely crosses — verify total-transaction count.\n\nSaaS taxability:\n- NY: TAXABLE (treated as TPP via 'pre-written software' classification).\n- CA: NOT taxable for SaaS (digital download w/o tangible delivery).\n- TX: TAXABLE (data processing 80% reduced rate; SaaS treated as data processing for 20% taxable; rate ~ 1.58%).\n- FL: NOT taxable.\n- MA: TAXABLE.\n\nRequires nexus and collection in CA + likely MA + likely NY (depending on transactions). Cap each state's confidence at LOW for stub-status state files.",
+      "expectations": [
+        "Loads multiple per-state files",
+        "Computes Wayfair economic-nexus per state",
+        "Addresses SaaS taxability per state",
+        "Identifies TX 80% data-processing reduction",
+        "Caps confidence at LOW for stub-status state files",
+        "Documents `state_files_consulted[]` for each state",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "marketplace-facilitator-amazon-seller",
+      "prompt": "Sole-prop business sells handmade goods on Amazon. Marketplace sales 2024 (across all states): $325K. Direct-website sales: $42K. The business has no physical presence outside its home state of Iowa. Does the business need to register for sales tax in other states?",
+      "expected_output": "Loads relevant per-state files. Marketplace facilitator analysis: Amazon collects and remits sales tax on its marketplace sales in nearly all states with sales tax (verify per-state file for marketplace-facilitator effective dates and inclusion rules). Direct-website sales of $42K likely below most Wayfair thresholds in any single state. Most states EXCLUDE marketplace sales from the seller's nexus computation (Streamlined Sales Tax states + many others); some INCLUDE for threshold computation (verify per-state). Recommend: (1) Confirm Amazon collects in all relevant states; (2) Track direct-website sales by state; (3) Register only where direct-sales nexus is met. Cap confidence at LOW for stub-status state files.",
+      "expectations": [
+        "Identifies marketplace-facilitator framework",
+        "Distinguishes marketplace vs direct-sales nexus computation",
+        "Notes Streamlined Sales Tax states often exclude marketplace from threshold",
+        "Recommends registration only where direct sales meet threshold",
+        "Caps confidence at LOW for stub-status state files",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "ak-local-sales-tax-no-state",
+      "prompt": "Online retailer with $200K of sales to Alaska customers in 2024. No physical presence in Alaska. What sales-tax obligation, if any?",
+      "expected_output": "Loads tax-research-state-salesuse/references/states/AK.md. Alaska has NO statewide sales tax. However, Alaska local sales taxes are administered by the Alaska Remote Seller Sales Tax Commission (ARSSTC) for participating municipalities. Wayfair-style economic-nexus threshold under ARSSTC: $100K gross statewide remote sales OR 200 transactions per year. $200K crosses the threshold. Required to register with ARSSTC and collect local sales tax in participating municipalities. Non-participating municipalities (e.g., Wasilla, Fairbanks) administer their own local taxes; some have not adopted ARSSTC. Cap confidence at LOW for stub-status state file.",
+      "expectations": [
+        "Loads AK per-state file",
+        "Identifies no-statewide-sales-tax + ARSSTC framework",
+        "Identifies $100K / 200-transaction ARSSTC threshold",
+        "Notes participating vs. non-participating municipalities",
+        "Caps confidence at LOW for stub-status state file",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

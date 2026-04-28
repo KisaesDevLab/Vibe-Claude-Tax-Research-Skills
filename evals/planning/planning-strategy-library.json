@@ -1,0 +1,50 @@
+{
+  "skill_name": "planning-strategy-library",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "qsbs-strategy-lookup",
+      "prompt": "Show me the §1202 QSBS exclusion strategy. Client is a CA-resident founder of a 2-year-old C-corp.",
+      "expected_output": "Loads `references/strategies/section-1202-qsbs.md`. Walks the eligibility, mechanics, and citations. Notes CA non-conformity to federal §1202 exclusion (state-level gain still recognized in CA). Routes to `tax-research-state-income/CA.md` (status: stub at v1.0.0-beta - cap state confidence at LOW). Routes to `irc-section-lookup` to verify any OBBBA modifications to §1202 thresholds. Confidence band MODERATE (state non-conformity + recent-legislation flag).",
+      "expectations": [
+        "Loads section-1202-qsbs.md",
+        "Walks eligibility (5-year holding, gross-assets test, active-business)",
+        "Notes CA non-conformity",
+        "Routes to `tax-research-state-income/CA.md`",
+        "Routes to `irc-section-lookup` for OBBBA verification",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "ptet-strategy-multi-state",
+      "prompt": "Show me the PTET election strategy. Client is a partnership operating in NY, NJ, and CA.",
+      "expected_output": "Loads `references/strategies/ptet-election.md`. Notes that PTET is state-by-state; eligibility, deadline, and rate vary widely. Routes to `tax-research-state-income/NY.md`, `NJ.md`, `CA.md` per the state-router protocol. Notes Notice 2020-75 federal-deduction framework. Caps state-by-state confidence at LOW for stub-status state files. Notes TCJA §164(b)(6) $10K cap may sunset 12/31/2025 - if SALT cap is repealed under OBBBA, PTET workaround becomes less valuable. Routes to `irc-section-lookup` for OBBBA verification.",
+      "expectations": [
+        "Loads ptet-election.md",
+        "Routes to multiple per-state files",
+        "Cites Notice 2020-75",
+        "Notes TCJA SALT cap sunset",
+        "Routes to `irc-section-lookup`",
+        "Caps state confidence at LOW",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "decline-micro-captive",
+      "prompt": "My client wants to set up a §831(b) micro-captive insurance company. Is this in the strategy library?",
+      "expected_output": "Confirms §831(b) micro-captive is NOT in the strategy library. Notes that micro-captives are designated as transactions of interest under Notice 2016-66 and have produced significant IRS enforcement (Avrahami, Reserve Mechanical, Caylor Land). Routes to `predict-economic-substance` for §7701(o) analysis and `compliance-ssts-circular230` for SSTS § 1.1 / Circular 230 § 10.37 evaluation. Recommends DECLINE engagement under SSTS § 1.1 (does not meet realistic-possibility standard absent unusual facts) and Circular 230 § 10.37 (no audit-lottery considerations). If client insists, Form 8886 (reportable transaction) disclosure required to keep §6662(i) at 20% rather than 40% strict-liability.",
+      "expectations": [
+        "Confirms exclusion from strategy library",
+        "Identifies Notice 2016-66 transaction-of-interest status",
+        "Cites Avrahami, Reserve Mechanical Corp, or Caylor Land",
+        "Routes to `predict-economic-substance` and `compliance-ssts-circular230`",
+        "Recommends decline engagement",
+        "References Form 8886 disclosure requirement",
+        "Confidence band SPECULATIVE / decline",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

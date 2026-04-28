@@ -1,0 +1,48 @@
+{
+  "skill_name": "planning-actions-1040",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "high-income-mfj-year-end",
+      "prompt": "MFJ couple, ages 56 and 54. Combined W-2 $480K. Spouse 1 has $250K W-2; Spouse 2 has $230K. Both contribute max to 401(k). $25K of unrealized losses in taxable account; $80K of gains realized YTD. They donate $30K cash annually. State residency: California. Year is 2024; today is November 1.",
+      "expected_output": "Generates prioritized year-end checklist. Top items: (1) tax-loss harvest $25K against $80K gains — net to $55K taxable gains; consider $3K ordinary offset under §1211(b). (2) Charitable bunching with DAF: front-load 2-3 years of $30K giving into a single year to clear $29,200 (2024) MFJ standard deduction with itemizing; cite §170(b). (3) HSA contributions if HDHP-eligible; max $8,300 family + $1,000 catch-up at 55+ = $9,300 each catch-up eligible; verify HDHP per §223. (4) Mega-backdoor Roth if 401(k) plan permits after-tax contributions. (5) CA PTET planning if either spouse owns pass-through entity; route to `tax-research-state-income/CA`. (6) NIIT planning: combined AGI > $250K, so 3.8% on net investment income. (7) IRMAA: not applicable until Medicare age, but conversions / capital gains affect AGI 2 years before age 65. (8) Estimated-tax safe harbor: ensure 110% of prior-year tax is paid in via withholding (high-income safe harbor under §6654(d)(1)(B)).",
+      "expectations": [
+        "Identifies tax-loss harvesting with §1211(b) limit",
+        "Identifies charitable bunching / DAF opportunity",
+        "Identifies HSA catch-up contributions if applicable",
+        "Identifies mega-backdoor Roth opportunity",
+        "Routes CA PTET to `tax-research-state-income`",
+        "Identifies NIIT exposure",
+        "Identifies §6654(d)(1)(B) high-income safe harbor",
+        "Cites year-specific thresholds with verification disclaimer",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "retiree-roth-conversion-irmaa",
+      "prompt": "Single retiree, age 67. SS benefits $36K. RMD from Traditional IRA $42K. Pension $24K. Capital gains harvest $15K. Total AGI $117K. Has $800K in Traditional IRA, wants to consider Roth conversions. Concerned about Medicare IRMAA cliffs.",
+      "expected_output": "Generates conversion-ladder strategy with IRMAA-cliff awareness. AGI $117K is just above 2024 IRMAA first surcharge threshold of $103K (single). Convert ~ $26K of Traditional IRA to keep AGI in the next-tier ceiling; convert more if willing to pay the higher Part B/D premiums. Multi-year ladder over 5-10 years to reduce the $800K balance pre-RMD-burden. Pro-rata rule applies if non-deductible IRA contributions exist. QCD ($105K limit 2024) is an alternative for charitable RMD satisfaction; counts toward RMD without AGI inclusion. Cite §408A(d)(3) (conversion); §1839(i) (IRMAA tiers); §408(d)(8) (QCD); §401(a)(9) (RMDs).",
+      "expectations": [
+        "Identifies IRMAA tiers and current-year thresholds",
+        "Recommends multi-year conversion ladder",
+        "Identifies pro-rata rule under §408(d)(2)",
+        "Offers QCD alternative under §408(d)(8)",
+        "Cites §408A(d)(3) and §1839(i)",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "young-saver-backdoor-roth",
+      "prompt": "Single taxpayer age 32. W-2 $185K (one employer). No other retirement accounts. No prior IRA contributions. Wants to maximize tax-advantaged saving. 2024.",
+      "expected_output": "Generates aggressive savings strategy. Top items: (1) Max 401(k): $23,000 (under-50 limit). (2) Backdoor Roth: $7,000 non-deductible Traditional IRA → immediate Roth conversion. Single AGI > $146,000 (phaseout 2024) makes direct Roth contribution unavailable; backdoor is the workaround. Pro-rata rule does NOT bite because no other IRA balances. (3) Mega-backdoor Roth: if 401(k) plan permits after-tax contributions and in-service distribution / in-plan Roth conversion. Up to ~$46,000 additional ($69,000 - $23,000 elective). (4) HSA if HDHP-eligible: $4,150 limit. (5) Tax-loss harvest if any taxable account positions. Cite §401(k), §408(d)(2), §408A(c)(3), §223.",
+      "expectations": [
+        "Identifies backdoor Roth as workaround for direct phaseout",
+        "Confirms pro-rata rule not implicated",
+        "Identifies mega-backdoor Roth opportunity contingent on plan",
+        "Identifies HSA opportunity contingent on HDHP",
+        "Cites §401(k), §408(d)(2), §408A(c)(3), §223",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

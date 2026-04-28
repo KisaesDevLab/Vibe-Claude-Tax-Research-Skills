@@ -1,0 +1,51 @@
+{
+  "skill_name": "planning-multi-year",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "tcja-sunset-roth-conversion-ladder",
+      "prompt": "MFJ couple, ages 62 and 60. AGI $280K (W-2). Taxable income $245K (after standard deduction). Have $1.4M in Traditional IRAs. Considering Roth conversion strategy. Want a 5-year plan modeling TCJA sunset risk for 2026.",
+      "expected_output": "Generates 5-year multi-year plan considering TCJA sunset (12/31/2025) and OBBBA modifications. Routes to `irc-section-lookup` to verify OBBBA's effect on §1(j) brackets and §199A. Modeling assumptions: (1) TCJA brackets in effect through 2025; reverting (or OBBBA-modified) for 2026+. (2) MFJ couple at $245K TI is in 24% TCJA bracket; would shift to 28% pre-TCJA bracket post-sunset (if no extension). Recommended ladder: convert ~$100K/year over 2024-2025 within 24% bracket; verify post-2025 bracket structure before continuing. Document Public Laws consulted: TCJA (Pub. L. 115-97), OBBBA (Pub. L. 119-XX). Note: model assumes legislative continuity of TCJA-permanent provisions per OBBBA — if OBBBA reverted any provisions, re-run.",
+      "expectations": [
+        "Identifies TCJA sunset 12/31/2025",
+        "Routes to `irc-section-lookup` for OBBBA verification",
+        "Constructs Roth conversion ladder plan",
+        "Models pre-TCJA bracket reversion",
+        "Documents `public_laws_consulted[]`",
+        "Notes legislative-uncertainty caveat",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "estate-exclusion-sunset-gifting",
+      "prompt": "High-net-worth client, age 75, $35M estate. Lifetime gifting strategy. Currently 2025 exclusion $13.99M. Spouse predeceased; portability used in spouse's estate so client has $20M+ in available exclusion. Wants to model 2026 reversion if any.",
+      "expected_output": "Generates estate-exclusion sunset plan. §2010 exclusion sunsets 12/31/2025 absent extension; reverts to ~$7M (inflation-adjusted) for 2026+. OBBBA may have modified — route to `irc-section-lookup` for OBBBA Classification Table. If reversion occurs, gifting now uses the higher exclusion before sunset (Treas. Reg. §20.2010-1(c) anti-clawback rule confirms 2025 gifts aren't clawed back even if exclusion lower at death). Recommend: (1) gift up to client's available exclusion ($20M+ with portability) in 2025; (2) coordinate with §2503(b) annual exclusion ($19,000 per donee 2025); (3) consider §2503(c) minor's trust or Crummey trust for grandchildren; (4) §1014 step-up vs. §2032 alternate-valuation tradeoff for inherited vs. gifted assets. Document Public Laws: TCJA (Pub. L. 115-97), OBBBA (Pub. L. 119-XX). Route to `tax-research-estate-gift` for substantive analysis.",
+      "expectations": [
+        "Identifies §2010 exclusion sunset 12/31/2025",
+        "Routes to `irc-section-lookup` for OBBBA verification",
+        "Cites Treas. Reg. §20.2010-1(c) anti-clawback rule",
+        "Routes to `tax-research-estate-gift`",
+        "Models pre-sunset gifting strategy",
+        "Documents `public_laws_consulted[]`",
+        "Confidence band assigned",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "section-168k-bonus-phasedown-equipment",
+      "prompt": "Manufacturing C-corp planning $4M of equipment purchases over 2024-2026. Currently the bonus depreciation rate is phasing down from 60% (2024) to 40% (2025) to 20% (2026). Should they accelerate purchases?",
+      "expected_output": "Generates §168(k) phase-down acceleration analysis. Currently (verify OBBBA modifications): 60% (2024); 40% (2025); 20% (2026); 0% (2027). Recommend accelerating purchases to 2024 for maximum bonus, subject to operational constraints. Quantify: $4M placed in service 2024 = $2.4M bonus + 30% (or year 1) MACRS on $1.6M ≈ $2.7M deduction year 1; vs. spreading $1.33M/yr would yield ($800K + $533K + $267K) = $1.6M cumulative bonus over 3 years. Acceleration saves ~$1.1M of deduction in year 1 ≈ $231K tax-deferred at 21% rate. NPV at 6% discount rate ≈ $30K-$50K timing-value benefit. Coordinate with §179 expensing ($1.16M 2024 limit). Route to `tax-research-entity` and `irc-section-lookup` for OBBBA verification of current schedule.",
+      "expectations": [
+        "Identifies §168(k) phase-down schedule",
+        "Routes to `irc-section-lookup` for OBBBA verification",
+        "Quantifies acceleration benefit (deduction timing)",
+        "Coordinates with §179 expensing",
+        "NPV / timing-value analysis",
+        "Documents `public_laws_consulted[]`",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

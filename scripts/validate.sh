@@ -104,30 +104,36 @@ check_legislation_tracking() {
 
 check_json_parse() {
   local fail_count=0
+  local py=""
+  # Pick a working JSON parser. On Windows, `python3` is sometimes a Microsoft
+  # Store stub that satisfies `command -v` but errors when invoked; fall back
+  # to plain `python` if so.
   if command -v jq >/dev/null 2>&1; then
-    while IFS= read -r f; do
+    py=""
+  elif command -v python3 >/dev/null 2>&1 && python3 -c '' >/dev/null 2>&1; then
+    py="python3"
+  elif command -v python >/dev/null 2>&1 && python -c '' >/dev/null 2>&1; then
+    py="python"
+  else
+    warn "skipped JSON parse check (jq and python missing)"
+    return 0
+  fi
+  while IFS= read -r f; do
+    if [ -n "$py" ]; then
+      if ! "$py" -c "import json,sys; json.load(open(sys.argv[1]))" "$f" >/dev/null 2>&1; then
+        fail "JSON parse error: $f"
+        fail_count=$((fail_count+1))
+      fi
+    else
       if ! jq empty "$f" >/dev/null 2>&1; then
         fail "JSON parse error: $f"
         fail_count=$((fail_count+1))
       fi
-    done < <(find . -name '*.json' \
-              -not -path './node_modules/*' \
-              -not -path './.git/*' \
-              -not -path './evals/runs/*')
-  elif command -v python3 >/dev/null 2>&1; then
-    while IFS= read -r f; do
-      if ! python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$f" >/dev/null 2>&1; then
-        fail "JSON parse error: $f"
-        fail_count=$((fail_count+1))
-      fi
-    done < <(find . -name '*.json' \
-              -not -path './node_modules/*' \
-              -not -path './.git/*' \
-              -not -path './evals/runs/*')
-  else
-    warn "skipped JSON parse check (jq and python3 missing)"
-    return 0
-  fi
+    fi
+  done < <(find . -name '*.json' \
+            -not -path './node_modules/*' \
+            -not -path './.git/*' \
+            -not -path './evals/runs/*')
   [ $fail_count -eq 0 ] && ok "all JSON files parse"
 }
 
@@ -221,13 +227,21 @@ check_state_stubs() {
 }
 
 check_authority_taxonomy() {
-  local schema_types
-  if ! command -v jq >/dev/null 2>&1; then
-    warn "skipped authority_type taxonomy check (jq missing)"
+  local schema_types py=""
+  if command -v jq >/dev/null 2>&1; then
+    schema_types="$(jq -r '.properties.authorities.items.properties.authority_type.enum[]' \
+                    shared/output-schema.json 2>/dev/null | sort -u)"
+  elif command -v python3 >/dev/null 2>&1 && python3 -c '' >/dev/null 2>&1; then
+    py="python3"
+  elif command -v python >/dev/null 2>&1 && python -c '' >/dev/null 2>&1; then
+    py="python"
+  else
+    warn "skipped authority_type taxonomy check (jq and python missing)"
     return 0
   fi
-  schema_types="$(jq -r '.properties.authorities.items.properties.authority_type.enum[]' \
-                  shared/output-schema.json 2>/dev/null | sort -u)"
+  if [ -n "$py" ]; then
+    schema_types="$($py -c "import json; [print(t) for t in sorted(set(json.load(open('shared/output-schema.json'))['properties']['authorities']['items']['properties']['authority_type']['enum']))]" 2>/dev/null)"
+  fi
   if [ -z "$schema_types" ]; then
     fail "could not extract authority_type enum from shared/output-schema.json"
     return 1
@@ -253,16 +267,34 @@ check_url_liveness() {
     warn "skipped URL liveness (curl missing)"
     return 0
   fi
-  if ! command -v jq >/dev/null 2>&1; then
-    warn "skipped URL liveness (jq missing)"
-    return 0
-  fi
   if [ "${SKIP_URL_CHECK:-}" = "1" ]; then
     warn "URL liveness check skipped (SKIP_URL_CHECK=1)"
     return 0
   fi
-  local urls
-  urls="$(jq -r '.. | strings? | select(test("^https?://"))' shared/sources.json | sort -u)"
+  local urls py=""
+  if command -v jq >/dev/null 2>&1; then
+    urls="$(jq -r '.. | strings? | select(test("^https?://"))' shared/sources.json | sort -u)"
+  elif command -v python3 >/dev/null 2>&1 && python3 -c '' >/dev/null 2>&1; then
+    py="python3"
+  elif command -v python >/dev/null 2>&1 && python -c '' >/dev/null 2>&1; then
+    py="python"
+  else
+    warn "skipped URL liveness (jq and python missing)"
+    return 0
+  fi
+  if [ -n "$py" ]; then
+    urls="$($py -c "
+import json,re
+def walk(o):
+  if isinstance(o,str):
+    if re.match(r'^https?://',o): print(o)
+  elif isinstance(o,dict):
+    for v in o.values(): walk(v)
+  elif isinstance(o,list):
+    for v in o: walk(v)
+walk(json.load(open('shared/sources.json')))
+" | sort -u)"
+  fi
   local fail_count=0
   local total=0
   for u in $urls; do

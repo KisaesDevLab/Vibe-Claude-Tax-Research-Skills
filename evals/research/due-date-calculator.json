@@ -1,0 +1,48 @@
+{
+  "skill_name": "due-date-calculator",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "1040-extension-and-payment",
+      "prompt": "Client's 2024 Form 1040 expected to show $40K balance due. Today is April 10, 2025. He wants to file Form 4868 extension to October 15. Will the extension extend his time to PAY?",
+      "expected_output": "Predicts NO with HIGH confidence — Form 4868 extends only the FILING deadline, not the PAYMENT deadline. Tax must be paid by April 15, 2025 to avoid §6651(a)(2) failure-to-pay penalty (0.5% per month, max 25%) and §6601 interest. Recommend: (1) File Form 4868 by April 15; (2) Pay the $40K estimated balance with the extension via direct debit / EFTPS / check; (3) If unable to pay full amount, pay what is possible and consider installment agreement (Form 9465) to manage the unpaid balance. Cite §6151, §6081, §6651(a)(2), §6601.",
+      "expectations": [
+        "Distinguishes filing extension from payment extension",
+        "Cites §6081 vs §6151",
+        "Identifies §6651(a)(2) penalty exposure",
+        "Recommends payment with extension",
+        "Recommends Form 9465 if unable to pay",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "estimated-tax-q1-2025",
+      "prompt": "Single taxpayer, 2024 AGI $200K. Wants to use 110% safe harbor for 2025 estimated tax. 2024 total tax was $48,000. What's the Q1 2025 estimated payment?",
+      "expected_output": "Computes 110% × $48,000 = $52,800 annual safe-harbor target; divided by 4 quarters = $13,200 per quarterly payment. §6654(d)(1)(B)(ii) — 110% of prior-year tax safe harbor applies because AGI > $150K. Q1 2025 deadline: April 15, 2025 (per §6654(c)). Recommend $13,200 paid via Form 1040-ES voucher, EFTPS, or IRS Direct Pay by April 15, 2025. Note: any withholding from W-2 / 1099-R reduces the required estimated payment; §6654(g) treats withholding as paid evenly across quarters.",
+      "expectations": [
+        "Identifies §6654(d)(1)(B)(ii) 110% safe harbor",
+        "Computes $52,800 / 4 = $13,200 per quarter",
+        "Q1 deadline April 15, 2025",
+        "Notes withholding offset under §6654(g)",
+        "Cites Form 1040-ES",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "form-706-9-month-deadline-2024",
+      "prompt": "Decedent died on March 15, 2024 with $7M estate (under threshold). Spouse wants to file Form 706 for portability under Rev. Proc. 2022-32. What's the deadline?",
+      "expected_output": "Computes that under Rev. Proc. 2022-32, an estate not required to file Form 706 (under threshold) has 5 years from date of death to file for portability — i.e., March 15, 2029. The standard 9-month §6075(a) deadline (December 15, 2024) does NOT apply because the estate was below threshold; Rev. Proc. 2022-32 extends automatically. Recommend filing within the 5-year window with notation 'FILED PURSUANT TO REV. PROC. 2022-32 TO ELECT PORTABILITY' on the top of Form 706. Cite §6075(a), Rev. Proc. 2022-32.",
+      "expectations": [
+        "Identifies under-threshold estate",
+        "Cites Rev. Proc. 2022-32 5-year automatic extension",
+        "Computes deadline March 15, 2029",
+        "Distinguishes from §6075(a) 9-month deadline",
+        "Notes special-notation requirement on Form 706",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

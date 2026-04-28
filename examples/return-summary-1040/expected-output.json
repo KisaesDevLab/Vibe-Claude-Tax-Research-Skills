@@ -1,0 +1,52 @@
+{
+  "skill": "return-summary-1040",
+  "version": "0.1.0",
+  "generated_at": "2026-04-27T00:00:00Z",
+  "task": {
+    "intake": {
+      "filing_status": "MFJ",
+      "dependents": 2,
+      "tax_year": 2024,
+      "total_income": 215000,
+      "agi": 208000,
+      "standard_deduction": 29200,
+      "qbi_deduction_claimed": 0,
+      "taxable_income": 178800,
+      "total_tax": 26832,
+      "schedule_c_net_profit": 215000,
+      "schedule_c_activity": "accounting (SSTB)",
+      "schedule_b_interest": 4000
+    },
+    "issue": "Return summary with red-flag identification."
+  },
+  "analysis": "MFJ 2024: AGI $208K, TI $178.8K, total tax $26,832. Effective tax rate (Line 24 / Line 9) = 12.5%. Marginal bracket ~ 22%. Schedule C accounting (SSTB) with $215K net profit. Couple TI BEFORE QBI = $208K - $29.2K = $178.8K. MFJ §199A threshold floor for 2024 is $383,900 - couple is well BELOW threshold, so SSTB classification of accounting is irrelevant. The preparer missed the QBI deduction. With QBI: 20% × $215,000 = $43,000 deduction; corrected TI = $135,800; corrected tax ~ $19K instead of $26,832. Estimated refund of $7,800 from amended return.",
+  "conclusion": "Return summary: MFJ 2024, AGI $208K, current TI $178.8K, current total tax $26,832 (effective 12.5%). FLAG #1: §199A QBI deduction omitted. Couple is below MFJ threshold ($383,900); SSTB / W-2 / UBIA limits inapplicable; full 20% deduction available on $215K Schedule C net profit. Recommend amended return (Form 1040-X) to claim ~ $43K QBI deduction; estimated refund ~ $7,800. FLAG #2: $4K Schedule B interest may trigger NIIT if AGI exceeds threshold (MFJ $250K NIIT floor — AGI $208K is below, so no NIIT). FLAG #3: Self-employment tax already on Schedule SE (route to confirm). FLAG #4: §6654 estimated-tax safe-harbor for 2025 (route to `due-date-calculator`). NO tax-position advice; routes to `tax-research-federal` (for §199A position) and `predict-qbi-eligibility` (for QBI computation).",
+  "confidence_band": "HIGH",
+  "band_rationale": "Extraction-confidence high (user provided structured input). NOT tax-position confidence (which is outside this skill's scope).",
+  "authorities": [
+    {
+      "authority_type": "IRC",
+      "citation": "I.R.C. § 199A",
+      "url": "https://uscode.house.gov/browse/prelim@title26",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "weight": "primary_statute"
+    },
+    {
+      "authority_type": "Form",
+      "citation": "Form 1040 (2024)",
+      "url": "https://www.irs.gov/forms-instructions",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "Line 13 reports Qualified Business Income deduction.",
+      "weight": "persuasive_non_authority"
+    }
+  ],
+  "verification_checklist": {
+    "ssts_1_1": true,
+    "ssts_2_3": true,
+    "circ230_10_22": true,
+    "circ230_10_35": true,
+    "circ230_10_37": true
+  },
+  "disclosure_forms": ["none"]
+}

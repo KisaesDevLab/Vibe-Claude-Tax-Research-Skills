@@ -1,0 +1,54 @@
+{
+  "skill": "notice-response",
+  "version": "0.1.0",
+  "generated_at": "2026-04-27T00:00:00Z",
+  "task": {
+    "intake": {
+      "notice_id": "CP2000",
+      "notice_date": "2025-04-01",
+      "tax_year": 2023,
+      "proposed_adjustment": 24000,
+      "proposed_tax": 8400,
+      "client_position": "Stripe annual report shows $24K gross; $19.5K net of refunds and chargebacks. Schedule C Line 1 reported $19.5K."
+    },
+    "issue": "CP2000 disagree with substantiation."
+  },
+  "analysis": "CP2000 is an automated underreporter notice; 30-day response deadline (May 1, 2025; 16 days remaining as of intake date). NOT a statutory notice of deficiency; 90-day Tax Court window is preserved if CP3219A or Letter 3219 issued later. Form 1099-K under §6050W reports GROSS payments through third-party network; refunds and chargebacks are NOT excluded at the 1099-K level. Schedule C may report gross receipts on Line 1 with refunds and chargebacks deducted as an expense (typically Line 22 'other deductions') or net on Line 1 with explanation. The taxpayer reported $19.5K net; the IRS sees $24K gross from 1099-K and assumes underreporting.",
+  "conclusion": "Strategy: disagree with substantiation. Draft response to CP2000 attaching: (1) Stripe annual statement showing $24K gross + refunds and chargebacks bringing net to $19.5K; (2) Schedule C Line 1 reconciliation with explanation of net-reporting methodology; (3) reference to §6050W gross reporting nature. Recommend response by certified mail with return receipt by May 1, 2025. If IRS proceeds with adjustment after response, expect CP3219A statutory notice (90-day Tax Court rights). Future-year recommendation: report gross on Schedule C Line 1 + refunds/chargebacks on Line 22 to align with 1099-K reporting.",
+  "confidence_band": "HIGH",
+  "band_rationale": "Substantiation supports the client's position; reconciliation between gross and net is a routine CP2000 dispute.",
+  "authorities": [
+    {
+      "authority_type": "IRC",
+      "citation": "I.R.C. § 6050W",
+      "url": "https://uscode.house.gov/browse/prelim@title26",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words on third-party-network reporting]",
+      "weight": "primary_statute"
+    },
+    {
+      "authority_type": "IRC",
+      "citation": "I.R.C. § 61",
+      "url": "https://uscode.house.gov/browse/prelim@title26",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "Gross income includes all income from whatever source derived.",
+      "weight": "primary_statute"
+    },
+    {
+      "authority_type": "Form",
+      "citation": "Form 1040 Schedule C (2023) Instructions, Line 1 Gross Receipts",
+      "url": "https://www.irs.gov/forms-instructions",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim guidance on Line 1 gross reporting]",
+      "weight": "persuasive_non_authority"
+    }
+  ],
+  "verification_checklist": {
+    "ssts_1_1": true,
+    "ssts_2_3": true,
+    "circ230_10_22": true,
+    "circ230_10_35": true,
+    "circ230_10_37": true
+  },
+  "disclosure_forms": ["none"]
+}

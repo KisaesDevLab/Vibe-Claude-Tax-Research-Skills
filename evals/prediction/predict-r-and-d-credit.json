@@ -1,0 +1,47 @@
+{
+  "skill_name": "predict-r-and-d-credit",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "saas-startup-iuse-software",
+      "prompt": "Tech startup developed an internal customer-relationship-management (CRM) tool used only by its own sales team. 4 engineers spent 18 months developing it; total wages $1.6M plus $200K AWS infrastructure leasing. Wants to claim §41 credit for tax year 2024.",
+      "expected_output": "Predicts §41 credit claim is LOW-confidence absent extensive innovativeness documentation. The CRM is internal-use software under §41(d)(4)(E); §1.41-4(c)(6) high-threshold-of-innovation tests must be met: (1) innovativeness — is the tool intended to result in a substantial reduction in cost or improvement in speed exceeding incremental improvement; (2) significant economic risk; (3) commercial-availability — is comparable software not commercially available without unsuitable modifications. With Salesforce / HubSpot widely available, the commercial-availability prong is the typical failure point. Recommend AWS infrastructure leasing as QRE if it qualifies for non-IUS portions; the wages allocated to non-IUS components (e.g., a customer-facing API exposed for partners) might separately qualify.",
+      "expectations": [
+        "Identifies §41(d)(4)(E) internal-use software exclusion",
+        "Walks §1.41-4(c)(6) three high-threshold-of-innovation tests",
+        "Identifies commercial-availability test as likely failure point",
+        "Notes possible carve-outs (dual-function, customer-facing portions)",
+        "Confidence band assigned (LOW)",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "manufacturer-process-improvement",
+      "prompt": "Mid-size manufacturer of food-grade packaging. Engineering team designed a new heat-sealing process that reduces seal failures by 40%. Activities included: hypothesis on temperature/pressure profile; iterative tests on prototype seals; recordkeeping of test outcomes; final selection of optimal parameters. 3 engineers, 1 year of activity, $480K wages, $90K supplies (test films and adhesives consumed). All work performed in U.S. Wants to claim §41.",
+      "expected_output": "Predicts §41 credit qualifies with HIGH confidence. Four-part test analysis: (1) §174 — yes, R&E for process improvement; (2) technological — engineering / chemistry principles; (3) process of experimentation — hypothesis, test plan, iterative testing, outcome recording, final selection; (4) permitted purpose — improved process performance/quality. No §41(d)(4) exclusions apply. QREs: $480K qualified wages (verify >80% qualified services for substantially-all rule); $90K supplies (test films consumed in experimentation, not finished product). Recommend ASC method given likely lack of 1984-1988 fixed-base data; consider §280C(c)(2) reduced-credit election to avoid §174 deduction add-back complications.",
+      "expectations": [
+        "Walks all four §41(d)(1) prongs",
+        "Confirms no §41(d)(4) exclusions",
+        "Computes QRE categories",
+        "Discusses substantially-all wage rule",
+        "Recommends ASC vs regular and §280C(c)(2) election analysis",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "amended-claim-faq25",
+      "prompt": "Pharma client wants to amend its 2021 return to claim a §41 credit. Reconstructed QREs of $4.2M (mostly contract research with a non-related CRO under a fixed-fee contract). The accounting team has reconstructed activity descriptions but does not have contemporaneous project-tracking records. What is the outlook?",
+      "expected_output": "Predicts amended claim faces FAQ 25 enforcement risk with LOW-MODERATE confidence. Post-2022 IRS guidance requires: (1) all business components; (2) all research activities by business component; (3) all individuals who performed each research activity; (4) all information sought to be discovered; (5) QRE totals by category. Reconstructed records absent contemporaneous project tracking will likely fail FAQ 25 specificity requirements. Contract-research analysis: fixed-fee with the CRO bearing risk and client retaining rights generally satisfies §41(b)(3) at the 65% inclusion rate. Recommend either (a) detailed reconstruction effort with the CRO's records and engineer interviews, OR (b) decline the amended claim and apply §41 credit prospectively with proper contemporaneous documentation discipline.",
+      "expectations": [
+        "Identifies FAQ 25 amended-return documentation requirements",
+        "Walks five required items",
+        "Analyzes §41(b)(3) contract research at 65%",
+        "Confirms client retains rights AND CRO bears risk for non-funded analysis",
+        "Confidence band assigned reflecting FAQ 25 risk",
+        "Recommends path forward (reconstruct vs decline)",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

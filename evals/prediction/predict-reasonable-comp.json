@@ -1,0 +1,49 @@
+{
+  "skill_name": "predict-reasonable-comp",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "s-corp-watson-pattern",
+      "prompt": "Iowa CPA solo practitioner organizes practice as an S-corp. Owner-officer is a full-time CPA, 25+ years experience, billing rate $250/hr. S-corp grosses $400K, takes $300K in distributions, pays $24K in W-2 wages to himself. No other employees. The IRS has begun an examination. What's the reasonable-comp risk?",
+      "expected_output": "Predicts the IRS will recharacterize a substantial portion of distributions to W-2 wages with HIGH confidence. Watson v. United States, 668 F.3d 1008 (8th Cir. 2012) is on point: 8th Circuit recharacterized similarly low officer salary against an Iowa accountant. §1366(e) reasonable-comp framework applies; FICA exposure with §6651 / §6656 / §6662 penalty risk. Recommend prospective increase to a market-defensible salary, contemporaneous documentation, and consider §530-style reasonable-basis defense (note: §530 is for worker-classification, NOT reasonable comp, so analogy fails).",
+      "expectations": [
+        "Cites Watson v. United States, 668 F.3d 1008 (8th Cir. 2012)",
+        "Cites Treas. Reg. §31.3121(d)-1 (employee status) and IRC §3121 / §1366",
+        "Applies the multi-factor / replacement-cost framework",
+        "Notes 8th Circuit binding under Golsen for Iowa taxpayer",
+        "Quantifies likely IRS recharacterization range",
+        "Notes FICA + penalty exposure",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "c-corp-bonus-deduction-mayson",
+      "prompt": "C-corp manufacturer in Michigan. Sole shareholder is the CEO. Year-end bonus of $2.0M brings total compensation to $2.4M for the year. Corporation has $4.5M in pre-tax profit before the bonus. Industry comparables for similar CEOs cluster at $850K-$1.3M total comp. Independent investor would expect a 12% return; corporation actually returned 18% pre-bonus, 6% post-bonus. Is the deduction safe?",
+      "expected_output": "Predicts the IRS will challenge a portion of the bonus with MODERATE confidence. Mayson Manufacturing factors largely cut against deductibility above the comparables band. 6th Circuit (Michigan) recognizes the independent-investor test — Exacto Spring Corp. v. Commissioner, 196 F.3d 833 (7th Cir. 1999) influential but not binding; 6th Cir. uses multi-factor under Mayson. Likely IRS adjustment: $700K-$1.2M reclassified as constructive dividend (no §316 deduction at corporate level; double-tax exposure). Recommend contemporaneous board-resolution documentation, comp-study at year-end, and consideration of a hybrid bonus tied to ROI thresholds.",
+      "expectations": [
+        "Cites Mayson Manufacturing, Exacto Spring, Menard, or comparable",
+        "Applies multi-factor framework",
+        "Applies independent-investor test where relevant",
+        "Identifies binding circuit (6th Cir.) and Golsen implications",
+        "Quantifies likely IRS adjustment range",
+        "Notes constructive-dividend / double-tax consequence under §316",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "s-corp-no-distributions-reasonable",
+      "prompt": "Texas S-corp consulting firm, two equal owners, both full-time. Each takes $180K W-2. Neither takes any distributions; corporation reinvests all profits. Industry median for similar consultants is $150K-$220K. IRS exam questions whether the salaries are inflated to avoid corporate-level treatment. Is there a reasonable-comp issue?",
+      "expected_output": "Predicts no reasonable-comp adjustment with HIGH confidence. The Watson/§1366(e) framework targets UNDER-compensation (avoiding FICA), not OVER-compensation. With no distributions, there is no FICA-avoidance fact pattern. Salary is within the industry comparables. The IRS has occasionally challenged inflated S-corp comp under §162(a)(1) reasonableness for pension / §415 / §401(a)(17) limits — but those are downstream issues, not the typical Watson recharacterization. Document the comp study and board minutes.",
+      "expectations": [
+        "Identifies that Watson recharacterization applies to under-comp, not over-comp",
+        "Cites §162(a)(1), §1366(e) (S-corp reasonableness for fringe-benefit purposes)",
+        "Notes §401(a)(17) / §415 compensation-cap downstream risk",
+        "Confidence band assigned with rationale",
+        "Documentation recommendation included",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

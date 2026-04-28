@@ -1,0 +1,48 @@
+{
+  "skill_name": "penalty-interest-calc",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "ftf-ftp-combined-4-months",
+      "prompt": "Client filed 2023 Form 1040 on August 15, 2024 (4 months late) with $25,000 of unpaid tax. He paid $25,000 with the return. Compute the §6651 penalty exposure.",
+      "expected_output": "Computes §6651 family penalty. §6651(a)(1) FTF: 5% per month for 4 full months × $25,000 = $5,000 (within 25% cap). §6651(a)(2) FTP: 0.5% × 4 months × $25,000 = $500. Combined-penalty interaction (§6651(a)(1) reduced by §6651(a)(2) when both apply same month): §6651(a)(1) effective 4.5% × 4 = 18% × $25,000 = $4,500; §6651(a)(2) 0.5% × 4 = 2% × $25,000 = $500; total = $5,000. Cite §6651(a)(1), §6651(a)(2), §6651(c). Note FTA eligibility under IRM 20.1.1.3.6 if 3-year compliance is clean. Recommend FTA request.",
+      "expectations": [
+        "Computes §6651(a)(1) and §6651(a)(2) separately",
+        "Applies the combined-penalty interaction rule",
+        "Quantifies total penalty $5,000",
+        "Notes FTA eligibility",
+        "Cites §6651(a)(1), §6651(a)(2), §6651(c)",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "section-6662-substantial-understatement",
+      "prompt": "Client's 2022 1040 showed total tax of $32,000. Audit determines correct tax should have been $48,000. Understatement of $16,000. Will §6662(b)(2) substantial-understatement apply?",
+      "expected_output": "Computes §6662(b)(2) substantial-understatement threshold: GREATER of $5,000 or 10% of correct tax ($48,000 × 10% = $4,800). Threshold = $5,000. Understatement $16,000 > $5,000 → substantial understatement. §6662(b)(2) applies: 20% × $16,000 = $3,200 penalty. Cite §6662(b)(2), §6662(d)(1)(A). Defenses: §6664(c) reasonable-cause and good-faith; §6662(d)(2)(B)(i) substantial-authority; §6662(d)(2)(B)(ii) reasonable-basis with adequate disclosure. Recommend Form 8275 disclosure analysis to evaluate substantial-authority and reasonable-basis-with-disclosure paths.",
+      "expectations": [
+        "Computes substantial-understatement threshold",
+        "Applies 20% × $16,000 = $3,200",
+        "Cites §6662(b)(2), §6662(d)(1)(A)",
+        "Discusses §6664(c) reasonable-cause defense",
+        "Discusses substantial-authority and reasonable-basis-with-disclosure",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "interest-on-underpayment-1-year",
+      "prompt": "Underpayment of $80,000 from April 15, 2024. Today is April 15, 2025 (exactly one year). Federal short-term rate + 3% = 8% throughout the period. Compute §6601 interest.",
+      "expected_output": "Computes §6601 interest using daily compounding under §6622. Effective rate: 8% × (1 + 0.08/365)^365 − 1 ≈ 8.328%. Interest ≈ $80,000 × 0.08328 ≈ $6,662. Cite §6601, §6621(a)(2), §6622. Note: rate verification required against the IRS quarterly Rev. Rul. for the relevant period; rates may have varied across quarters within the 1-year period. Note interest is non-abatable except under narrow §6404(e)(1) ministerial-act provisions.",
+      "expectations": [
+        "Identifies daily-compounding under §6622",
+        "Computes effective rate and interest amount",
+        "Cites §6601, §6621(a)(2), §6622",
+        "Notes rate verification per quarterly Rev. Rul.",
+        "Notes §6404(e)(1) interest-abatement limitations",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

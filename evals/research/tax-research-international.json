@@ -1,0 +1,50 @@
+{
+  "skill_name": "tax-research-international",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "feie-physical-presence",
+      "prompt": "U.S. citizen working as a remote software engineer for a U.S. employer. Spent 340 days outside the U.S. during 2024 (across multiple countries — UK, Portugal, Thailand, Mexico). Wages $180K. Wants to claim §911 Foreign Earned Income Exclusion.",
+      "expected_output": "Predicts §911 FEIE applies via physical-presence test with HIGH confidence. §911(d)(1)(B) physical-presence: 330 full days in any 12 consecutive months; 340 days clearly meets this. §911(b)(2) 2024 maximum exclusion is $126,500 (verify year-specific Rev. Proc.). Also eligible for Foreign Housing Exclusion / Deduction under §911(c). However, FEIE excludes only foreign-source earned income; U.S.-source wages from a U.S. employer have a sourcing question — §861(a)(3) sources wages where services are performed. Since services performed outside U.S., wages are foreign-source. File Form 2555.",
+      "expectations": [
+        "Identifies §911(d)(1)(B) physical-presence test",
+        "Confirms 330-day requirement met",
+        "Computes 2024 maximum exclusion (verify Rev. Proc.)",
+        "Identifies §861(a)(3) wage-sourcing rule",
+        "Distinguishes U.S.-employer status from foreign-source determination",
+        "References Form 2555",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "fbar-vs-form-8938",
+      "prompt": "U.S. citizen has $250K in a UK bank account, $80K in a UK brokerage account, and $40K in a German bank account. He has not filed FBAR or Form 8938 for the past 5 years. What's the disclosure outlook?",
+      "expected_output": "Predicts both filings required and recommends Streamlined Filing Compliance Procedures with HIGH confidence on requirement determination, MODERATE on penalty exposure. FBAR (FinCEN 114): aggregate foreign financial accounts > $10K — clearly triggered. 5 years missing, with Bittner v. United States, 598 U.S. 85 (2023) holding non-willful penalty assessed PER REPORT not PER ACCOUNT, exposure is more contained. Form 8938 (§6038D): specified foreign financial assets > applicable threshold (e.g., MFJ $100K end-of-year / $150K any-time during year for residents). Likely triggered. 5 years missing — $10K per failure base under §6038D ($50K continuation cap); 40% §6662(j) accuracy penalty on undisclosed-asset underpayments. Recommend SDOP (Streamlined Domestic Offshore Procedures) for non-willful taxpayers — 5% miscellaneous offshore penalty on highest aggregate balance.",
+      "expectations": [
+        "Identifies FBAR and Form 8938 obligations",
+        "Cites Bittner v. United States, 598 U.S. 85 (2023)",
+        "Walks both penalty frameworks (FBAR vs §6038D vs §6662(j))",
+        "Recommends Streamlined Filing Compliance Procedures (SDOP)",
+        "Cites 31 U.S.C. §5314, §5321; IRC §6038D, §6662(j)",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "pfic-foreign-mutual-fund",
+      "prompt": "U.S. resident owns shares in a UK-domiciled UCITS mutual fund worth $200K bought in 2020. No QEF election was made; no Form 8621 filed. Receives an annual distribution of about $4K. Wants to know the tax consequences.",
+      "expected_output": "Predicts PFIC treatment with HIGH confidence — UCITS is the classic non-U.S. mutual-fund PFIC pattern. §1297(a) Asset Test almost certainly met (>50% passive assets); §1297(a)(1) Income Test likely met. Default §1291 regime applies absent QEF or MTM election. Annual distributions are 'excess distribution' to extent > 125% of average prior-3-year distribution; allocated ratably across holding period and taxed at top ordinary rate with §1291(c) interest charge. Recommend immediate §1298(b)(1) retroactive QEF election (if eligible), or §1296 MTM election if PFIC stock is marketable. Form 8621 required annually under §1298(f). 5 years of missed Form 8621 trigger §6038D / §6651 penalty exposure.",
+      "expectations": [
+        "Identifies PFIC under §1297",
+        "Walks Income Test and Asset Test",
+        "Identifies §1291 default regime as punitive",
+        "Discusses §1295 QEF and §1296 MTM elections",
+        "Notes §1298(b)(1) retroactive QEF availability",
+        "Identifies §1298(f) Form 8621 annual filing requirement",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}
