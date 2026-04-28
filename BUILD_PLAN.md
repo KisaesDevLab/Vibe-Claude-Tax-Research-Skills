@@ -105,32 +105,32 @@ For each: SKILL.md + references/ + 1 eval case minimum.
 Validation: `./scripts/validate.sh phase 3 && ./scripts/run-evals.sh phase 3`
 
 ### 3a. Planning skills
-- [ ] planning-actions-1040
-- [ ] planning-actions-entity
-- [ ] planning-multi-year
+- [x] planning-actions-1040
+- [x] planning-actions-entity
+- [x] planning-multi-year
       (references include: legislation-tracking-pointer.md
       cross-referencing shared/legislation-tracking.md for
       reconciliation-bill scoring context)
 
 ### 3b. Remaining research skills (state shells + estate/gift)
-- [ ] tax-research-state-income (SKILL.md + references/ + state router logic)
-- [ ] tax-research-state-salesuse (SKILL.md + references/ + state router logic)
-- [ ] tax-research-estate-gift
+- [x] tax-research-state-income (SKILL.md + references/ + state router logic)
+- [x] tax-research-state-salesuse (SKILL.md + references/ + state router logic)
+- [x] tax-research-estate-gift
 
 ### 3c. Utilities
-- [ ] irc-section-lookup
+- [x] irc-section-lookup
       (references include: legislation-tracking.md implementing the
       Public-Law-to-USC workflow per shared/legislation-tracking.md;
       subtitle-map.md documenting IRC Subtitles A–K)
-- [ ] treas-reg-lookup
+- [x] treas-reg-lookup
       (references include: treasury-decisions.md distinguishing TDs
       from codified TreasReg)
-- [ ] form-line-explainer
-- [ ] due-date-calculator
-- [ ] penalty-interest-calc
+- [x] form-line-explainer
+- [x] due-date-calculator
+- [x] penalty-interest-calc
 
 ### 3d. Compliance
-- [ ] compliance-ssts-circular230
+- [x] compliance-ssts-circular230
       (references include: irs-guidance-primer.md citing the IRS
       "Understanding IRS Guidance — A Brief Primer" page)
 
@@ -141,57 +141,57 @@ For each jurisdiction, copy `shared/state-template.md` to
 populate the YAML frontmatter, and pre-fill the primary agency URL
 from `shared/sources.json`. Status remains `stub` until edited.
 
-- [ ] AL — Alabama
-- [ ] AK — Alaska *(no individual income tax — note in body)*
-- [ ] AZ — Arizona
-- [ ] AR — Arkansas
-- [ ] CA — California *(FTB primary; note CDTFA/EDD splits)*
-- [ ] CO — Colorado
-- [ ] CT — Connecticut
-- [ ] DE — Delaware
-- [ ] DC — District of Columbia
-- [ ] FL — Florida *(no individual income tax)*
-- [ ] GA — Georgia
-- [ ] HI — Hawaii
-- [ ] ID — Idaho
-- [ ] IL — Illinois
-- [ ] IN — Indiana
-- [ ] IA — Iowa
-- [ ] KS — Kansas
-- [ ] KY — Kentucky
-- [ ] LA — Louisiana
-- [ ] ME — Maine
-- [ ] MD — Maryland
-- [ ] MA — Massachusetts *(note 4% surtax over $1M)*
-- [ ] MI — Michigan
-- [ ] MN — Minnesota
-- [ ] MS — Mississippi
-- [ ] MO — Missouri
-- [ ] MT — Montana
-- [ ] NE — Nebraska
-- [ ] NV — Nevada *(no individual income tax)*
-- [ ] NH — New Hampshire *(I&D tax repealed 2025)*
-- [ ] NJ — New Jersey
-- [ ] NM — New Mexico
-- [ ] NY — New York *(note convenience-of-employer rule)*
-- [ ] NC — North Carolina
-- [ ] ND — North Dakota
-- [ ] OH — Ohio
-- [ ] OK — Oklahoma
-- [ ] OR — Oregon
-- [ ] PA — Pennsylvania
-- [ ] RI — Rhode Island
-- [ ] SC — South Carolina
-- [ ] SD — South Dakota *(no individual income tax)*
-- [ ] TN — Tennessee *(Hall tax repealed)*
-- [ ] TX — Texas *(no individual income tax)*
-- [ ] UT — Utah
-- [ ] VT — Vermont
-- [ ] VA — Virginia
-- [ ] WA — Washington *(capital gains tax in effect; no general income tax)*
-- [ ] WV — West Virginia
-- [ ] WI — Wisconsin
-- [ ] WY — Wyoming *(no individual income tax)*
+- [x] AL — Alabama
+- [x] AK — Alaska *(no individual income tax — note in body)*
+- [x] AZ — Arizona
+- [x] AR — Arkansas
+- [x] CA — California *(FTB primary; note CDTFA/EDD splits)*
+- [x] CO — Colorado
+- [x] CT — Connecticut
+- [x] DE — Delaware
+- [x] DC — District of Columbia
+- [x] FL — Florida *(no individual income tax)*
+- [x] GA — Georgia
+- [x] HI — Hawaii
+- [x] ID — Idaho
+- [x] IL — Illinois
+- [x] IN — Indiana
+- [x] IA — Iowa
+- [x] KS — Kansas
+- [x] KY — Kentucky
+- [x] LA — Louisiana
+- [x] ME — Maine
+- [x] MD — Maryland
+- [x] MA — Massachusetts *(note 4% surtax over $1M)*
+- [x] MI — Michigan
+- [x] MN — Minnesota
+- [x] MS — Mississippi
+- [x] MO — Missouri
+- [x] MT — Montana
+- [x] NE — Nebraska
+- [x] NV — Nevada *(no individual income tax)*
+- [x] NH — New Hampshire *(I&D tax repealed 2025)*
+- [x] NJ — New Jersey
+- [x] NM — New Mexico
+- [x] NY — New York *(note convenience-of-employer rule)*
+- [x] NC — North Carolina
+- [x] ND — North Dakota
+- [x] OH — Ohio
+- [x] OK — Oklahoma
+- [x] OR — Oregon
+- [x] PA — Pennsylvania
+- [x] RI — Rhode Island
+- [x] SC — South Carolina
+- [x] SD — South Dakota *(no individual income tax)*
+- [x] TN — Tennessee *(Hall tax repealed)*
+- [x] TX — Texas *(no individual income tax)*
+- [x] UT — Utah
+- [x] VT — Vermont
+- [x] VA — Virginia
+- [x] WA — Washington *(capital gains tax in effect; no general income tax)*
+- [x] WV — West Virginia
+- [x] WI — Wisconsin
+- [x] WY — Wyoming *(no individual income tax)*
 
 Validation: `test "$(ls skills/tax-research-state-income/references/states/*.md | wc -l)" -eq 51`
 
@@ -202,11 +202,11 @@ include a reference file noting the fact and pointing to local-option
 authority where applicable.
 ¹ Alaska has no statewide sales tax but local sales taxes; flag clearly.
 
-- [ ] AL [ ] AK [ ] AZ [ ] AR [ ] CA [ ] CO [ ] CT [ ] DE [ ] DC [ ] FL
-- [ ] GA [ ] HI [ ] ID [ ] IL [ ] IN [ ] IA [ ] KS [ ] KY [ ] LA [ ] ME
-- [ ] MD [ ] MA [ ] MI [ ] MN [ ] MS [ ] MO [ ] MT [ ] NE [ ] NV [ ] NH
-- [ ] NJ [ ] NM [ ] NY [ ] NC [ ] ND [ ] OH [ ] OK [ ] OR [ ] PA [ ] RI
-- [ ] SC [ ] SD [ ] TN [ ] TX [ ] UT [ ] VT [ ] VA [ ] WA [ ] WV [ ] WI [ ] WY
+- [x] AL [x] AK [x] AZ [x] AR [x] CA [x] CO [x] CT [x] DE [x] DC [x] FL
+- [x] GA [x] HI [x] ID [x] IL [x] IN [x] IA [x] KS [x] KY [x] LA [x] ME
+- [x] MD [x] MA [x] MI [x] MN [x] MS [x] MO [x] MT [x] NE [x] NV [x] NH
+- [x] NJ [x] NM [x] NY [x] NC [x] ND [x] OH [x] OK [x] OR [x] PA [x] RI
+- [x] SC [x] SD [x] TN [x] TX [x] UT [x] VT [x] VA [x] WA [x] WV [x] WI [x] WY
 
 Validation: `test "$(ls skills/tax-research-state-salesuse/references/states/*.md | wc -l)" -eq 51`
 
@@ -216,16 +216,16 @@ user mentions a state by name, abbreviation, or distinctive feature
 (e.g., "FTB", "Comptroller", "convenience rule"), the skill loads the
 corresponding `references/states/<XX>.md` before drafting analysis.
 
-- [ ] tax-research-state-income SKILL.md includes state router section
-- [ ] tax-research-state-salesuse SKILL.md includes state router section
-- [ ] Both list all 51 jurisdiction codes in a "Supported jurisdictions"
+- [x] tax-research-state-income SKILL.md includes state router section
+- [x] tax-research-state-salesuse SKILL.md includes state router section
+- [x] Both list all 51 jurisdiction codes in a "Supported jurisdictions"
       block at the top of the SKILL.md body.
-- [ ] Both reference Tax Foundation Center for State Tax Policy as
+- [x] Both reference Tax Foundation Center for State Tax Policy as
       `persuasive_non_authority` secondary supplement (NOT authority)
       with explicit caveat language.
 
 ### 3h. Phase commit
-- [ ] `/commit-phase 3 "planning + state shells + 51 state stubs × 2"`
+- [x] `/commit-phase 3 "planning + state shells + 51 state stubs × 2"`
 
 ## Phase 4 — Strategy library (30 entries)
 
@@ -313,3 +313,5 @@ release; open a PR and stop)
 Format: `YYYY-MM-DD HH:MM | phase X | items: ... | last commit: <sha>`)
 
 2026-04-27 | phase 2 complete | items: predict-hobby-loss + reasonable-comp evals; +9 prediction skills (real-estate-pro, material-participation, qbi-eligibility, 1031-qualification, economic-substance, debt-vs-equity, innocent-spouse, reasonable-cause, r-and-d-credit); +4 research skills (entity, payroll, international, procedure); return-summary-entity; notice-response. Validate phase 2 + run-evals phase 2 both green (4 pass / 0 fail; 20 eval files pass). Branch: build. Last commit before plan-tick: 98f591c.
+
+2026-04-27 | phase 3 complete | items: 3a planning skills (1040, entity, multi-year); 3b state shells + estate-gift; 3c utilities (irc-section-lookup w/Public-Law-to-USC workflow, treas-reg-lookup, form-line-explainer, due-date-calculator, penalty-interest-calc); 3d compliance-ssts-circular230; 3e+3f 102 state stubs auto-generated via scripts/generate_state_stubs.py with status:stub frontmatter and primary agency URL pre-filled from shared/sources.json; 3g state router protocol implemented in both state SKILL.md files. Validate phase 3 + run-evals full both green (5 pass / 0 fail; 32+ eval files pass). Branch: build.
