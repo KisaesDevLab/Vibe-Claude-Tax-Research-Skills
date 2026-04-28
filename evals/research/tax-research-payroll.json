@@ -1,0 +1,49 @@
+{
+  "skill_name": "tax-research-payroll",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "tfrp-controller-defense",
+      "prompt": "Client is the controller of a small manufacturing C-corp. Owner is the sole director and signs all major contracts. The owner directed payment of vendors over the IRS during a 2023 cash crunch; client (controller) prepared the checks and signed them on the owner's instruction. Form 941 trust-fund liability for Q3 and Q4 2023 is $87K. Client just received Letter 1153 proposing §6672 assessment against her. Will the responsible-person determination stick?",
+      "expected_output": "Predicts MODERATE-to-HIGH risk that controller will be held responsible. Treas. Reg. §301.6672-1 factors: check-signing authority is nearly always dispositive when combined with knowledge of trust-fund liability. Controller signed checks to vendors knowing 941 was unpaid. Pomponio willfulness clearly established. Slodov 'later-acquired funds' problem if Q4 receipts were applied to non-trust creditors. Defenses: (1) owner directives, but Treas. Reg. doesn't excuse a check-signer who follows directives if she had authority to refuse; (2) no reasonable-cause defense; (3) §3509 reduced rates available only if reclassification driven (not applicable here). Recommend immediate Form 4180 prep, protest to Appeals within 60 days. Consider §6672(e) contribution claim against the owner.",
+      "expectations": [
+        "Identifies §6672 responsible-person factors and applies",
+        "Cites Pomponio v. United States, 429 U.S. 10 (1976)",
+        "Cites Slodov v. United States, 436 U.S. 238 (1978)",
+        "Notes joint-and-several liability with the owner",
+        "Notes §6672(e) contribution rights",
+        "Notes 60-day protest window after Letter 1153",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "household-employer-schedule-h",
+      "prompt": "Client hired a nanny in 2024 and paid $42,000 cash wages over the year. No prior household-employer experience. Wants to know what payroll-tax obligations apply.",
+      "expected_output": "Predicts Schedule H household-employer obligations apply with HIGH confidence. Cash wages exceed §3121(a)(7)(B) FICA threshold ($2,800 for 2024 — verify year-specific). FICA: 7.65% employee + 7.65% employer = 15.3% × $42,000 = $6,426 (split between employer payment and employee withholding from wages). FUTA: 6% × $7,000 = $420 (less state-UI credit). Schedule H filed with Form 1040; estimated tax may be needed under §6654 to avoid underpayment penalty. State obligations vary; state UI registration likely required. State-specific rules in `tax-research-state-income/references/states/<XX>.md`.",
+      "expectations": [
+        "Identifies §3121(a)(7)(B) household-employer threshold",
+        "Computes FICA and FUTA obligations",
+        "Cites Schedule H filing requirement",
+        "Notes §6654 estimated-tax exposure",
+        "Routes state-specific obligations to state research skill",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "additional-medicare-withholding-mfj",
+      "prompt": "Married couple, both employed. Husband earns $250K (one employer); wife earns $180K (one employer). The husband's employer withheld 0.9% additional Medicare on wages over $200K. Should the wife's employer withhold? Will the couple owe additional Medicare on the joint return?",
+      "expected_output": "Predicts husband's employer correctly withheld; wife's employer should NOT withhold (under $200K single-employee threshold per §3102(f)). Couple WILL owe additional Medicare on the joint return because §1401(b)(2) MFJ threshold is $250K combined wages. Husband's wages alone are at $250K; wife's $180K pushes combined to $430K. Additional Medicare on $180K of combined excess = $1,620. Husband's employer already withheld $450 (on $50K above $200K). Net underpayment: $1,170. Reported on Form 8959; reconciled on Form 1040.",
+      "expectations": [
+        "Identifies §3102(f) employer 0.9% threshold (per single employee, regardless of marital status)",
+        "Identifies §1401(b)(2) employee MFJ threshold of $250K",
+        "Computes the combined wage analysis",
+        "Quantifies employer withholding vs total liability",
+        "References Form 8959 reconciliation",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

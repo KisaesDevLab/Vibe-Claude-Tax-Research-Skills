@@ -1,0 +1,47 @@
+{
+  "skill_name": "tax-research-entity",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "section-754-election-step-up",
+      "prompt": "Multi-member partnership has 4 partners with equal interests. Partner A sells his interest to incoming Partner E for $1.5M. A's outside basis was $400K and his share of inside basis was also $400K. Inside FMV of partnership assets exceeds inside basis by $4M total (so A's hypothetical share is $1M). The partnership has not previously elected §754. Should it elect now?",
+      "expected_output": "Predicts §754 election strongly recommended with HIGH confidence. With the election, §743(b) provides a $1.1M positive basis adjustment for E ($1.5M outside basis less $400K share of inside basis). Without the election, E pays $1.5M but has only $400K of inside basis on assets through which depreciation/sale gain flows; the $1.1M premium is unrecovered until liquidation. The §754 election is irrevocable for that year and binding for all future years; consequences include mandatory §734 adjustments on future distributions and §743 adjustments on future transfers. §743(d) mandatory rule does not apply (no substantial built-in loss). Filing on timely return.",
+      "expectations": [
+        "Identifies §754 election and §743(b) basis adjustment",
+        "Computes the $1.1M positive adjustment",
+        "Cites IRC §754, §743, §734",
+        "Notes irrevocability and binding-future-year consequence",
+        "§743(d) mandatory analysis confirms no substantial built-in loss",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "s-corp-second-class-of-stock",
+      "prompt": "An S-corp made distributions to two of its three shareholders proportionate to their interests, but a third shareholder received a smaller distribution because the corporation believed she had not contributed enough to working capital. The IRS examiner is asserting a second-class-of-stock issue; if sustained, the S election would terminate retroactively. The shareholders are family members.",
+      "expected_output": "Predicts §1361(b)(1)(D) second-class-of-stock challenge is a real risk but defensible under MODERATE confidence. Treas. Reg. §1.1361-1(l)(2) treats disproportionate distributions as a second class only if they create rights to distribution / liquidation proceeds that differ from those of other stock. The analysis turns on whether the partnership-style governance documents (operating agreement, shareholders' agreement) create disproportionate liquidation/distribution rights or whether the disproportionate distribution was a one-off discretionary act treated as a constructive loan / advance to the receiving shareholders. Recommend Rev. Proc. 2013-30 inadvertent-termination relief request if termination has been asserted.",
+      "expectations": [
+        "Identifies §1361(b)(1)(D) one-class-of-stock requirement",
+        "Cites Treas. Reg. §1.1361-1(l)(2)",
+        "Distinguishes disproportionate distributions from differing liquidation/distribution rights",
+        "Discusses §1362(f) inadvertent-termination relief and Rev. Proc. 2013-30",
+        "Confidence band MODERATE",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "section-355-spinoff-active-trade",
+      "prompt": "U.S. C-corp parent operates two distinct business lines: a manufacturing operation (50 years old) and a software-as-a-service business acquired 4 years ago. Parent wants to spin off the SaaS business as a §355 distribution to shareholders. Will the spin-off qualify?",
+      "expected_output": "Predicts §355 disqualification with HIGH confidence due to 5-year active-trade-or-business rule. §355(b) requires both the distributing and controlled corporations to be engaged in an active trade or business that has been actively conducted throughout the 5-year period ending on the date of distribution. The SaaS business has only been part of the group for 4 years; absent reorganizations that satisfy the §355(b)(2)(A) acquisition exception, the spin-off fails the active-trade requirement. Recommend waiting until the SaaS business has been in the group for 5 years OR exploring alternative structures (taxable spin-off, recapitalization, asset sale, etc.). For high-stakes deals, request a private letter ruling under Rev. Proc. 2024-3 (or successor) for §355 transactional certainty.",
+      "expectations": [
+        "Identifies §355(b) 5-year active-trade-or-business requirement",
+        "Cites Treas. Reg. §1.355-3 (active business)",
+        "Notes §355(b)(2)(A) acquisition exception",
+        "Discusses alternative structures",
+        "Discusses PLR option under Rev. Proc. 2024-3 (or current-year successor)",
+        "Confidence band HIGH for disqualification",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

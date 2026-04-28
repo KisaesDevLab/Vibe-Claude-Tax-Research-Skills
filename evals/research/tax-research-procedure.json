@@ -1,0 +1,47 @@
+{
+  "skill_name": "tax-research-procedure",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "missed-90-day-petition-cdp-fallback",
+      "prompt": "Client received a statutory notice of deficiency dated August 15, 2024, for $42K. He did not respond. Today is February 10, 2025. The IRS is now sending Notice of Federal Tax Lien filing. What are the procedural options?",
+      "expected_output": "Predicts §6213(a) Tax Court petition window CLOSED with HIGH confidence (90 days from August 15 expired November 13, 2024 — and 150 days for foreign-mailing not applicable). Underlying liability now assessed and collectible. Procedural options:\n(1) §6320 CDP — Notice of Federal Tax Lien triggers 30-day request right; this preserves underlying-liability challenge ONLY if the taxpayer did not previously have an opportunity (debatable since the stat notice provided one).\n(2) §6330 CDP — wait for Final Notice of Intent to Levy; same 30-day window.\n(3) Audit reconsideration — IRM 4.13: discretionary IRS reopening of the case based on new information. Not jurisdictional.\n(4) Refund litigation under §7422 — pay full amount, file §6511 administrative claim, then sue in District Court / Court of Federal Claims if denied. Flora full-payment requirement.\nRecommend §6320 CDP for the lien notice and parallel audit-reconsideration request.",
+      "expectations": [
+        "Identifies §6213 90-day deadline as missed",
+        "Cites §6320 CDP for lien notice (30 days)",
+        "Cites §6330 CDP for levy",
+        "Discusses audit reconsideration via IRM 4.13",
+        "Discusses §7422 refund-litigation Flora requirement",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "section-6501e-substantial-omission",
+      "prompt": "IRS opened an examination of a 2018 individual return on January 30, 2025. The return was filed April 12, 2019 (timely). The IRS is asserting a 6-year SOL under §6501(e) based on $200K of unreported gross income on a $400K return. Is the SOL still open?",
+      "expected_output": "Predicts §6501(e) 6-year SOL likely applies, keeping assessment open. Standard §6501(a) 3-year SOL expired April 12, 2022. §6501(e)(1)(A): 6-year SOL if return omits gross income > 25% of stated gross income. $200K omitted on $400K return = 50% omission, exceeding the 25% threshold. 6-year SOL expires April 12, 2025 — IRS examination opened in time. Note: Home Concrete (2012) limited basis-overstatement coverage, but Pub. L. 114-41 legislatively reversed for tax years after 7/31/2015, so basis-overstatement omissions are now squarely within §6501(e). Verify the omission-vs-overstated-basis characterization. If the omission is genuinely $200K of unreported income, 6-year SOL clearly open.",
+      "expectations": [
+        "Computes 3-year vs 6-year SOL deadlines",
+        "Cites §6501(a) and §6501(e)(1)(A)",
+        "Cites Home Concrete & Supply (566 U.S. 478) and Pub. L. 114-41 reversal",
+        "Verifies the 25% threshold computation",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "tax-court-cdp-equitable-tolling",
+      "prompt": "Client received a CDP notice of determination dated October 1, 2024. The 30-day deadline to petition the Tax Court was October 31, 2024. Client missed the deadline by 5 days due to her attorney's clerical error. The petition was filed November 5, 2024. The IRS has moved to dismiss for lack of jurisdiction. Any chance?",
+      "expected_output": "Predicts MODERATE confidence the petition survives dismissal under Boechler. Boechler, P.C. v. Commissioner, 142 S. Ct. 1493 (2022), held that the §6330(d)(1) Tax Court CDP petition deadline is NOT jurisdictional and is subject to equitable tolling. Equitable tolling requires: (1) reasonable diligence; AND (2) extraordinary circumstance preventing timely filing. Attorney's clerical error has historically NOT been treated as extraordinary; however, post-Boechler doctrine is still developing. Recommend opposing the motion with full disclosure of the diligence facts and the 'extraordinary circumstance' argument. Result fact-dependent. Note: Boechler does NOT cover §6213 deficiency petition deadlines; those remain jurisdictional under Hallmark Research Collective, 159 T.C. No. 6 (2022).",
+      "expectations": [
+        "Cites Boechler, P.C. v. Commissioner, 142 S. Ct. 1493 (2022)",
+        "Distinguishes §6330(d)(1) (tollable) from §6213 (jurisdictional)",
+        "Cites Hallmark Research Collective, 159 T.C. No. 6 (2022)",
+        "Walks two-prong equitable-tolling standard",
+        "Acknowledges fact-driven outcome",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}
