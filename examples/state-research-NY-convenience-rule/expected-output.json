@@ -1,0 +1,69 @@
+{
+  "skill": "tax-research-state-income",
+  "version": "0.1.0",
+  "generated_at": "2026-04-27T00:00:00Z",
+  "task": {
+    "intake": {
+      "taxpayer_state": "NJ",
+      "secondary_state": "NY",
+      "tax_year": 2024,
+      "wages": 190000,
+      "remote_work_facts": "Worked entirely from home in NJ; never visited NY office",
+      "client_position": "Only NJ should tax"
+    },
+    "issue": "Application of NY convenience-of-employer rule to remote NJ-based work for NY employer."
+  },
+  "analysis": "Loaded skills/tax-research-state-income/references/states/NY.md (status: stub at v1.0.0-beta) and skills/tax-research-state-income/references/states/NJ.md (status: stub). New York's convenience-of-employer rule (TSB-M-06(5)I, codified in 20 NYCRR §132.18(a)) treats wages of a non-resident as NY-source if the employer's office is in NY UNLESS the work outside NY is for the employer's necessity (not the employee's convenience). Most remote-work-from-home is treated by NY as 'convenience' rather than 'necessity'. Result: NY taxes substantially all of $190K. NJ resident credit for taxes paid to NY available under N.J. Rev. Stat. §54A:4-1. The credit limits double taxation but does not eliminate NY's claim.",
+  "conclusion": "NY can tax substantially all of the $190K under the convenience-of-employer rule (TSB-M-06(5)I; 20 NYCRR §132.18(a)). NJ resident credit available for taxes paid to NY (N.J. Rev. Stat. §54A:4-1) limits double taxation but does not eliminate NY's claim. State confidence capped at LOW because both per-state files are `status: stub`; recommend live retrieval from NY DTF and NJ DOR. Practitioner should walk through any 'employer's necessity' arguments (e.g., bona-fide home-office test under TSB-M-06(5)I) but the bar is high.",
+  "confidence_band": "LOW",
+  "band_rationale": "Per-state files are `status: stub`; conclusion caps at LOW until promoted. NY convenience rule is well-established but nuanced; live retrieval recommended.",
+  "disclosure_recommended": false,
+  "authorities": [
+    {
+      "authority_type": "StateAdmin",
+      "citation": "TSB-M-06(5)I (NY DTF, May 15, 2006)",
+      "url": "https://www.tax.ny.gov/pdf/memos/income/m06_5i.pdf",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words on convenience-of-employer test]",
+      "weight": "persuasive_non_authority"
+    },
+    {
+      "authority_type": "StateReg",
+      "citation": "20 NYCRR §132.18(a)",
+      "url": "https://www.tax.ny.gov/",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "weight": "regulation"
+    },
+    {
+      "authority_type": "StateStatute",
+      "citation": "N.J. Rev. Stat. §54A:4-1 (resident credit)",
+      "url": "https://nj.gov/treasury/taxation/",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "weight": "primary_statute"
+    }
+  ],
+  "state_files_consulted": [
+    {
+      "state_code": "NY",
+      "skill": "tax-research-state-income",
+      "status": "stub",
+      "last_reviewed": "2026-04-27"
+    },
+    {
+      "state_code": "NJ",
+      "skill": "tax-research-state-income",
+      "status": "stub",
+      "last_reviewed": "2026-04-27"
+    }
+  ],
+  "verification_checklist": {
+    "ssts_1_1": true,
+    "ssts_2_3": true,
+    "circ230_10_22": true,
+    "circ230_10_35": true,
+    "circ230_10_37": true
+  },
+  "disclosure_forms": ["none"]
+}

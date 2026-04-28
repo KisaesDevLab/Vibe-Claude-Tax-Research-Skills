@@ -1,0 +1,69 @@
+{
+  "skill": "tax-research-state-income",
+  "version": "0.1.0",
+  "generated_at": "2026-04-27T00:00:00Z",
+  "task": {
+    "intake": {
+      "taxpayer_state": "CA",
+      "entity_type": "S-corp",
+      "shareholders": 2,
+      "ordinary_income_2024": 400000,
+      "tax_year": 2024
+    },
+    "issue": "California Pass-Through Entity Tax (PTET) election deadline and mechanics."
+  },
+  "analysis": "Loaded skills/tax-research-state-income/references/states/CA.md (status: stub at v1.0.0-beta). California PTET (Cal. Rev. & Tax. Code §17052.10): election made via Form 3804 filed with the entity's annual return. Election rate: 9.3% on the elected pass-through entity tax base. Annual election; not irrevocable for future years. Owner-level credit on Schedule S of California Form 540. Federal deduction at entity level under Notice 2020-75 (avoids §164(b)(6) $10K SALT cap). Deadline: pre-payment of at least the lesser of $1,000 or 50% of the prior year PTET liability is due on or before June 15 of the tax year (Cal. Rev. & Tax. Code §19900(b)). For tax year 2024, this is June 15, 2024.",
+  "conclusion": "California PTET deadline for tax year 2024: June 15, 2024 pre-payment + Form 3804 election with the 2024 entity return. Pre-payment is the LESSER of $1,000 or 50% of prior-year PTET. Annual election; non-irrevocable. Owner-level credit at California return. State confidence capped at LOW because CA per-state file is `status: stub`; recommend live retrieval from FTB website for current-year specifics.",
+  "confidence_band": "LOW",
+  "band_rationale": "Per-state file is `status: stub`; per shared/confidence-bands.md decay rule, state-tax conclusions cap at LOW until file is promoted. Federal aspects (Notice 2020-75 deductibility) at HIGH but state procedural questions require live retrieval.",
+  "authorities": [
+    {
+      "authority_type": "StateStatute",
+      "citation": "Cal. Rev. & Tax. Code §17052.10",
+      "url": "https://leginfo.legislature.ca.gov/",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "weight": "primary_statute"
+    },
+    {
+      "authority_type": "StateStatute",
+      "citation": "Cal. Rev. & Tax. Code §19900(b) (pre-payment requirement)",
+      "url": "https://leginfo.legislature.ca.gov/",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "weight": "primary_statute"
+    },
+    {
+      "authority_type": "Notice",
+      "citation": "Notice 2020-75 (state-tax deduction at entity level)",
+      "url": "https://www.irs.gov/pub/irs-drop/n-20-75.pdf",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "weight": "irs_published"
+    },
+    {
+      "authority_type": "Form",
+      "citation": "California Form 3804 (PTET election)",
+      "url": "https://www.ftb.ca.gov/forms/2024/2024-3804.pdf",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim guidance ≤75 words]",
+      "weight": "persuasive_non_authority"
+    }
+  ],
+  "state_files_consulted": [
+    {
+      "state_code": "CA",
+      "skill": "tax-research-state-income",
+      "status": "stub",
+      "last_reviewed": "2026-04-27"
+    }
+  ],
+  "verification_checklist": {
+    "ssts_1_1": true,
+    "ssts_2_3": true,
+    "circ230_10_22": true,
+    "circ230_10_35": true,
+    "circ230_10_37": true
+  },
+  "disclosure_forms": ["none"]
+}

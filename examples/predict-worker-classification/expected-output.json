@@ -1,0 +1,91 @@
+{
+  "skill": "predict-worker-classification",
+  "version": "0.1.0",
+  "generated_at": "2026-04-27T00:00:00Z",
+  "task": {
+    "intake": {
+      "service_description": "App-based rideshare driving for transportation network company",
+      "client_industry": "transportation",
+      "worker_type_label": "1099-NEC contractor",
+      "behavioral_control_signals": "App routes pickups; driver chooses hours",
+      "financial_control_signals": "Vehicle leased through platform; driver bears fuel and maintenance",
+      "relationship_signals": "Platform-style 1099 contract",
+      "taxpayer_state": "CA"
+    },
+    "issue": "Federal common-law worker classification + California ABC test under Cal. Lab. Code §2775"
+  },
+  "analysis": "Federal three-category test: financial control mixed (vehicle through platform vs. fuel by driver); behavioral control elevated (app routes pickups). California ABC test under Cal. Lab. Code §2775: Prong B likely fails because driving-rideshare is the usual course of the platform's business. Note Prop 22 (Cal. Bus. & Prof. Code §7448-7467) carve-out for app-based drivers - currently in litigation; status to verify per CA per-state file.",
+  "conclusion": "Federal: contractor with §530 plausibility (industry practice prong supports). State (CA): employee for state employment-tax / wage-hour purposes if Prop 22 challenged; otherwise per Prop 22 carve-out app-based driver. Two distinct conclusions: federal vs state.",
+  "confidence_band": "LOW",
+  "band_rationale": "State conclusion depends on CA per-state file (status: stub at v1.0.0-beta) and Prop 22 ongoing litigation; cap at LOW. Federal conclusion is MODERATE under common-law test but band reduced due to state interplay.",
+  "disclosure_recommended": false,
+  "penalty_exposure": "Reclassification exposure: §530 federal-only protection; CA state employment-tax exposure if Prop 22 invalidated. Form 8275 not relevant for classification decision.",
+  "authorities": [
+    {
+      "authority_type": "IRC",
+      "citation": "I.R.C. § 3121(d)(2)",
+      "url": "https://uscode.house.gov/browse/prelim@title26",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "weight": "primary_statute"
+    },
+    {
+      "authority_type": "TreasReg",
+      "citation": "Treas. Reg. § 31.3121(d)-1",
+      "url": "https://www.ecfr.gov/current/title-26",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "weight": "regulation",
+      "chevron_replaced": true
+    },
+    {
+      "authority_type": "RevRul",
+      "citation": "Rev. Rul. 87-41, 1987-1 C.B. 296 (twenty common-law factors)",
+      "url": "https://www.irs.gov/pub/irs-drop/rr-87-41.pdf",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "weight": "irs_published"
+    },
+    {
+      "authority_type": "StateStatute",
+      "citation": "Cal. Lab. Code § 2775",
+      "url": "https://leginfo.legislature.ca.gov/",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "weight": "primary_statute"
+    },
+    {
+      "authority_type": "StateCt",
+      "citation": "Dynamex Operations W. Inc. v. Superior Court, 4 Cal. 5th 903 (2018)",
+      "url": "https://courts.ca.gov/",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "weight": "judicial"
+    },
+    {
+      "authority_type": "StatutesAtLarge",
+      "citation": "§ 530 of the Revenue Act of 1978 (Pub. L. 95-600, §530, 92 Stat. 2885)",
+      "url": "https://www.govinfo.gov/",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "weight": "primary_statute"
+    }
+  ],
+  "state_files_consulted": [
+    {
+      "state_code": "CA",
+      "skill": "tax-research-state-income",
+      "status": "stub",
+      "last_reviewed": "2026-04-27"
+    }
+  ],
+  "verification_checklist": {
+    "ssts_1_1": true,
+    "ssts_2_3": true,
+    "circ230_10_22": true,
+    "circ230_10_35": true,
+    "circ230_10_37": true,
+    "negative_treatment_review_required": true
+  },
+  "disclosure_forms": ["none"]
+}

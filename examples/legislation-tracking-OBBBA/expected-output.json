@@ -1,0 +1,55 @@
+{
+  "skill": "irc-section-lookup",
+  "version": "0.1.0",
+  "generated_at": "2026-04-27T00:00:00Z",
+  "task": {
+    "intake": {
+      "popular_name": "OBBBA",
+      "irc_section_of_interest": "26 U.S.C. § 199A",
+      "request_type": "Public-Law-to-USC workflow"
+    },
+    "issue": "Resolve OBBBA to Public Law number; identify all USC sections amended; verify §199A current text; identify legislative-history artifacts."
+  },
+  "analysis": "Implementing the 6-step Public-Law-to-USC workflow per shared/legislation-tracking.md.\n\nStep 1 (Popular Name Tool): fetch https://uscode.house.gov/popularnames/popularnames.htm. The 'One Big Beautiful Bill Act' (OBBBA) is referenced in the BUILD_PLAN as Pub. L. 119-XX (2025); verify the actual Public Law number at retrieval time. Record both the Public Law number and Statutes-at-Large citation.\n\nStep 2 (Classification Tables): fetch https://uscode.house.gov/classification/tables.shtml. Navigate to the table for the 119th Congress (2025-2026 session). Identify all USC Title 26 sections amended by OBBBA. For §199A specifically, locate the entry showing what subsections were amended.\n\nStep 3 (Verify §199A current text): fetch from https://uscode.house.gov/browse/prelim@title26 and pull §199A. Compare the post-OBBBA text against the pre-OBBBA text to identify substantive changes. Record amendments in `quoted_text`.\n\nStep 4 (Legislative-history artifacts): JCT Bluebook for the 119th Congress is unlikely to be available at retrieval time (Bluebooks publish 6-12 months after enactment); fall back to House Ways & Means / Senate Finance committee reports. Conference Report (if applicable) is the most useful interpretive source.\n\nStep 5 (Federal Register IRS feed): fetch https://www.federalregister.gov/agencies/internal-revenue-service for proposed Treasury Decisions implementing OBBBA's §199A modifications. Many post-enactment IRS guidance items will be issued as Notices first, followed by proposed regulations and final TDs.\n\nStep 6 (Cite Checker): use https://uscode.house.gov/cite.xhtml to confirm any §199A subsection citations resolve to current text.",
+  "conclusion": "OBBBA is Pub. L. 119-XX (verify at retrieval). Classification Tables for the 119th Congress identify all USC Title 26 sections amended, including §199A. Current §199A text retrieved from USLM should reflect post-OBBBA amendments. Legislative-history artifacts: committee reports available from congress.gov; JCT Bluebook for the 119th Congress not yet published as of 2026-04. Federal Register IRS feed should be monitored for proposed regs and TDs implementing OBBBA's §199A modifications.",
+  "confidence_band": "MODERATE",
+  "band_rationale": "Statutory text retrieved from USLM is canonical (HIGH). However, OBBBA-specific guidance (Treasury Decisions, JCT Bluebook) is in early implementation phase, introducing freshness risk. Practitioner should re-walk this workflow at engagement time and verify all citations against current sources.",
+  "authorities": [
+    {
+      "authority_type": "IRC",
+      "citation": "26 U.S.C. § 199A",
+      "url": "https://uscode.house.gov/browse/prelim@title26",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words from §199A subsection of interest]",
+      "weight": "primary_statute"
+    },
+    {
+      "authority_type": "LegHistory",
+      "citation": "[Conference Report or committee report number for OBBBA — verify at retrieval]",
+      "url": "https://www.congress.gov/",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "weight": "legislative_history"
+    }
+  ],
+  "public_laws_consulted": [
+    {
+      "public_law": "Pub. L. 119-XX (verify at retrieval)",
+      "popular_name": "One Big Beautiful Bill Act of 2025",
+      "classification_tables_url": "https://uscode.house.gov/classification/tables.shtml [specific table URL for 119th Congress]",
+      "affected_irc_sections": [
+        "26 U.S.C. § 199A",
+        "(plus all other sections amended by OBBBA — verify via Classification Tables)"
+      ]
+    }
+  ],
+  "verification_checklist": {
+    "ssts_1_1": true,
+    "ssts_2_3": true,
+    "circ230_10_22": true,
+    "circ230_10_35": true,
+    "circ230_10_37": true,
+    "negative_treatment_review_required": true
+  },
+  "disclosure_forms": ["none"]
+}

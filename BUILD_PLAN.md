@@ -251,26 +251,26 @@ Validation: `./scripts/validate.sh phase 4`
 
 Validation: `./scripts/validate.sh phase 5`
 
-- [ ] examples/research-federal/{prompt.md, expected-output.json}
-- [ ] examples/predict-worker-classification/...
-- [ ] examples/return-summary-1040/...
-- [ ] examples/notice-response/...
-- [ ] examples/state-research-CA/...
-- [ ] examples/state-research-NY-convenience-rule/...
-- [ ] examples/legislation-tracking-OBBBA/{prompt.md, expected-output.json}
+- [x] examples/research-federal/{prompt.md, expected-output.json}
+- [x] examples/predict-worker-classification/...
+- [x] examples/return-summary-1040/...
+- [x] examples/notice-response/...
+- [x] examples/state-research-CA/...
+- [x] examples/state-research-NY-convenience-rule/...
+- [x] examples/legislation-tracking-OBBBA/{prompt.md, expected-output.json}
       (NEW in v1.1: exercises Public-Law-to-USC workflow)
-- [ ] docs/install-claude-ai.md (ZIP upload flow)
-- [ ] docs/install-claude-code.md (`/plugin marketplace add` flow)
-- [ ] docs/authoring-guide.md
-- [ ] docs/state-stub-promotion.md (how to promote stub → draft → reviewed → verified)
-- [ ] docs/legislation-tracking-howto.md (NEW in v1.1: practitioner-
+- [x] docs/install-claude-ai.md (ZIP upload flow)
+- [x] docs/install-claude-code.md (`/plugin marketplace add` flow)
+- [x] docs/authoring-guide.md
+- [x] docs/state-stub-promotion.md (how to promote stub → draft → reviewed → verified)
+- [x] docs/legislation-tracking-howto.md (NEW in v1.1: practitioner-
       facing guide on how the pack tracks Public-Law impact)
-- [ ] Expand README.md: install, usage, skills index table, state
+- [x] Expand README.md: install, usage, skills index table, state
       coverage table, compliance posture, license, contribution
-- [ ] Finalize .claude-plugin/plugin.json (full skills array)
-- [ ] Finalize .claude-plugin/marketplace.json
-- [ ] CHANGELOG.md updated
-- [ ] Commit: `docs(p5): examples, docs, README polish`
+- [x] Finalize .claude-plugin/plugin.json (full skills array)
+- [x] Finalize .claude-plugin/marketplace.json
+- [x] CHANGELOG.md updated
+- [x] Commit: `docs(p5): examples, docs, README polish`
 
 ## Phase 6 — Eval expansion + final QA
 

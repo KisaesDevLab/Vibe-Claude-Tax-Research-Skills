@@ -1,0 +1,69 @@
+{
+  "skill": "tax-research-federal",
+  "version": "0.1.0",
+  "generated_at": "2026-04-27T00:00:00Z",
+  "task": {
+    "intake": {
+      "taxpayer_type": "individual (Schedule C)",
+      "filing_status": "MFJ",
+      "tax_year": 2024,
+      "schedule_c_net_income": 215000,
+      "spouse_wages": 100000,
+      "taxable_income_before_qbi": 290000,
+      "service_type": "accounting (SSTB)"
+    },
+    "issue": "Section 199A QBI deduction applicability for SSTB sole-prop above MFJ threshold; planning posture."
+  },
+  "analysis": "MFJ 2024 threshold: phase-in $383,900-$483,900 (verify year-specific Rev. Proc.). Couple's $290K taxable income before QBI is below the lower threshold, so SSTB classification (accounting per Treas. Reg. §1.199A-5(b)(2)(iv)) is irrelevant; full 20% QBI deduction available. W-2/UBIA limits also do not apply below threshold.",
+  "conclusion": "Section 199A 20% deduction available on full $215,000 of Schedule C net income, subject to overall 20% × (TI − net cap gains) limitation. Estimated deduction: 20% × $215,000 = $43,000.",
+  "confidence_band": "HIGH",
+  "band_rationale": "Below-threshold posture is dispositive; SSTB and W-2/UBIA limits inapplicable. Year-specific threshold should be verified via Rev. Proc.",
+  "disclosure_recommended": false,
+  "penalty_exposure": "None at this band.",
+  "authorities": [
+    {
+      "authority_type": "IRC",
+      "citation": "I.R.C. § 199A(a)",
+      "url": "https://uscode.house.gov/browse/prelim@title26",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words from §199A(a)]",
+      "pin_cite": "subsection (a)",
+      "weight": "primary_statute"
+    },
+    {
+      "authority_type": "IRC",
+      "citation": "I.R.C. § 199A(b)(2)",
+      "url": "https://uscode.house.gov/browse/prelim@title26",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words]",
+      "pin_cite": "subsection (b)(2)",
+      "weight": "primary_statute"
+    },
+    {
+      "authority_type": "TreasReg",
+      "citation": "Treas. Reg. § 1.199A-5(b)(2)(iv)",
+      "url": "https://www.ecfr.gov/current/title-26",
+      "retrieved_date": "2026-04-27",
+      "quoted_text": "[verbatim ≤75 words narrowing 'accounting' SSTB]",
+      "pin_cite": "(b)(2)(iv)",
+      "weight": "regulation",
+      "chevron_replaced": true
+    }
+  ],
+  "public_laws_consulted": [
+    {
+      "public_law": "Pub. L. 115-97",
+      "popular_name": "Tax Cuts and Jobs Act of 2017",
+      "classification_tables_url": "https://uscode.house.gov/classification/tables.shtml",
+      "affected_irc_sections": ["26 U.S.C. § 199A"]
+    }
+  ],
+  "verification_checklist": {
+    "ssts_1_1": true,
+    "ssts_2_3": true,
+    "circ230_10_22": true,
+    "circ230_10_35": true,
+    "circ230_10_37": true
+  },
+  "disclosure_forms": ["none"]
+}
