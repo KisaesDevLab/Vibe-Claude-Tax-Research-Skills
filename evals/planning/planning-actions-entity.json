@@ -1,0 +1,51 @@
+{
+  "skill_name": "planning-actions-entity",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "s-corp-year-end-comp-plus-ptet",
+      "prompt": "California S-corp solo dental practice. 2024 ordinary income $480K. Owner W-2 $90K YTD (through October). Industry comparables: $200-$280K. State residency: CA. No PTET election made for 2024. Dec 31 deadline approaching.",
+      "expected_output": "Generates year-end action list. Top items: (1) Reasonable-comp adjustment URGENT — bump W-2 by $110-$190K to land in industry comparables before year end; route to `predict-reasonable-comp`. (2) CA PTET election — FTB Form 3804 election was due by June 15 for tax year 2024; check whether late-election relief available; route to `tax-research-state-income/CA`. (3) §199A QBI — dental is SSTB; S-corp owner above threshold likely fully phased out; route to `predict-qbi-eligibility`. (4) §168(k) bonus on equipment placed in service before year-end (60% for 2024); coordinate with §179 expensing. (5) 401(k) profit-sharing contribution to maximize tax-deferred savings. (6) Cash-balance plan study for 2025 if owner wants larger deferral. Note: PTET deadline likely missed for CA; document the missed-election decision in the engagement file.",
+      "expectations": [
+        "Identifies reasonable-comp gap (W-2 below comparables)",
+        "Routes to `predict-reasonable-comp`",
+        "Identifies CA PTET deadline issue",
+        "Routes to `tax-research-state-income/CA`",
+        "Identifies SSTB / above-threshold posture",
+        "Routes to `predict-qbi-eligibility`",
+        "Identifies §168(k) phase-down to 60% in 2024",
+        "Recommends 401(k) and cash-balance options",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "c-corp-section-1202-qsbs-positioning",
+      "prompt": "Pre-revenue tech startup organized as Delaware C-corp 2 years ago. Founder owns 100% of 10M shares (issued at $0.001 = $10K basis). Currently raising Series A; valuation $35M post-money. Founder considering selling shares in 5 years if exit. What §1202 planning can be done now?",
+      "expected_output": "Generates §1202 QSBS positioning checklist. Top items: (1) §1202(c)(2)(A) gross-asset limit: must be ≤ $50M at issuance; current $35M post-money keeps room but Series B might push close. Document gross-assets carefully. (2) §1202(d) active-business test: 80% of assets in qualified active business; ensure no SSTB drift (founders often add consulting / advisory revenue lines that risk SSTB classification). (3) §1202(e)(3) excluded businesses list — software-as-a-service generally qualifies but financial services / consulting / brokerage do not. (4) 5-year holding period from issuance: founder's founders-stock starts year 1; new investors' Series A starts at funding date. (5) §1045 rollover — preserve option to roll proceeds into replacement QSBS within 60 days. (6) Stock-grants vs. options for new hires: stock-grants count as QSBS for the recipient; option exercises do not (until exercise). (7) State conformity: most states conform but CA and PA do NOT — verify per-state file. Route to `tax-research-state-income/CA` if founder in CA.",
+      "expectations": [
+        "Identifies §1202(c)(2)(A) $50M gross-asset limit at issuance",
+        "Identifies §1202(d) active-business test and §1202(e) excluded businesses",
+        "Notes 5-year holding period from issuance",
+        "Identifies §1045 rollover option",
+        "Distinguishes stock-grants from option exercises for QSBS",
+        "Notes CA / PA non-conformity",
+        "Routes to `tax-research-state-income`",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "partnership-section-163j-management",
+      "prompt": "Multi-member LLC taxed as partnership. 2024 ordinary income $4.5M. Business-interest expense $2.1M (operating-line + equipment-loan). Average annual gross receipts past 3 years: $48M. Property mostly equipment and inventory (no real-property trade or business).",
+      "expected_output": "Generates §163(j) action list. Top items: (1) §163(j)(3) small-taxpayer exception unavailable: 3-year average gross receipts $48M > $30M threshold (2024 — verify). §163(j) limit applies. (2) ATI computation under post-2022 EBIT-basis rules. Estimate ATI from book pre-tax income ± book-tax differences ± interest expense addback ± non-operating items. (3) Limitation: business-interest expense allowed = 30% × ATI + business-interest-income + floor-plan. Excess = EBIE allocated to partners. (4) §163(j)(7)(B) real-property-trade-or-business election unavailable (no real property). (5) §163(j)(7)(C) farming election if applicable. (6) Form 8990 filing required at partnership level. (7) Partner-level: EBIE allocated; partner can use only against future excess-business-interest-income or §163(j) excess-business-interest-expense.",
+      "expectations": [
+        "Identifies §163(j)(3) small-taxpayer exception unavailable",
+        "Computes 30% × ATI limitation framework",
+        "Identifies EBIE allocation at partnership level",
+        "Notes §163(j)(7)(B) real-property election unavailability",
+        "References Form 8990",
+        "Discusses partner-level EBIE carryforward",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}
