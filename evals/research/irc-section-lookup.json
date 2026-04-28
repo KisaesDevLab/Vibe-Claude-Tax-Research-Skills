@@ -1,0 +1,53 @@
+{
+  "skill_name": "irc-section-lookup",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "obbba-public-law-resolution",
+      "prompt": "What did OBBBA do to §199A? I want to know the current statutory text and which Public Law modified it.",
+      "expected_output": "Implements Public-Law-to-USC workflow per shared/legislation-tracking.md.\n(1) Resolve OBBBA → Public Law: fetch Popular Name Tool at https://uscode.house.gov/popularnames/popularnames.htm; verify Public Law number for 'One Big Beautiful Bill Act' (placeholder Pub. L. 119-XX from BUILD_PLAN — verify at retrieval).\n(2) Classification Tables: fetch https://uscode.house.gov/classification/tables.shtml for the relevant Congress; locate OBBBA entry; identify all USC sections amended. §199A likely listed as one of many sections amended.\n(3) Verify §199A current text: fetch from https://uscode.house.gov/browse/prelim@title26 — pull §199A current text and identify post-OBBBA amendments.\n(4) Legislative-history artifacts: JCT Bluebook for the relevant Congress (may not yet be available for OBBBA at retrieval); committee reports from House Ways & Means / Senate Finance; Treasury Greenbook (only if proposal enacted); CBO scoring (if accompanying enacted bill).\n(5) Federal Register IRS feed: check for proposed Treasury Decisions implementing OBBBA's §199A modifications.\n\nPopulate `public_laws_consulted[]` with OBBBA, popular name 'One Big Beautiful Bill Act', Classification Tables URL, affected_irc_sections including '26 U.S.C. § 199A'. Cite §199A as IRC / primary_statute. Confidence band MODERATE due to fluid post-2025 posture; HIGH if specific OBBBA provision is unambiguously available and verified.",
+      "expectations": [
+        "Implements 6-step Public-Law-to-USC workflow",
+        "Fetches Popular Name Tool",
+        "Fetches Classification Tables",
+        "Verifies §199A current text from USLM",
+        "Identifies legislative-history artifacts (JCT Bluebook caveat)",
+        "Checks Federal Register IRS feed",
+        "Populates `public_laws_consulted[]`",
+        "Cites §199A with primary_statute weight",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "tcja-section-174-amendment",
+      "prompt": "What did TCJA do to IRC §174? Pull the post-amendment text.",
+      "expected_output": "Implements workflow.\n(1) TCJA → Pub. L. 115-97. Verify via Popular Name Tool.\n(2) Classification Tables for 115th Congress: navigate to TCJA entry; identify §174 as amended.\n(3) Verify §174 current text from USLM. Pre-TCJA: §174 allowed immediate expensing of R&E. Post-TCJA (effective for tax years beginning after 12/31/2021 per TCJA §13206): §174 requires capitalization with 5-year domestic / 15-year foreign amortization. OBBBA may have further modified — verify.\n(4) Legislative history: JCT Bluebook for 115th Congress (General Explanation of Tax Legislation Enacted in the 115th Congress); House Ways & Means Conference Report.\n(5) Federal Register: Notice 2024-14 implementation Q&A; Rev. Proc. 2023-11 method-change procedures.\nPopulate `public_laws_consulted[]` with Pub. L. 115-97, popular name 'Tax Cuts and Jobs Act of 2017', affected_irc_sections '26 U.S.C. § 174'. Cite §174 as IRC / primary_statute with HIGH confidence (TCJA enacted; clean amendment trail).",
+      "expectations": [
+        "Resolves TCJA to Pub. L. 115-97",
+        "Identifies TCJA §13206 amendment to §174",
+        "Pre-TCJA vs post-TCJA text comparison",
+        "Identifies effective date 12/31/2021",
+        "Cites JCT Bluebook for 115th Congress",
+        "References Notice 2024-14 and Rev. Proc. 2023-11",
+        "Populates `public_laws_consulted[]`",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "section-1031-look-up-clean",
+      "prompt": "What does IRC §1031(a)(1) say in its current form?",
+      "expected_output": "Mode A clean lookup. Fetch USLM at https://uscode.house.gov/browse/prelim@title26 and navigate to §1031. Quote subsection (a)(1):\n\n> '(1) IN GENERAL.—No gain or loss shall be recognized on the exchange of real property held for productive use in a trade or business or for investment, if such real property is exchanged solely for real property of like kind which is to be held either for productive use in a trade or business or for investment.'\n\nNote: TCJA Pub. L. 115-97 §13303 modified §1031 to apply only to real property (effective for exchanges after 12/31/2017). Pre-TCJA also covered personal property.\n\nCite §1031(a)(1) as IRC / primary_statute with HIGH confidence. Subtitle A, Subchapter O.",
+      "expectations": [
+        "Quotes §1031(a)(1) verbatim (≤75 words quoted_text)",
+        "Identifies TCJA §13303 real-property-only amendment",
+        "Notes Subtitle A / Subchapter O location",
+        "Cites §1031 as IRC / primary_statute",
+        "Confidence band HIGH",
+        "JSON sidecar validates with `pin_cite`",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

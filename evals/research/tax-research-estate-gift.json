@@ -1,0 +1,48 @@
+{
+  "skill_name": "tax-research-estate-gift",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "portability-late-relief",
+      "prompt": "Husband died on March 15, 2022, with a gross estate of $4M (all to wife outright). Estate did not file Form 706 because under-threshold. Wife (now 75 years old, gross estate $9.5M) wants to claim portability of husband's $12.06M (2022) basic exclusion. Today is May 1, 2025.",
+      "expected_output": "Predicts portability available under Rev. Proc. 2022-32 with HIGH confidence. Rev. Proc. 2022-32 grants automatic 5-year extension for portability elections by estates not required to file Form 706. Husband's estate ($4M) was below the 2022 threshold and not required to file. 5-year window from date of death (March 15, 2022) extends to March 15, 2027 — well within reach. File Form 706 now with portability election for husband; wife's exclusion becomes wife's $13.61M (2024 basic) + DSUE of husband's unused exclusion. Cite §2010(c)(4); Rev. Proc. 2022-32. Note: estate-tax-returns filed under Rev. Proc. 2022-32 must be marked 'FILED PURSUANT TO REV. PROC. 2022-32 TO ELECT PORTABILITY' on the top of Form 706.",
+      "expectations": [
+        "Identifies Rev. Proc. 2022-32 5-year automatic extension",
+        "Cites §2010(c)(4) DSUE / portability",
+        "Confirms husband's estate was below threshold",
+        "Identifies window deadline (March 15, 2027)",
+        "Notes special filing notation requirement",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "tcja-sunset-pre-gift-strategy",
+      "prompt": "Single client age 70 with $30M estate. 2025 basic exclusion is $13.99M. Worried about TCJA sunset reverting to ~$7M for 2026+. Wants to make a $13M gift in 2025. Concerns about clawback if she dies in 2027.",
+      "expected_output": "Predicts gift will be protected under anti-clawback rule with HIGH confidence. Treas. Reg. §20.2010-1(c) (anti-clawback): the credit allowable in computing estate tax on a decedent dying after 12/31/2025 is determined using the basic exclusion in effect on the date of death OR the basic exclusion applicable to gifts made by the decedent, WHICHEVER IS GREATER. So a $13M gift made in 2025 (when basic exclusion is $13.99M) does NOT trigger clawback if exclusion reverts to $7M in 2026+. Recommend: (1) Make the $13M gift before 12/31/2025; (2) Form 709 filed with allocation of GST exemption if relevant; (3) Verify OBBBA modifications via shared/legislation-tracking.md (OBBBA may have made TCJA permanent — clawback concern may be moot). Route to `irc-section-lookup` for OBBBA verification.",
+      "expectations": [
+        "Identifies §2010(c)(3) sunset and Treas. Reg. §20.2010-1(c) anti-clawback",
+        "Cites the anti-clawback rule's specific protection",
+        "Recommends pre-sunset gifting",
+        "Notes OBBBA verification step",
+        "Routes to `irc-section-lookup`",
+        "Documents `public_laws_consulted[]`",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "qtip-reverse-qtip-gst",
+      "prompt": "Husband and wife have $30M combined estate. Husband dies first with $15M estate. Wife is U.S. citizen. Want to leave maximum to wife but preserve GST exemption for grandchildren. Estate plan: bypass trust funded with husband's $13.99M basic exclusion; QTIP trust for the remaining $1M.",
+      "expected_output": "Recommends reverse-QTIP election under §2652(a)(3) with HIGH confidence. Bypass trust ($13.99M) uses husband's basic exclusion; assets bypass wife's estate at her death; husband's GST exemption (also $13.99M for 2025) can be allocated automatically to bypass trust. QTIP trust ($1M) qualifies for marital deduction under §2056(b)(7); without reverse-QTIP, wife is GST transferor. Reverse-QTIP election treats husband as GST transferor of QTIP property — shielding the QTIP trust from GST tax using husband's exemption. Recommend: (1) §2056(b)(7) QTIP election on Form 706; (2) Reverse-QTIP election under §2652(a)(3); (3) Allocate husband's GST exemption to bypass and QTIP per §2632. Cite §2010, §2056(b)(7), §2632, §2652(a)(3).",
+      "expectations": [
+        "Identifies §2056(b)(7) QTIP election",
+        "Identifies §2652(a)(3) reverse-QTIP election",
+        "Walks bypass-trust + QTIP structure",
+        "Discusses GST exemption allocation under §2632",
+        "Confidence band HIGH",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}

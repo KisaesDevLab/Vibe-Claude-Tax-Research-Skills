@@ -1,0 +1,51 @@
+{
+  "skill_name": "treas-reg-lookup",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "reg-1.199A-5-reputation-or-skill",
+      "prompt": "Pull the current text of Treas. Reg. §1.199A-5(b)(2)(xiv). What does it say about 'reputation or skill'?",
+      "expected_output": "Fetch eCFR Title 26 §1.199A-5(b)(2)(xiv). Quote ≤75 words. Treas. Reg. §1.199A-5(b)(2)(xiv) narrows the §199A(d)(2)(A) 'reputation or skill' SSTB category to three specific situations: endorsement income, licensing of an individual's likeness/name/voice, and appearance fees. Cite as TreasReg / regulation. Set chevron_replaced: true (interpretive narrowing of ambiguous statutory phrase 'reputation or skill'). TD 9847 (Feb. 2019) promulgated final QBI regulations including §1.199A-5; cite TD as TreasuryDecision / regulation when relying on preamble.",
+      "expectations": [
+        "Fetches eCFR §1.199A-5(b)(2)(xiv)",
+        "Quotes ≤75 words",
+        "Identifies three reputation-or-skill prongs",
+        "Sets chevron_replaced: true",
+        "Identifies TD 9847 as promulgating",
+        "Cites Reg as TreasReg / regulation",
+        "Confidence band assigned",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "temporary-reg-1.469-5T",
+      "prompt": "Is Treas. Reg. §1.469-5T still in force? Pull current text of test 1 (>500 hours).",
+      "expected_output": "Fetch eCFR Title 26 §1.469-5T(a)(1). Confirm 'T' suffix indicates a temporary regulation; §7805(e) ordinarily limits temporary regs to 3 years. However, §1.469-5T was issued in 1988 and has remained in force as a temporary regulation due to congressional grandfathering for certain pre-1988 temporary regs (§7805(e)(1) applies to regs issued AFTER November 20, 1988). Quote test 1 verbatim: '(1) The individual participates in the activity for more than 500 hours during such year.' Cite as TreasReg / regulation. Set chevron_replaced: true (interpretive of §469(h)). Note Loper Bright posture; the seven tests have been broadly accepted by courts.",
+      "expectations": [
+        "Fetches eCFR §1.469-5T(a)(1)",
+        "Identifies T suffix as temporary",
+        "Notes §7805(e) post-November-1988 limit",
+        "Notes pre-1988 grandfathering for §1.469-5T",
+        "Quotes test 1 verbatim (≤75 words)",
+        "Sets chevron_replaced: true",
+        "Confidence band assigned",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "proposed-reg-not-binding",
+      "prompt": "There's a 2023 proposed reg under §174 (REG-XXXXXX-23). What's the authority weight if I rely on it for current-year tax position?",
+      "expected_output": "Identifies proposed regulation status. Proposed regs are published in the Federal Register but NOT codified in eCFR. They are not binding authority. Reliance under §1.6662-3(b)(3) reasonable-basis is possible if the proposed reg is substantively reasonable, but the IRS may issue final regs differing from the proposal. Recommendations: (1) Cite proposed reg as TreasReg / persuasive_non_authority (NOT regulation); (2) Note proposed status in narrative; (3) Consider Form 8275 disclosure if proposed reg is the closest authority for the position; (4) Watch Federal Register IRS feed for finalization. The actual REG number for §174 implementation guidance should be verified against the Federal Register IRS feed at https://www.federalregister.gov/agencies/internal-revenue-service before quoting authority.",
+      "expectations": [
+        "Identifies proposed-reg status",
+        "Notes not codified in eCFR",
+        "Discusses §1.6662-3(b)(3) reliance framework",
+        "Tags as TreasReg / persuasive_non_authority",
+        "Recommends Form 8275 disclosure consideration",
+        "Recommends Federal Register IRS feed for finalization",
+        "Confidence band LOW for proposed-reg-as-closest-authority",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}
