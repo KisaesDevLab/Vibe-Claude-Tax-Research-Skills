@@ -231,21 +231,21 @@ corresponding `references/states/<XX>.md` before drafting analysis.
 
 Validation: `./scripts/validate.sh phase 4`
 
-- [ ] skills/planning-strategy-library/SKILL.md
-- [ ] skills/planning-strategy-library/references/strategies/<slug>.md
+- [x] skills/planning-strategy-library/SKILL.md
+- [x] skills/planning-strategy-library/references/strategies/<slug>.md
       for all 30 strategies (list in shared/strategy-list.md derived
       from this plan's appendix)
-- [ ] Each strategy file: IRC §, eligibility, mechanics, citations,
+- [x] Each strategy file: IRC §, eligibility, mechanics, citations,
       Dirty-Dozen / Listed-Transaction flag where applicable
-- [ ] Strategies with state-specific eligibility (PTET, CA AB5, NY
+- [x] Strategies with state-specific eligibility (PTET, CA AB5, NY
       convenience rule, MA millionaire surtax, WA capital gains tax,
       OR transit tax) reference per-state files via:
       `> See state files for jurisdiction-specific eligibility: CA, NY, ...`
-- [ ] Strategies materially affected by recent legislation (post-2024)
+- [x] Strategies materially affected by recent legislation (post-2024)
       reference shared/legislation-tracking.md and link to
       Classification Tables for the relevant Public Law.
-- [ ] index.md cross-references all 30
-- [ ] Commit: `feat(p4): 30-strategy planning library`
+- [x] index.md cross-references all 30
+- [x] Commit: `feat(p4): 30-strategy planning library`
 
 ## Phase 5 — Examples, docs, README, marketplace
 
