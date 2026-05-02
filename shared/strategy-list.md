@@ -4,6 +4,21 @@ The Vibe CPA Skills `planning-strategy-library` skill catalogs 30
 core CPA-vetted strategies. Each strategy lives at
 `skills/planning-strategy-library/references/strategies/<slug>.md`.
 
+In addition to the curated 30, the directory contains an extended
+**addendum library** of 87 reference strategies (#8–#94 from a
+practitioner-source addendum; #1–#7 were not delivered). The
+extended library lives in the same directory but is governed by
+the cross-reference matrix at
+`skills/planning-strategy-library/references/strategy-cross-reference.md`
+(human-readable) and `strategy-relationships.json` (machine-
+readable). The extended files are intended as deeper reference
+material related to the curated 30; the curated 30 remain the
+short-form planning catalog. Where the addendum's slug collided
+with a curated slug, the addendum file is suffixed with
+`-extended.md` (`cost-segregation-extended.md`,
+`real-estate-professional-extended.md`,
+`section-1202-qsbs-extended.md`, `backdoor-roth-extended.md`).
+
 Strategies are organized by domain. Each entry below shows:
 - Slug (filename without `.md`).
 - Strategy name.
@@ -78,6 +93,48 @@ circular230` before any client engagement.
 - Charitable LLC structures.
 - Pre-packaged "tax shelters" of any kind.
 - Promoter-marketed structures lacking economic substance.
+
+## Extended addendum library (#8–#94)
+
+The 87 addendum strategies share the same `references/strategies/`
+directory and follow a similar entry shape (YAML frontmatter,
+overview, primary IRC authority, regulations, IRS guidance, court
+decisions, eligibility, mechanics, documentation, pitfalls, recent
+legislation flags, state conformity, default confidence band,
+cross-references, JSON authorities). They are listed in full at
+`skills/planning-strategy-library/references/strategy-cross-reference.md`
+(matrix and combinations / conflicts / mutually-exclusive paths).
+Strategies #1–#7 from the addendum's Part 1 source were not
+delivered; the matrix retains those rows for navigability with a
+note that no detail file exists.
+
+## Standalone strategy files (added with the addendum)
+
+Two practitioner-targeted reimbursement strategies that do not
+duplicate any curated entry:
+
+- `corp-vehicle-personal-name.md` — Accountable-plan reimbursement
+  for a vehicle titled in the owner-employee's personal name (PLR
+  200930029; Reg. §1.179-1(a)(e); §67(g) suspension forecloses
+  Form 2106 alternative).
+- `s-corp-home-office-reimbursement.md` — The "only method that
+  works" post-TCJA: §62(a)(2)(A) accountable-plan reimbursement
+  (Treas. Reg. §1.62-2; §280A(c)(1); *Hamacher* convenience-of-
+  employer test). Why renting the home to the corporation fails
+  (§280A(c)(6); PMTA 00431_7138). Why Form 2106 fails (§67(g)).
+
+## Companion catalog skills
+
+Two new top-level skills index the strategies by Form line:
+
+- `s-corp-strategy-catalog` — 10 S-corp strategies mapped to
+  Form 1120-S lines.
+- `schedule-c-strategy-catalog` — 10 Schedule C / SE strategies
+  mapped to Schedule C / Form 8829 lines.
+
+A third companion skill, `tax-elections-library`, indexes 24
+commonly-needed tax elections with authority, deadline, where-to-
+file, mechanics, and sample election language.
 
 ## Maintenance
 

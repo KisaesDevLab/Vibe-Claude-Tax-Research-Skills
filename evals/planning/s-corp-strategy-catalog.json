@@ -1,0 +1,48 @@
+{
+  "skill_name": "s-corp-strategy-catalog",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "augusta-rule-15th-day",
+      "prompt": "S corp owner wants to rent personal home to the corporation under the Augusta Rule. Plans 15 days at $2,500/day for board meetings.",
+      "expected_output": "Loads `references/strategy-table.md` Strategy #6 and detail file `augusta-rule-280a-g.md`. Flags the absolute 14-day cliff under §280A(g) — the 15th day disqualifies the entire year of rental income from exclusion; all 15 days become taxable. Also flags the rate-and-substance check under *Sinopoli v. Commissioner*, T.C. Memo. 2023-105: $2,500/day must be supported by comparable hotel meeting-room or banquet quotes for the locale. Recommends reducing to ≤14 days OR splitting across two tax years; require board resolution, written rental agreement, comparable-rate evidence, meeting agendas, attendance records. Notes 1099-MISC Box 1 reporting obligation. Confidence band MODERATE on the 14-day-mechanics piece (HIGH on §280A(g) statute; drops to MODERATE for substance under Sinopoli).",
+      "expectations": [
+        "Identifies §280A(g) 14-day cliff and disallowance of full year if 15th day",
+        "Cites Sinopoli for rate-reasonableness substance",
+        "Routes to augusta-rule-280a-g.md",
+        "Recommends mitigation (reduce days or split years)",
+        "Lists documentation requirements",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "hire-child-s-corp-fica",
+      "prompt": "Client has an S corp and wants to hire her 16-year-old daughter at $14,500/year. She read that wages to children under 18 are FICA-exempt.",
+      "expected_output": "Loads Strategy #3 from `references/strategy-table.md` and `hiring-kids.md`. Critical correction: §3121(b)(3)(A) FICA exemption does NOT apply when the parent's entity is an S corporation — only sole proprietorships and partnerships where ALL partners are the child's parents qualify. Wages from an S corp to the child are FICA-subject regardless of age. Recommends restructuring for the FICA benefit: pay the child from a sole-prop / parent-only-partnership, OR accept the FICA cost and proceed (income shifting, Roth IRA funding still work). Substance still required under *Eller* and *Denman* (bona fide work, age-appropriate, reasonable wage, contemporaneous records). Confidence band HIGH on the §3121(b)(3)(A) inapplicability point.",
+      "expectations": [
+        "Corrects misconception that §3121(b)(3)(A) applies to S corps",
+        "Cites §3121(b)(3)(A), Eller, Denman",
+        "Suggests restructuring or accepting FICA cost",
+        "Notes Roth IRA funding still available (earned income basis)",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "vehicle-reimbursement-personal-title",
+      "prompt": "Owner of an S corp bought a 7,200 lb GVWR SUV titled in his personal name. Can the corp deduct §179 + bonus?",
+      "expected_output": "Loads Strategy #7/#8 from the catalog and detail file `corp-vehicle-personal-name.md`. Confirms accountable-plan reimbursement is the working method: §179 does not require corporate title (PLR 200930029, citable but non-precedential under §6110(k)(3); Reg. §1.179-1(a),(e)). Mechanics: corporation reimburses depreciation under accountable plan (Treas. Reg. §1.62-2 three-prong: business connection, substantiation, return of excess). 1120-S deduction lands on Line 19. SUV cap §179(b)(5) = $31,300 (2025) / $32,000 (2026); §168(k) bonus 100% post-1/19/2025 acquisitions per OBBBA — verify against Classification Tables via `irc-section-lookup`. Notes §67(g) suspension of misc. itemized deductions through 2025 forecloses the Form 2106 alternative. Confidence band MODERATE (PLR is non-precedential; reasonable-cause supported by Reg. §1.179-1).",
+      "expectations": [
+        "Routes to corp-vehicle-personal-name.md",
+        "Cites PLR 200930029 with §6110(k)(3) caveat",
+        "Cites Reg. §1.179-1(a) and (e); Treas. Reg. §1.62-2",
+        "Names §179(b)(5) SUV cap with year-appropriate figure",
+        "Notes §168(k) post-1/19/2025 acquisition rule and routes to legislation-tracking",
+        "Notes §67(g) suspension forecloses Form 2106",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates including public_laws_consulted for OBBBA"
+      ]
+    }
+  ]
+}

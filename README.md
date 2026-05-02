@@ -1,6 +1,6 @@
 # Vibe CPA Skills
 
-A Claude Skills pack for U.S. CPAs. 33+ skills covering federal
+A Claude Skills pack for U.S. CPAs. 37+ skills covering federal
 research, prediction, return summary, planning (incl. multi-year
 sunset / phase-out tracking), state research for all 50 states +
 DC, IRC + Public Law lookup with USC Classification Table workflow,
@@ -91,14 +91,17 @@ Per-skill ZIP upload. See
 | [return-summary-entity](skills/return-summary-entity) | 1120 / 1120-S / 1065 line keys + red-flag catalog |
 | [notice-response](skills/notice-response) | CP / Letter / LT triage with response templates |
 
-### Planning (4)
+### Planning (4 + 3 catalog/elections)
 
 | Skill | Description |
 |---|---|
 | [planning-actions-1040](skills/planning-actions-1040) | Individual planning checklist (17 categories) |
 | [planning-actions-entity](skills/planning-actions-entity) | Entity planning checklist (16 categories) |
 | [planning-multi-year](skills/planning-multi-year) | Sunset / phase-out / phase-in calendar |
-| [planning-strategy-library](skills/planning-strategy-library) | 30-strategy catalog |
+| [planning-strategy-library](skills/planning-strategy-library) | 30 curated + 87 extended-reference addendum strategies (#8–#94) with cross-reference matrix |
+| [s-corp-strategy-catalog](skills/s-corp-strategy-catalog) | 10 S-corp strategies mapped to Form 1120-S lines |
+| [schedule-c-strategy-catalog](skills/schedule-c-strategy-catalog) | 10 Schedule C / SE strategies mapped to Schedule C / Form 8829 lines |
+| [tax-elections-library](skills/tax-elections-library) | 24 tax elections with authority, deadlines, and sample language |
 
 ### Utilities (5)
 

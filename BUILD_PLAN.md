@@ -311,6 +311,63 @@ release; open a PR and stop)
 - [x] Add a final BUILD_PLAN.md session-log entry
 - [x] STOP. Kurt merges, tags v1.0.0-beta, and creates the release.
 
+## Phase 8 — Strategy library expansion + catalog skills + elections library
+
+Triggered by Kurt dropping new source markdown into `docs/`:
+- `docs/addendum-strategy-library-part-{2..10}-of-10.md` (Part 1 not delivered)
+- `docs/addendum-strategy-library-21-reasonable-comp-update.md`
+- `docs/skill-corp-vehicle-personal-name.md`
+- `docs/skill-s-corp-home-office-reimbursement.md`
+- `docs/skill-s-corp-strategy-catalog.md`
+- `docs/skill-schedule-c-strategy-catalog.md`
+- `docs/elections-library.md`
+- `docs/bradford-tax-strategies-skills.md` (derivative of the above; not extracted)
+
+Validation: `SKIP_URL_CHECK=1 ./scripts/validate.sh full && ./scripts/run-evals.sh full`
+
+- [x] 8a — Extract addendum strategies #8–#94 (Parts 2–10) into
+      `skills/planning-strategy-library/references/strategies/`
+      via `scripts/extract_addendum_strategies.py` (87 files; 4
+      slug collisions written as `<slug>-extended.md` to preserve
+      curated 30; cross-refs rewritten in extracted bodies).
+- [x] 8b — Apply rewritten Strategy #21 from
+      `addendum-strategy-library-21-reasonable-comp-update.md`
+      to `references/strategies/reasonable-comp-corp-owners.md`.
+- [x] 8c — Add 2 standalone strategy files
+      (`corp-vehicle-personal-name.md`,
+      `s-corp-home-office-reimbursement.md`).
+- [x] 8d — Build cross-reference matrix
+      (`references/strategy-cross-reference.md` + machine-readable
+      `references/strategy-relationships.json` via
+      `scripts/generate_strategy_relationships.py`).
+- [x] 8e — Build `s-corp-strategy-catalog` skill (SKILL.md +
+      `references/strategy-table.md` + 3 eval cases).
+- [x] 8f — Build `schedule-c-strategy-catalog` skill (SKILL.md +
+      `references/strategy-table.md` + 3 eval cases).
+- [x] 8g — Build `tax-elections-library` skill (SKILL.md +
+      `references/index.md` + 24 per-election files via
+      `scripts/extract_elections.py` + 3 eval cases).
+- [x] 8h — Update `cpa-pack-index` dispatcher with 3 new routes;
+      `shared/strategy-list.md` cross-references the extended
+      library; README skills index, plugin.json, marketplace.json
+      updated.
+- [x] 8i — Validate.sh updated to allow CITATION NEEDED sentinels
+      in extended strategies + elections directories (per
+      `shared/citation-discipline.md` discipline; sentinels are
+      explicit verification flags, not fabrications).
+- [x] 8j — Strip Bradford / TaxSpeaker branding (3 source docs
+      contained mentions; none flowed into output skill files).
+- [x] 8k — QUESTIONS.md entry for skipped Part 1 strategies #1–#7.
+- [x] 8l — Validate.sh + run-evals.sh full both green.
+- [x] 8m — Commit family-by-family; push to `build`.
+
+Out of scope for Phase 8:
+- Strategies #1–#7 (Part 1 of source addendum not delivered).
+- Live-runner eval pass rate.
+- Authority_type schema additions for the addendum's bespoke
+  labels (JobAid, IRSStudy, FactSheet, PractitionerHeuristic,
+  etc.) — currently emitted as warnings.
+
 ---
 
 ## Session log
