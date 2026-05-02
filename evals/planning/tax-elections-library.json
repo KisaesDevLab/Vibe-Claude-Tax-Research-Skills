@@ -1,0 +1,50 @@
+{
+  "skill_name": "tax-elections-library",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "section-83b-30-day",
+      "prompt": "Founder received 1,000,000 shares of restricted stock 2 weeks ago at $0.0001/share (FMV). What election should they consider and what is the deadline?",
+      "expected_output": "Loads `references/elections/section-83b-election.md`. Identifies §83(b) election under §83 and Reg. §1.83-2. Deadline is 30 days from the date of property transfer — jurisdictional and cannot be extended; late filing voids the election; §9100 relief is NOT available for the 30-day statutory deadline. Mechanics: mail original to IRS service center where taxpayer files Form 1040, copy to the employer/grantor, copy attached to Form 1040 for the year of transfer. Reproduces sample election language verbatim from the reference file with placeholders for taxpayer name, FEIN, transfer date, FMV, and amount paid. Notes the strategic effect: pay ordinary income tax on $100 (1M × $0.0001) now; all future appreciation through vesting is capital gain. Flags risk of forfeiture before vesting (no refund of taxes paid). Confidence band HIGH (clear statutory framework).",
+      "expectations": [
+        "Identifies §83(b) election",
+        "States 30-day jurisdictional deadline",
+        "Notes §9100 relief unavailable",
+        "Lists three filing destinations (IRS, employer, return)",
+        "Reproduces sample language",
+        "Notes forfeiture risk",
+        "Confidence band HIGH with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "late-s-election-rev-proc-2013-30",
+      "prompt": "Client formed an LLC on January 1, 2024, and intended to elect S corp treatment effective that date. They never filed Form 2553. It's now April 2026. Is there a path forward?",
+      "expected_output": "Loads `references/elections/s-corp-late-election.md`. Confirms Rev. Proc. 2013-30 provides simplified late-S-corp election relief: must file within 3 years and 75 days after intended effective date — January 1, 2024 + 3 yr 75 days = March 17, 2027 → still within the window in April 2026. Eligibility: entity intended to be S corp from formation; reasonable cause for failure to file; failure not for tax avoidance; entity has not filed any returns inconsistent with S-corp treatment OR has filed consistent returns; all returns are consistent with S-corp treatment. Mechanics: file Form 2553 with 'FILED PURSUANT TO REV. PROC. 2013-30' typed across the top; attach a reasonable cause statement; all shareholders sign; if any return has been filed inconsistent with S-corp treatment, must amend. Single combined election covers Form 2553 + late QSST/ESBT + late entity classification (if Form 8832 also needed). Confidence band HIGH within the 3yr/75d window with reasonable cause; MODERATE if returns have been filed inconsistently.",
+      "expectations": [
+        "Cites Rev. Proc. 2013-30",
+        "Computes 3yr 75d deadline (March 17, 2027)",
+        "Lists eligibility (intent, reasonable cause, no avoidance, return consistency)",
+        "Specifies the 'FILED PURSUANT TO' header on Form 2553",
+        "Notes single combined election covers QSST/ESBT/8832",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "section-754-step-up-mechanics",
+      "prompt": "A partner in a partnership died. The partnership wants to make a §754 election to step up the inside basis of partnership property to the deceased partner's outside basis. How is this done?",
+      "expected_output": "Loads `references/elections/section-754-step-up.md`. Identifies §754 election; effects §743(b) inside-basis adjustment for the transferee on a death (§1014 outside-basis step-up to FMV at death) and §734(b) for distributions. Filing: written statement attached to a timely-filed (with extensions) partnership return for the year of the triggering event; statement must (a) declare partnership elects under §754, (b) state name and address, (c) be signed by any partner. Once made, the election is irrevocable except with IRS consent under Reg. §1.754-1(c). §9100 relief frequently granted under Reg. §301.9100-3 if facts show reasonable good faith and no government prejudice. Notes the §743(b) adjustment is partner-specific; §734(b) is partnership-wide for distributions. Surfaces complexity: §755 allocation rules; ongoing tracking obligation; state non-conformity (CA / NY follow §754 but mechanical timing varies). Confidence band HIGH on mechanics; MODERATE if §9100 relief is being relied upon.",
+      "expectations": [
+        "Cites §754 / §743(b) / §734(b)",
+        "States 'with timely return' deadline",
+        "Lists three required statement components",
+        "Notes irrevocability and IRS consent under Reg. §1.754-1(c)",
+        "Notes §9100 relief frequently granted",
+        "Mentions §755 allocation",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}
