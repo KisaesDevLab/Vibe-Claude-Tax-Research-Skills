@@ -1,0 +1,51 @@
+{
+  "skill_name": "schedule-c-strategy-catalog",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "child-fica-exemption-entity-check",
+      "prompt": "I run my consulting business as a single-member LLC with default tax treatment. I want to hire my 14-year-old to do data entry. Is the FICA exemption available?",
+      "expected_output": "Loads catalog Strategy D2 and detail file `hiring-kids-self-employed.md`. Confirms §3121(b)(3)(A) FICA exemption applies — single-member LLC with default tax treatment is treated as a sole proprietorship for federal employment-tax purposes. Wages to the child under 18 are FICA-exempt; wages under 21 are FUTA-exempt under §3306(c)(5). Substance still required: bona fide work, age-appropriate (data entry is generally appropriate at age 14), reasonable wage ($5–15/hr for clerical work is defensible), W-4/I-9/time records/payroll register/W-2, separate child bank account. Wages within $15,750 (2025 single standard deduction) → $0 federal income tax to child; child can fund Roth IRA up to lesser of earned income or §408A limit. Cross-references *Eller* and *Denman* for substance. Confidence band HIGH on the entity-eligibility point.",
+      "expectations": [
+        "Confirms FICA exemption for SMLLC default treatment",
+        "Cites §3121(b)(3)(A) and §3306(c)(5)",
+        "Notes age-appropriate work and reasonable wage requirements",
+        "Cites Eller and Denman",
+        "Quotes 2025 standard deduction ($15,750) with year tag",
+        "Routes to hiring-kids-self-employed.md",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "rent-from-spouse-bobo-test",
+      "prompt": "Can I rent my home office from my spouse to avoid SE tax on the rent? Spouse will provide cleaning twice a week.",
+      "expected_output": "Loads catalog Strategy D4 and detail file `split-entity-operations-vs-re.md`. Confirms the general rule — real-property rent excluded from SE under §1402(a)(1); reported on spouse's Schedule E. BUT flags *Bobo v. Commissioner*, T.C. Memo. 1989-329 and CCA 202151005: services 'usually or customarily provided' (e.g., daily linens, on-call concierge, hotel-like services) recharacterize the income as Schedule C trade-or-business → SE-taxable. Twice-weekly cleaning is a fact-intensive call; light periodic cleaning incidental to a rental may stay on Schedule E, but daily housekeeping crosses into substantial services. Recommends limiting spouse-provided services to those incidental to the rental (utilities, repairs); have the proprietor or a third party handle cleaning. Also flags §469 self-rental rules under Reg. §1.469-2(f)(6) — net rental income recharacterized as non-passive when leased to a trade or business in which the taxpayer materially participates; and Reg. §1.469-1T(j) treating spouses as separate taxpayers for §469. Mechanics: written FMV lease (3 comparable rate quotes), separate bank accounts, recorded transactions. Confidence band MODERATE (statute clear; substance fact-intensive).",
+      "expectations": [
+        "Cites §1402(a)(1) and Bobo / CCA 202151005",
+        "Identifies twice-weekly cleaning as a substance risk",
+        "Recommends limiting spouse services or using third party",
+        "Cites §469 self-rental rule (Reg. §1.469-2(f)(6))",
+        "Cites Reg. §1.469-1T(j) spouse separateness",
+        "Lists FMV documentation requirements",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    },
+    {
+      "id": "home-office-actual-vs-simplified",
+      "prompt": "Sole prop with a 200 sq ft home office, $30,000 annual home expenses (mortgage interest, utilities, insurance, depreciation). Should I use Form 8829 or the simplified method?",
+      "expected_output": "Loads catalog Strategy D5 and detail file `home-office-deduction-self-employed.md`. Walks the comparison: Simplified method = $5 × 200 sq ft = $1,000/year; Form 8829 actual-expense = business-use % × $30,000 minus land allocation. Assuming 200 sq ft / 2,000 sq ft total = 10% business use → $3,000 actual deduction (subject to §280A(c)(5) net income limit). Recommends Form 8829 for the larger deduction, with two trade-offs flagged: (1) §1250 unrecaptured gain on sale (max 25% per §1(h)(6)(A)) — depreciation taken on the home office is recaptured at sale; (2) administrative overhead (Form 8829 worksheet, depreciation schedule). Notes the post-1999 §280A(c)(1) administrative-or-management test means having an outside office does not disqualify the home office. Confidence band HIGH on method comparison; flag client should evaluate the long-term §1250 recapture cost vs. annual deduction.",
+      "expectations": [
+        "Computes simplified ($1,000) and actual ($3,000) numbers",
+        "Cites §280A(c)(1) post-1999 administrative-or-management test",
+        "Names §1250 unrecaptured gain and §1(h)(6)(A) 25% cap",
+        "Cites §280A(c)(5) net income limitation",
+        "Distinguishes the two methods in a comparison table",
+        "Routes to home-office-deduction-self-employed.md",
+        "Confidence band assigned with rationale",
+        "JSON sidecar validates"
+      ]
+    }
+  ]
+}
