@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "vibe-cpa-pack",
   "version": "0.1.0",
-  "description": "Vibe CPA Skills — 28-skill Claude Skills pack for CPAs covering all 50 states + DC. Strict citation discipline, AICPA SSTS / Circular 230 compliance scaffolding, USC Classification Table workflow for Public-Law tracking.",
+  "description": "Vibe CPA Skills — Claude Skills pack for CPAs covering all 50 states + DC. Strict citation discipline, AICPA SSTS / Circular 230 compliance scaffolding, USC Classification Table workflow for Public-Law tracking. Includes S-corp / Schedule C strategy catalogs, 24-election library, and 117-strategy planning library (30 curated + 87 extended addendum).",
   "homepage": "https://github.com/KisaesDevLab/vibe-claude-tax-research-skills",
   "license": "BUSL-1.1",
   "author": {
@@ -38,6 +38,9 @@
     "skills/planning-actions-entity",
     "skills/planning-multi-year",
     "skills/planning-strategy-library",
+    "skills/s-corp-strategy-catalog",
+    "skills/schedule-c-strategy-catalog",
+    "skills/tax-elections-library",
     "skills/irc-section-lookup",
     "skills/treas-reg-lookup",
     "skills/form-line-explainer",
