@@ -14,7 +14,7 @@
       "source": "github:KisaesDevLab/vibe-claude-tax-research-skills",
       "branch": "main",
       "path": ".",
-      "description": "28 skills + 1 dispatcher covering federal research, prediction, return summary, planning, state research (50 + DC), and tax compliance utilities — with strict citation discipline and AICPA SSTS / Circular 230 scaffolding.",
+      "description": "37+ skills covering federal research, prediction, return summary, planning, state research (50 + DC), tax compliance utilities, S-corp / Schedule C strategy catalogs, a 24-election library, and a 117-strategy planning library — with strict citation discipline and AICPA SSTS / Circular 230 scaffolding.",
       "tags": ["cpa", "tax", "research", "compliance", "ssts", "circular-230", "us-tax", "state-tax"]
     }
   ]

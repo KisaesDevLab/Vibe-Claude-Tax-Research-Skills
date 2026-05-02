@@ -69,6 +69,9 @@ The specialist skill will then load any topic-specific references.
 | Asks "what should this entity do this year" | `planning-actions-entity` |
 | Asks for multi-year scenario planning, sunset/effective-date scoring | `planning-multi-year` |
 | Asks "what strategies are available for …" or "give me ideas for …" | `planning-strategy-library` |
+| Asks about S-corp owner planning, Form 1120-S line strategies, accountable-plan reimbursements to a 2%+ shareholder, Augusta Rule, S-corp owner reasonable comp | `s-corp-strategy-catalog` |
+| Asks about Schedule C / SMLLC default planning, Form 8829 home office, §105 HRA spouse, hire-your-child sole prop, rent-from-spouse, heavy-vehicle + home-office combo, §274(c) foreign travel | `schedule-c-strategy-catalog` |
+| Asks about a tax election by name, IRC section, or Rev. Proc. (e.g., "§83(b)", "§754", "QSST", "Rev. Proc. 2013-30 late S"), or asks for sample election attachment language | `tax-elections-library` |
 | Asks "what does §X say" or references a Public Law popular name | `irc-section-lookup` |
 | Asks "what does Reg §1.X-Y say" or references a TD | `treas-reg-lookup` |
 | Asks "what is line N on Form X" | `form-line-explainer` |
