@@ -1,0 +1,1440 @@
+{
+  "version": "1.0.0",
+  "source": "skills/planning-strategy-library/references/strategy-cross-reference.md",
+  "note": "Strategies #1-#7 from the addendum's Part 1 were not delivered; their rows are present for navigability but detail_file is null.",
+  "strategies": [
+    {
+      "id": 1,
+      "name": "1031 Like-Kind Exchange *(addendum Part 1 not delivered)",
+      "detail_file": null,
+      "delivered": false,
+      "combines_with": [
+        "#25",
+        "#41",
+        "#92"
+      ],
+      "conflicts_with": [
+        "#29 (DST)",
+        "#30 (loss recognition)"
+      ],
+      "mutually_exclusive_with": [
+        "#33 (installment)",
+        "#34 (QOZ)",
+        "#67 (\u00a7121)"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Accountable Plan / Home Office *(addendum Part 1 not delivered)",
+      "detail_file": null,
+      "delivered": false,
+      "combines_with": [
+        "#4",
+        "#5",
+        "#22",
+        "#23"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": [
+        "#84 (Schedule C direct deduction)"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Active Participation in RE *(addendum Part 1 not delivered)",
+      "detail_file": null,
+      "delivered": false,
+      "combines_with": [
+        "#25",
+        "#41"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": [
+        "#20 (REPS \u2014 superior path)"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Business Vehicle Usage *(addendum Part 1 not delivered)",
+      "detail_file": null,
+      "delivered": false,
+      "combines_with": [
+        "#2",
+        "#12",
+        "#22",
+        "#23"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": [
+        "#85 (SE variant)"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Cell Phone *(addendum Part 1 not delivered)",
+      "detail_file": null,
+      "delivered": false,
+      "combines_with": [
+        "#2",
+        "#22"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 6,
+      "name": "Day Trader / \u00a7475(f) *(addendum Part 1 not delivered)",
+      "detail_file": null,
+      "delivered": false,
+      "combines_with": [],
+      "conflicts_with": [
+        "\u00a71411 NIIT (\u00a7475 income still NII for non-trade)"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 7,
+      "name": "ESOP *(addendum Part 1 not delivered)",
+      "detail_file": null,
+      "delivered": false,
+      "combines_with": [
+        "#21 reasonable comp"
+      ],
+      "conflicts_with": [
+        "\u00a7409A interaction"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 8,
+      "name": "Group Health Insurance",
+      "detail_file": "group-health-insurance",
+      "delivered": true,
+      "combines_with": [
+        "#62",
+        "#71"
+      ],
+      "conflicts_with": [
+        "#11 standalone HRA (Notice 2013-54)"
+      ],
+      "mutually_exclusive_with": [
+        "#10 (S corp variant)"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Grouping of Activities",
+      "detail_file": "grouping-of-activities",
+      "delivered": true,
+      "combines_with": [
+        "#20 REPS",
+        "#19 \u00a7199A aggregation"
+      ],
+      "conflicts_with": [
+        "Self-rental (#16)"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 10,
+      "name": "Health Insurance \u2014 S Corp",
+      "detail_file": "health-insurance-s-corp",
+      "delivered": true,
+      "combines_with": [
+        "#21",
+        "#71"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": [
+        "#87 (SE variant)",
+        "#8 (group plan)"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "HRA / MERP",
+      "detail_file": "hra-merp",
+      "delivered": true,
+      "combines_with": [
+        "#50 (spouse employee)"
+      ],
+      "conflicts_with": [
+        "#8 standalone (Notice 2013-54)",
+        "#62 HCFSA"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 12,
+      "name": "Bonus & \u00a7179 Depreciation",
+      "detail_file": "bonus-and-section-179-depreciation",
+      "delivered": true,
+      "combines_with": [
+        "#28",
+        "#41",
+        "#85",
+        "#89"
+      ],
+      "conflicts_with": [
+        "#461(l) excess business loss"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 13,
+      "name": "Maximize Business Deductions",
+      "detail_file": "maximize-business-deductions",
+      "delivered": true,
+      "combines_with": [
+        "All deduction-related"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 14,
+      "name": "Meals & Entertainment",
+      "detail_file": "meals-and-entertainment",
+      "delivered": true,
+      "combines_with": [
+        "#2",
+        "#13"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 15,
+      "name": "NOL Carryback / Carryforward",
+      "detail_file": "nol-carryback-carryforward",
+      "delivered": true,
+      "combines_with": [
+        "#30",
+        "#44 (W-2 wage history)"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 16,
+      "name": "Passive Income & PIGs",
+      "detail_file": "passive-income-pigs",
+      "delivered": true,
+      "combines_with": [
+        "#3",
+        "#9"
+      ],
+      "conflicts_with": [
+        "Self-rental rule"
+      ],
+      "mutually_exclusive_with": [
+        "#20 REPS (different path)",
+        "#17 PTET"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "PTET",
+      "detail_file": "ptet-salt-workaround",
+      "delivered": true,
+      "combines_with": [
+        "#19 (interacts with state income)",
+        "#25"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 18,
+      "name": "Prepayment of Expense",
+      "detail_file": "prepayment-of-expense",
+      "delivered": true,
+      "combines_with": [
+        "#13"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": [
+        "#91 (SE variant)"
+      ]
+    },
+    {
+      "id": 19,
+      "name": "QBI Deduction",
+      "detail_file": "qbi-deduction",
+      "delivered": true,
+      "combines_with": [
+        "#9 (aggregation)",
+        "#20",
+        "#25",
+        "#57",
+        "predict-qbi-eligibility"
+      ],
+      "conflicts_with": [
+        "C corp election (#47)"
+      ],
+      "mutually_exclusive_with": [
+        "#47 (C corp shifts income out of QBI)"
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Real Estate Professional",
+      "detail_file": "real-estate-professional-extended",
+      "delivered": true,
+      "combines_with": [
+        "#9",
+        "#20",
+        "#25",
+        "#41",
+        "predict-real-estate-pro"
+      ],
+      "conflicts_with": [
+        "#69 (NIIT may not apply if \u00a7162 trade)"
+      ],
+      "mutually_exclusive_with": [
+        "#3 (under-threshold alternative)",
+        "#26 (STR alternative)"
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Reasonable Comp Corp Owners",
+      "detail_file": "reasonable-comp-corp-owners",
+      "delivered": true,
+      "combines_with": [
+        "#19",
+        "#22",
+        "#50",
+        "#82",
+        "predict-reasonable-comp"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": [
+        "#86 (SE alternative analysis)"
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Reimbursement of Business Expenses",
+      "detail_file": "reimbursement-business-expenses",
+      "delivered": true,
+      "combines_with": [
+        "#2",
+        "#4",
+        "#5"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": [
+        "#84 (SE variant)"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Reimbursement Depreciation S-Corp Vehicle",
+      "detail_file": "reimbursement-depreciation-s-corp-vehicle",
+      "delivered": true,
+      "combines_with": [
+        "#4",
+        "#12"
+      ],
+      "conflicts_with": [
+        "Standard mileage with #4 (lock-in)"
+      ],
+      "mutually_exclusive_with": [
+        "#4 (alternative method)"
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Augusta Rule",
+      "detail_file": "augusta-rule-280a-g",
+      "delivered": true,
+      "combines_with": [
+        "#2",
+        "#14"
+      ],
+      "conflicts_with": [
+        "Total annual rentals >14 days"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 25,
+      "name": "Rental Strategies",
+      "detail_file": "rental-strategies",
+      "delivered": true,
+      "combines_with": [
+        "#1",
+        "#3",
+        "#9",
+        "#16",
+        "#17",
+        "#20",
+        "#25",
+        "#26",
+        "#41",
+        "#67"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 26,
+      "name": "Short-Term Rental",
+      "detail_file": "short-term-rental",
+      "delivered": true,
+      "combines_with": [
+        "#41",
+        "#69",
+        "predict-material-participation"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": [
+        "#20 REPS (alternative path)",
+        "#25 long-term rental"
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Startup Cost Optimization",
+      "detail_file": "startup-cost-optimization",
+      "delivered": true,
+      "combines_with": [
+        "#12",
+        "#18"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 28,
+      "name": "De Minimis Safe Harbor",
+      "detail_file": "de-minimis-safe-harbor",
+      "delivered": true,
+      "combines_with": [
+        "#12",
+        "#13"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": [
+        "#93 (SE variant)"
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Deferred Sales Trust [AGGRESSIVE]",
+      "detail_file": "deferred-sales-trust",
+      "delivered": true,
+      "combines_with": [],
+      "conflicts_with": [
+        "Notice 2023-34 listed transaction"
+      ],
+      "mutually_exclusive_with": [
+        "#1",
+        "#33",
+        "#34 (compliant alternatives)"
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Worthless Stock Ordinary Loss",
+      "detail_file": "worthless-stock-ordinary-loss",
+      "delivered": true,
+      "combines_with": [
+        "#15 NOL"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 31,
+      "name": "C Corp Dividends",
+      "detail_file": "c-corp-dividends",
+      "delivered": true,
+      "combines_with": [
+        "#21",
+        "#42",
+        "#47"
+      ],
+      "conflicts_with": [
+        "\u00a7531 / \u00a7541 penalty taxes"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 32,
+      "name": "Capital Gain Offsets",
+      "detail_file": "capital-gain-offsets",
+      "delivered": true,
+      "combines_with": [
+        "#46",
+        "#51",
+        "#54",
+        "#69"
+      ],
+      "conflicts_with": [
+        "\u00a71091 wash sale"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 33,
+      "name": "Installment Sale",
+      "detail_file": "installment-sale",
+      "delivered": true,
+      "combines_with": [
+        "#25",
+        "#92"
+      ],
+      "conflicts_with": [
+        "\u00a7453(g) related party trap"
+      ],
+      "mutually_exclusive_with": [
+        "#1",
+        "#34 (alternative deferrals)"
+      ]
+    },
+    {
+      "id": 34,
+      "name": "QOZ Reinvestment",
+      "detail_file": "qoz-reinvestment",
+      "delivered": true,
+      "combines_with": [
+        "#43 (potential combo for double exclusion)"
+      ],
+      "conflicts_with": [
+        "Dec 31 2026 mandatory recognition"
+      ],
+      "mutually_exclusive_with": [
+        "#1",
+        "#33 (alternative deferrals)"
+      ]
+    },
+    {
+      "id": 35,
+      "name": "C Corp State Tax Savings",
+      "detail_file": "c-corp-state-tax-savings",
+      "delivered": true,
+      "combines_with": [
+        "#17 PTET equiv",
+        "#47"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 36,
+      "name": "EV Credits",
+      "detail_file": "ev-credits",
+      "delivered": true,
+      "combines_with": [
+        "#4",
+        "#12"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 37,
+      "name": "Late Penalties / Interest",
+      "detail_file": "late-penalties-interest",
+      "delivered": true,
+      "combines_with": [
+        "#66 broader penalty abatement"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 38,
+      "name": "Misc Tax Credits",
+      "detail_file": "misc-tax-credits",
+      "delivered": true,
+      "combines_with": [
+        "#39",
+        "#58",
+        "#61"
+      ],
+      "conflicts_with": [
+        "\u00a738(c) tax liability limit"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 39,
+      "name": "R&D Credit",
+      "detail_file": "r-and-d-credit-strategy",
+      "delivered": true,
+      "combines_with": [
+        "#38",
+        "predict-r-and-d-credit"
+      ],
+      "conflicts_with": [
+        "\u00a7174 capitalization (TCJA)"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 40,
+      "name": "State Tax Savings",
+      "detail_file": "state-tax-savings",
+      "delivered": true,
+      "combines_with": [
+        "#17 PTET",
+        "#67 \u00a7121",
+        "residency planning"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 41,
+      "name": "Cost Segregation",
+      "detail_file": "cost-segregation-extended",
+      "delivered": true,
+      "combines_with": [
+        "#12",
+        "#20",
+        "#25",
+        "#26"
+      ],
+      "conflicts_with": [
+        "\u00a71245 recapture at sale (later)"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 42,
+      "name": "C Corp Misc Deductions",
+      "detail_file": "c-corp-misc-deductions",
+      "delivered": true,
+      "combines_with": [
+        "#31",
+        "#35",
+        "#43",
+        "#47"
+      ],
+      "conflicts_with": [
+        "\u00a7163(j) limit"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 43,
+      "name": "\u00a71202 QSBS",
+      "detail_file": "section-1202-qsbs-extended",
+      "delivered": true,
+      "combines_with": [
+        "#47 (C corp formation)",
+        "#34"
+      ],
+      "conflicts_with": [
+        "S corp / LLC stock not eligible"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 44,
+      "name": "Corporate-Owned VUL [AGGRESSIVE]",
+      "detail_file": "corporate-owned-vul",
+      "delivered": true,
+      "combines_with": [],
+      "conflicts_with": [
+        "\u00a7101(j) compliance",
+        "\u00a7409A",
+        "\u00a77702A MEC"
+      ],
+      "mutually_exclusive_with": [
+        "#74 (similar individual strategy)",
+        "#75-#83 (compliant retirement alternatives)"
+      ]
+    },
+    {
+      "id": 45,
+      "name": "\u00a7127 Education Assistance",
+      "detail_file": "section-127-education-assistance",
+      "delivered": true,
+      "combines_with": [
+        "#71"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": [
+        "#61 education credits (different funding source)"
+      ]
+    },
+    {
+      "id": 46,
+      "name": "Gifting Stock",
+      "detail_file": "gifting-stock",
+      "delivered": true,
+      "combines_with": [
+        "#51",
+        "#54",
+        "#56",
+        "#57"
+      ],
+      "conflicts_with": [
+        "\u00a71015 carryover basis (vs. \u00a71014 step-up)"
+      ],
+      "mutually_exclusive_with": [
+        "#51 charity-only (different recipient)"
+      ]
+    },
+    {
+      "id": 47,
+      "name": "Income Shifting to C Corp [Caution]",
+      "detail_file": "income-shifting-to-c-corp",
+      "delivered": true,
+      "combines_with": [
+        "#43 (QSBS interaction)",
+        "#47"
+      ],
+      "conflicts_with": [
+        "\u00a7269A PSC",
+        "\u00a7531/\u00a7541",
+        "\u00a7482 transfer pricing"
+      ],
+      "mutually_exclusive_with": [
+        "#19 \u00a7199A (forfeit pass-through QBI)"
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Income Shifting to Family Member",
+      "detail_file": "income-shifting-family-member",
+      "delivered": true,
+      "combines_with": [
+        "#46",
+        "#49",
+        "#50",
+        "#55",
+        "#57"
+      ],
+      "conflicts_with": [
+        "\u00a71(g) kiddie tax (under 24 dependents)"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 49,
+      "name": "Hiring Kids",
+      "detail_file": "hiring-kids",
+      "delivered": true,
+      "combines_with": [
+        "#11 (HRA family)",
+        "#50",
+        "#79 Roth IRA"
+      ],
+      "conflicts_with": [
+        "\u00a73121(b)(3) limited to non-corporate"
+      ],
+      "mutually_exclusive_with": [
+        "#94 (SE variant)"
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Wages: Spouse / Non-Dependents / Parents",
+      "detail_file": "wages-spouse-parents",
+      "delivered": true,
+      "combines_with": [
+        "#11 (HRA spouse)",
+        "#21",
+        "#75-#83"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 51,
+      "name": "Charitable Donation Appreciated",
+      "detail_file": "charitable-donation-appreciated",
+      "delivered": true,
+      "combines_with": [
+        "#32",
+        "#46",
+        "#54"
+      ],
+      "conflicts_with": [
+        "Short-term property limited to basis"
+      ],
+      "mutually_exclusive_with": [
+        "#54 DAF",
+        "#78 QCD (alternative paths)"
+      ]
+    },
+    {
+      "id": 52,
+      "name": "Charitable LLC [AGGRESSIVE]",
+      "detail_file": "charitable-llc",
+      "delivered": true,
+      "combines_with": [],
+      "conflicts_with": [
+        "IRS Dirty Dozen / private benefit / \u00a7501(c)(3)"
+      ],
+      "mutually_exclusive_with": [
+        "#51",
+        "#54 (compliant alternatives)"
+      ]
+    },
+    {
+      "id": 53,
+      "name": "Charitable Planning",
+      "detail_file": "charitable-planning",
+      "delivered": true,
+      "combines_with": [
+        "All charitable strategies (umbrella)"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 54,
+      "name": "Donor Advised Fund",
+      "detail_file": "donor-advised-fund",
+      "delivered": true,
+      "combines_with": [
+        "#46",
+        "#51",
+        "#32 (bunching strategy)"
+      ],
+      "conflicts_with": [
+        "\u00a74966/\u00a74967 distributions"
+      ],
+      "mutually_exclusive_with": [
+        "#78 QCD (alternative)"
+      ]
+    },
+    {
+      "id": 55,
+      "name": "Family Limited Partnership [AGGRESSIVE]",
+      "detail_file": "family-limited-partnership",
+      "delivered": true,
+      "combines_with": [
+        "#46",
+        "#48",
+        "#56"
+      ],
+      "conflicts_with": [
+        "\u00a72036",
+        "\u00a72704",
+        "\u00a72503"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 56,
+      "name": "Unreimbursed Partnership Expenses",
+      "detail_file": "unreimbursed-partnership-expenses",
+      "delivered": true,
+      "combines_with": [
+        "#2",
+        "#4",
+        "#5 (substance-equivalent)"
+      ],
+      "conflicts_with": [
+        "Klaassen if reimbursable"
+      ],
+      "mutually_exclusive_with": [
+        "#2 (corporate accountable plan)"
+      ]
+    },
+    {
+      "id": 57,
+      "name": "529 Savings Plan",
+      "detail_file": "529-savings-plan",
+      "delivered": true,
+      "combines_with": [
+        "#46",
+        "#48",
+        "#60",
+        "#61",
+        "#80 (Roth rollover)"
+      ],
+      "conflicts_with": [
+        "\u00a7529 vs. \u00a725A double-dipping"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 58,
+      "name": "Adoption Incentives",
+      "detail_file": "adoption-incentives",
+      "delivered": true,
+      "combines_with": [
+        "#71 \u00a7137"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 59,
+      "name": "Amend for Missed Deductions",
+      "detail_file": "amend-missed-deductions",
+      "delivered": true,
+      "combines_with": [
+        "All missed-item strategies"
+      ],
+      "conflicts_with": [
+        "\u00a76511 statute"
+      ],
+      "mutually_exclusive_with": [
+        "Form 3115 (alternative for method changes)"
+      ]
+    },
+    {
+      "id": 60,
+      "name": "College Student Strategies",
+      "detail_file": "college-student-strategies",
+      "delivered": true,
+      "combines_with": [
+        "#45",
+        "#49",
+        "#57",
+        "#61",
+        "#79",
+        "#80"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 61,
+      "name": "Education Credits",
+      "detail_file": "education-credits",
+      "delivered": true,
+      "combines_with": [
+        "#57",
+        "#60",
+        "#80",
+        "#45"
+      ],
+      "conflicts_with": [
+        "\u00a7529 double-dipping prohibition"
+      ],
+      "mutually_exclusive_with": [
+        "AOTC vs. LLC (per student per year)"
+      ]
+    },
+    {
+      "id": 62,
+      "name": "Flexible Spending Account",
+      "detail_file": "flexible-spending-account",
+      "delivered": true,
+      "combines_with": [
+        "#8"
+      ],
+      "conflicts_with": [
+        "#63 HSA (HCFSA disqualifies; LPFSA OK)"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 63,
+      "name": "HSA Optimization",
+      "detail_file": "hsa-optimization",
+      "delivered": true,
+      "combines_with": [
+        "#8 HDHP",
+        "#62 LPFSA",
+        "#71",
+        "#79"
+      ],
+      "conflicts_with": [
+        "#11 traditional HRA",
+        "#62 standard HCFSA"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 64,
+      "name": "Individual Planning Ideas",
+      "detail_file": "individual-planning-ideas",
+      "delivered": true,
+      "combines_with": [
+        "All individual strategies (umbrella)"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 65,
+      "name": "Married Filing Separate",
+      "detail_file": "married-filing-separate",
+      "delivered": true,
+      "combines_with": [
+        "#61 disqualification",
+        "#79 phase-out",
+        "#69"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 66,
+      "name": "Penalty Abatement",
+      "detail_file": "penalty-abatement",
+      "delivered": true,
+      "combines_with": [
+        "#37",
+        "#59 (amend for FTA)",
+        "predict-reasonable-cause"
+      ],
+      "conflicts_with": [
+        "\u00a76707A limited reasonable cause"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 67,
+      "name": "Primary Home Sale Exclusion",
+      "detail_file": "primary-home-sale-exclusion",
+      "delivered": true,
+      "combines_with": [
+        "#25",
+        "#40 (domicile)",
+        "#88 (recapture)"
+      ],
+      "conflicts_with": [
+        "Non-qualified use post-2008"
+      ],
+      "mutually_exclusive_with": [
+        "#1 (rental conversion path)"
+      ]
+    },
+    {
+      "id": 68,
+      "name": "Employee Stock Options",
+      "detail_file": "employee-stock-options",
+      "delivered": true,
+      "combines_with": [
+        "#43",
+        "#69",
+        "#32",
+        "#80 (NQSO income management)"
+      ],
+      "conflicts_with": [
+        "\u00a7409A",
+        "\u00a71091 wash sale"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 69,
+      "name": "NIIT Minimization",
+      "detail_file": "niit-minimization",
+      "delivered": true,
+      "combines_with": [
+        "#20",
+        "#26",
+        "#9",
+        "#80",
+        "#63",
+        "#75-#83",
+        "#67"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 70,
+      "name": "Series I Bond",
+      "detail_file": "series-i-bond",
+      "delivered": true,
+      "combines_with": [
+        "#61 \u00a7135 education",
+        "#57 (alternative)"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 71,
+      "name": "Employer Benefit Package Review",
+      "detail_file": "employer-benefit-package-review",
+      "delivered": true,
+      "combines_with": [
+        "All employer benefits (umbrella)"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 72,
+      "name": "Backdoor Roth",
+      "detail_file": "backdoor-roth-extended",
+      "delivered": true,
+      "combines_with": [
+        "#75 (Mega Backdoor via after-tax 401(k))",
+        "#79",
+        "#80"
+      ],
+      "conflicts_with": [
+        "Pre-tax IRA balance (pro-rata trap)"
+      ],
+      "mutually_exclusive_with": [
+        "#79 (direct Roth \u2014 preferred if eligible)"
+      ]
+    },
+    {
+      "id": 73,
+      "name": "Defined Benefit / Cash Balance",
+      "detail_file": "defined-benefit-cash-balance",
+      "delivered": true,
+      "combines_with": [
+        "#75",
+        "#82",
+        "#21"
+      ],
+      "conflicts_with": [
+        "\u00a7415(b) limit"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 74,
+      "name": "LIRP [AGGRESSIVE]",
+      "detail_file": "life-insurance-retirement-plan",
+      "delivered": true,
+      "combines_with": [],
+      "conflicts_with": [
+        "\u00a77702A MEC",
+        "\u00a7409A"
+      ],
+      "mutually_exclusive_with": [
+        "#75-#83 (compliant alternatives)",
+        "#79",
+        "#72"
+      ]
+    },
+    {
+      "id": 75,
+      "name": "401(k) Pre-Tax",
+      "detail_file": "401k-pretax",
+      "delivered": true,
+      "combines_with": [
+        "#72 Mega Backdoor",
+        "#79 Roth",
+        "#82 Solo"
+      ],
+      "conflicts_with": [
+        "\u00a7402(g) cross-plan limit"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 76,
+      "name": "SEP-IRA",
+      "detail_file": "sep-ira",
+      "delivered": true,
+      "combines_with": [
+        "#79 if income within"
+      ],
+      "conflicts_with": [
+        "\u00a7408(d)(2) pro-rata trap (#72)"
+      ],
+      "mutually_exclusive_with": [
+        "#77 (small business alternative)",
+        "#82 (deferral capacity)",
+        "#73"
+      ]
+    },
+    {
+      "id": 77,
+      "name": "SIMPLE IRA",
+      "detail_file": "simple-ira",
+      "delivered": true,
+      "combines_with": [
+        "#79 if income within"
+      ],
+      "conflicts_with": [
+        "2-year rule \u00a772(t)(6)"
+      ],
+      "mutually_exclusive_with": [
+        "#76",
+        "#82",
+        "#73",
+        "#75 (alternative plans)"
+      ]
+    },
+    {
+      "id": 78,
+      "name": "QCD",
+      "detail_file": "qcd",
+      "delivered": true,
+      "combines_with": [
+        "#51",
+        "#54 (alternatives)",
+        "#69 AGI minimization",
+        "#83"
+      ],
+      "conflicts_with": [
+        "DAF / private foundation as recipient"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 79,
+      "name": "Roth IRA Contributions",
+      "detail_file": "roth-ira-contributions",
+      "delivered": true,
+      "combines_with": [
+        "#72",
+        "#80",
+        "#75"
+      ],
+      "conflicts_with": [
+        "MAGI phase-out (Backdoor as workaround)"
+      ],
+      "mutually_exclusive_with": [
+        "#83 (deductible Traditional)"
+      ]
+    },
+    {
+      "id": 80,
+      "name": "Roth IRA Conversion",
+      "detail_file": "roth-ira-conversion",
+      "delivered": true,
+      "combines_with": [
+        "#79",
+        "#72",
+        "#69"
+      ],
+      "conflicts_with": [
+        "TCJA recharacterization elimination"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 81,
+      "name": "SEP-IRA Self-Employed",
+      "detail_file": "sep-ira-self-employed",
+      "delivered": true,
+      "combines_with": [
+        "#82 (preferred when desired deferral)",
+        "#79"
+      ],
+      "conflicts_with": [
+        "\u00a7408(d)(2) pro-rata trap"
+      ],
+      "mutually_exclusive_with": [
+        "#82",
+        "#73"
+      ]
+    },
+    {
+      "id": 82,
+      "name": "Solo 401(k)",
+      "detail_file": "solo-401k-employer-contributions",
+      "delivered": true,
+      "combines_with": [
+        "#72 Mega Backdoor",
+        "#79",
+        "#73"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": [
+        "#81",
+        "#76",
+        "#77 (alternative plans)"
+      ]
+    },
+    {
+      "id": 83,
+      "name": "Traditional IRA Contributions",
+      "detail_file": "traditional-ira-contributions",
+      "delivered": true,
+      "combines_with": [
+        "#72 non-deductible variant",
+        "#80 conversion"
+      ],
+      "conflicts_with": [
+        "\u00a7219(g) phase-out"
+      ],
+      "mutually_exclusive_with": [
+        "#79 (Roth alternative)"
+      ]
+    },
+    {
+      "id": 84,
+      "name": "Accountable Plan Self-Employed",
+      "detail_file": "accountable-plan-self-employed",
+      "delivered": true,
+      "combines_with": [
+        "#84-#94 (all SE strategies)"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": [
+        "#2 (corporate equivalent)"
+      ]
+    },
+    {
+      "id": 85,
+      "name": "Business Vehicle SE",
+      "detail_file": "business-vehicle-self-employed",
+      "delivered": true,
+      "combines_with": [
+        "#4",
+        "#12",
+        "#36"
+      ],
+      "conflicts_with": [
+        "Standard mileage Year-1 lock-in"
+      ],
+      "mutually_exclusive_with": [
+        "#4 (corporate equivalent)"
+      ]
+    },
+    {
+      "id": 86,
+      "name": "Choice of Entity SE Tax",
+      "detail_file": "choice-of-entity-se-tax",
+      "delivered": true,
+      "combines_with": [
+        "#19",
+        "#21",
+        "#43",
+        "#47",
+        "#90"
+      ],
+      "conflicts_with": [
+        "\u00a7269A PSC"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 87,
+      "name": "Health Insurance SE",
+      "detail_file": "health-insurance-self-employed",
+      "delivered": true,
+      "combines_with": [
+        "#10",
+        "#11",
+        "#84"
+      ],
+      "conflicts_with": [
+        "\u00a7125 (SE ineligible)"
+      ],
+      "mutually_exclusive_with": [
+        "#10 (S corp variant)",
+        "#8 (group plan if employee)"
+      ]
+    },
+    {
+      "id": 88,
+      "name": "Home Office Deduction SE",
+      "detail_file": "home-office-deduction-self-employed",
+      "delivered": true,
+      "combines_with": [
+        "#2 (corp equivalent)",
+        "#84",
+        "#67 (recapture)"
+      ],
+      "conflicts_with": [
+        "Exclusive use violation"
+      ],
+      "mutually_exclusive_with": [
+        "#2 (corporate accountable plan)"
+      ]
+    },
+    {
+      "id": 89,
+      "name": "Bonus / \u00a7179 Depreciation SE",
+      "detail_file": "bonus-179-depreciation-self-employed",
+      "delivered": true,
+      "combines_with": [
+        "#12",
+        "#28",
+        "#41",
+        "#85",
+        "#89",
+        "#93"
+      ],
+      "conflicts_with": [
+        "\u00a7179 income limit"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 90,
+      "name": "Minimize Self-Employment Tax",
+      "detail_file": "minimize-self-employment-tax",
+      "delivered": true,
+      "combines_with": [
+        "#21",
+        "#49",
+        "#50",
+        "#82",
+        "#86"
+      ],
+      "conflicts_with": [
+        "Renkemeyer LP trap"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 91,
+      "name": "Prepayment Expense SE",
+      "detail_file": "prepayment-expense-self-employed",
+      "delivered": true,
+      "combines_with": [
+        "#18",
+        "#13",
+        "#84"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 92,
+      "name": "Split Entity Operations vs RE",
+      "detail_file": "split-entity-operations-vs-re",
+      "delivered": true,
+      "combines_with": [
+        "#1",
+        "#9",
+        "#16",
+        "#17",
+        "#19",
+        "#25",
+        "#41",
+        "#69"
+      ],
+      "conflicts_with": [
+        "Self-rental recharacterization"
+      ],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 93,
+      "name": "De Minimis Safe Harbor SE",
+      "detail_file": "de-minimis-safe-harbor-self-employed",
+      "delivered": true,
+      "combines_with": [
+        "#28",
+        "#84",
+        "#89"
+      ],
+      "conflicts_with": [],
+      "mutually_exclusive_with": []
+    },
+    {
+      "id": 94,
+      "name": "Hiring Kids SE",
+      "detail_file": "hiring-kids-self-employed",
+      "delivered": true,
+      "combines_with": [
+        "#11",
+        "#50",
+        "#79",
+        "#84"
+      ],
+      "conflicts_with": [
+        "\u00a73121 limited to sole prop / parent-only partnership"
+      ],
+      "mutually_exclusive_with": [
+        "#49 (corporate variant)"
+      ]
+    }
+  ]
+}
