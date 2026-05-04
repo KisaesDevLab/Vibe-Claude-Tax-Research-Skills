@@ -65,6 +65,110 @@ responsible for:
 - [ ] Confirming each cited Treasury Regulation has not been amended
       since the retrieved_date.
 
+## AICPA Code of Professional Conduct (Phase 9 — when applicable)
+
+When a skill output touches independence, integrity/objectivity,
+conflicts of interest, confidentiality, or non-tax engagement
+acceptance, populate `verification_checklist_aicpa_code` instead of
+(or in addition to) the SSTS/Circular-230 checklist above.
+
+### ET §1.200 — Independence (threats-and-safeguards conceptual framework)
+- [ ] Threats identified (self-review, advocacy, familiarity, self-
+      interest, undue influence, management participation).
+- [ ] Threats evaluated (acceptable level / not at acceptable level).
+- [ ] Safeguards applied where threats are not at an acceptable level
+      (firm-level, engagement-level, or threats-cannot-be-mitigated
+      → independence impaired, decline / withdraw).
+- [ ] Documentation of threats and safeguards in engagement file.
+
+### ET §1.295 — Nonattest services to attest clients
+- [ ] Management responsibilities NOT assumed by the firm.
+- [ ] Client agrees to assign individual with suitable skill,
+      knowledge, and experience to oversee the nonattest service.
+- [ ] Client evaluates adequacy and results of services performed.
+- [ ] Client accepts responsibility for the results.
+- [ ] Specific prohibited services screened (bookkeeping for an
+      audit client → permitted if §1.295 conditions met; financial-
+      information system design and implementation, internal audit
+      outsourcing, legal services → restrictions apply).
+
+### ET §1.700 — Confidential client information
+- [ ] No disclosure without specific consent (subject to ET §1.700.001
+      exceptions: subpoena, peer review, ethics investigation).
+- [ ] Confidentiality clause in engagement letter active.
+
+### ET §1.110 — Conflicts of interest
+- [ ] Conflicts identified (current and reasonably foreseeable).
+- [ ] Disclosure to all affected clients made.
+- [ ] Specific consent obtained where required.
+- [ ] Documentation in engagement file.
+
+### State-board overlay (when engagement state supplied)
+- [ ] Engagement state identified.
+- [ ] State board independence rule consulted (if stricter than
+      AICPA, apply state rule).
+- [ ] CA / NY / TX known stricter overlays; full per-state list in
+      `shared/sources.json` under `state_boards_of_accountancy`.
+
+## Engagement letter required elements (Phase 9 — when applicable)
+
+When a skill output is an engagement-letter template or scope-of-work
+review, populate `verification_checklist_engagement`. Required
+elements derive from AR-C §60.A21 (compilation/review/preparation),
+AU-C §210 (audit), AT-C §105 .A18 (attestation), and AICPA Tax
+Section practice aids (tax engagements).
+
+### Common required elements
+- [ ] Engagement objective, scope, and deliverables identified.
+- [ ] Responsibilities of management and CPA delineated.
+- [ ] Limitations of the engagement disclosed.
+- [ ] Fee arrangement disclosed (hourly / fixed / contingent — note
+      contingent-fee restrictions under ET §1.510).
+- [ ] Termination provisions stated.
+- [ ] Signed by both parties (firm + client) before work commences.
+
+### Attest-engagement-specific
+- [ ] Independence affirmed (or compilation-without-independence
+      disclaimer for AR-C 80 lack-of-independence reports).
+- [ ] Inherent limitations of audit / review acknowledged.
+- [ ] Subsequent-events reporting period identified (audit only).
+
+### Tax-engagement-specific
+- [ ] FTC Safeguards Rule data-security clause present (16 CFR
+      Part 314 applies to all tax preparers).
+- [ ] §7216 disclosure consent for any third-party use of return
+      information.
+- [ ] Specification of returns covered (year, jurisdictions, forms).
+- [ ] Reliance-on-client-records disclaimer.
+- [ ] Penalty / interest exposure framework noted (without violating
+      Circular 230 §10.37 audit-lottery prohibition).
+
+### Indemnification / limitation of liability — state overlay
+- [ ] CA Bus. & Prof. Code §5063.1 — limits indemnification on
+      certain engagements; full scope in
+      `engagement-letter-library/references/indemnification-state-overlay.md`.
+- [ ] IL, NJ — restrict limitation-of-liability on attest
+      engagements.
+- [ ] AICPA Ethics Interpretation §1.400.205 — indemnification
+      provisions on attest engagements may impair independence.
+- [ ] Output is a TEMPLATE FRAMEWORK, not legal advice. Firm counsel
+      must review before client use; UPL rules vary by state.
+
+## GAAP research scaffolding (Phase 9 — when applicable)
+
+When a skill output is FASB ASC research, populate
+`verification_checklist_gaap`. Required confirmation:
+- [ ] ASC Topic / Subtopic / Section / Subsection identified.
+- [ ] All ASUs through the engagement reporting date verified for
+      effective-date applicability (early adoption permitted? deferred?).
+- [ ] Disclosure requirements per ASC topic identified.
+- [ ] Non-authoritative sources (Concepts Statements, AICPA TPAs,
+      SEC SAB cited persuasively for nonissuers) flagged as such.
+- [ ] If GAAP question implicates governmental entity → route to
+      GASB externally (out of scope).
+- [ ] If GAAP question implicates IFRS reporter → route to IFRS
+      externally (out of scope).
+
 ## Malpractice defense scaffolding
 The output must capture:
 - The authorities consulted and weight assigned.

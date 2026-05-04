@@ -28,7 +28,11 @@ items still requiring research.
 ## Required fields per citation
 Every citation in the `authorities` array of the JSON sidecar MUST
 include:
-- `authority_type`: one of (extended in v1.1):
+- `authority_domain` (Phase 9): one of `tax_position` (default;
+  backward-compatible), `professional_conduct`, `gaap`. Each domain
+  has its own weight ladder; do not mix.
+- `authority_type`: one of (extended in v1.1, further extended in
+  Phase 9):
   - **Primary federal**: `IRC`, `TreasReg`, `TreasuryDecision`,
     `StatutesAtLarge`
   - **IRS published guidance (IRB)**: `RevRul`, `RevProc`, `Notice`,
@@ -44,6 +48,12 @@ include:
   - **State**: `StateStatute`, `StateReg`, `StateAdmin`, `StateCt`
   - **Treaty**: `Treaty`
   - **Forms**: `Form`, `Instructions`
+  - **AICPA professional standards** (Phase 9): `AICPA_Code`,
+    `AICPA_SSARS`, `AICPA_SAS`, `AICPA_SSAE`, `AICPA_SQMS`,
+    `AICPA_PracticeAid`, `AICPA_TPA`
+  - **FASB / U.S. GAAP** (Phase 9): `FASB_ASC`, `FASB_ASU`,
+    `FASB_Concepts`, `EITF`
+  - **State board** (Phase 9): `StateBoardRule`
 - `citation`: human-readable cite (e.g., "I.R.C. § 199A(a)(1)" or
   "Treas. Reg. § 1.199A-1(b)(14)" or "Watson v. United States, 668
   F.3d 1008 (8th Cir. 2012)")
@@ -52,10 +62,14 @@ include:
 - `quoted_text`: ≤ 75 words verbatim excerpt that supports the cited
   proposition. Paraphrase is not acceptable for this field.
 - `pin_cite`: optional — paragraph, line, or footnote pointer
-- `weight`: see authority-hierarchy.md (`primary_statute`,
-  `binding_judicial`, `regulation`, `binding_circuit`, `judicial`,
-  `irs_published`, `legislative_history`, `written_determinations`,
-  `persuasive_non_authority`, `not_authority`)
+- `weight`: see authority-hierarchy.md. Tax-position weights
+  (`primary_statute`, `binding_judicial`, `regulation`,
+  `binding_circuit`, `judicial`, `irs_published`,
+  `legislative_history`, `written_determinations`,
+  `persuasive_non_authority`, `not_authority`); professional-conduct
+  weights (`binding_on_member`, `interpretive`, `practice_aid`); GAAP
+  weights (`gaap_codified`, `gaap_pre_codification_grandfathered`,
+  `gaap_non_authoritative`).
 
 ## Authority-type-to-weight default mapping (v1.1)
 
@@ -74,9 +88,32 @@ include:
 | `StateReg` | `regulation` (state-tier) |
 | `StateCt` | `judicial` (state-tier) |
 | `StateAdmin` | `persuasive_non_authority` to `judicial` depending on body |
+| `AICPA_Code`, `AICPA_SSARS`, `AICPA_SAS`, `AICPA_SSAE`, `AICPA_SQMS` | `binding_on_member` (domain: `professional_conduct`) |
+| `AICPA_TPA` | `interpretive` (domain: `professional_conduct`) |
+| `AICPA_PracticeAid` | `practice_aid` (domain: `professional_conduct`) |
+| `StateBoardRule` | `binding_on_member` (domain: `professional_conduct`) |
+| `FASB_ASC` (post-codification) | `gaap_codified` (domain: `gaap`) |
+| `FASB_ASU` | `gaap_codified` (issuance — codified upon effective date; cite to ASC for the codified rule) |
+| `FASB_Concepts` | `gaap_non_authoritative` (domain: `gaap`) — per ASC 105-10-05-2 |
+| `EITF` (codified into ASC) | `gaap_codified` (cite to ASC); pre-codification stand-alone use → `gaap_pre_codification_grandfathered` |
 
 The mapping is a default. Skills may override with rationale recorded
 in the citation entry's `weight_override_rationale` field.
+
+## Cross-domain citation guidance (Phase 9)
+
+When a non-tax authority appears inside a tax-position output (e.g.,
+ASC 740 cited in a tax memo to support an UTP recognition decision),
+the citation entry stays in `authority_domain: tax_position` with
+`weight: persuasive_non_authority`. The schema split keeps the §1.6662-
+4(d)(3) ladder clean while still permitting cross-references. The
+reverse — citing IRC inside a GAAP memo — would tag
+`authority_domain: gaap` with a weight_override_rationale noting
+that IRC is being used descriptively for ASC 740 measurement.
+
+AICPA standards and FASB ASC are NOT subject to Chevron / Skidmore
+review. Do NOT propagate the `chevron_replaced` flag to
+professional-conduct or GAAP citations.
 
 ## Sentinel format
 Use exactly: `[CITATION NEEDED — search: <query>]`

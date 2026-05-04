@@ -17,7 +17,11 @@
         "issue": { "type": "string" },
         "taxpayer_circuit": { "type": "string" },
         "taxpayer_state": { "type": "string", "pattern": "^[A-Z]{2}$" },
-        "tax_year": { "type": "integer" }
+        "tax_year": { "type": "integer" },
+        "engagement_state": { "type": "string", "pattern": "^[A-Z]{2}$",
+          "description": "Phase 9: state of the CPA engagement (for state-board overlay on AICPA-code skill, FTC Safeguards triggers, etc.)" },
+        "entity_type": { "type": "string",
+          "description": "Phase 9: nonissuer | issuer | governmental | nonprofit (drives PCAOB / GASB / GAGAS routing)" }
       }
     },
     "analysis": { "type": "string" },
@@ -36,6 +40,12 @@
         "required": ["authority_type", "citation", "url",
                      "retrieved_date", "quoted_text", "weight"],
         "properties": {
+          "authority_domain": {
+            "type": "string",
+            "enum": ["tax_position", "professional_conduct", "gaap"],
+            "default": "tax_position",
+            "description": "Phase 9: which authority hierarchy applies. tax_position uses the §1.6662-4(d)(3) ladder (default; backward compatible). professional_conduct uses the AICPA / state-board ladder. gaap uses the FASB ASC 105-10 two-tier scheme. Cross-domain citations (e.g., ASC 740 cited in a tax memo) stay in tax_position with weight persuasive_non_authority."
+          },
           "authority_type": {
             "type": "string",
             "enum": [
@@ -47,7 +57,11 @@
               "JCT_BlueBook", "LegHistory", "Greenbook", "CBOReport",
               "SCOTUS", "CtAppeals", "TaxCt", "DistCt", "CtFedClaims",
               "StateStatute", "StateReg", "StateAdmin", "StateCt",
-              "Treaty", "Form", "Instructions"
+              "Treaty", "Form", "Instructions",
+              "AICPA_Code", "AICPA_SSARS", "AICPA_SAS", "AICPA_SSAE",
+              "AICPA_SQMS", "AICPA_PracticeAid", "AICPA_TPA",
+              "FASB_ASC", "FASB_ASU", "FASB_Concepts", "EITF",
+              "StateBoardRule"
             ]
           },
           "citation": { "type": "string" },
@@ -60,7 +74,10 @@
             "enum": ["primary_statute", "binding_judicial", "regulation",
                      "binding_circuit", "judicial", "irs_published",
                      "legislative_history", "written_determinations",
-                     "persuasive_non_authority", "not_authority"]
+                     "persuasive_non_authority", "not_authority",
+                     "binding_on_member", "interpretive", "practice_aid",
+                     "gaap_codified", "gaap_pre_codification_grandfathered",
+                     "gaap_non_authoritative"]
           },
           "weight_override_rationale": { "type": "string" },
           "chevron_replaced": { "type": "boolean" }
@@ -113,10 +130,32 @@
       "type": "boolean",
       "description": "True for high-stakes positions; flags the residual practitioner responsibility for citator check (free-source pack cannot detect implicit overrules)"
     },
+    "state_overlay_required": {
+      "type": "boolean",
+      "description": "Phase 9: true when a state board of accountancy rule is stricter than the AICPA Code on the matter at hand (e.g., CA / NY / TX independence overlays)."
+    },
+    "legal_review_required": {
+      "type": "boolean",
+      "description": "Phase 9: true when output is a template framework (e.g., engagement letter language) that must be reviewed by firm counsel before client use."
+    },
     "verification_checklist": {
       "type": "object",
-      "required": ["ssts_1_1", "ssts_2_3", "circ230_10_22",
-                   "circ230_10_35", "circ230_10_37"],
+      "description": "Tax-position checklist (SSTS / Circular 230). Required keys are conditionally enforced when authority_domain includes tax_position; legacy skills always emit them. New AICPA / engagement / GAAP skills may omit these and emit a sibling checklist instead.",
+      "additionalProperties": { "type": "boolean" }
+    },
+    "verification_checklist_aicpa_code": {
+      "type": "object",
+      "description": "Phase 9: AICPA Code of Professional Conduct module — independence threats identified, safeguards documented, conflicts disclosed, confidentiality clause active, §1.295 nonattest scope confirmed.",
+      "additionalProperties": { "type": "boolean" }
+    },
+    "verification_checklist_engagement": {
+      "type": "object",
+      "description": "Phase 9: engagement-letter required-elements module — required AR-C / AU-C / AT-C / Tax practice-aid elements present, signed by both parties, scope clear, fee arrangement disclosed, FTC Safeguards Rule clause present where applicable.",
+      "additionalProperties": { "type": "boolean" }
+    },
+    "verification_checklist_gaap": {
+      "type": "object",
+      "description": "Phase 9: GAAP research module — ASC topic confirmed, ASUs through effective date verified, disclosure requirements identified, non-authoritative sources flagged.",
       "additionalProperties": { "type": "boolean" }
     },
     "disclosure_forms": {
