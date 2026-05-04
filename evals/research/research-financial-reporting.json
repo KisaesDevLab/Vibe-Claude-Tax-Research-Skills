@@ -1,0 +1,68 @@
+{
+  "skill": "research-financial-reporting",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "asc-250-change-in-estimate",
+      "name": "ASC 250 change in estimate vs. change in accounting principle",
+      "intake": {
+        "entity_type": "nonissuer",
+        "framework": "U.S. GAAP",
+        "asc_topic": "250 Accounting Changes",
+        "user_request": "Private manufacturing client with calendar year-end. Historical: estimated useful life of equipment was 10 years. New management commissioned an engineering study showing the equipment lasts 15 years on average. Accounting team wants to apply the 15-year life retrospectively. Is this a change in estimate (prospective) or a change in accounting principle (retrospective)?"
+      },
+      "expected_routing": "research-financial-reporting",
+      "expected_conclusion": "Per ASC 250-10-45-17 and ASC 250-10-45-18, this is a CHANGE IN ESTIMATE (or, if effected by a change in policy supporting the estimate, a 'change in estimate effected by a change in accounting principle'). The change in useful life (10 to 15 years) reflects a new fact (engineering study results) — not a change in the underlying accounting method (still straight-line depreciation under ASC 360). Treatment: APPLY PROSPECTIVELY beginning in the period of change. Restate prior-period depreciation NOT permitted (would convert this to an inappropriate retrospective change in principle). Disclosure required per ASC 250-10-50-4: nature and effect of the change on the period of change. If the change affects future periods, disclose the prospective effect. The new 15-year life applies to remaining useful life of existing equipment (allocate remaining net book value over 15 minus years already in service, beginning in the period of change). Distinguishing rules: (a) change in principle (ASC 250-10-45-5+) — retrospective, restatement, ASC 250-10-50-1 disclosure; (b) change in estimate — prospective, no restatement; (c) error correction (ASC 250-10-45-23+) — retrospective restatement of prior periods presented. ASU effective dates: ASC 250 has been stable; no recent material amendments through 2024 ASUs.",
+      "expected_authorities": [
+        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "250-10-45-17", "weight": "gaap_codified"},
+        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "250-10-45-18", "weight": "gaap_codified"},
+        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "250-10-50-4", "weight": "gaap_codified"},
+        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "360-10", "weight": "gaap_codified"}
+      ],
+      "expected_band": "HIGH",
+      "expected_checklist": "verification_checklist_gaap"
+    },
+    {
+      "id": "asc-805-business-combination-asset-acquisition",
+      "name": "ASC 805 vs. asset acquisition determination",
+      "intake": {
+        "entity_type": "nonissuer",
+        "framework": "U.S. GAAP",
+        "asc_topic": "805 Business Combinations",
+        "user_request": "Private SaaS client purchased the operating assets of a competitor for $10M cash. Acquired: customer contracts, customer relationships, software, key engineering team (employed under continuing contracts), operating procedures, brand name. Did NOT acquire: legal entity, accounts receivable, debt. Is this a business combination under ASC 805 or an asset acquisition?"
+      },
+      "expected_routing": "research-financial-reporting",
+      "expected_conclusion": "Apply the ASC 805-10-55-3A 'screen' test (added by ASU 2017-01 Clarifying the Definition of a Business). The screen test asks whether substantially all of the fair value of the gross assets acquired is concentrated in a single identifiable asset or group of similar identifiable assets. If YES (concentration), the transaction is an ASSET ACQUISITION (out of ASC 805). If NO (dispersed across multiple types of assets), assess whether the acquired set has 'inputs and a substantive process that together significantly contribute to the ability to create outputs' (ASC 805-10-55-5A). Substantive process indicators: (a) acquired employees critical to the process; (b) acquired process is unique or scarce; (c) acquired set can produce outputs. Given the facts (customer contracts, customer relationships, software, employed engineering team, brand, operating procedures), the acquired set has BOTH inputs (contracts, customers, software) AND a substantive process (employed engineering team continuing under contracts; operating procedures). Outputs (revenue from customer contracts) are clearly produced. Conclusion: BUSINESS COMBINATION under ASC 805. Apply ASC 805 acquisition method: identify acquirer, determine acquisition date, recognize and measure identifiable assets and liabilities at fair value (ASC 805-20-30-1), recognize goodwill or bargain purchase. Subsequent measurement: customer relationships amortized over useful life (ASC 350-30); software amortized; goodwill not amortized but tested for impairment annually (ASC 350-20). ASU 2017-01 effective for PBE annual periods after Dec. 15, 2017; for non-PBE, after Dec. 15, 2018. Confirm entity has adopted (highly likely given dates).",
+      "expected_authorities": [
+        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "805-10-55-3A", "weight": "gaap_codified"},
+        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "805-10-55-5A", "weight": "gaap_codified"},
+        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "805-20-30-1", "weight": "gaap_codified"},
+        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "350-20", "weight": "gaap_codified"},
+        {"authority_domain": "gaap", "authority_type": "FASB_ASU", "citation_contains": "2017-01", "weight": "gaap_codified"}
+      ],
+      "expected_band": "MODERATE",
+      "expected_checklist": "verification_checklist_gaap"
+    },
+    {
+      "id": "asc-350-goodwill-impairment-private-company",
+      "name": "ASC 350 goodwill impairment — private-company alternative election",
+      "intake": {
+        "entity_type": "nonissuer",
+        "framework": "U.S. GAAP",
+        "asc_topic": "350 Intangibles - Goodwill",
+        "user_request": "Private retail client with goodwill from prior acquisition. Has not previously elected the private-company alternative for goodwill (PCC). Q3 indicators: comparable stores down 15% YoY, anchor location lost lease and relocating. Does the client need to perform impairment testing? Can the client elect the PCC alternative now?"
+      },
+      "expected_routing": "research-financial-reporting",
+      "expected_conclusion": "Per ASC 350-20-35, goodwill is tested for impairment ANNUALLY at the same date each year, AND BETWEEN ANNUAL TESTS if a triggering event indicates more-likely-than-not impairment. The Q3 indicators (comparable-store decline, anchor relocation) are likely TRIGGERING EVENTS requiring an interim impairment test. Without PCC alternative: perform a one-step impairment test under ASU 2017-04 (which simplified the prior two-step test). Compare reporting unit fair value to carrying amount; impairment loss = excess of carrying amount over fair value, capped at the goodwill amount. With PCC alternative (ASC 350-20-15-3 + 350-20-50-3A election): private companies and NFPs may elect to amortize goodwill on a straight-line basis over 10 years (or shorter if more appropriate) and test for impairment ONLY at the entity or reporting-unit level upon a triggering event. Election is made for the period of adoption and applied prospectively to existing goodwill plus any future goodwill. CAN THE CLIENT ELECT NOW: PCC election is allowed at any time prior to the financial statement issuance date, but is generally elected at acquisition or in a transition period. Election is NOT a one-period accommodation; once elected, applies on an ongoing basis. ASC 250 disclosures apply for the change. Recommendation: (1) perform interim impairment test now under existing approach; (2) evaluate whether to elect PCC alternative going forward. If PCC elected, future testing simplified but goodwill is amortized (which may be detrimental for entity that prefers stable equity). Disclosure of the election + change in approach required.",
+      "expected_authorities": [
+        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "350-20-35", "weight": "gaap_codified"},
+        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "350-20-15-3", "weight": "gaap_codified"},
+        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "350-20-50-3A", "weight": "gaap_codified"},
+        {"authority_domain": "gaap", "authority_type": "FASB_ASU", "citation_contains": "2017-04", "weight": "gaap_codified"},
+        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "250", "weight": "gaap_codified"}
+      ],
+      "expected_band": "MODERATE",
+      "expected_checklist": "verification_checklist_gaap"
+    }
+  ]
+}
