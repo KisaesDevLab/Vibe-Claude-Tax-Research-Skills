@@ -8,11 +8,14 @@ description: |
   conversation, asks "which skill should I use", references a Public
   Law popular name (TCJA, IRA, OBBBA, SECURE 2.0, CARES Act, ARPA),
   pastes a notice, drops a return PDF, asks a federal or state
-  research question, asks "is this a hobby", "is this person an
-  employee or 1099", "can my client take §199A", "what changed in
-  §174 under OBBBA", or asks for year-end planning. Make sure to use
-  this skill whenever the user mentions tax research, IRS notice,
-  return summary, planning ideas, state nexus, or a Public Law name.
+  research question, asks "is this a hobby", asks about engagement
+  letters, audit / review / compilation, SSARS / SAS / SSAE / SOC /
+  SQMS standards, AICPA Code of Professional Conduct, FASB ASC /
+  GAAP, or ASC 740 / 606 / 842. Make sure to use this skill
+  whenever the user mentions tax research, IRS notice, return
+  summary, planning ideas, state nexus, a Public Law name,
+  engagement letter, AICPA Code, audit standards, attest, SOC,
+  GAAP, or ASC.
 license: BUSL-1.1
 version: 0.1.0
 allowed-tools: Read Grep Glob
@@ -78,6 +81,14 @@ The specialist skill will then load any topic-specific references.
 | Asks about a deadline / due date / extension | `due-date-calculator` |
 | Asks for §6651/§6654/§6662 penalty + interest computation | `penalty-interest-calc` |
 | Asks about SSTS, Circular 230, written-advice standards, disclosure forms | `compliance-ssts-circular230` |
+| Asks for an engagement letter (audit / review / compilation / preparation / tax / advisory / bookkeeping / payroll / consulting / SOC / AUP), scope of work, FTC Safeguards Rule clause, indemnification limits | `engagement-letter-library` |
+| Asks about AICPA Code of Professional Conduct, ET §1.X, independence, threats and safeguards, §1.295 nonattest services, conflict of interest, confidentiality / subpoena, ethics interpretation | `compliance-aicpa-code` |
+| Asks about SSARS, AR-C, compilation, review, preparation engagement, lack-of-independence compilation, going-concern review | `compliance-ssars` |
+| Asks about audit standards (SAS / AU-C), AU-C 240 fraud, AU-C 315/330 risk assessment, AU-C 570 going concern, AU-C 600 group audit, audit reporting / qualified or adverse opinion | `compliance-sas-audit` |
+| Asks about SOC 1 / SOC 2 / SOC 3, AT-C 105/205/215/320, attestation, agreed-upon procedures (AUP), SQMS 1 firm quality management, SQMS 2 engagement quality reviews | `compliance-attestation-qm` |
+| Asks about ASC research generally, FASB, GAAP, ASU effective dates, business combinations (ASC 805), goodwill (ASC 350), changes in estimate (ASC 250), CECL (ASC 326), going concern (ASC 205-40), other ASC topics | `research-financial-reporting` |
+| Asks about ASC 740, deferred tax (DTA / DTL), valuation allowance, uncertain tax position (UTP), FIN 48, tax provision, effective tax rate, intraperiod allocation, ASU 2023-09 disclosures | `research-asc-740` |
+| Asks about ASC 606 revenue recognition (five-step model, performance obligations, variable consideration, principal vs agent), ASC 842 leases (classification, ROU asset, sale-leaseback) | `research-asc-606-842` |
 
 ## Public-Law trigger phrases (high-confidence)
 

@@ -60,10 +60,11 @@ binding clauses.
 
 Per `scripts/validate.sh`, the
 `engagement-letter-library/references/letters/` directory is
-exempted from the CITATION-NEEDED grep. Per-template files MAY
-include the `[CITATION NEEDED — search: ...]` sentinel where firm
-counsel must complete jurisdiction-specific language. This is a
-deliberate verification flag, not a fabrication.
+exempted from the verification-flag grep. Per-template files MAY
+include the verification-flag sentinel pattern (per
+`shared/citation-discipline.md`) where firm counsel must complete
+jurisdiction-specific language. This is a deliberate verification
+flag, not a fabrication.
 
 ## State-board overlay reminder
 

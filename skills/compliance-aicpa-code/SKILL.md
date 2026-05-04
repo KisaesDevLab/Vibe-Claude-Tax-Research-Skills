@@ -1,23 +1,21 @@
 ---
 name: compliance-aicpa-code
 description: |
-  Walks the AICPA Code of Professional Conduct (ET §1.000–5.000) for a
+  Walks the AICPA Code of Professional Conduct (ET §1.000+) for a
   given engagement, threat, or scope question. Applies the
   threats-and-safeguards conceptual framework for independence
-  (ET §1.200), screens nonattest services (ET §1.295) before they
-  impair attest independence, and surfaces conflicts (ET §1.110),
-  confidentiality (ET §1.700), integrity/objectivity (ET §1.100),
-  general standards (ET §1.300), discreditable acts (ET §1.400), and
-  fee restrictions (ET §1.500). Routes SEC issuer / PCAOB independence
-  questions externally. Applies a state-board overlay (CA, NY, TX
-  stricter independence rules) when an engagement state is supplied.
-  Use when the user asks about "AICPA Code", "Code of Professional
-  Conduct", "ET §1.X", "independence", "self-review threat", "loan to
-  attest client", "nonattest scope", "§1.295", "conflict of interest",
-  "confidentiality", "subpoena", or "ethics interpretation". Make
-  sure to use this skill whenever the user mentions AICPA Code,
-  independence, ET §, threats and safeguards, nonattest, or
-  professional conduct.
+  (§1.200), screens nonattest services (§1.295), and surfaces
+  conflicts (§1.110), confidentiality (§1.700), integrity (§1.100),
+  general standards (§1.300), discreditable acts (§1.400), fee
+  restrictions (§1.500). Routes SEC issuer / PCAOB independence
+  externally. Applies state-board overlay (CA, NY, TX stricter)
+  when engagement state supplied. Use when the user asks about
+  "AICPA Code", "Code of Professional Conduct", "ET §1.X",
+  "independence", "self-review threat", "loan to attest client",
+  "nonattest scope", "§1.295", "conflict of interest",
+  "confidentiality", or "ethics interpretation". Make sure to use
+  this skill whenever the user mentions AICPA Code, independence,
+  threats and safeguards, nonattest, or professional conduct.
 license: BUSL-1.1
 version: 0.1.0
 allowed-tools: Read Grep Glob Bash(jq:*) WebFetch

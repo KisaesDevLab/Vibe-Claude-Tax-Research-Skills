@@ -1,24 +1,20 @@
 ---
 name: engagement-letter-library
 description: |
-  Engagement-letter template library and required-elements
-  framework. Generates per-engagement-type starting templates with
-  bracketed fields the firm fills in, plus a required-elements
-  checklist derived from AR-C §60.A21 (compilation/review/
-  preparation), AU-C §210 (audit), AT-C §105 .A18 (attestation),
-  and AICPA Tax Section practice aids. Covers audit, review,
-  compilation, preparation, tax compliance (1040/1120/1120-S/
-  1065/706/709/990), tax advisory, bookkeeping, payroll,
-  consulting, SOC 1, SOC 2, AUP. Includes FTC Safeguards Rule
-  data-security clause for tax engagements. Surfaces state-overlay
-  indemnification limits (CA Bus. & Prof. Code §5063.1, IL, NJ for
-  attest). Use when the user asks "engagement letter", "scope of
-  work", "engagement letter template", "audit engagement letter",
-  "tax engagement letter", "limitation of liability", "termination
-  clause", "engagement scope", "FTC Safeguards", or any request to
-  draft, review, or template engagement-letter language. Make sure
-  to use this skill whenever the user mentions engagement letter,
-  scope of services, or engagement-letter template.
+  Engagement-letter template library + required-elements framework.
+  Generates per-engagement-type templates with bracketed fields,
+  paired with a checklist derived from AR-C §60.A21, AU-C §210,
+  AT-C §105 .A18, and AICPA Tax Section practice aids. Covers
+  audit, review, compilation, preparation, tax (1040 / business /
+  advisory), bookkeeping, payroll, consulting, SOC 1, SOC 2, AUP.
+  Includes FTC Safeguards Rule clause for tax engagements. Flags
+  state indemnification limits (CA Bus. & Prof. Code §5063.1, IL,
+  NJ for attest). Use when the user asks "engagement letter",
+  "scope of work", "audit engagement letter", "tax engagement
+  letter", "limitation of liability", or any request to draft or
+  review engagement-letter language. Make sure to use this skill
+  whenever the user mentions engagement letter, scope of services,
+  or engagement-letter template.
 license: BUSL-1.1
 version: 0.1.0
 allowed-tools: Read Grep Glob Bash(jq:*) WebFetch
@@ -221,10 +217,11 @@ malpractice insurance / risk-management program."
 - Always require firm to confirm engagement state to apply
   appropriate state overlay.
 - Never claim Chevron or Skidmore deference.
-- The CITATION NEEDED sentinel pattern is permitted within
+- The verification-flag sentinel pattern (see
+  `shared/citation-discipline.md`) is permitted within
   per-engagement template files (the per-template files ship with
-  bracketed fields and may include sentinels for attorney/firm-
-  counsel input).
+  bracketed fields and may include verification flags for attorney
+  or firm-counsel input).
 
 ## Verification checklist (appendix)
 

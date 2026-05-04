@@ -1,69 +1,51 @@
 {
-  "skill": "compliance-sas-audit",
+  "skill_name": "compliance-sas-audit",
   "version": "0.1.0",
-  "cases": [
+  "evals": [
     {
       "id": "au-c-570-going-concern",
-      "name": "Going-concern reporting under AU-C 570 + ASC 205-40",
-      "intake": {
-        "engagement_type": "audit",
-        "entity_type": "nonissuer",
-        "issue_area": "going concern",
-        "framework": "GAAP",
-        "user_request": "First-year audit of a private manufacturing client. Recurring operating losses for three years, debt-covenant violation in current year (waiver received post-year-end), loss of major customer (35% of revenue) in last quarter. Management's footnote discloses 'going-concern conditions' but does not include explicit ASC 205-40 substantial-doubt language. What is the audit reporting outcome?"
-      },
-      "expected_routing": "compliance-sas-audit",
-      "expected_conclusion": "AU-C 570 evaluation: indicators (recurring losses, covenant violation, major-customer loss) collectively raise substantial doubt about the entity's ability to continue as a going concern within one year of F/S issuance. Required procedures: evaluate management's mitigation plans (probability of effective implementation; probability of mitigating the conditions); obtain audit evidence to support plans. ASC 205-40 disclosure requires three elements: principal conditions/events; management's evaluation; substantial-doubt conclusion (and, if doubt mitigated, the nature of the plans). The current footnote is INADEQUATE under ASC 205-40 — it discusses conditions but lacks the explicit substantial-doubt evaluation. Two paths: (1) request management to revise the footnote to fully meet ASC 205-40, then issue an unmodified opinion with an emphasis-of-matter paragraph noting substantial doubt; (2) if management refuses revision and disclosure remains inadequate, modify the opinion (qualified or adverse depending on pervasiveness). Communication to governance per AU-C 260 is required regardless. Document the conclusion, evidence supporting management's plan evaluation, and the basis for any modification.",
-      "expected_authorities": [
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SAS", "citation_contains": "AU-C §570", "weight": "binding_on_member"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "205-40", "weight": "gaap_codified"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SAS", "citation_contains": "AU-C §706", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SAS", "citation_contains": "AU-C §705", "weight": "binding_on_member"}
-      ],
-      "expected_band": "HIGH",
-      "expected_checklist": "verification_checklist_engagement"
+      "prompt": "Going-concern reporting under AU-C 570 + ASC 205-40\n\nIntake:\n{\n  \"engagement_type\": \"audit\",\n  \"entity_type\": \"nonissuer\",\n  \"issue_area\": \"going concern\",\n  \"framework\": \"GAAP\",\n  \"user_request\": \"First-year audit of a private manufacturing client. Recurring operating losses for three years, debt-covenant violation in current year (waiver received post-year-end), loss of major customer (35% of revenue) in last quarter. Management's footnote discloses 'going-concern conditions' but does not include explicit ASC 205-40 substantial-doubt language. What is the audit reporting outcome?\"\n}",
+      "expected_output": "AU-C 570 evaluation: indicators (recurring losses, covenant violation, major-customer loss) collectively raise substantial doubt about the entity's ability to continue as a going concern within one year of F/S issuance. Required procedures: evaluate management's mitigation plans (probability of effective implementation; probability of mitigating the conditions); obtain audit evidence to support plans. ASC 205-40 disclosure requires three elements: principal conditions/events; management's evaluation; substantial-doubt conclusion (and, if doubt mitigated, the nature of the plans). The current footnote is INADEQUATE under ASC 205-40 — it discusses conditions but lacks the explicit substantial-doubt evaluation. Two paths: (1) request management to revise the footnote to fully meet ASC 205-40, then issue an unmodified opinion with an emphasis-of-matter paragraph noting substantial doubt; (2) if management refuses revision and disclosure remains inadequate, modify the opinion (qualified or adverse depending on pervasiveness). Communication to governance per AU-C 260 is required regardless. Document the conclusion, evidence supporting management's plan evaluation, and the basis for any modification.",
+      "expectations": [
+        "Routes to compliance-sas-audit",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_engagement",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §570'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '205-40'",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §706'",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §705'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     },
     {
       "id": "au-c-240-fraud-risk-response",
-      "name": "Fraud-risk response: revenue recognition + management override",
-      "intake": {
-        "engagement_type": "audit",
-        "entity_type": "nonissuer",
-        "issue_area": "fraud",
-        "framework": "GAAP",
-        "user_request": "SaaS client. New CFO, prior CFO terminated mid-year for cause (no public statement). Revenue recognition policy aggressive on contract-modification accounting. Material related-party leases with majority owner. What fraud-risk procedures and responses are required?"
-      },
-      "expected_routing": "compliance-sas-audit",
-      "expected_conclusion": "AU-C 240 requires presumed fraud risk in revenue recognition (rebuttable; rebuttal must be documented) AND management override of controls (NOT rebuttable, present in every audit). Given the additional indicators (CFO termination for cause, related-party leases, aggressive revenue policy), the fraud-risk assessment elevates revenue recognition to a SIGNIFICANT RISK requiring tests of details (controls testing alone insufficient). Required procedures: (1) engagement-team discussion (AU-C §240.15) addressing how the F/S could be susceptible to fraud given facts; (2) inquiries of management (current CFO + audit committee) about the prior CFO termination and any related allegations; (3) inquiries of governance about CFO termination process; (4) revenue cut-off testing emphasizing contract-modification accounting and contract-level review; (5) management-override procedures: journal-entry testing emphasizing entries to revenue accounts at unusual times, by unusual users, or with unusual journal-entry characteristics; (6) review accounting estimates for biases; (7) evaluate business rationale for related-party lease transactions (AU-C 550). Document fraud-risk assessment, response, and the rationale for or against rebutting the revenue presumption. Communications to governance per AU-C 260 and 240 required.",
-      "expected_authorities": [
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SAS", "citation_contains": "AU-C §240.15", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SAS", "citation_contains": "AU-C §240.32", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SAS", "citation_contains": "AU-C §315.27", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SAS", "citation_contains": "AU-C §550", "weight": "binding_on_member"}
-      ],
-      "expected_band": "HIGH",
-      "expected_checklist": "verification_checklist_engagement"
+      "prompt": "Fraud-risk response: revenue recognition + management override\n\nIntake:\n{\n  \"engagement_type\": \"audit\",\n  \"entity_type\": \"nonissuer\",\n  \"issue_area\": \"fraud\",\n  \"framework\": \"GAAP\",\n  \"user_request\": \"SaaS client. New CFO, prior CFO terminated mid-year for cause (no public statement). Revenue recognition policy aggressive on contract-modification accounting. Material related-party leases with majority owner. What fraud-risk procedures and responses are required?\"\n}",
+      "expected_output": "AU-C 240 requires presumed fraud risk in revenue recognition (rebuttable; rebuttal must be documented) AND management override of controls (NOT rebuttable, present in every audit). Given the additional indicators (CFO termination for cause, related-party leases, aggressive revenue policy), the fraud-risk assessment elevates revenue recognition to a SIGNIFICANT RISK requiring tests of details (controls testing alone insufficient). Required procedures: (1) engagement-team discussion (AU-C §240.15) addressing how the F/S could be susceptible to fraud given facts; (2) inquiries of management (current CFO + audit committee) about the prior CFO termination and any related allegations; (3) inquiries of governance about CFO termination process; (4) revenue cut-off testing emphasizing contract-modification accounting and contract-level review; (5) management-override procedures: journal-entry testing emphasizing entries to revenue accounts at unusual times, by unusual users, or with unusual journal-entry characteristics; (6) review accounting estimates for biases; (7) evaluate business rationale for related-party lease transactions (AU-C 550). Document fraud-risk assessment, response, and the rationale for or against rebutting the revenue presumption. Communications to governance per AU-C 260 and 240 required.",
+      "expectations": [
+        "Routes to compliance-sas-audit",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_engagement",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §240.15'",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §240.32'",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §315.27'",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §550'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     },
     {
       "id": "au-c-600-group-audit-reference",
-      "name": "Group audit: reference vs assume responsibility for component auditor",
-      "intake": {
-        "engagement_type": "audit",
-        "entity_type": "nonissuer",
-        "issue_area": "group audit",
-        "framework": "GAAP",
-        "user_request": "Group F/S of a holding company with three subsidiaries. Two subsidiaries audited by our firm (group engagement team). Third subsidiary (60% of consolidated revenue) audited by another firm in another state. Component auditor is a peer-reviewed AICPA firm. Should we make reference or assume responsibility?"
-      },
-      "expected_routing": "compliance-sas-audit",
-      "expected_conclusion": "AU-C 600 reference / no-reference decision turns on (a) component-auditor independence and qualifications, (b) framework alignment, (c) component auditor's audit-procedures sufficiency, and (d) the group engagement team's planned involvement. Given a 60%-of-revenue significant component, the group engagement team typically has two viable paths: REFERENCE (group audit report explicitly names the component auditor and refers to their report on that subsidiary's F/S; group team verifies independence, framework alignment, and report compliance with AICPA SAS); or NO-REFERENCE (assume responsibility — group engagement team must be involved in component auditor's risk assessment, materiality determination, significant-risk identification, and review of working papers). Reference path: lower involvement, but group audit report explicitly identifies the other auditor and the components audited. No-reference path: higher involvement (visit component auditor's files, participate in significant judgments, verify independence under AICPA AND any state-board jurisdictional requirements), but the group engagement team is the sole signing auditor. Component-level materiality must be set lower than group materiality (AU-C §600.31). Communications between group and component auditors required (AU-C §600.40+). Document reference / no-reference decision rationale; group materiality, component materiality, performance materiality. Both paths require sufficient evidence on the component's F/S to support the group opinion.",
-      "expected_authorities": [
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SAS", "citation_contains": "AU-C §600.26", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SAS", "citation_contains": "AU-C §600.31", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SAS", "citation_contains": "AU-C §600.40", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SAS", "citation_contains": "AU-C §600.A86", "weight": "binding_on_member"}
-      ],
-      "expected_band": "HIGH",
-      "expected_checklist": "verification_checklist_engagement"
+      "prompt": "Group audit: reference vs assume responsibility for component auditor\n\nIntake:\n{\n  \"engagement_type\": \"audit\",\n  \"entity_type\": \"nonissuer\",\n  \"issue_area\": \"group audit\",\n  \"framework\": \"GAAP\",\n  \"user_request\": \"Group F/S of a holding company with three subsidiaries. Two subsidiaries audited by our firm (group engagement team). Third subsidiary (60% of consolidated revenue) audited by another firm in another state. Component auditor is a peer-reviewed AICPA firm. Should we make reference or assume responsibility?\"\n}",
+      "expected_output": "AU-C 600 reference / no-reference decision turns on (a) component-auditor independence and qualifications, (b) framework alignment, (c) component auditor's audit-procedures sufficiency, and (d) the group engagement team's planned involvement. Given a 60%-of-revenue significant component, the group engagement team typically has two viable paths: REFERENCE (group audit report explicitly names the component auditor and refers to their report on that subsidiary's F/S; group team verifies independence, framework alignment, and report compliance with AICPA SAS); or NO-REFERENCE (assume responsibility — group engagement team must be involved in component auditor's risk assessment, materiality determination, significant-risk identification, and review of working papers). Reference path: lower involvement, but group audit report explicitly identifies the other auditor and the components audited. No-reference path: higher involvement (visit component auditor's files, participate in significant judgments, verify independence under AICPA AND any state-board jurisdictional requirements), but the group engagement team is the sole signing auditor. Component-level materiality must be set lower than group materiality (AU-C §600.31). Communications between group and component auditors required (AU-C §600.40+). Document reference / no-reference decision rationale; group materiality, component materiality, performance materiality. Both paths require sufficient evidence on the component's F/S to support the group opinion.",
+      "expectations": [
+        "Routes to compliance-sas-audit",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_engagement",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §600.26'",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §600.31'",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §600.40'",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §600.A86'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     }
   ]
 }

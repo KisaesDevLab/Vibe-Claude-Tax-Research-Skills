@@ -1,72 +1,54 @@
 {
-  "skill": "research-asc-740",
+  "skill_name": "research-asc-740",
   "version": "0.1.0",
-  "cases": [
+  "evals": [
     {
       "id": "utp-recognition-measurement",
-      "name": "UTP recognition + measurement under ASC 740-10-25 with cross-reference to substantial-authority analysis",
-      "intake": {
-        "entity_type": "nonissuer",
-        "framework": "U.S. GAAP",
-        "issue_area": "UTP",
-        "tax_year": 2025,
-        "user_request": "Private services client takes a position on its 2025 federal return that R&E capitalized under §174 includes only payroll-related costs, excluding software licenses and cloud services used in the R&E process. Tax-research-federal analysis concluded the position has substantial authority but is not 'should' level (estimated 50-55% sustainability). Position would result in $400K incremental deduction in 2025. How should this position be recognized and measured under ASC 740 for the financial statements?"
-      },
-      "expected_routing": "research-asc-740",
-      "expected_conclusion": "ASC 740-10-25 two-step analysis. STEP 1 RECOGNITION: Position is recognized only if more-likely-than-not (MLTN, > 50%) of being sustained on examination based on technical merits. The cross-referenced tax-research-federal analysis estimates 50-55% sustainability. This is RIGHT AT THE MLTN LINE. The team must conclude whether the position is genuinely > 50% (recognize) or ≤ 50% (do not recognize). If recognized: STEP 2 MEASUREMENT: largest amount of tax benefit more-than-50%-likely upon ultimate settlement (cumulative probability). If outcomes are estimated as 30% full $400K, 25% $300K, 25% $200K, 20% $0 — cumulative from largest: $400K = 30% (not > 50%); $300K or more = 55% (> 50%) — so recognized amount is $300K of incremental deduction. Unrecognized tax benefit (UTB) = $100K of pre-tax difference, or $21K of tax effect at 21% federal rate (plus state tax effect). DTA / current tax benefit reflects the recognized $300K, not the full $400K. Disclose UTB rollforward (PBE) or total UTB (private). Interest and penalties — accounting policy choice for classification. SUBSEQUENT: monitor for new authority, settlements, statute expiration; remeasure as a discrete period item if facts change. Cross-domain CITATION: tax-research-federal substantive analysis (IRC §174, post-TCJA capitalization rules, applicable Treasury Regs, IRS guidance) — tag as authority_domain: tax_position with weights from §1.6662-4(d)(3) ladder. ASC 740 conclusions tagged authority_domain: gaap. Practitioner SSTS / Circular 230: tax-position-side disclosure (Form 8275 if reasonable basis with disclosure path) is a tax-position-side decision, separate from ASC 740 recognition.",
-      "expected_authorities": [
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "740-10-25-6", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "740-10-25-13", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "740-10-25-7", "weight": "gaap_codified"},
-        {"authority_domain": "tax_position", "authority_type": "IRC", "citation_contains": "174", "weight": "primary_statute"}
-      ],
-      "expected_band": "MODERATE",
-      "expected_checklist": "verification_checklist_gaap"
+      "prompt": "UTP recognition + measurement under ASC 740-10-25 with cross-reference to substantial-authority analysis\n\nIntake:\n{\n  \"entity_type\": \"nonissuer\",\n  \"framework\": \"U.S. GAAP\",\n  \"issue_area\": \"UTP\",\n  \"tax_year\": 2025,\n  \"user_request\": \"Private services client takes a position on its 2025 federal return that R&E capitalized under §174 includes only payroll-related costs, excluding software licenses and cloud services used in the R&E process. Tax-research-federal analysis concluded the position has substantial authority but is not 'should' level (estimated 50-55% sustainability). Position would result in $400K incremental deduction in 2025. How should this position be recognized and measured under ASC 740 for the financial statements?\"\n}",
+      "expected_output": "ASC 740-10-25 two-step analysis. STEP 1 RECOGNITION: Position is recognized only if more-likely-than-not (MLTN, > 50%) of being sustained on examination based on technical merits. The cross-referenced tax-research-federal analysis estimates 50-55% sustainability. This is RIGHT AT THE MLTN LINE. The team must conclude whether the position is genuinely > 50% (recognize) or ≤ 50% (do not recognize). If recognized: STEP 2 MEASUREMENT: largest amount of tax benefit more-than-50%-likely upon ultimate settlement (cumulative probability). If outcomes are estimated as 30% full $400K, 25% $300K, 25% $200K, 20% $0 — cumulative from largest: $400K = 30% (not > 50%); $300K or more = 55% (> 50%) — so recognized amount is $300K of incremental deduction. Unrecognized tax benefit (UTB) = $100K of pre-tax difference, or $21K of tax effect at 21% federal rate (plus state tax effect). DTA / current tax benefit reflects the recognized $300K, not the full $400K. Disclose UTB rollforward (PBE) or total UTB (private). Interest and penalties — accounting policy choice for classification. SUBSEQUENT: monitor for new authority, settlements, statute expiration; remeasure as a discrete period item if facts change. Cross-domain CITATION: tax-research-federal substantive analysis (IRC §174, post-TCJA capitalization rules, applicable Treasury Regs, IRS guidance) — tag as authority_domain: tax_position with weights from §1.6662-4(d)(3) ladder. ASC 740 conclusions tagged authority_domain: gaap. Practitioner SSTS / Circular 230: tax-position-side disclosure (Form 8275 if reasonable basis with disclosure path) is a tax-position-side decision, separate from ASC 740 recognition.",
+      "expectations": [
+        "Routes to research-asc-740",
+        "Confidence band: MODERATE",
+        "Verification checklist: verification_checklist_gaap",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '740-10-25-6'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '740-10-25-13'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '740-10-25-7'",
+        "Cites IRC (tax_position/primary_statute) referencing '174'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     },
     {
       "id": "valuation-allowance-cumulative-loss",
-      "name": "Valuation allowance evaluation with three-year cumulative loss",
-      "intake": {
-        "entity_type": "nonissuer",
-        "framework": "U.S. GAAP",
-        "issue_area": "valuation allowance",
-        "tax_year": 2025,
-        "user_request": "Private biotech client. Cumulative book losses 2023-2025 of $30M. NOL carryforwards (federal, post-TCJA — indefinite life with 80% taxable-income limit): $40M. State NOLs (3-20 year expiration depending on state): $35M. R&D credit carryforwards: $5M. No DTL on the books that would reverse to absorb DTAs. Management forecasts: 2026 break-even, 2027+ profitable based on Phase 3 trial enrollment. Should the company maintain a full valuation allowance on the federal NOL DTA?"
-      },
-      "expected_routing": "research-asc-740",
-      "expected_conclusion": "ASC 740-10-30-17 requires VA when MLTN that some/all of DTA will not be realized. Evaluation requires WEIGHT of all available evidence (positive AND negative). NEGATIVE EVIDENCE (strong): Three-year cumulative loss is widely cited as nearly-conclusive negative evidence per ASC 740-10-30-19. Cumulative losses are difficult to overcome with projections of future income because such projections are inherently subjective. POSITIVE EVIDENCE (weak in this context): No reversing DTLs to offset; future-income projections (2026 break-even, 2027+ profitable based on Phase 3) require objectively-verifiable evidence — Phase 3 trial outcomes are NOT objectively-verifiable in advance (FDA approval probability, market acceptance, pricing). FOUR SOURCES OF FUTURE TAXABLE INCOME: (1) reversal of existing DTLs — none; (2) future taxable income exclusive of reversing DTLs and carryforwards — projection-based, weak; (3) tax-planning strategies — limited for a biotech (no significant intercompany restructuring opportunities; cannot manufacture taxable income artificially); (4) carryback — TCJA eliminated NOL carryback for years beginning after 2017 (pre-TCJA NOLs differ; not relevant here). CONCLUSION: full valuation allowance on federal NOL DTA is supportable and likely required. State NOLs: even more likely require VA (state NOLs have expiration dates, intensifying realizability concern). R&D credit carryforwards: likewise VA. SUBSEQUENT: VA can be reversed (in continuing operations per ASC 740-10-45-22) when sufficient positive evidence emerges — typical trigger is a return to cumulative profitability over 36 months. Disclosure: ASC 740-10-50-2 requires disclosure of total VA, components of DTAs / DTLs, and changes in VA during the year. ASU 2023-09 (effective Dec. 15, 2024 PBE / 2025 non-PBE) expands rate-reconciliation disclosure of VA changes. Practical: discuss VA conclusion with management and board; document evaluation in tax workpaper file.",
-      "expected_authorities": [
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "740-10-30-17", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "740-10-30-18", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "740-10-30-19", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "740-10-50-2", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASU", "citation_contains": "2023-09", "weight": "gaap_codified"},
-        {"authority_domain": "tax_position", "authority_type": "IRC", "citation_contains": "172", "weight": "primary_statute"}
-      ],
-      "expected_band": "HIGH",
-      "expected_checklist": "verification_checklist_gaap"
+      "prompt": "Valuation allowance evaluation with three-year cumulative loss\n\nIntake:\n{\n  \"entity_type\": \"nonissuer\",\n  \"framework\": \"U.S. GAAP\",\n  \"issue_area\": \"valuation allowance\",\n  \"tax_year\": 2025,\n  \"user_request\": \"Private biotech client. Cumulative book losses 2023-2025 of $30M. NOL carryforwards (federal, post-TCJA — indefinite life with 80% taxable-income limit): $40M. State NOLs (3-20 year expiration depending on state): $35M. R&D credit carryforwards: $5M. No DTL on the books that would reverse to absorb DTAs. Management forecasts: 2026 break-even, 2027+ profitable based on Phase 3 trial enrollment. Should the company maintain a full valuation allowance on the federal NOL DTA?\"\n}",
+      "expected_output": "ASC 740-10-30-17 requires VA when MLTN that some/all of DTA will not be realized. Evaluation requires WEIGHT of all available evidence (positive AND negative). NEGATIVE EVIDENCE (strong): Three-year cumulative loss is widely cited as nearly-conclusive negative evidence per ASC 740-10-30-19. Cumulative losses are difficult to overcome with projections of future income because such projections are inherently subjective. POSITIVE EVIDENCE (weak in this context): No reversing DTLs to offset; future-income projections (2026 break-even, 2027+ profitable based on Phase 3) require objectively-verifiable evidence — Phase 3 trial outcomes are NOT objectively-verifiable in advance (FDA approval probability, market acceptance, pricing). FOUR SOURCES OF FUTURE TAXABLE INCOME: (1) reversal of existing DTLs — none; (2) future taxable income exclusive of reversing DTLs and carryforwards — projection-based, weak; (3) tax-planning strategies — limited for a biotech (no significant intercompany restructuring opportunities; cannot manufacture taxable income artificially); (4) carryback — TCJA eliminated NOL carryback for years beginning after 2017 (pre-TCJA NOLs differ; not relevant here). CONCLUSION: full valuation allowance on federal NOL DTA is supportable and likely required. State NOLs: even more likely require VA (state NOLs have expiration dates, intensifying realizability concern). R&D credit carryforwards: likewise VA. SUBSEQUENT: VA can be reversed (in continuing operations per ASC 740-10-45-22) when sufficient positive evidence emerges — typical trigger is a return to cumulative profitability over 36 months. Disclosure: ASC 740-10-50-2 requires disclosure of total VA, components of DTAs / DTLs, and changes in VA during the year. ASU 2023-09 (effective Dec. 15, 2024 PBE / 2025 non-PBE) expands rate-reconciliation disclosure of VA changes. Practical: discuss VA conclusion with management and board; document evaluation in tax workpaper file.",
+      "expectations": [
+        "Routes to research-asc-740",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_gaap",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '740-10-30-17'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '740-10-30-18'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '740-10-30-19'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '740-10-50-2'",
+        "Cites FASB_ASU (gaap/gaap_codified) referencing '2023-09'",
+        "Cites IRC (tax_position/primary_statute) referencing '172'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     },
     {
       "id": "intraperiod-allocation-discontinued-operations",
-      "name": "Intraperiod allocation with discontinued operations and stock comp",
-      "intake": {
-        "entity_type": "nonissuer",
-        "framework": "U.S. GAAP",
-        "issue_area": "intraperiod allocation",
-        "tax_year": 2025,
-        "user_request": "Private SaaS client divested a non-core service line (held-for-sale at year-end, classified as discontinued operations under ASC 205-20). Continuing operations pretax income = $5M; discontinued ops pretax loss = ($3M); excess tax benefits on stock-based compensation = $400K. State tax 6% (after federal benefit). How should the tax expense be allocated among continuing operations, discontinued operations, and equity?"
-      },
-      "expected_routing": "research-asc-740",
-      "expected_conclusion": "ASC 740-20-45-7 incremental allocation method. STEP 1 — allocate to CONTINUING OPERATIONS: continuing pretax × statutory rate + permanent differences + state tax. Continuing-operations tax = $5M × 21% = $1,050K federal + state $5M × 6% = $300K state = $1,350K. STEP 2 — allocate INCREMENTAL effect to other items: DISCONTINUED OPERATIONS — incremental tax effect of including discontinued in total. Total tax with discontinued = ($5M - $3M) × 21% + state = $2M × 21% = $420K + state portion. Total tax without discontinued = $1,350K. Incremental for discontinued = total - $1,350K = ($420K + state) - $1,350K. Note: the (3M) loss creates a tax BENEFIT of approximately $630K federal + state portion. STOCK-BASED COMP EXCESS BENEFIT — per ASU 2016-09, excess tax benefits on stock comp recognized in INCOME TAX EXPENSE (continuing operations), NOT in equity. The $400K excess benefit reduces continuing-operations tax expense by $400K. Final allocation: Continuing operations tax expense = $1,350K - $400K = $950K (effective). Discontinued operations tax benefit = $630K + state. (Approximate figures; detailed scheduling required for actual numbers.) Important: the intraperiod allocation produces an effective tax rate volatility — the $400K excess benefit reduces ETR, while the discontinued-operations tax benefit doesn't affect continuing-operations ETR. Disclosure: ASC 740-10-50 requires disaggregation of components and rate reconciliation. ASU 2023-09 (PBE Dec. 15, 2024 / private Dec. 15, 2025) requires expanded rate-reconciliation categories including stock-based compensation effects. Cross-reference ASC 205-20 for held-for-sale classification of the discontinued operation.",
-      "expected_authorities": [
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "740-20-45-7", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "740-20-45-12", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASU", "citation_contains": "2016-09", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "205-20", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASU", "citation_contains": "2023-09", "weight": "gaap_codified"}
-      ],
-      "expected_band": "MODERATE",
-      "expected_checklist": "verification_checklist_gaap"
+      "prompt": "Intraperiod allocation with discontinued operations and stock comp\n\nIntake:\n{\n  \"entity_type\": \"nonissuer\",\n  \"framework\": \"U.S. GAAP\",\n  \"issue_area\": \"intraperiod allocation\",\n  \"tax_year\": 2025,\n  \"user_request\": \"Private SaaS client divested a non-core service line (held-for-sale at year-end, classified as discontinued operations under ASC 205-20). Continuing operations pretax income = $5M; discontinued ops pretax loss = ($3M); excess tax benefits on stock-based compensation = $400K. State tax 6% (after federal benefit). How should the tax expense be allocated among continuing operations, discontinued operations, and equity?\"\n}",
+      "expected_output": "ASC 740-20-45-7 incremental allocation method. STEP 1 — allocate to CONTINUING OPERATIONS: continuing pretax × statutory rate + permanent differences + state tax. Continuing-operations tax = $5M × 21% = $1,050K federal + state $5M × 6% = $300K state = $1,350K. STEP 2 — allocate INCREMENTAL effect to other items: DISCONTINUED OPERATIONS — incremental tax effect of including discontinued in total. Total tax with discontinued = ($5M - $3M) × 21% + state = $2M × 21% = $420K + state portion. Total tax without discontinued = $1,350K. Incremental for discontinued = total - $1,350K = ($420K + state) - $1,350K. Note: the (3M) loss creates a tax BENEFIT of approximately $630K federal + state portion. STOCK-BASED COMP EXCESS BENEFIT — per ASU 2016-09, excess tax benefits on stock comp recognized in INCOME TAX EXPENSE (continuing operations), NOT in equity. The $400K excess benefit reduces continuing-operations tax expense by $400K. Final allocation: Continuing operations tax expense = $1,350K - $400K = $950K (effective). Discontinued operations tax benefit = $630K + state. (Approximate figures; detailed scheduling required for actual numbers.) Important: the intraperiod allocation produces an effective tax rate volatility — the $400K excess benefit reduces ETR, while the discontinued-operations tax benefit doesn't affect continuing-operations ETR. Disclosure: ASC 740-10-50 requires disaggregation of components and rate reconciliation. ASU 2023-09 (PBE Dec. 15, 2024 / private Dec. 15, 2025) requires expanded rate-reconciliation categories including stock-based compensation effects. Cross-reference ASC 205-20 for held-for-sale classification of the discontinued operation.",
+      "expectations": [
+        "Routes to research-asc-740",
+        "Confidence band: MODERATE",
+        "Verification checklist: verification_checklist_gaap",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '740-20-45-7'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '740-20-45-12'",
+        "Cites FASB_ASU (gaap/gaap_codified) referencing '2016-09'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '205-20'",
+        "Cites FASB_ASU (gaap/gaap_codified) referencing '2023-09'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     }
   ]
 }
