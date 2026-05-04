@@ -368,11 +368,109 @@ Out of scope for Phase 8:
   labels (JobAid, IRSStudy, FactSheet, PractitionerHeuristic,
   etc.) — currently emitted as warnings.
 
+## Phase 9 — AICPA professional standards + engagement letters + GAAP research
+
+Triggered by user request to expand the pack beyond tax-only into the
+broader AICPA practice scope (Code of Professional Conduct, SSARS,
+SAS, SSAE/SQMS, engagement letters) and into FASB ASC / U.S. GAAP
+research. Adds 8 skills (37 → 45). Schema gets a new
+`authority_domain` field (additive, backward-compatible) so AICPA
+binding standards and FASB ASC don't pollute the §1.6662-4(d)(3) tax-
+position weight ladder. PCAOB AS, GASB, IFRS, Yellow Book/GAGAS, and
+peer-review operations stay out of scope (one-line external pointer
+each).
+
+Validation: `SKIP_URL_CHECK=1 ./scripts/validate.sh phase 9 && ./scripts/run-evals.sh full`
+
+### 9a. Schema + shared/ scaffolding (load-bearing first)
+- [x] Update `shared/output-schema.json`: add `authority_domain` field
+      (`tax_position` default | `professional_conduct` | `gaap`); extend
+      `authority_type` enum with `AICPA_Code, AICPA_SSARS, AICPA_SAS,
+      AICPA_SSAE, AICPA_SQMS, AICPA_PracticeAid, AICPA_TPA, FASB_ASC,
+      FASB_ASU, FASB_Concepts, EITF, StateBoardRule`; extend `weight`
+      enum with `binding_on_member, interpretive, practice_aid,
+      gaap_codified, gaap_pre_codification_grandfathered,
+      gaap_non_authoritative`; add sibling optional checklists
+      (`verification_checklist_aicpa_code`, `*_engagement`, `*_gaap`).
+- [x] Update `shared/sources.json`: add `aicpa_professional_standards`,
+      `fasb_gaap`, `state_boards_of_accountancy` (NASBA + 55
+      jurisdictions), `external_pointers_out_of_scope` blocks.
+- [x] Update `shared/live-sources.md` with corresponding human-readable
+      sections.
+- [x] Update `shared/citation-discipline.md` with domain-aware authority-
+      type-to-weight mapping; document that AICPA/FASB cited inside
+      tax-position outputs gets `tax_position` / `persuasive_non_authority`.
+- [x] Update `shared/authority-hierarchy.md` with new "Professional
+      standards" and "GAAP authority" subsections (separate ladders).
+- [x] Update `shared/compliance.md` with Code-of-Conduct module +
+      engagement-letter required-elements module.
+- [x] Update `scripts/validate.sh` to dispatch `phase 9` (no other
+      script changes; authority_taxonomy check is schema-driven).
+
+### 9b. Skills (8 new)
+- [x] `compliance-aicpa-code` (SKILL.md + references/{
+      independence-framework.md, nonattest-services-1295.md,
+      state-board-overlay.md} + 3 eval cases)
+- [x] `compliance-ssars` (SKILL.md + references/{ar-c-60.md,
+      ar-c-70-preparation.md, ar-c-80-compilation.md, ar-c-90-review.md}
+      + 3 eval cases)
+- [x] `compliance-sas-audit` (SKILL.md + references/{au-c-overview.md,
+      au-c-240-fraud.md, au-c-315-330-risk.md, au-c-570-going-concern.md,
+      au-c-600-group-audits.md, au-c-700-reporting.md} + 3 eval cases)
+- [x] `compliance-attestation-qm` (SKILL.md + references/{at-c-105-common.md,
+      at-c-205-examinations.md, at-c-soc-engagements.md,
+      sqms-1-firm-qm.md, sqms-2-engagement-quality-review.md} + 3 eval
+      cases)
+- [x] `engagement-letter-library` (SKILL.md + references/{index.md,
+      common-clauses.md, ftc-safeguards-rule.md,
+      indemnification-state-overlay.md} + references/letters/{audit,
+      review, compilation, preparation, tax-1040, tax-business,
+      tax-advisory, bookkeeping, payroll, consulting, soc1, soc2,
+      aup}.md + 3 eval cases)
+- [x] `research-financial-reporting` (SKILL.md + references/{asc-topic-map.md,
+      asc-105-hierarchy.md, asu-effective-dates.md,
+      gasb-ifrs-pointers.md} + 3 eval cases)
+- [x] `research-asc-740` (SKILL.md + references/{utp-recognition-measurement.md,
+      valuation-allowances.md, dta-dtl.md, intraperiod-allocation.md,
+      disclosures.md} + 3 eval cases)
+- [x] `research-asc-606-842` (SKILL.md + references/{asc-606-five-step-model.md,
+      asc-606-variable-consideration.md, asc-606-principal-vs-agent.md,
+      asc-842-classification.md, asc-842-rou-assets.md} + 3 eval cases)
+
+### 9c. Dispatcher + plugin + docs
+- [x] `skills/cpa-pack-index/SKILL.md` adds 8 new dispatcher routes.
+- [x] `.claude-plugin/plugin.json` appends 8 new skill paths.
+- [x] `.claude-plugin/marketplace.json` extends `tags` (`aicpa`,
+      `attest`, `audit`, `gaap`, `ssars`, `engagement-letters`,
+      `professional-standards`).
+- [x] `README.md` adds Phase 9 row group to skills index + expands
+      compliance posture section.
+- [x] `CHANGELOG.md` records Phase 9 expansion (additive schema
+      change, 8 new skills).
+
+### 9d. Validation + commit
+- [x] `SKIP_URL_CHECK=1 ./scripts/validate.sh phase 9` exits 0.
+- [x] `./scripts/run-evals.sh full` exits 0 (≥ 3 cases per new skill).
+- [x] `cat .claude-plugin/plugin.json | jq '.skills | length'` returns 45.
+- [x] Commit family-by-family; push to `build`; open Phase 9 PR.
+
+Out of scope for Phase 9:
+- PCAOB AS standards (issuer audits) — pack targets nonissuer firms.
+- GASB / state-and-local government GAAP.
+- IFRS.
+- Yellow Book / GAGAS / Single Audit.
+- Peer review program operations.
+- State CPA license / CPE tracking.
+- `research-asc-326` (CECL — community-bank/credit-union niche) —
+  defer to Phase 10.
+
 ---
 
 ## Session log
 (Claude Code appends entries here before each /compact or exit.
 Format: `YYYY-MM-DD HH:MM | phase X | items: ... | last commit: <sha>`)
+
+2026-05-04 | phase 9 complete | items: 9a schema additions (authority_domain field; new authority_type enum AICPA_*/FASB_*/EITF/StateBoardRule; new weight enum binding_on_member/gaap_codified/etc.; sibling verification checklists); 9a shared/ scaffolding (sources.json aicpa_professional_standards/fasb_gaap/state_boards_of_accountancy/external_pointers_out_of_scope/ftc_safeguards_rule blocks; live-sources.md sections; citation-discipline.md domain-aware mapping; authority-hierarchy.md professional-standards + GAAP subsections; compliance.md AICPA Code + engagement-letter + GAAP modules); 9b 8 new skills (compliance-aicpa-code, compliance-ssars, compliance-sas-audit, compliance-attestation-qm, engagement-letter-library w/13 letter templates, research-financial-reporting, research-asc-740, research-asc-606-842) each with SKILL.md + references/ + 3 eval cases; 9c cpa-pack-index dispatcher 8 new routes; plugin.json bumped to v0.2.0 with 45 skills; marketplace.json tags expanded; README Phase 9 row groups; CHANGELOG v0.2.0-beta entry; 9d validation green (validate.sh phase 9 + full both pass=8 fail=0; run-evals.sh full pass=45 fail=0). Branch: build. Last commit: d5c5aee.
 
 2026-04-27 | phase 2 complete | items: predict-hobby-loss + reasonable-comp evals; +9 prediction skills (real-estate-pro, material-participation, qbi-eligibility, 1031-qualification, economic-substance, debt-vs-equity, innocent-spouse, reasonable-cause, r-and-d-credit); +4 research skills (entity, payroll, international, procedure); return-summary-entity; notice-response. Validate phase 2 + run-evals phase 2 both green (4 pass / 0 fail; 20 eval files pass). Branch: build. Last commit before plan-tick: 98f591c.
 

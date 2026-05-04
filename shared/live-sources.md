@@ -189,7 +189,7 @@ closest cite for any proposition.
 - Procedurally Taxing: https://procedurallytaxing.com
 - Tax Appellate Blog (Miller & Chevalier): https://appellatetax.com
 
-## Professional standards
+## Professional standards (tax)
 - AICPA SSTS:
   https://www.aicpa-cima.com/resources/landing/statements-on-standards-for-tax-services
 - AICPA Levels of Confidence chart:
@@ -200,6 +200,121 @@ closest cite for any proposition.
   https://www.irs.gov/tax-professionals/circular-230-tax-professionals
 - Circular 230 PDF (Rev. 6-2014):
   https://www.irs.gov/pub/irs-pdf/pcir230.pdf
+
+## AICPA professional standards — non-tax (v1.2 / Phase 9)
+
+These are the canonical AICPA standard-setting outputs that bind
+member CPAs in their non-tax practice (attest, advisory, compilation/
+review, ethics). Cite as `authority_domain: professional_conduct`
+with `authority_type: AICPA_*`. The Code, SSARS, SAS, SSAE, and SQMS
+are binding-on-member; AICPA practice aids and Technical Q&A are
+non-authoritative practitioner aids.
+
+- AICPA Code of Professional Conduct (live online):
+  https://www.aicpa-cima.com/topic/ethics/code-of-professional-conduct
+- AICPA Code (downloadable PDF):
+  https://us.aicpa.org/content/dam/aicpa/research/standards/codeofconduct/downloadabledocuments/2014-december-15-content-asof-2024-october-31-code-of-conduct.pdf
+- AICPA Statements on Standards for Accounting and Review Services
+  (SSARS — currently effective):
+  https://www.aicpa-cima.com/resources/download/aicpa-ssarss-currently-effective
+- AICPA Statements on Auditing Standards (SAS — currently effective):
+  https://www.aicpa-cima.com/resources/download/aicpa-statements-on-auditing-standards-currently-effective
+- AICPA Statements on Standards for Attestation Engagements (SSAE —
+  currently effective):
+  https://www.aicpa-cima.com/resources/download/aicpa-ssaes-currently-effective
+- SQMS No. 1 — A Firm's System of Quality Management:
+  https://www.aicpa-cima.com/resources/download/sqms-no-1-a-firm-s-system-of-quality-management
+- SQMS No. 2 — Engagement Quality Reviews:
+  https://www.aicpa-cima.com/resources/download/sqms-no-2-engagement-quality-reviews
+- AICPA Quality Management hub:
+  https://www.aicpa-cima.com/resources/landing/quality-management
+- AICPA Audit & Attest Standards hub:
+  https://www.aicpa-cima.com/topic/audit-assurance/audit-and-attest-standards
+- AICPA Compilation & Review hub:
+  https://www.aicpa-cima.com/topic/audit-assurance/compilation-and-review
+- AICPA Ethics interpretations hub:
+  https://www.aicpa-cima.com/topic/ethics
+- AICPA Technical Questions and Answers (TPAs):
+  https://www.aicpa-cima.com/resources/landing/technical-questions-and-answers
+- AICPA Tax Section practice management:
+  https://www.aicpa-cima.com/topic/tax/tax-practice-management
+- AICPA Tax engagement letter templates (members-only landing):
+  https://www.aicpa-cima.com/topic/tax/tax-practice-management/engagement-letters
+
+## FASB / U.S. GAAP (v1.2 / Phase 9)
+
+FASB ASC is the single source of authoritative U.S. GAAP for non-
+governmental entities (ASC 105-10). Concepts Statements are
+explicitly **non-authoritative** per ASC 105-10-05-2. Cite ASC
+material as `authority_domain: gaap` with `authority_type: FASB_ASC`
+(for codified content) or `FASB_ASU` (for the issuance vehicle prior
+to incorporation). Concepts Statements get
+`authority_type: FASB_Concepts` / `weight: gaap_non_authoritative`.
+
+- FASB home: https://www.fasb.org
+- FASB Accounting Standards Codification (Basic View — free with
+  registration; Professional View paid): https://asc.fasb.org
+- ASU index: https://www.fasb.org/page/PageContent?pageId=/standards/accounting-standards-updates-issued.html
+- Concepts Statements: https://www.fasb.org/page/PageContent?pageId=/standards/concepts-statements.html
+- Emerging Issues Task Force (EITF) abstracts:
+  https://www.fasb.org/page/PageContent?pageId=/projects/emerging-issues-task-force-eitf.html
+- Private Company Council:
+  https://www.fasb.org/page/PageContent?pageId=/about-us/about-the-pcc.html
+- FASB In Focus (executive summaries): https://www.fasb.org/standards/in-focus.html
+
+## State boards of accountancy — 50 + DC + 4 territories (v1.2 / Phase 9)
+
+State board rules govern CPA licensure and practice in each
+jurisdiction. They can be **stricter** than the AICPA Code on
+independence and other matters; the `compliance-aicpa-code` skill
+applies a state-board overlay when the engagement state is supplied.
+Cite as `authority_domain: professional_conduct`,
+`authority_type: StateBoardRule`, `weight: binding_on_member`.
+
+- NASBA home: https://nasba.org
+- NASBA state board directory: https://nasba.org/stateboards
+- NASBA Accountancy Licensing Database:
+  https://nasba.org/licensure/nasbalicensing
+
+The full per-jurisdiction URL table lives in
+`shared/sources.json` under `state_boards_of_accountancy.boards`. For
+known stricter-overlay jurisdictions:
+- California Board of Accountancy: https://www.dca.ca.gov/cba
+- New York State Board for Public Accountancy:
+  https://www.op.nysed.gov/professions/certified-public-accountants
+- Texas State Board of Public Accountancy: https://www.tsbpa.texas.gov
+
+## FTC Safeguards Rule (v1.2 / Phase 9)
+
+The FTC Safeguards Rule (16 C.F.R. Part 314) applies to all tax
+preparers as "financial institutions" under the GLBA. Strengthened
+in 2023 (effective June 2023) with affirmative requirements for
+written information security programs, qualified individual,
+incident response plans, and access controls. Engagement letters
+for tax engagements should reference the firm's Safeguards-Rule
+program.
+
+- 16 C.F.R. Part 314 (eCFR):
+  https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-314
+- FTC compliance guide:
+  https://www.ftc.gov/business-guidance/resources/ftc-safeguards-rule-what-your-business-needs-know
+
+## External pointers — out of scope for this pack (v1.2 / Phase 9)
+
+The pack targets nonissuer CPA firms doing tax + small-firm attest +
+small-firm advisory work. The following resources are listed only
+so the relevant skills can route users externally; the pack does
+NOT produce work product against these standards. Cite as
+`authority_domain: professional_conduct` (or `gaap` for GASB) with a
+`weight_override_rationale` of "out of scope; external pointer only."
+
+- PCAOB (issuer audit standards): https://pcaobus.org
+- PCAOB AS standards: https://pcaobus.org/oversight/standards
+- GASB (state and local government GAAP): https://gasb.org
+- GASB Codification: https://gars.gasb.org
+- IFRS Foundation: https://www.ifrs.org
+- GAO Yellow Book (GAGAS): https://www.gao.gov/yellowbook
+- IIA Standards (internal audit): https://www.theiia.org/en/standards
 
 ## Mirrors (use only if primary unreachable)
 - Cornell LII (IRC + CFR mirror): https://www.law.cornell.edu

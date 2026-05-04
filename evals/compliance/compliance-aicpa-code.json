@@ -1,0 +1,50 @@
+{
+  "skill_name": "compliance-aicpa-code",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "loan-from-attest-client",
+      "prompt": "Loan from attest client to engagement partner\n\nIntake:\n{\n  \"engagement_type\": \"audit\",\n  \"attest_client\": \"yes\",\n  \"engagement_state\": \"TX\",\n  \"entity_type\": \"nonissuer\",\n  \"threat_pattern\": \"Engagement partner took out a $50,000 home equity loan from the attest client (regional bank). Loan is at posted market rates and is collateralized by partner's primary residence.\"\n}",
+      "expected_output": "Independence likely preserved if all permitted-loan conditions in ET §1.260 are met (residential mortgage at market terms with grandfathered/permitted lender). Document threats and safeguards. State-board overlay (TX 22 TAC §501.73) consulted.",
+      "expectations": [
+        "Routes to compliance-aicpa-code",
+        "Confidence band: MODERATE",
+        "Verification checklist: verification_checklist_aicpa_code",
+        "state_overlay_required = false",
+        "Cites AICPA_Code (professional_conduct/binding_on_member) referencing '1.260'",
+        "Cites StateBoardRule (professional_conduct/binding_on_member) referencing '22 TAC'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
+    },
+    {
+      "id": "nonattest-bookkeeping-1295",
+      "prompt": "Bookkeeping services for an audit client without §1.295 safeguards\n\nIntake:\n{\n  \"engagement_type\": \"audit\",\n  \"attest_client\": \"yes\",\n  \"engagement_state\": \"CA\",\n  \"entity_type\": \"nonissuer\",\n  \"threat_pattern\": \"Firm is the long-time outsourced bookkeeper for a client whose financial statements the firm also audits. Firm posts month-end accruals (bad debt, depreciation, intercompany) without explicit client review. No §1.295 four-condition documentation in engagement file.\"\n}",
+      "expected_output": "Independence IMPAIRED. The firm has assumed a management function (posting non-routine adjusting entries that are management judgments) and lacks §1.295 documentation. The four general conditions of §1.295.040 must be established and documented; without them, this is a §1.295 failure independent of any other safeguard. Recommend: either (a) restructure the engagement so that the firm prepares only routine entries authorized by client, with client SKE oversight, plus full §1.295 documentation, OR (b) firm withdraws from one of the two engagements (likely the bookkeeping). California-board overlay (CCR Title 16 §62) consulted; consistent with AICPA.",
+      "expectations": [
+        "Routes to compliance-aicpa-code",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_aicpa_code",
+        "state_overlay_required = false",
+        "Cites AICPA_Code (professional_conduct/binding_on_member) referencing '1.295.115'",
+        "Cites AICPA_Code (professional_conduct/binding_on_member) referencing '1.295.040'",
+        "Cites StateBoardRule (professional_conduct/binding_on_member) referencing 'CCR Title 16'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
+    },
+    {
+      "id": "subpoena-confidential-info",
+      "prompt": "Subpoena seeking client tax workpapers\n\nIntake:\n{\n  \"engagement_type\": \"tax\",\n  \"attest_client\": \"no\",\n  \"engagement_state\": \"NY\",\n  \"entity_type\": \"nonissuer\",\n  \"threat_pattern\": \"Firm received a state subpoena from a divorce proceeding seeking the tax workpapers and prior-year returns of a client. Spouse is the opposing party. Client has not consented to disclosure.\"\n}",
+      "expected_output": "ET §1.700 permits disclosure pursuant to a validly issued subpoena (§1.700.001 exception). The firm should: (1) notify client of the subpoena promptly; (2) confirm the subpoena's facial validity and any motion-to-quash window; (3) limit production to documents responsive to the subpoena's scope; (4) consult firm counsel before producing. NY state-bar privilege rules and any applicable §7525 federally-authorized-tax-practitioner privilege should be evaluated by counsel before production. NY state-board overlay (8 NYCRR Subpart 70-1) consulted.",
+      "expectations": [
+        "Routes to compliance-aicpa-code",
+        "Confidence band: MODERATE",
+        "Verification checklist: verification_checklist_aicpa_code",
+        "state_overlay_required = false",
+        "Cites AICPA_Code (professional_conduct/binding_on_member) referencing '1.700.001'",
+        "Cites StateBoardRule (professional_conduct/binding_on_member) referencing '8 NYCRR'",
+        "Cites IRC (tax_position/primary_statute) referencing '7525'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
+    }
+  ]
+}

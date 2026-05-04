@@ -113,11 +113,34 @@ Per-skill ZIP upload. See
 | [due-date-calculator](skills/due-date-calculator) | §§ 6072/6075/6213/6320/6330/6511/6654/6655/7503 |
 | [penalty-interest-calc](skills/penalty-interest-calc) | §§ 6601/6621/6651/6654/6655/6662/6663/6672 |
 
-### Compliance (1)
+### Compliance — tax (1)
 
 | Skill | Description |
 |---|---|
 | [compliance-ssts-circular230](skills/compliance-ssts-circular230) | SSTS § 1.1 / § 2.3 + Circular 230 §§ 10.22/10.35/10.37 walk |
+
+### Compliance — AICPA professional standards (4) — Phase 9
+
+| Skill | Description |
+|---|---|
+| [compliance-aicpa-code](skills/compliance-aicpa-code) | AICPA Code of Professional Conduct (ET §1.000+); threats-and-safeguards independence framework; §1.295 nonattest scope; state-board overlay |
+| [compliance-ssars](skills/compliance-ssars) | SSARS / AR-C 60 (general) + 70 (preparation) + 80 (compilation) + 90 (review); lack-of-independence handling |
+| [compliance-sas-audit](skills/compliance-sas-audit) | SAS / AU-C clarified audit standards (200/240/315/330/540/570/600/700-series) for nonissuer audits |
+| [compliance-attestation-qm](skills/compliance-attestation-qm) | AT-C 105/205/215/320 attestation; SOC 1 / SOC 2 / SOC 3; SQMS 1 firm QM; SQMS 2 engagement quality reviews |
+
+### Engagement letters (1) — Phase 9
+
+| Skill | Description |
+|---|---|
+| [engagement-letter-library](skills/engagement-letter-library) | Engagement-letter framework + fillable templates for 13 engagement types (audit, review, compilation, preparation, tax-1040, tax-business, tax-advisory, bookkeeping, payroll, consulting, SOC 1, SOC 2, AUP); FTC Safeguards Rule clause; state indemnification overlay |
+
+### GAAP / FASB ASC research (3) — Phase 9
+
+| Skill | Description |
+|---|---|
+| [research-financial-reporting](skills/research-financial-reporting) | General FASB ASC research; routes by Topic family (200–900); ASC 105-10 hierarchy; ASU effective dates |
+| [research-asc-740](skills/research-asc-740) | ASC 740 income tax accounting (UTP / FIN 48; valuation allowances; DTA/DTL; intraperiod allocation; ASU 2023-09) |
+| [research-asc-606-842](skills/research-asc-606-842) | ASC 606 revenue recognition (five-step model; variable consideration; principal vs agent) and ASC 842 leases (lessee classification; ROU assets; sale-leaseback) |
 
 ## State coverage
 

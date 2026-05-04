@@ -14,8 +14,8 @@
       "source": "github:KisaesDevLab/vibe-claude-tax-research-skills",
       "branch": "main",
       "path": ".",
-      "description": "37+ skills covering federal research, prediction, return summary, planning, state research (50 + DC), tax compliance utilities, S-corp / Schedule C strategy catalogs, a 24-election library, and a 117-strategy planning library — with strict citation discipline and AICPA SSTS / Circular 230 scaffolding.",
-      "tags": ["cpa", "tax", "research", "compliance", "ssts", "circular-230", "us-tax", "state-tax"]
+      "description": "45 skills covering federal research, prediction, return summary, planning, state research (50 + DC), tax compliance utilities, S-corp / Schedule C strategy catalogs, a 24-election library, a 117-strategy planning library, AICPA Code of Professional Conduct + SSARS + SAS + SSAE/SOC + SQMS quality management, engagement-letter library across 13 engagement types, and FASB ASC research (general + ASC 740 + ASC 606/842) — with strict citation discipline and tax-position / professional-conduct / GAAP authority domains.",
+      "tags": ["cpa", "tax", "research", "compliance", "ssts", "circular-230", "us-tax", "state-tax", "aicpa", "attest", "audit", "ssars", "engagement-letters", "professional-standards", "gaap", "asc"]
     }
   ]
 }
