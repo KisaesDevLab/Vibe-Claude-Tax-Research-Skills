@@ -1,73 +1,52 @@
 {
-  "skill": "research-asc-606-842",
+  "skill_name": "research-asc-606-842",
   "version": "0.1.0",
-  "cases": [
+  "evals": [
     {
       "id": "asc-606-saas-variable-consideration",
-      "name": "SaaS contract with variable consideration (rebate based on annual usage)",
-      "intake": {
-        "topic": "revenue",
-        "entity_type": "nonissuer",
-        "framework": "U.S. GAAP",
-        "industry": "SaaS",
-        "transaction_or_contract": "12-month SaaS subscription contract with annual base fee plus a tiered usage-rebate (5% rebate on excess if customer's actual usage exceeds 80% of contracted volume; 10% rebate if usage is between 50%-80%; no rebate if usage > 80%). Contract value: $120K. Customer typically uses 65-75% of contract — historical data shows this range applies to similar customers.",
-        "user_request": "Apply ASC 606 to determine transaction price including variable consideration analysis."
-      },
-      "expected_routing": "research-asc-606-842",
-      "expected_conclusion": "ASC 606 five-step model. STEP 1 contract: assumed exists (commercial substance, mutual approval, probable collection). STEP 2 performance obligation: SaaS subscription is typically a single performance obligation (functional IP / hosted software access — recognized over time per ASC 606-10-55-54 functional vs symbolic; SaaS as hosted = service over time). STEP 3 transaction price: BASE = $120K. VARIABLE CONSIDERATION = rebate liability. ESTIMATION METHOD: expected-value (multiple similar customers with usage in a range; population-driven). Per historical data, customer usage is 65-75% range, falling in the 50-80% rebate tier (10% rebate on the remaining contract value). Probability-weighted estimate of rebate: based on the 50-80% tier likelihood, the rebate is approximately 10% of the contract — $12K rebate likely. Apply CONSTRAINT: include rebate estimate in transaction price ONLY to the extent probable a significant reversal will not occur. Given consistent historical data and the customer's pattern, the $12K estimate is probable to not significantly reverse — include $12K reduction. NET TRANSACTION PRICE = $120K - $12K = $108K. STEP 4 allocation: single performance obligation. STEP 5 recognition: ratably over 12-month subscription term — $108K / 12 = $9K per month. RE-ASSESSMENT: at each reporting date, update VC estimate. If usage trends toward the higher tier (>80% — no rebate), increase transaction price; if trends toward lower tier (<50% — possibly larger discount), decrease. CUMULATIVE CATCH-UP at re-measurement. SUB-CONSIDERATION: would the implementation services be a separate performance obligation? If implementation includes setup of the customer's instance and is distinct in context, separate; allocate transaction price based on standalone selling prices. If integrated and not distinct, combined with subscription performance obligation. Disclosure (ASC 606-10-50): contract balances, performance obligations, transaction price allocated to remaining performance obligations, significant judgments (variable consideration estimate, principal/agent if implicated).",
-      "expected_authorities": [
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "606-10-25-23", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "606-10-32-8", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "606-10-32-11", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "606-10-55-54", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "606-10-50", "weight": "gaap_codified"}
-      ],
-      "expected_band": "MODERATE",
-      "expected_checklist": "verification_checklist_gaap"
+      "prompt": "SaaS contract with variable consideration (rebate based on annual usage)\n\nIntake:\n{\n  \"topic\": \"revenue\",\n  \"entity_type\": \"nonissuer\",\n  \"framework\": \"U.S. GAAP\",\n  \"industry\": \"SaaS\",\n  \"transaction_or_contract\": \"12-month SaaS subscription contract with annual base fee plus a tiered usage-rebate (5% rebate on excess if customer's actual usage exceeds 80% of contracted volume; 10% rebate if usage is between 50%-80%; no rebate if usage > 80%). Contract value: $120K. Customer typically uses 65-75% of contract — historical data shows this range applies to similar customers.\",\n  \"user_request\": \"Apply ASC 606 to determine transaction price including variable consideration analysis.\"\n}",
+      "expected_output": "ASC 606 five-step model. STEP 1 contract: assumed exists (commercial substance, mutual approval, probable collection). STEP 2 performance obligation: SaaS subscription is typically a single performance obligation (functional IP / hosted software access — recognized over time per ASC 606-10-55-54 functional vs symbolic; SaaS as hosted = service over time). STEP 3 transaction price: BASE = $120K. VARIABLE CONSIDERATION = rebate liability. ESTIMATION METHOD: expected-value (multiple similar customers with usage in a range; population-driven). Per historical data, customer usage is 65-75% range, falling in the 50-80% rebate tier (10% rebate on the remaining contract value). Probability-weighted estimate of rebate: based on the 50-80% tier likelihood, the rebate is approximately 10% of the contract — $12K rebate likely. Apply CONSTRAINT: include rebate estimate in transaction price ONLY to the extent probable a significant reversal will not occur. Given consistent historical data and the customer's pattern, the $12K estimate is probable to not significantly reverse — include $12K reduction. NET TRANSACTION PRICE = $120K - $12K = $108K. STEP 4 allocation: single performance obligation. STEP 5 recognition: ratably over 12-month subscription term — $108K / 12 = $9K per month. RE-ASSESSMENT: at each reporting date, update VC estimate. If usage trends toward the higher tier (>80% — no rebate), increase transaction price; if trends toward lower tier (<50% — possibly larger discount), decrease. CUMULATIVE CATCH-UP at re-measurement. SUB-CONSIDERATION: would the implementation services be a separate performance obligation? If implementation includes setup of the customer's instance and is distinct in context, separate; allocate transaction price based on standalone selling prices. If integrated and not distinct, combined with subscription performance obligation. Disclosure (ASC 606-10-50): contract balances, performance obligations, transaction price allocated to remaining performance obligations, significant judgments (variable consideration estimate, principal/agent if implicated).",
+      "expectations": [
+        "Routes to research-asc-606-842",
+        "Confidence band: MODERATE",
+        "Verification checklist: verification_checklist_gaap",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '606-10-25-23'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '606-10-32-8'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '606-10-32-11'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '606-10-55-54'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '606-10-50'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     },
     {
       "id": "asc-606-marketplace-principal-vs-agent",
-      "name": "Marketplace platform principal vs agent — control evaluation",
-      "intake": {
-        "topic": "revenue",
-        "entity_type": "nonissuer",
-        "framework": "U.S. GAAP",
-        "industry": "marketplace",
-        "transaction_or_contract": "Two-sided marketplace where third-party sellers list goods. Marketplace operator: (a) does NOT take title; (b) sellers set retail prices (with marketplace setting commission %); (c) marketplace bears credit risk on customer payments (collected upfront, held in escrow until delivery confirmation); (d) marketplace handles customer service, returns, and disputes; (e) marketplace's platform brand is dominant; customers think of the platform, not the underlying seller. Annual GMV = $200M. Marketplace commission rate: 15% on average.",
-        "user_request": "Is the marketplace a principal (gross revenue $200M) or agent (net revenue $30M)?"
-      },
-      "expected_routing": "research-asc-606-842",
-      "expected_conclusion": "ASC 606-10-55-36 through -55-40 control test. The entity is principal if it CONTROLS the specified good/service before transfer to the customer. Specified goods/services here: products sold on the marketplace. CONTROL ANALYSIS: (a) Does marketplace have ability to direct use and obtain benefits? Marketplace doesn't take title; doesn't hold inventory; can't direct sellers' use of the goods before transfer. (b) Does marketplace bear inventory risk before sale? NO — sellers do. (c) Does marketplace have discretion in pricing? NO — sellers set prices. (d) Customer-facing role: marketplace is customer-facing, but ASC 606-10-55-39 says this is NOT determinative on its own. (e) Credit risk: marketplace bears it (escrow), but ASC 606-10-55-39A specifically addresses this — credit risk is NOT determinative. (f) Customer service / brand dominance: relevant but not determinative — agents can have strong brand and customer service. CONCLUSION: marketplace is AGENT for product transactions. Recognize NET revenue (commission only): $30M ($200M × 15%). The other $170M flows through the marketplace but represents seller revenue, not marketplace revenue. ALTERNATIVE EVALUATION if facts changed: if marketplace took inventory risk (e.g., 'marketplace fulfilled' inventory it pre-purchased from sellers), or if marketplace set retail prices (rather than sellers), or if marketplace took title at any point — facts could shift toward principal. Each transaction stream may be evaluated separately if marketplace has multiple business lines (e.g., 'marketplace fulfilled' vs. 'seller fulfilled'). Disclosure: ASC 606-10-50 requires disclosure of significant judgments — the principal/agent determination is a significant judgment. Disclose: judgment, basis, considerations evaluated. Cross-reference: revenue presentation impact is significant — gross-vs-net affects all top-line metrics, gross margin, and many KPIs.",
-      "expected_authorities": [
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "606-10-55-36", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "606-10-55-39", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "606-10-55-39A", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "606-10-50", "weight": "gaap_codified"}
-      ],
-      "expected_band": "MODERATE",
-      "expected_checklist": "verification_checklist_gaap"
+      "prompt": "Marketplace platform principal vs agent — control evaluation\n\nIntake:\n{\n  \"topic\": \"revenue\",\n  \"entity_type\": \"nonissuer\",\n  \"framework\": \"U.S. GAAP\",\n  \"industry\": \"marketplace\",\n  \"transaction_or_contract\": \"Two-sided marketplace where third-party sellers list goods. Marketplace operator: (a) does NOT take title; (b) sellers set retail prices (with marketplace setting commission %); (c) marketplace bears credit risk on customer payments (collected upfront, held in escrow until delivery confirmation); (d) marketplace handles customer service, returns, and disputes; (e) marketplace's platform brand is dominant; customers think of the platform, not the underlying seller. Annual GMV = $200M. Marketplace commission rate: 15% on average.\",\n  \"user_request\": \"Is the marketplace a principal (gross revenue $200M) or agent (net revenue $30M)?\"\n}",
+      "expected_output": "ASC 606-10-55-36 through -55-40 control test. The entity is principal if it CONTROLS the specified good/service before transfer to the customer. Specified goods/services here: products sold on the marketplace. CONTROL ANALYSIS: (a) Does marketplace have ability to direct use and obtain benefits? Marketplace doesn't take title; doesn't hold inventory; can't direct sellers' use of the goods before transfer. (b) Does marketplace bear inventory risk before sale? NO — sellers do. (c) Does marketplace have discretion in pricing? NO — sellers set prices. (d) Customer-facing role: marketplace is customer-facing, but ASC 606-10-55-39 says this is NOT determinative on its own. (e) Credit risk: marketplace bears it (escrow), but ASC 606-10-55-39A specifically addresses this — credit risk is NOT determinative. (f) Customer service / brand dominance: relevant but not determinative — agents can have strong brand and customer service. CONCLUSION: marketplace is AGENT for product transactions. Recognize NET revenue (commission only): $30M ($200M × 15%). The other $170M flows through the marketplace but represents seller revenue, not marketplace revenue. ALTERNATIVE EVALUATION if facts changed: if marketplace took inventory risk (e.g., 'marketplace fulfilled' inventory it pre-purchased from sellers), or if marketplace set retail prices (rather than sellers), or if marketplace took title at any point — facts could shift toward principal. Each transaction stream may be evaluated separately if marketplace has multiple business lines (e.g., 'marketplace fulfilled' vs. 'seller fulfilled'). Disclosure: ASC 606-10-50 requires disclosure of significant judgments — the principal/agent determination is a significant judgment. Disclose: judgment, basis, considerations evaluated. Cross-reference: revenue presentation impact is significant — gross-vs-net affects all top-line metrics, gross margin, and many KPIs.",
+      "expectations": [
+        "Routes to research-asc-606-842",
+        "Confidence band: MODERATE",
+        "Verification checklist: verification_checklist_gaap",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '606-10-55-36'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '606-10-55-39'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '606-10-55-39A'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '606-10-50'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     },
     {
       "id": "asc-842-lessee-classification",
-      "name": "ASC 842 lessee classification: 7-year equipment lease with bargain purchase option",
-      "intake": {
-        "topic": "leases",
-        "entity_type": "nonissuer",
-        "framework": "U.S. GAAP",
-        "industry": "manufacturing",
-        "transaction_or_contract": "Manufacturing equipment lease. 7-year term. Equipment economic life: 12 years. Annual lease payment: $100K. PV of lease payments at lessee's IBR (6%): approximately $558K. Equipment fair value at lease commencement: $700K. End-of-term option: lessee may purchase equipment for $25K (estimated FMV at end of lease term: $200K). No transfer of ownership without exercise. Specialized? No — standard CNC equipment with active resale market.",
-        "user_request": "Apply ASC 842 lessee classification five-test analysis."
-      },
-      "expected_routing": "research-asc-606-842",
-      "expected_conclusion": "ASC 842-10-25-2 five tests for finance lease classification. TEST 1 — Transfer of ownership at end? NO (no automatic transfer; only via purchase option). TEST 2 — Bargain purchase option? Purchase option of $25K vs. estimated FMV at end of $200K — lessee is REASONABLY CERTAIN to exercise (very high probability). YES — finance lease. (Could stop here, but evaluate other tests for completeness.) TEST 3 — Lease term ≥ 75% of remaining economic life? 7 / 12 = 58%. NO. TEST 4 — PV ≥ 90% of FV? $558K / $700K = 80%. NO. TEST 5 — Specialized asset? NO (standard CNC, active resale market). RESULT: Test 2 is met → FINANCE LEASE. CLASSIFICATION CONSEQUENCES — Finance lease lessee accounting: (a) Recognize ROU asset = lease liability + initial direct costs - lease incentives (~ $558K + adjustments); (b) Recognize lease liability = $558K; (c) ROU asset amortized straight-line over the SHORTER of (i) lease term or (ii) useful life of the asset — since lessee is reasonably certain to acquire ownership via the bargain option and the asset has 12-year economic life, ROU is amortized over 12 years; lease liability accretes interest. INCOME STATEMENT: separate amortization (~$46.5K/year over 12 years from initial $558K) AND interest on lease liability (declining as principal is paid). Total expense FRONT-LOADED. CASH FLOW: principal portion of payments = financing; interest portion = operating (or financing per accounting policy). DISCLOSURE: ASC 842-20-50 requires maturities, weighted-average remaining lease term, weighted-average discount rate, components of lease cost (separately amortization and interest for finance leases), cash paid. NOTE: if facts changed (e.g., bargain option were instead $200K FMV-purchase option, NOT bargain), Test 2 would fail; Tests 1, 3, 4, 5 also fail; OPERATING LEASE; same balance-sheet recognition but different income-statement profile (single straight-line lease expense).",
-      "expected_authorities": [
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "842-10-25-2", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "842-20-30", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "842-20-50", "weight": "gaap_codified"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASU", "citation_contains": "2016-02", "weight": "gaap_codified"}
-      ],
-      "expected_band": "HIGH",
-      "expected_checklist": "verification_checklist_gaap"
+      "prompt": "ASC 842 lessee classification: 7-year equipment lease with bargain purchase option\n\nIntake:\n{\n  \"topic\": \"leases\",\n  \"entity_type\": \"nonissuer\",\n  \"framework\": \"U.S. GAAP\",\n  \"industry\": \"manufacturing\",\n  \"transaction_or_contract\": \"Manufacturing equipment lease. 7-year term. Equipment economic life: 12 years. Annual lease payment: $100K. PV of lease payments at lessee's IBR (6%): approximately $558K. Equipment fair value at lease commencement: $700K. End-of-term option: lessee may purchase equipment for $25K (estimated FMV at end of lease term: $200K). No transfer of ownership without exercise. Specialized? No — standard CNC equipment with active resale market.\",\n  \"user_request\": \"Apply ASC 842 lessee classification five-test analysis.\"\n}",
+      "expected_output": "ASC 842-10-25-2 five tests for finance lease classification. TEST 1 — Transfer of ownership at end? NO (no automatic transfer; only via purchase option). TEST 2 — Bargain purchase option? Purchase option of $25K vs. estimated FMV at end of $200K — lessee is REASONABLY CERTAIN to exercise (very high probability). YES — finance lease. (Could stop here, but evaluate other tests for completeness.) TEST 3 — Lease term ≥ 75% of remaining economic life? 7 / 12 = 58%. NO. TEST 4 — PV ≥ 90% of FV? $558K / $700K = 80%. NO. TEST 5 — Specialized asset? NO (standard CNC, active resale market). RESULT: Test 2 is met → FINANCE LEASE. CLASSIFICATION CONSEQUENCES — Finance lease lessee accounting: (a) Recognize ROU asset = lease liability + initial direct costs - lease incentives (~ $558K + adjustments); (b) Recognize lease liability = $558K; (c) ROU asset amortized straight-line over the SHORTER of (i) lease term or (ii) useful life of the asset — since lessee is reasonably certain to acquire ownership via the bargain option and the asset has 12-year economic life, ROU is amortized over 12 years; lease liability accretes interest. INCOME STATEMENT: separate amortization (~$46.5K/year over 12 years from initial $558K) AND interest on lease liability (declining as principal is paid). Total expense FRONT-LOADED. CASH FLOW: principal portion of payments = financing; interest portion = operating (or financing per accounting policy). DISCLOSURE: ASC 842-20-50 requires maturities, weighted-average remaining lease term, weighted-average discount rate, components of lease cost (separately amortization and interest for finance leases), cash paid. NOTE: if facts changed (e.g., bargain option were instead $200K FMV-purchase option, NOT bargain), Test 2 would fail; Tests 1, 3, 4, 5 also fail; OPERATING LEASE; same balance-sheet recognition but different income-statement profile (single straight-line lease expense).",
+      "expectations": [
+        "Routes to research-asc-606-842",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_gaap",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '842-10-25-2'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '842-20-30'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '842-20-50'",
+        "Cites FASB_ASU (gaap/gaap_codified) referencing '2016-02'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     }
   ]
 }

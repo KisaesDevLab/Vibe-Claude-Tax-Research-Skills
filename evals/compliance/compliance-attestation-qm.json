@@ -1,65 +1,49 @@
 {
-  "skill": "compliance-attestation-qm",
+  "skill_name": "compliance-attestation-qm",
   "version": "0.1.0",
-  "cases": [
+  "evals": [
     {
       "id": "soc-2-type-2-scoping",
-      "name": "SOC 2 Type 2 examination scoping for SaaS service organization",
-      "intake": {
-        "engagement_type": "SOC 2",
-        "subject_matter": "Service organization controls relevant to Trust Services Criteria",
-        "entity_type": "nonissuer",
-        "independence_status": "independent",
-        "user_request": "First-year SOC 2 examination for a SaaS service organization. Customer demands SOC 2 Type 2 covering Security + Availability + Confidentiality. Six-month reporting period. Service organization uses AWS and Salesforce as subservice organizations. Three things: (1) which AT-C standard applies; (2) carve-out vs inclusive method for subservice orgs; (3) what report restrictions apply?"
-      },
-      "expected_routing": "compliance-attestation-qm",
-      "expected_conclusion": "AT-C §205 governs the SOC 2 examination (it's an examination engagement under SSAE; AT-C §320 is reserved for SOC 1 reports relevant to user-entity ICFR). Trust Services Criteria 2017 (TSP §100A) provide the criteria for the three categories selected (Security mandatory + Availability + Confidentiality). For subservice organizations (AWS, Salesforce), the service organization typically uses the CARVE-OUT METHOD because the service organization does not control AWS / Salesforce internal controls; carve-out requires (a) the service organization's description identifies the subservice organizations, the services they provide, and the controls assumed to be in operation at the subservice organization (CSOCs - complementary subservice organization controls), and (b) the report description excludes the subservice organization's controls from the scope. Inclusive method would require AWS/Salesforce to provide their own assertions and controls testing — impractical for hyperscaler subservice orgs. Six-month period is acceptable for a Type 2; many service organizations issue 12-month Type 2 reports for renewal. Report use restriction: SOC 2 reports are typically restricted to (a) management of the service organization, (b) user entities, (c) prospective user entities, (d) other specified parties who have sufficient knowledge and have agreed to take responsibility. SOC 3 (general-use, abbreviated) is the alternative if unrestricted distribution is needed. Engagement letter must per AT-C §105 .A18 + §205 specify report type, period, criteria, subservice method, restrictions. Independence required (AT-C §205); confirm via §1.200 threats analysis.",
-      "expected_authorities": [
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SSAE", "citation_contains": "AT-C §205", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SSAE", "citation_contains": "AT-C §105", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_PracticeAid", "citation_contains": "Trust Services Criteria", "weight": "practice_aid"}
-      ],
-      "expected_band": "HIGH",
-      "expected_checklist": "verification_checklist_engagement"
+      "prompt": "SOC 2 Type 2 examination scoping for SaaS service organization\n\nIntake:\n{\n  \"engagement_type\": \"SOC 2\",\n  \"subject_matter\": \"Service organization controls relevant to Trust Services Criteria\",\n  \"entity_type\": \"nonissuer\",\n  \"independence_status\": \"independent\",\n  \"user_request\": \"First-year SOC 2 examination for a SaaS service organization. Customer demands SOC 2 Type 2 covering Security + Availability + Confidentiality. Six-month reporting period. Service organization uses AWS and Salesforce as subservice organizations. Three things: (1) which AT-C standard applies; (2) carve-out vs inclusive method for subservice orgs; (3) what report restrictions apply?\"\n}",
+      "expected_output": "AT-C §205 governs the SOC 2 examination (it's an examination engagement under SSAE; AT-C §320 is reserved for SOC 1 reports relevant to user-entity ICFR). Trust Services Criteria 2017 (TSP §100A) provide the criteria for the three categories selected (Security mandatory + Availability + Confidentiality). For subservice organizations (AWS, Salesforce), the service organization typically uses the CARVE-OUT METHOD because the service organization does not control AWS / Salesforce internal controls; carve-out requires (a) the service organization's description identifies the subservice organizations, the services they provide, and the controls assumed to be in operation at the subservice organization (CSOCs - complementary subservice organization controls), and (b) the report description excludes the subservice organization's controls from the scope. Inclusive method would require AWS/Salesforce to provide their own assertions and controls testing — impractical for hyperscaler subservice orgs. Six-month period is acceptable for a Type 2; many service organizations issue 12-month Type 2 reports for renewal. Report use restriction: SOC 2 reports are typically restricted to (a) management of the service organization, (b) user entities, (c) prospective user entities, (d) other specified parties who have sufficient knowledge and have agreed to take responsibility. SOC 3 (general-use, abbreviated) is the alternative if unrestricted distribution is needed. Engagement letter must per AT-C §105 .A18 + §205 specify report type, period, criteria, subservice method, restrictions. Independence required (AT-C §205); confirm via §1.200 threats analysis.",
+      "expectations": [
+        "Routes to compliance-attestation-qm",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_engagement",
+        "Cites AICPA_SSAE (professional_conduct/binding_on_member) referencing 'AT-C §205'",
+        "Cites AICPA_SSAE (professional_conduct/binding_on_member) referencing 'AT-C §105'",
+        "Cites AICPA_PracticeAid (professional_conduct/practice_aid) referencing 'Trust Services Criteria'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     },
     {
       "id": "at-c-215-aup-no-independence",
-      "name": "Agreed-upon procedures engagement when firm is not independent",
-      "intake": {
-        "engagement_type": "AUP",
-        "subject_matter": "Specified inventory count procedures and pricing tests",
-        "entity_type": "nonissuer",
-        "independence_status": "not independent",
-        "user_request": "Long-time bookkeeping client (firm not independent due to §1.295 management-participation in posting period-end accruals) wants AUP report on warehouse inventory count procedures for a lender. Lender will identify the procedures. Is AT-C 215 available without independence? What does the report say?"
-      },
-      "expected_routing": "compliance-attestation-qm",
-      "expected_conclusion": "AT-C §215 (Agreed-Upon Procedures Engagements) PERMITS performance without independence, with required disclosure. AUP differs from examinations and reviews: practitioner performs only the specific procedures the engaging party and intended users have agreed to; reports findings; expresses NO opinion or conclusion. Required: (1) signed engagement letter (AT-C §105 .A18 + §215) identifying procedures, intended users, criteria (if any), and lack-of-independence disclosure; (2) responsibility taken by lender / specified parties for sufficiency of the procedures (AUP is a 'specified-party' engagement; lender must agree the procedures meet their needs); (3) procedures performed exactly as agreed — practitioner cannot expand procedures to provide additional assurance; (4) AUP report includes: identification of the subject matter, the agreed procedures, the findings (specific results, no opinion), restrictions on use, and (because firm is not independent) a paragraph stating 'We are not independent of [Client].' AUP report does NOT carry assurance language ('reasonable assurance', 'limited assurance' both prohibited). Recommend: (1) document lender's specific procedures in advance and obtain written acknowledgment; (2) follow-up engagement to address §1.295 management-participation finding so future engagements have a path to attest with independence.",
-      "expected_authorities": [
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SSAE", "citation_contains": "AT-C §215", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SSAE", "citation_contains": "AT-C §105 .25", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_Code", "citation_contains": "1.295", "weight": "binding_on_member"}
-      ],
-      "expected_band": "HIGH",
-      "expected_checklist": "verification_checklist_engagement"
+      "prompt": "Agreed-upon procedures engagement when firm is not independent\n\nIntake:\n{\n  \"engagement_type\": \"AUP\",\n  \"subject_matter\": \"Specified inventory count procedures and pricing tests\",\n  \"entity_type\": \"nonissuer\",\n  \"independence_status\": \"not independent\",\n  \"user_request\": \"Long-time bookkeeping client (firm not independent due to §1.295 management-participation in posting period-end accruals) wants AUP report on warehouse inventory count procedures for a lender. Lender will identify the procedures. Is AT-C 215 available without independence? What does the report say?\"\n}",
+      "expected_output": "AT-C §215 (Agreed-Upon Procedures Engagements) PERMITS performance without independence, with required disclosure. AUP differs from examinations and reviews: practitioner performs only the specific procedures the engaging party and intended users have agreed to; reports findings; expresses NO opinion or conclusion. Required: (1) signed engagement letter (AT-C §105 .A18 + §215) identifying procedures, intended users, criteria (if any), and lack-of-independence disclosure; (2) responsibility taken by lender / specified parties for sufficiency of the procedures (AUP is a 'specified-party' engagement; lender must agree the procedures meet their needs); (3) procedures performed exactly as agreed — practitioner cannot expand procedures to provide additional assurance; (4) AUP report includes: identification of the subject matter, the agreed procedures, the findings (specific results, no opinion), restrictions on use, and (because firm is not independent) a paragraph stating 'We are not independent of [Client].' AUP report does NOT carry assurance language ('reasonable assurance', 'limited assurance' both prohibited). Recommend: (1) document lender's specific procedures in advance and obtain written acknowledgment; (2) follow-up engagement to address §1.295 management-participation finding so future engagements have a path to attest with independence.",
+      "expectations": [
+        "Routes to compliance-attestation-qm",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_engagement",
+        "Cites AICPA_SSAE (professional_conduct/binding_on_member) referencing 'AT-C §215'",
+        "Cites AICPA_SSAE (professional_conduct/binding_on_member) referencing 'AT-C §105 .25'",
+        "Cites AICPA_Code (professional_conduct/binding_on_member) referencing '1.295'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     },
     {
       "id": "sqms-1-eqr-determination",
-      "name": "SQMS 1 risk-based EQR determination for first-year audit",
-      "intake": {
-        "engagement_type": "quality management",
-        "entity_type": "nonissuer",
-        "user_request": "First-year audit acceptance. Client is private but has public debt registered and a listed parent (foreign issuer not subject to SEC). Industry: financial services / specialty lender. Firm has not previously audited a specialty lender. Significant judgments expected on loan-loss allowance (CECL — ASC 326). Is SQMS 2 EQR required?"
-      },
-      "expected_routing": "compliance-attestation-qm",
-      "expected_conclusion": "Under SQMS 1's risk-based framework, the firm's risk-assessment process identifies engagements requiring EQR. The fact pattern presents multiple risk factors: (1) first-year audit (limited prior auditor knowledge of the entity); (2) listed-equivalent entity (public debt registered, listed parent); (3) industry the firm has not previously audited (specialty lender — different from generic financial services); (4) significant judgment area requiring substantial professional skepticism (CECL allowance under ASC 326). Each factor independently increases quality risk; cumulatively, this engagement is at the upper end of the firm's risk distribution. SQMS 1 mandates EQR for issuer audits (out of scope here — listed parent is foreign and not SEC-registered). For nonissuer engagements, the firm's policies based on SQMS 1 risk assessment determine EQR. RECOMMENDATION: based on the cumulative risk profile, EQR under SQMS 2 is strongly indicated. EQR scope: pre-issuance review of (a) ethical-requirements compliance + independence; (b) significant judgments — particularly CECL allowance (auditor's evaluation of management's CECL methodology, assumptions, data, and back-testing); (c) acceptance / continuance procedures (first-year audit due-diligence on prior-auditor communications, opening-balances per AU-C 510, predecessor-auditor inquiry); (d) engagement reporting. Engagement quality reviewer must be independent of engagement team, sufficient experience in financial-services audits. Documentation per SQMS 2 includes EQR procedures, significant-judgments review, conclusions, completion before report dating.",
-      "expected_authorities": [
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SQMS", "citation_contains": "SQMS 1", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SQMS", "citation_contains": "SQMS 2", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SAS", "citation_contains": "AU-C §510", "weight": "binding_on_member"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "326", "weight": "gaap_codified"}
-      ],
-      "expected_band": "MODERATE",
-      "expected_checklist": "verification_checklist_engagement"
+      "prompt": "SQMS 1 risk-based EQR determination for first-year audit\n\nIntake:\n{\n  \"engagement_type\": \"quality management\",\n  \"entity_type\": \"nonissuer\",\n  \"user_request\": \"First-year audit acceptance. Client is private but has public debt registered and a listed parent (foreign issuer not subject to SEC). Industry: financial services / specialty lender. Firm has not previously audited a specialty lender. Significant judgments expected on loan-loss allowance (CECL — ASC 326). Is SQMS 2 EQR required?\"\n}",
+      "expected_output": "Under SQMS 1's risk-based framework, the firm's risk-assessment process identifies engagements requiring EQR. The fact pattern presents multiple risk factors: (1) first-year audit (limited prior auditor knowledge of the entity); (2) listed-equivalent entity (public debt registered, listed parent); (3) industry the firm has not previously audited (specialty lender — different from generic financial services); (4) significant judgment area requiring substantial professional skepticism (CECL allowance under ASC 326). Each factor independently increases quality risk; cumulatively, this engagement is at the upper end of the firm's risk distribution. SQMS 1 mandates EQR for issuer audits (out of scope here — listed parent is foreign and not SEC-registered). For nonissuer engagements, the firm's policies based on SQMS 1 risk assessment determine EQR. RECOMMENDATION: based on the cumulative risk profile, EQR under SQMS 2 is strongly indicated. EQR scope: pre-issuance review of (a) ethical-requirements compliance + independence; (b) significant judgments — particularly CECL allowance (auditor's evaluation of management's CECL methodology, assumptions, data, and back-testing); (c) acceptance / continuance procedures (first-year audit due-diligence on prior-auditor communications, opening-balances per AU-C 510, predecessor-auditor inquiry); (d) engagement reporting. Engagement quality reviewer must be independent of engagement team, sufficient experience in financial-services audits. Documentation per SQMS 2 includes EQR procedures, significant-judgments review, conclusions, completion before report dating.",
+      "expectations": [
+        "Routes to compliance-attestation-qm",
+        "Confidence band: MODERATE",
+        "Verification checklist: verification_checklist_engagement",
+        "Cites AICPA_SQMS (professional_conduct/binding_on_member) referencing 'SQMS 1'",
+        "Cites AICPA_SQMS (professional_conduct/binding_on_member) referencing 'SQMS 2'",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §510'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '326'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     }
   ]
 }

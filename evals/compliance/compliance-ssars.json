@@ -1,67 +1,48 @@
 {
-  "skill": "compliance-ssars",
+  "skill_name": "compliance-ssars",
   "version": "0.1.0",
-  "cases": [
+  "evals": [
     {
       "id": "preparation-vs-compilation",
-      "name": "Client wants 'unaudited statements with no opinion' — preparation vs compilation routing",
-      "intake": {
-        "engagement_type": "unsure",
-        "entity_type": "nonissuer",
-        "independence_status": "independent",
-        "financial_statement_framework": "GAAP",
-        "user_request": "Client needs unaudited financial statements for their bank. Bank says 'no opinion required'. Should we do a preparation engagement or a compilation?"
-      },
-      "expected_routing": "compliance-ssars",
-      "expected_conclusion": "Bank language ('no opinion required') is ambiguous. If the bank requires the firm to issue a report (even one disclaiming an opinion), use AR-C 80 (compilation) with the standard compilation report. If the bank only requires F/S without a CPA report and accepts a 'no assurance is provided' legend on each page, AR-C 70 (preparation) is appropriate. Confirm with the bank in writing. If they require any CPA report, AR-C 70 is not available — every page-legend approach precludes any CPA report. Engagement letter required before work begins (AR-C 60.A21 + 70.10 or 80.10).",
-      "expected_authorities": [
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SSARS", "citation_contains": "AR-C §70", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SSARS", "citation_contains": "AR-C §80", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SSARS", "citation_contains": "AR-C §60.A21", "weight": "binding_on_member"}
-      ],
-      "expected_band": "HIGH",
-      "expected_checklist": "verification_checklist_engagement"
+      "prompt": "Client wants 'unaudited statements with no opinion' — preparation vs compilation routing\n\nIntake:\n{\n  \"engagement_type\": \"unsure\",\n  \"entity_type\": \"nonissuer\",\n  \"independence_status\": \"independent\",\n  \"financial_statement_framework\": \"GAAP\",\n  \"user_request\": \"Client needs unaudited financial statements for their bank. Bank says 'no opinion required'. Should we do a preparation engagement or a compilation?\"\n}",
+      "expected_output": "Bank language ('no opinion required') is ambiguous. If the bank requires the firm to issue a report (even one disclaiming an opinion), use AR-C 80 (compilation) with the standard compilation report. If the bank only requires F/S without a CPA report and accepts a 'no assurance is provided' legend on each page, AR-C 70 (preparation) is appropriate. Confirm with the bank in writing. If they require any CPA report, AR-C 70 is not available — every page-legend approach precludes any CPA report. Engagement letter required before work begins (AR-C 60.A21 + 70.10 or 80.10).",
+      "expectations": [
+        "Routes to compliance-ssars",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_engagement",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §70'",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §80'",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §60.A21'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     },
     {
       "id": "review-with-going-concern",
-      "name": "Review engagement with going-concern uncertainty",
-      "intake": {
-        "engagement_type": "review",
-        "entity_type": "nonissuer",
-        "independence_status": "independent",
-        "financial_statement_framework": "GAAP",
-        "going_concern_indicators": ["recurring losses three years", "debt covenant violation in current year", "loss of major customer 35% of revenue"],
-        "user_request": "Mid-review of nonissuer manufacturing client. Multiple going-concern indicators. Management's footnote disclosure mentions 'cyclical industry headwinds' but does not address ASC 205-40 substantial doubt. What modifications to the review report are required?"
-      },
-      "expected_routing": "compliance-ssars",
-      "expected_conclusion": "AR-C 90.65 requires the practitioner to evaluate going concern consistent with the framework (ASC 205-40). The indicators (recurring losses, covenant violation, major-customer loss) collectively raise substantial doubt about the entity's ability to continue as a going concern within one year of the F/S issuance date. Required procedures: (1) inquire of management about plans to mitigate; (2) evaluate whether plans are probable of being effectively implemented and probable of mitigating the conditions. If substantial doubt exists and management's footnote does NOT meet ASC 205-40 disclosure requirements, the review report must be modified — qualified conclusion (or adverse if pervasive) and an emphasis-of-matter paragraph should not substitute for adequate disclosure. Alternatively, request management to revise the footnote to meet ASC 205-40 (specifically address principal conditions, management's evaluation, and substantial-doubt conclusion). If management refuses revision and the disclosure is materially inadequate, modify the review conclusion. Withdraw if dispute is irreconcilable.",
-      "expected_authorities": [
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SSARS", "citation_contains": "AR-C §90.65", "weight": "binding_on_member"},
-        {"authority_domain": "gaap", "authority_type": "FASB_ASC", "citation_contains": "205-40", "weight": "gaap_codified"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SSARS", "citation_contains": "AR-C §90.A105", "weight": "binding_on_member"}
-      ],
-      "expected_band": "HIGH",
-      "expected_checklist": "verification_checklist_engagement"
+      "prompt": "Review engagement with going-concern uncertainty\n\nIntake:\n{\n  \"engagement_type\": \"review\",\n  \"entity_type\": \"nonissuer\",\n  \"independence_status\": \"independent\",\n  \"financial_statement_framework\": \"GAAP\",\n  \"going_concern_indicators\": [\n    \"recurring losses three years\",\n    \"debt covenant violation in current year\",\n    \"loss of major customer 35% of revenue\"\n  ],\n  \"user_request\": \"Mid-review of nonissuer manufacturing client. Multiple going-concern indicators. Management's footnote disclosure mentions 'cyclical industry headwinds' but does not address ASC 205-40 substantial doubt. What modifications to the review report are required?\"\n}",
+      "expected_output": "AR-C 90.65 requires the practitioner to evaluate going concern consistent with the framework (ASC 205-40). The indicators (recurring losses, covenant violation, major-customer loss) collectively raise substantial doubt about the entity's ability to continue as a going concern within one year of the F/S issuance date. Required procedures: (1) inquire of management about plans to mitigate; (2) evaluate whether plans are probable of being effectively implemented and probable of mitigating the conditions. If substantial doubt exists and management's footnote does NOT meet ASC 205-40 disclosure requirements, the review report must be modified — qualified conclusion (or adverse if pervasive) and an emphasis-of-matter paragraph should not substitute for adequate disclosure. Alternatively, request management to revise the footnote to meet ASC 205-40 (specifically address principal conditions, management's evaluation, and substantial-doubt conclusion). If management refuses revision and the disclosure is materially inadequate, modify the review conclusion. Withdraw if dispute is irreconcilable.",
+      "expectations": [
+        "Routes to compliance-ssars",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_engagement",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §90.65'",
+        "Cites FASB_ASC (gaap/gaap_codified) referencing '205-40'",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §90.A105'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     },
     {
       "id": "compilation-without-independence",
-      "name": "Long-time bookkeeping client requests compilation; firm is not independent",
-      "intake": {
-        "engagement_type": "compilation",
-        "entity_type": "nonissuer",
-        "independence_status": "not independent",
-        "financial_statement_framework": "tax basis",
-        "user_request": "Firm has done outsourced bookkeeping for client for 10 years (firm posts all entries, including period-end accruals — this is management participation under §1.295). Client now needs compiled tax-basis F/S for new line of credit. Bank accepts compilation report with disclosure of lack of independence."
-      },
-      "expected_routing": "compliance-ssars",
-      "expected_conclusion": "Compilation under AR-C 80 with AR-C 80.27 lack-of-independence disclosure paragraph is permitted. Required steps: (1) signed engagement letter per AR-C 60.A21 + 80.10 stating tax-basis framework, lack of independence, and disclosure; (2) read F/S for obvious errors and form-appropriateness; (3) issue compilation report with the standard compilation paragraph PLUS a paragraph stating '[I am / We are] not independent with respect to [Client]' — practitioner may but is not required to disclose specific reasons (must disclose ALL substantive reasons if any are disclosed); (4) lack-of-independence path is NOT available for review (AR-C 90 requires independence); cannot route to AR-C 90. Recommend separately: address the underlying §1.295 management-participation finding so future engagements have a path to review or audit when bank requirements escalate.",
-      "expected_authorities": [
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SSARS", "citation_contains": "AR-C §80.27", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_SSARS", "citation_contains": "AR-C §80.A33", "weight": "binding_on_member"},
-        {"authority_domain": "professional_conduct", "authority_type": "AICPA_Code", "citation_contains": "1.295", "weight": "binding_on_member"}
-      ],
-      "expected_band": "HIGH",
-      "expected_checklist": "verification_checklist_engagement"
+      "prompt": "Long-time bookkeeping client requests compilation; firm is not independent\n\nIntake:\n{\n  \"engagement_type\": \"compilation\",\n  \"entity_type\": \"nonissuer\",\n  \"independence_status\": \"not independent\",\n  \"financial_statement_framework\": \"tax basis\",\n  \"user_request\": \"Firm has done outsourced bookkeeping for client for 10 years (firm posts all entries, including period-end accruals — this is management participation under §1.295). Client now needs compiled tax-basis F/S for new line of credit. Bank accepts compilation report with disclosure of lack of independence.\"\n}",
+      "expected_output": "Compilation under AR-C 80 with AR-C 80.27 lack-of-independence disclosure paragraph is permitted. Required steps: (1) signed engagement letter per AR-C 60.A21 + 80.10 stating tax-basis framework, lack of independence, and disclosure; (2) read F/S for obvious errors and form-appropriateness; (3) issue compilation report with the standard compilation paragraph PLUS a paragraph stating '[I am / We are] not independent with respect to [Client]' — practitioner may but is not required to disclose specific reasons (must disclose ALL substantive reasons if any are disclosed); (4) lack-of-independence path is NOT available for review (AR-C 90 requires independence); cannot route to AR-C 90. Recommend separately: address the underlying §1.295 management-participation finding so future engagements have a path to review or audit when bank requirements escalate.",
+      "expectations": [
+        "Routes to compliance-ssars",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_engagement",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §80.27'",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §80.A33'",
+        "Cites AICPA_Code (professional_conduct/binding_on_member) referencing '1.295'",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
     }
   ]
 }
