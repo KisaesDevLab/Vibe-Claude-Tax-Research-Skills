@@ -203,13 +203,15 @@ check_no_sentinels() {
        | grep -v '/template' \
        | grep -v '/states/' \
        | grep -v 'planning-strategy-library/references/strategies/' \
-       | grep -v 'tax-elections-library/references/elections/' >/dev/null; then
-    fail "CITATION NEEDED sentinel found in published skill (excludes template + states/ + extended strategies/ + elections/)"
+       | grep -v 'tax-elections-library/references/elections/' \
+       | grep -v 'engagement-letter-library/references/letters/' >/dev/null; then
+    fail "CITATION NEEDED sentinel found in published skill (excludes template + states/ + extended strategies/ + elections/ + letters/)"
     grep -rn 'CITATION NEEDED' skills/ \
        | grep -v '/template' \
        | grep -v '/states/' \
        | grep -v 'planning-strategy-library/references/strategies/' \
-       | grep -v 'tax-elections-library/references/elections/' | head -20
+       | grep -v 'tax-elections-library/references/elections/' \
+       | grep -v 'engagement-letter-library/references/letters/' | head -20
     return 1
   fi
   ok "no fabricated-citation sentinels in published skills"
@@ -416,6 +418,26 @@ run_phase_6() {
   check_authority_taxonomy
 }
 
+run_phase_9() {
+  # AICPA professional standards + engagement letters + GAAP research.
+  # Schema additions (authority_domain, new authority_type / weight
+  # values) are validated structurally via check_json_parse; the
+  # check_authority_taxonomy check picks up the new enum values
+  # automatically because it reads the enum directly from the schema.
+  check_directory_tree
+  check_shared_files
+  check_json_parse
+  check_skill_frontmatter
+  check_no_sentinels
+  check_authority_taxonomy
+  for s in compliance-aicpa-code compliance-ssars compliance-sas-audit \
+           compliance-attestation-qm engagement-letter-library \
+           research-financial-reporting research-asc-740 \
+           research-asc-606-842; do
+    [ -d "skills/$s" ] && check_skill "$s"
+  done
+}
+
 run_full() {
   check_directory_tree
   check_root_files
@@ -444,6 +466,8 @@ main() {
         5) run_phase_5 ;;
         6) run_phase_6 ;;
         7) run_full ;;
+        8) run_full ;;
+        9) run_phase_9 ;;
         *) fail "unknown phase: $n"; exit 2 ;;
       esac
     ;;
