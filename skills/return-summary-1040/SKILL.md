@@ -157,3 +157,10 @@ End the markdown response with the SSTS / Circular 230 checklist
 from `shared/compliance.md`. For a return summary, the SSTS § 2.3
 "use of estimates" item is most often invoked when the user has
 typed approximate numbers — flag any imputed values explicitly.
+
+After the verification checklist, emit the follow-up-routing block
+per `shared/follow-up-routing.md` (Phase 10a). The block offers the
+user two orthogonal handoffs — package the result (`memo` or
+`open-point`) and carry the conclusion forward (`plan` | `workpaper`
+| `resolution` | `return`) — and the dispatcher routes the user's
+reply to the destination skill.

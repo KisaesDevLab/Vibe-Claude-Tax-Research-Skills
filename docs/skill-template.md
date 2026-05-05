@@ -79,3 +79,10 @@ The practitioner using this output must complete the checklist in
 `shared/compliance.md` before relying on the result, including the
 negative-treatment-review residual responsibility for high-stakes
 positions.
+
+After the verification checklist, emit the follow-up-routing block
+per `shared/follow-up-routing.md` (Phase 10a). The block offers two
+orthogonal handoffs — package the result as a memo or open-point
+list, and carry the conclusion forward into a plan, workpaper,
+resolution matter, or return process — and is the dispatcher's hook
+for chaining to the next specialist skill.

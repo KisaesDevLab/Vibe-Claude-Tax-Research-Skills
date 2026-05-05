@@ -182,3 +182,18 @@ The output must capture:
   shared/legislation-tracking.md and the relevant Public Law
   Classification Table entry.
 - The practitioner's signature line and date for the checklist.
+
+## Follow-up routing (after the verification checklist)
+
+Phase 10a addition. After the verification checklist appendix and
+before the JSON sidecar, every skill's markdown response MUST emit
+the follow-up-routing block defined in `shared/follow-up-routing.md`.
+The block offers the user two orthogonal handoffs — package the
+result (`memo` | `open-point`) and carry the conclusion forward
+(`plan` | `workpaper` | `resolution` | `return`) — and the
+dispatcher routes the user's reply to the destination skill listed
+in that file.
+
+The follow-up block is markdown only. It does NOT modify the JSON
+sidecar; the user's response triggers a fresh skill invocation that
+produces its own sidecar.
