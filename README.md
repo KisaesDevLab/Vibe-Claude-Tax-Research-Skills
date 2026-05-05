@@ -142,6 +142,12 @@ Per-skill ZIP upload. See
 | [research-asc-740](skills/research-asc-740) | ASC 740 income tax accounting (UTP / FIN 48; valuation allowances; DTA/DTL; intraperiod allocation; ASU 2023-09) |
 | [research-asc-606-842](skills/research-asc-606-842) | ASC 606 revenue recognition (five-step model; variable consideration; principal vs agent) and ASC 842 leases (lessee classification; ROU assets; sale-leaseback) |
 
+### Engagement-file scaffolding (1) — Phase 10b
+
+| Skill | Description |
+|---|---|
+| [workpaper-templates](skills/workpaper-templates) | Engagement-file workpaper scaffold generator: PBC list, tickmark legend, lead sheets, alphanumeric indexing convention, plus engagement-specific overlays for audit / review / compilation / preparation / attestation. Operative authority: AU-C §230 (audit documentation), AR-C §60.A24–.A29 (SSARS documentation), AT-C §105.A57–.A66 (attestation documentation), SQMS 1 (engagement-file retention), AU-C §220 / AR-C §60.31 (supervisory review). PCAOB AS 1215 and Yellow Book GAGAS routed externally |
+
 ## State coverage
 
 All 50 states + DC = 51 jurisdictions. Each is documented in:

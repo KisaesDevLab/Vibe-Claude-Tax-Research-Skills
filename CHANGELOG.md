@@ -104,6 +104,103 @@ Summary + notice:
 - PR build → main with title "Phase 7 — release" awaiting Kurt's
   review and tag-creation approval.
 
+## [v0.3.0-beta] — Phase 10a + 10b — 2026-05-05
+
+Follow-up routing on every skill answer + workpaper-templates skill.
+
+### Phase 10a — Follow-up routing prompt
+
+Triggered by user request to add a uniform "next steps" prompt at
+the end of every skill's markdown answer offering to (a) package
+the result as a memo or open-point list and (b) carry the
+conclusion forward into a plan, workpaper, resolution matter, or
+return process. Markdown-only continuation; JSON sidecar schema
+unchanged.
+
+- `shared/follow-up-routing.md`: prompt block + 6 destination rows
+  (memo, open-point, plan, workpaper, resolution, return); open-
+  point stand-alone format reading from the existing
+  `unresolved_citations` sidecar field.
+- `shared/compliance.md`: new "Follow-up routing" section after
+  malpractice-defense scaffolding.
+- `docs/skill-template.md`: extended Verification-checklist
+  appendix instruction.
+- `skills/cpa-pack-index/SKILL.md`: new "Metamorphic routing"
+  sub-table with verb→destination rows; dispatcher's own appendix
+  updated.
+- All 44 specialist `skills/*/SKILL.md`: appendix paragraph
+  appended via `scripts/append_followup_routing.py` (idempotent).
+- `scripts/validate.sh`: `check_followup_routing` +
+  `run_phase_10a` + dispatch case `10a`.
+
+### Phase 10b — Workpaper-templates skill
+
+Closes the only Phase 10a handoff target without a destination.
+The `workpaper` verb in the follow-up-routing block now routes to
+a real skill instead of a placeholder.
+
+- `skills/workpaper-templates/SKILL.md` — engagement-file scaffold
+  generator (PBC list, tickmark legend, lead sheets, alphanumeric
+  indexing convention) + engagement-specific overlays for audit /
+  review / compilation / preparation / attestation. Operative
+  authority: AU-C §230 (audit documentation), AR-C §60.A24–.A29
+  (SSARS documentation), AT-C §105.A57–.A66 (attestation
+  documentation), SQMS 1 (firm-level engagement-file retention),
+  AU-C §220 / AR-C §60.31 (workpaper-review supervisory
+  framework). PCAOB AS 1215 (issuer audits) and Yellow Book GAGAS
+  routed externally.
+- `references/pbc-list.md` — standard PBC categories per
+  engagement type with industry overlays (manufacturing, SaaS,
+  construction, real estate, healthcare, not-for-profit, employee
+  benefit plan).
+- `references/tickmark-legend.md` — common tickmark symbols and
+  meanings; tickmark-sufficiency rule; firm-software notes (CCH
+  ProSystem fx Engagement, Caseware, Karbon).
+- `references/lead-sheet.md` — F/S-line rollforward template;
+  sub-lead structure; lead-sheet completeness check.
+- `references/indexing-convention.md` — permanent file (PF-1
+  through PF-12) + alphanumeric current file (A=Cash through
+  T=Income Taxes); planning 100-series; reporting 900-series;
+  software-convention notes.
+- `references/audit-variant.md` — AU-C 200/210/220/230/240/260/
+  300/315/320/505/520/540/560/570/580/600/700/705/706 audit-
+  variant overlay.
+- `references/review-variant.md` — AR-C 60/90 review-variant
+  overlay; inquiry + analytical-procedure documentation;
+  independence required (no AR-C 80.27 lack-of-independence path
+  for reviews).
+- `references/compilation-variant.md` — AR-C 60/70/80 compilation
+  / preparation variant overlay; AR-C 80.27 lack-of-independence
+  treatment with illustrative report 4.
+- `evals/compliance/workpaper-templates.json` — 3 cases (audit
+  PBC list manufacturing first-year; SSARS 90 review SaaS; AR-C
+  80.27 lack-of-independence compilation construction).
+- `skills/cpa-pack-index/SKILL.md`: new main routing-table row
+  for "build me a workpaper" / PBC / tickmark / lead-sheet /
+  indexing requests; metamorphic-routing sub-table updated to
+  route the `workpaper` verb to `workpaper-templates` (no longer
+  a placeholder).
+- `shared/follow-up-routing.md`: workpaper-gap section retired;
+  replaced with a Phase 10b "landed" summary.
+- `.claude-plugin/plugin.json`: skills count 45 → 46; version
+  bumped to 0.3.0; description updated.
+- `.claude-plugin/marketplace.json`: tags add `workpapers`,
+  `documentation`; description updated.
+
+Total skills: 45 → 46.
+
+### Phase 10 — Out of scope (deferred to Phase 11 / future)
+
+- Workpaper-software-specific export adapters (CCH / Caseware /
+  Thomson Reuters direct integration). Phase 10b skill outputs
+  are software-agnostic templates.
+- PCAOB AS 1215 / Yellow Book GAGAS workpaper variants.
+- Single-audit (Uniform Guidance) variant.
+- Employee-benefit-plan (DOL §103(a)(3)(C)) limited-scope
+  workpaper variant — current employee-benefit-plan PBC overlay
+  flags it but full variant deferred.
+- `research-asc-326` (CECL — community-bank/credit-union niche).
+
 ## [v0.2.0-beta] — Phase 9 — 2026-05-04
 
 AICPA professional standards + engagement letters + GAAP research.
