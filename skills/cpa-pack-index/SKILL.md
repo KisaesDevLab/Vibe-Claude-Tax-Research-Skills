@@ -90,6 +90,39 @@ The specialist skill will then load any topic-specific references.
 | Asks about ASC 740, deferred tax (DTA / DTL), valuation allowance, uncertain tax position (UTP), FIN 48, tax provision, effective tax rate, intraperiod allocation, ASU 2023-09 disclosures | `research-asc-740` |
 | Asks about ASC 606 revenue recognition (five-step model, performance obligations, variable consideration, principal vs agent), ASC 842 leases (classification, ROU asset, sale-leaseback) | `research-asc-606-842` |
 
+## Metamorphic routing (Phase 10a — follow-up verbs)
+
+Every specialist skill ends its markdown response with the follow-up-
+routing block defined in `shared/follow-up-routing.md`. When the
+user replies with one of the bracketed verbs from that block, route
+metamorphically — the user is asking to repackage the prior
+conclusion or carry it into a downstream artifact, not to start a
+new substantive question.
+
+| If the user's reply contains… | Hand off to |
+|---|---|
+| `memo` / "turn this into a memo" / "draft a memo" | originating research skill, re-emitted in formal memo layout |
+| `open-point` / "open point" / "add to open points" / "open as an open point" | dispatcher emits a stand-alone open-point list per `shared/follow-up-routing.md` (no new skill invocation; reads `unresolved_citations[]` from the prior sidecar) |
+| `plan` / "carry into a plan" / "start planning" / "what should I do next" | `planning-actions-1040` (1040 context) \| `planning-actions-entity` (1120/1120-S/1065/1041 context) \| `planning-multi-year` (sunset / multi-year scoring) \| `planning-strategy-library` ("what strategies") |
+| `workpaper` / "carry into a workpaper" / "build a workpaper" | **placeholder (Phase 10b)** — emit the explanation: "The `workpaper-templates` skill is on the Phase 10b roadmap. The closest existing skills for procedural guidance are `compliance-sas-audit` (audit), `compliance-ssars` (review / compilation / preparation), or `compliance-attestation-qm` (attestation / SOC / SQMS). Choose one or wait for Phase 10b." |
+| `resolution` / "carry into a resolution matter" / "open a resolution file" | `notice-response` (notice attached) \| `predict-reasonable-cause` (abatement language) \| `penalty-interest-calc` (dollar computation) \| `tax-research-procedure` (SOL / Tax Court) |
+| `return` / "carry into the return process" / "back to the return" | `return-summary-1040` (individual) \| `return-summary-entity` (entity) \| `form-line-explainer` (specific line) \| `due-date-calculator` (deadline) \| `tax-elections-library` (election attachment) |
+
+Routing rules:
+
+- Verb parsing is case-insensitive and tolerant of punctuation.
+  `Memo`, `MEMO`, `memo,`, `memo + plan`, `memo and plan` all parse.
+- A user reply may contain one verb from each axis (one packaging
+  verb + one carry-forward verb). Route both in sequence: package
+  first, then carry.
+- If the originating skill is already the natural destination for
+  the carry-forward verb (e.g., `due-date-calculator` asked to
+  "carry to the return process" — already inside the return
+  process), emit "no downstream handoff applies — the prior output
+  IS the return-process artifact" rather than re-invoking the same
+  skill.
+- "stop" / blank reply / no bracketed verb → end the chain.
+
 ## Public-Law trigger phrases (high-confidence)
 
 If the user's request contains any of these, route to
@@ -142,3 +175,9 @@ applies. The dispatcher only confirms:
 
 The full SSTS / Circular 230 verification checklist lives in
 `shared/compliance.md` and is completed by the specialist skill.
+
+After the routing card (and after the specialist's answer when the
+dispatcher is operating in metamorphic mode), emit the follow-up-
+routing block per `shared/follow-up-routing.md` (Phase 10a). For a
+plain routing card, the conclusion echo is the routing decision
+itself ("Routed to `<skill>` because `<reason>`").

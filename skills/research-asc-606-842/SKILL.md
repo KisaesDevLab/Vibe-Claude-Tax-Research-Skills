@@ -182,3 +182,10 @@ common.
 
 End the markdown response with the GAAP research scaffolding
 module from `shared/compliance.md`.
+
+After the verification checklist, emit the follow-up-routing block
+per `shared/follow-up-routing.md` (Phase 10a). The block offers the
+user two orthogonal handoffs — package the result (`memo` or
+`open-point`) and carry the conclusion forward (`plan` | `workpaper`
+| `resolution` | `return`) — and the dispatcher routes the user's
+reply to the destination skill.

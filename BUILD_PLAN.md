@@ -464,11 +464,58 @@ Out of scope for Phase 9:
 - `research-asc-326` (CECL — community-bank/credit-union niche) —
   defer to Phase 10.
 
+## Phase 10a — Follow-up routing prompt on every skill answer
+
+Triggered by user request to add a uniform "next steps" prompt at
+the end of every skill's markdown answer offering to (a) package the
+result as a memo or open-point list and (b) carry the conclusion
+forward into a plan, workpaper, resolution matter, or return process.
+Markdown-only continuation; no JSON sidecar schema change. Closes
+the loop between flagship skills and downstream artifacts.
+
+Validation: `SKIP_URL_CHECK=1 ./scripts/validate.sh phase 10a`
+
+- [x] `shared/follow-up-routing.md` — prompt block, six destination
+      rows (memo, open-point, plan, workpaper, resolution, return),
+      open-point stand-alone format, workpaper-gap note pointing to
+      Phase 10b.
+- [x] `shared/compliance.md` — append "Follow-up routing (after the
+      verification checklist)" section pointing at the new file.
+- [x] `docs/skill-template.md` — extend Verification-checklist
+      appendix instruction by one paragraph.
+- [x] `skills/cpa-pack-index/SKILL.md` — add "Metamorphic routing"
+      sub-table with 6 verb→destination rows; routes `workpaper` to
+      a placeholder explanation pending Phase 10b; updates the
+      dispatcher's own appendix to reference the follow-up block.
+- [x] All 44 specialist `skills/*/SKILL.md` Verification-checklist
+      appendix sections — append one paragraph instructing the
+      skill to emit the follow-up block (mechanical via
+      `scripts/append_followup_routing.py`; idempotent).
+- [x] `scripts/append_followup_routing.py` — re-runnable utility.
+- [x] `scripts/validate.sh` — add `phase 10a` dispatch + a check
+      confirming every published `skills/*/SKILL.md` references
+      `shared/follow-up-routing.md` in its body.
+- [x] Validation green: `SKIP_URL_CHECK=1 ./scripts/validate.sh
+      phase 10a` exits 0; `./scripts/run-evals.sh full` exits 0
+      unchanged (sidecar untouched).
+
+Out of scope for Phase 10a (deferred to Phase 10b):
+- The `workpaper-templates` skill itself (SKILL.md + references for
+  PBC list, tickmark legend, lead sheet, indexing, audit/review/
+  comp variants + 3 eval cases). Phase 10a routes the `workpaper`
+  verb to a placeholder.
+- JSON sidecar schema additions. Follow-up prompt is markdown only.
+- Eval cases asserting the prompt's presence in markdown output.
+  Existing evals continue to validate JSON; markdown follow-up is
+  ungraded by design.
+
 ---
 
 ## Session log
 (Claude Code appends entries here before each /compact or exit.
 Format: `YYYY-MM-DD HH:MM | phase X | items: ... | last commit: <sha>`)
+
+2026-05-05 | phase 10a complete | items: shared/follow-up-routing.md (prompt block + 6 destination rows + open-point stand-alone format + workpaper-gap pointer to Phase 10b); shared/compliance.md "Follow-up routing (after the verification checklist)" section; docs/skill-template.md verification-checklist appendix extended; skills/cpa-pack-index/SKILL.md "Metamorphic routing" sub-table (memo / open-point / plan / workpaper / resolution / return) + own-appendix follow-up reference; all 44 specialist SKILL.md verification-checklist appendices appended via scripts/append_followup_routing.py (idempotent); scripts/validate.sh check_followup_routing + run_phase_10a + dispatch case "10a"; BUILD_PLAN.md Phase 10a section; SKIP_URL_CHECK=1 ./scripts/validate.sh phase 10a green (pass=6 fail=0 warn=0); validate.sh full green (pass=9 fail=0 warn=8 pre-existing authority_type drift from Phase 8); run-evals.sh full unchanged (pass=45 fail=0). Sidecar schema untouched. Workpaper destination is a placeholder pending Phase 10b.
 
 2026-05-04 | phase 9 complete | items: 9a schema additions (authority_domain field; new authority_type enum AICPA_*/FASB_*/EITF/StateBoardRule; new weight enum binding_on_member/gaap_codified/etc.; sibling verification checklists); 9a shared/ scaffolding (sources.json aicpa_professional_standards/fasb_gaap/state_boards_of_accountancy/external_pointers_out_of_scope/ftc_safeguards_rule blocks; live-sources.md sections; citation-discipline.md domain-aware mapping; authority-hierarchy.md professional-standards + GAAP subsections; compliance.md AICPA Code + engagement-letter + GAAP modules); 9b 8 new skills (compliance-aicpa-code, compliance-ssars, compliance-sas-audit, compliance-attestation-qm, engagement-letter-library w/13 letter templates, research-financial-reporting, research-asc-740, research-asc-606-842) each with SKILL.md + references/ + 3 eval cases; 9c cpa-pack-index dispatcher 8 new routes; plugin.json bumped to v0.2.0 with 45 skills; marketplace.json tags expanded; README Phase 9 row groups; CHANGELOG v0.2.0-beta entry; 9d validation green (validate.sh phase 9 + full both pass=8 fail=0; run-evals.sh full pass=45 fail=0). Branch: build. Last commit: d5c5aee.
 

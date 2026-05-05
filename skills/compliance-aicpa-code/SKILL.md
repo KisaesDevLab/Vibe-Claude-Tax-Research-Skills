@@ -223,3 +223,10 @@ End the markdown response with the AICPA Code module from
 confidentiality, state overlay). Tax-position items from
 SSTS/Circular-230 are applicable only when the engagement is a tax
 engagement; otherwise omit.
+
+After the verification checklist, emit the follow-up-routing block
+per `shared/follow-up-routing.md` (Phase 10a). The block offers the
+user two orthogonal handoffs — package the result (`memo` or
+`open-point`) and carry the conclusion forward (`plan` | `workpaper`
+| `resolution` | `return`) — and the dispatcher routes the user's
+reply to the destination skill.

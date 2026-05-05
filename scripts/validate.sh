@@ -355,6 +355,25 @@ check_skill() {
   ok "skill $skill validates"
 }
 
+check_followup_routing() {
+  # Phase 10a: every published SKILL.md must reference
+  # shared/follow-up-routing.md so the markdown answer ends with the
+  # uniform follow-up prompt block. The shared/follow-up-routing.md
+  # file itself must exist.
+  if [ ! -f shared/follow-up-routing.md ]; then
+    fail "MISSING: shared/follow-up-routing.md"
+    return 1
+  fi
+  local fail_count=0
+  while IFS= read -r f; do
+    if ! grep -q 'shared/follow-up-routing.md' "$f"; then
+      fail "$f: missing reference to shared/follow-up-routing.md (Phase 10a)"
+      fail_count=$((fail_count+1))
+    fi
+  done < <(find skills -name SKILL.md 2>/dev/null)
+  [ $fail_count -eq 0 ] && ok "all SKILL.md reference shared/follow-up-routing.md (Phase 10a)"
+}
+
 # --- entry points ---------------------------------------------------------
 
 run_phase_0() {
@@ -438,6 +457,17 @@ run_phase_9() {
   done
 }
 
+run_phase_10a() {
+  # Follow-up routing prompt at the end of every skill answer.
+  # Markdown-only continuation; sidecar schema unchanged.
+  check_directory_tree
+  check_shared_files
+  check_json_parse
+  check_skill_frontmatter
+  check_no_sentinels
+  check_followup_routing
+}
+
 run_full() {
   check_directory_tree
   check_root_files
@@ -448,6 +478,7 @@ run_full() {
   check_no_sentinels
   check_state_stubs
   check_authority_taxonomy
+  check_followup_routing
   check_url_liveness
 }
 
@@ -468,6 +499,7 @@ main() {
         7) run_full ;;
         8) run_full ;;
         9) run_phase_9 ;;
+        10a) run_phase_10a ;;
         *) fail "unknown phase: $n"; exit 2 ;;
       esac
     ;;

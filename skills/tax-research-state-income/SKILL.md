@@ -191,3 +191,10 @@ practitioner responsibility: "When the per-state file's status is
 `stub`, the practitioner must independently verify cited
 authority against current state statute, regulation, and DOR
 guidance before relying on the conclusion."
+
+After the verification checklist, emit the follow-up-routing block
+per `shared/follow-up-routing.md` (Phase 10a). The block offers the
+user two orthogonal handoffs — package the result (`memo` or
+`open-point`) and carry the conclusion forward (`plan` | `workpaper`
+| `resolution` | `return`) — and the dispatcher routes the user's
+reply to the destination skill.
