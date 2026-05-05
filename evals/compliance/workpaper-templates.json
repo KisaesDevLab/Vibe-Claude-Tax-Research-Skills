@@ -1,0 +1,59 @@
+{
+  "skill_name": "workpaper-templates",
+  "version": "0.1.0",
+  "evals": [
+    {
+      "id": "audit-pbc-list-manufacturing",
+      "prompt": "Build me a workpaper scaffold for a first-year audit of a private GAAP manufacturer.\n\nIntake:\n{\n  \"engagement_type\": \"audit\",\n  \"entity_type\": \"nonissuer\",\n  \"industry\": \"manufacturing\",\n  \"framework\": \"GAAP\",\n  \"prior_year_engagement\": \"first-year\",\n  \"accounting_system\": \"NetSuite\",\n  \"materiality_known\": \"no\",\n  \"firm_workpaper_software\": \"CCH ProSystem fx Engagement\",\n  \"user_request\": \"We accepted a first-year audit of a $40M-revenue precision-machining shop. Need the engagement-file scaffolding to start fieldwork in 4 weeks.\"\n}",
+      "expected_output": "Generates the four standard components plus the audit-variant overlay. PBC list customized for manufacturing — adds standard-cost variance analysis, production-capacity utilization, inventory-by-location with cycle-count results, plus a predecessor-auditor procedures schedule for first-year (AU-C §510 opening-balance procedures). Tickmark legend (single page, baseline 20 marks). Lead sheets for caption set A (Cash) through R (Revenue) with rollforward template. Indexing convention (PF + 100-series planning + alphanumeric current file) tuned to ProSystem fx. Audit-variant overlay: 110 engagement letter, 120 independence (AICPA Code §1.200, threats considered), 130 risk-assessment memo (AU-C §315), 140 materiality determination (AU-C §320), 150 audit plan (AU-C §300), 160 fraud-inquiry memo (AU-C §240 — revenue presumption documented for a manufacturer with channel-stuffing risk; management override non-rebuttable), 170 going-concern indicators screen, plus wrap-up 900-series. Required-documentation checklist tied to AU-C §230.08. Three-sign-off review pattern (preparer/reviewer/partner) per AU-C §220.18. Retention floor of 5 years per AU-C §230.16; firm policy / state-board rules typically extend to 7+. Practitioner notes flag first-year predecessor procedures, NetSuite GL export instructions, and that the output is a TEMPLATE FRAMEWORK — not a substitute for performing the engagement.",
+      "expectations": [
+        "Routes to workpaper-templates",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_engagement",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §230'",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §315'",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §240'",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §220'",
+        "Cites AICPA_SAS (professional_conduct/binding_on_member) referencing 'AU-C §510'",
+        "Includes manufacturing-overlay PBC items (standard-cost variance, cycle-count results)",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
+    },
+    {
+      "id": "ssars-90-review-saas",
+      "prompt": "Build a review-engagement workpaper file for a SaaS client.\n\nIntake:\n{\n  \"engagement_type\": \"review\",\n  \"entity_type\": \"nonissuer\",\n  \"industry\": \"SaaS\",\n  \"framework\": \"GAAP\",\n  \"prior_year_engagement\": \"continuing\",\n  \"accounting_system\": \"QuickBooks Online\",\n  \"materiality_known\": \"yes\",\n  \"firm_workpaper_software\": \"Caseware Working Papers\",\n  \"user_request\": \"Recurring AR-C 90 review of a $12M-ARR SaaS client. Need the file scaffolded with inquiry and analytical-procedure schedules. Independence is intact; lack-of-independence path is not in play.\"\n}",
+      "expected_output": "Generates standard scaffold + review-variant overlay. PBC list customized for SaaS — adds customer contract repository, ASC 606 SSP (standalone selling price) analysis, deferred-revenue rollforward by contract, capitalized software (ASC 350-40) detail. Tickmark legend includes the analytical-procedures mark (`A`) prominently per AR-C §90 IAP framework. Lead sheets for material captions including Deferred Revenue (typically L-2 or as firm prefers). Review-variant overlay: 110 engagement letter (AR-C §90.10), 120 independence (required for AR-C §90 — no lack-of-independence path; that's compilation-only per AR-C §80.27), 130 engagement-acceptance memo, 140 materiality (AR-C §90.18.A29), 150 review-procedure plan with documented inquiries (of management, those charged with governance, and entity personnel involved in F/S preparation) and analytical procedures (with expectation development independent of management). Going-concern review per AR-C §90.65. Subsequent-events review per AR-C §90.81. Management representation letter per AR-C §90.A102 dated as of review-report date. Draft review report per AR-C §90.A99–.A116. NOT included: tests of details, internal control evaluation, fraud-risk assessment per AU-C §240 — those are audit procedures and would represent scope creep per AR-C §90.06. Three-sign-off review pattern. SQMS 2 EQR not typically required unless firm QM policy specifies. Practitioner notes flag QBO export workflow and note that the output is a TEMPLATE FRAMEWORK.",
+      "expectations": [
+        "Routes to workpaper-templates",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_engagement",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §60.A24'",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §90.18'",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §90.65'",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §90.A102'",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §90.06'",
+        "Independence affirmed (AR-C §90 has no lack-of-independence path)",
+        "Includes SaaS-overlay PBC items (ASC 606 SSP, deferred-revenue rollforward)",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
+    },
+    {
+      "id": "compilation-lack-of-independence",
+      "prompt": "Compilation engagement scaffold for a small construction client; firm is NOT independent (the partner's spouse owns 5% of the client).\n\nIntake:\n{\n  \"engagement_type\": \"compilation\",\n  \"entity_type\": \"nonissuer\",\n  \"industry\": \"construction\",\n  \"framework\": \"tax basis\",\n  \"prior_year_engagement\": \"continuing\",\n  \"accounting_system\": \"QuickBooks Desktop\",\n  \"materiality_known\": \"no\",\n  \"firm_workpaper_software\": \"manual\",\n  \"user_request\": \"Recurring AR-C 80 compilation. Tax-basis F/S. The partner's spouse owns 5% of the client — independence is impaired. Need the file scaffolded with the lack-of-independence treatment.\"\n}",
+      "expected_output": "Generates standard scaffold + compilation-variant overlay with lack-of-independence treatment. PBC list compressed appropriate to compilation scope (TB, GL, AJEs, framework-specific items including job-cost schedules and %-of-completion calc since this is construction; route to research-asc-606-842 if substantive ASC 606 contract issues arise but those are out of scope for the compilation procedure set). Tickmark legend baseline. Lead sheets per F/S caption (tax basis — note absence of ASC 842 ROU asset reporting under tax basis). Compilation-variant overlay: 110 engagement letter (AR-C §80.10) clearly stating compilation under AR-C §80 with no assurance and lack-of-independence disclosure required, 120 independence determination memo documenting impairment (partner's spouse owns 5% — direct financial interest of an immediate family member impairs independence per AICPA Code §1.270.020), 130 engagement-acceptance memo, 140 framework determination (tax basis — note any departures from the framework practitioner is aware of must be addressed per AR-C §80.A18). 940 compilation report uses the AR-C §80.27 illustrative report 4 (lack of independence) — reads 'I (we) am (are) not independent of [Entity]. We performed a compilation engagement and did not audit or review the financial statements...'. Construction-overlay PBC items: job cost schedules, %-of-completion, surety/bonding info, backlog detail. Two-sign-off pattern acceptable for this scope (preparer + reviewer); partner reviews engagement letter, F/S draft, and the lack-of-independence compilation report. Practitioner notes flag the impairment specifically and note that the firm cannot perform a review of these F/S until the impairment is cured (AR-C §90 has no lack-of-independence path).",
+      "expectations": [
+        "Routes to workpaper-templates",
+        "Confidence band: HIGH",
+        "Verification checklist: verification_checklist_engagement",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §80.10'",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §80.27'",
+        "Cites AICPA_SSARS (professional_conduct/binding_on_member) referencing 'AR-C §80.A18'",
+        "Cites AICPA_Code (professional_conduct/binding_on_member) referencing '§1.270.020'",
+        "Lack-of-independence disclosure per AR-C §80.27 illustrative report 4",
+        "Includes construction-overlay PBC items (job cost schedules, %-of-completion)",
+        "Notes that AR-C §90 review is unavailable until impairment cured",
+        "JSON sidecar validates against shared/output-schema.json"
+      ]
+    }
+  ]
+}

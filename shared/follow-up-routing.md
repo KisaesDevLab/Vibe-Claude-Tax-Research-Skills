@@ -38,8 +38,9 @@ available — pick zero, one, or both:
 - `plan` — planning actions, multi-year projection, or strategy
   library lookup
 - `workpaper` — accounting / audit / review / compilation workpaper
-  scaffold *(scaffold ships in Phase 10b; today this verb routes to a
-  placeholder explanation)*
+  scaffold (PBC list, tickmark legend, lead sheets, indexing, plus
+  engagement-variant overlay) per AU-C §230 / AR-C §60.A24 / AT-C
+  §105.A57
 - `resolution` — IRS notice response, reasonable-cause request,
   penalty / interest computation, or Tax Court procedure
 - `return` — return summary, line explainer, due-date calculation,
@@ -60,7 +61,7 @@ Conclusion echo: <one-line conclusion>
 | `memo` | originating research skill (re-emits in formal memo layout) | All 11 research skills already produce memo-shaped markdown; the verb is a formatting pass + header injection |
 | `open-point` | dispatcher emits a stand-alone open-point list | Reads `unresolved_citations[]` from the prior sidecar; no new skill invocation needed |
 | `plan` | `planning-actions-1040` \| `planning-actions-entity` \| `planning-multi-year` \| `planning-strategy-library` | Disambiguate by entity context: 1040 → individual; 1120/1120-S/1065 → entity; multi-year sunset → multi-year; "what strategies" → strategy library |
-| `workpaper` | **placeholder** (Phase 10b) | Today: dispatcher emits an explanation noting the `workpaper-templates` skill is on the Phase 10b roadmap and offers `compliance-sas-audit` / `compliance-ssars` / `compliance-attestation-qm` as the closest existing skills for procedural guidance |
+| `workpaper` | `workpaper-templates` (Phase 10b) | Generates engagement-file scaffolds (PBC list, tickmark legend, lead sheets, indexing) + engagement-variant overlay (audit / review / compilation / attestation) per AU-C §230 / AR-C §60.A24 / AT-C §105.A57. Pair with `compliance-sas-audit` / `compliance-ssars` / `compliance-attestation-qm` for procedural guidance on the operative standard. |
 | `resolution` | `notice-response` \| `predict-reasonable-cause` \| `penalty-interest-calc` \| `tax-research-procedure` | Disambiguate by user signal: notice attached → notice-response; abatement language → reasonable-cause; dollar computation → penalty-interest-calc; SOL / Tax Court → tax-research-procedure |
 | `return` | `return-summary-1040` \| `return-summary-entity` \| `form-line-explainer` \| `due-date-calculator` \| `tax-elections-library` | Disambiguate by entity / line / date / election keyword |
 
@@ -104,9 +105,11 @@ the prior memo when the engagement closes.
   response, including the dispatcher's own routing card.
 - The block does not appear inside the JSON sidecar; it is markdown
   continuation only.
-- The `workpaper` verb routes to the Phase 10b placeholder until that
-  skill ships. The placeholder must explicitly name the gap so the
-  practitioner is not misled into expecting workpaper output.
+- The `workpaper` verb routes to `workpaper-templates`, which emits
+  template frameworks — not a substitute for performing the
+  engagement. The conclusion echo should preserve the engagement
+  context (entity, framework, period) so the workpaper-templates
+  skill can populate the engagement summary.
 - The block must not invent destinations. If the originating skill
   has already exhausted its handoff target (e.g., `due-date-calculator`
   asked to "carry to a return process" — already inside the return
@@ -115,14 +118,17 @@ the prior memo when the engagement closes.
 - The `<one-line conclusion>` echo is ≤ 25 words. Longer echoes
   defeat the routing target's context window.
 
-## Gap: workpaper destination (Phase 10b candidate)
+## Workpaper destination (Phase 10b — landed)
 
-The pack does not yet ship a `workpaper-templates` skill. Phase 10b
-is scoped to deliver:
+Phase 10b shipped the `workpaper-templates` skill:
 - `skills/workpaper-templates/SKILL.md`
-- `references/{pbc-list, tickmark-legend, lead-sheet, indexing-convention,
-  audit-variant, review-variant, compilation-variant}.md`
-- 3 eval cases.
+- `skills/workpaper-templates/references/{pbc-list.md,
+  tickmark-legend.md, lead-sheet.md, indexing-convention.md,
+  audit-variant.md, review-variant.md, compilation-variant.md}`
+- 3 eval cases at `evals/compliance/workpaper-templates.json`.
 
-Until Phase 10b ships, the `workpaper` verb routes to a placeholder
-explanation in the dispatcher.
+The skill emits template frameworks paired with required-
+documentation checklists tied to AU-C §230 / AR-C §60.A24–.A29 /
+AT-C §105.A57–.A66. PCAOB AS 1215 (issuer audits) and Yellow Book
+GAGAS engagement documentation are out of scope; the skill routes
+those externally.

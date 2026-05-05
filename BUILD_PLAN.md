@@ -509,11 +509,79 @@ Out of scope for Phase 10a (deferred to Phase 10b):
   Existing evals continue to validate JSON; markdown follow-up is
   ungraded by design.
 
+## Phase 10b — Workpaper-templates skill
+
+Triggered by user request to close the only Phase 10a follow-up-
+routing handoff target without a destination. The `workpaper` verb
+in the follow-up-routing block now routes to a real skill instead
+of a placeholder.
+
+Validation: `SKIP_URL_CHECK=1 ./scripts/validate.sh phase 10b`
+
+- [x] `skills/workpaper-templates/SKILL.md` — engagement-file
+      scaffold generator with intake, four standard components
+      (PBC, tickmark, lead sheets, indexing), engagement-variant
+      routing, AU-C §230 / AR-C §60.A24–.A29 / AT-C §105.A57–.A66
+      documentation-sufficiency rule, AU-C §220 / AR-C §60.31
+      three-sign-off supervisory pattern, and AU-C §230.16
+      retention floor.
+- [x] `references/pbc-list.md` — standard PBC categories with
+      industry overlays (manufacturing, SaaS, construction, real
+      estate, healthcare, not-for-profit, employee-benefit-plan).
+- [x] `references/tickmark-legend.md` — common tickmark symbols +
+      sufficiency rule + firm-software notes.
+- [x] `references/lead-sheet.md` — F/S-line rollforward template
+      + sub-lead structure + completeness check.
+- [x] `references/indexing-convention.md` — permanent file (PF-1
+      through PF-12) + alphanumeric current file (A=Cash through
+      T=Income Taxes); planning 100-series; reporting 900-series.
+- [x] `references/audit-variant.md` — AU-C 200/210/220/230/240/
+      260/300/315/320/505/520/540/560/570/580/600/700/705/706
+      audit overlay.
+- [x] `references/review-variant.md` — AR-C 60/90 review overlay
+      (inquiry + analytical procedures; independence required).
+- [x] `references/compilation-variant.md` — AR-C 60/70/80
+      compilation / preparation overlay (lack-of-independence
+      treatment per AR-C §80.27).
+- [x] `evals/compliance/workpaper-templates.json` — 3 eval cases
+      (audit PBC list manufacturing first-year; SSARS 90 review
+      SaaS; AR-C 80.27 lack-of-independence compilation).
+- [x] `skills/cpa-pack-index/SKILL.md` — new main routing-table
+      row for workpaper requests; metamorphic-routing sub-table
+      `workpaper` verb routes to `workpaper-templates` (no longer
+      placeholder).
+- [x] `shared/follow-up-routing.md` — workpaper-gap section
+      retired; replaced with Phase 10b "landed" summary.
+- [x] `.claude-plugin/plugin.json` — skills count 45→46; version
+      bumped to 0.3.0; description updated.
+- [x] `.claude-plugin/marketplace.json` — tags add `workpapers`,
+      `documentation`; description updated.
+- [x] `README.md` — new Phase 10b row group in skills index.
+- [x] `CHANGELOG.md` — v0.3.0-beta entry covering Phase 10a +
+      Phase 10b.
+- [x] `scripts/validate.sh` — `run_phase_10b` + dispatch case `10b`
+      (reuses Phase 10a follow-up-routing check + per-skill
+      validation for workpaper-templates).
+- [x] Validation green: `SKIP_URL_CHECK=1 ./scripts/validate.sh
+      phase 10b` exits 0; `./scripts/run-evals.sh full` exits 0.
+
+Out of scope for Phase 10b (deferred to Phase 11 / future):
+- Workpaper-software-specific export adapters (CCH ProSystem fx
+  Engagement, Caseware, Thomson Reuters Practice CS direct
+  integration). Phase 10b skill outputs are software-agnostic
+  templates.
+- PCAOB AS 1215 / Yellow Book GAGAS workpaper variants.
+- Single-audit (Uniform Guidance) variant.
+- Employee-benefit-plan (DOL §103(a)(3)(C)) limited-scope variant.
+  Current PBC overlay flags it; full variant deferred.
+
 ---
 
 ## Session log
 (Claude Code appends entries here before each /compact or exit.
 Format: `YYYY-MM-DD HH:MM | phase X | items: ... | last commit: <sha>`)
+
+2026-05-05 | phase 10b complete | items: skills/workpaper-templates/SKILL.md (engagement-file scaffold generator; intake → 4 standard components → engagement-variant routing; AU-C §230 / AR-C §60.A24–.A29 / AT-C §105.A57–.A66 documentation-sufficiency rule; AU-C §220 / AR-C §60.31 three-sign-off supervisory pattern; AU-C §230.16 retention floor); 7 references files (pbc-list, tickmark-legend, lead-sheet, indexing-convention, audit-variant, review-variant, compilation-variant); evals/compliance/workpaper-templates.json (3 cases — audit PBC manufacturing first-year, SSARS 90 review SaaS, AR-C 80.27 lack-of-independence compilation construction); skills/cpa-pack-index/SKILL.md new main routing-table row + metamorphic-routing sub-table workpaper verb routes to workpaper-templates (no longer placeholder); shared/follow-up-routing.md workpaper-gap section retired and replaced with Phase 10b "landed" summary; .claude-plugin/plugin.json 45→46 skills, version 0.3.0; .claude-plugin/marketplace.json tags add workpapers/documentation; README.md new Phase 10b row group; CHANGELOG.md v0.3.0-beta entry covering 10a + 10b; scripts/validate.sh run_phase_10b + dispatch case 10b. Validation green: validate.sh phase 10b pass=8 fail=0; validate.sh full pass=9 fail=0 (8 pre-existing authority_type warnings unrelated); run-evals.sh full pass=46 fail=0. Branch: phase-10b-workpaper-templates.
 
 2026-05-05 | phase 10a complete | items: shared/follow-up-routing.md (prompt block + 6 destination rows + open-point stand-alone format + workpaper-gap pointer to Phase 10b); shared/compliance.md "Follow-up routing (after the verification checklist)" section; docs/skill-template.md verification-checklist appendix extended; skills/cpa-pack-index/SKILL.md "Metamorphic routing" sub-table (memo / open-point / plan / workpaper / resolution / return) + own-appendix follow-up reference; all 44 specialist SKILL.md verification-checklist appendices appended via scripts/append_followup_routing.py (idempotent); scripts/validate.sh check_followup_routing + run_phase_10a + dispatch case "10a"; BUILD_PLAN.md Phase 10a section; SKIP_URL_CHECK=1 ./scripts/validate.sh phase 10a green (pass=6 fail=0 warn=0); validate.sh full green (pass=9 fail=0 warn=8 pre-existing authority_type drift from Phase 8); run-evals.sh full unchanged (pass=45 fail=0). Sidecar schema untouched. Workpaper destination is a placeholder pending Phase 10b.
 

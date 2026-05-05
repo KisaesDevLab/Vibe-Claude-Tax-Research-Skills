@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "vibe-cpa-pack",
-  "version": "0.2.0",
-  "description": "Vibe CPA Skills — Claude Skills pack for CPAs covering all 50 states + DC. Strict citation discipline, AICPA SSTS / Circular 230 compliance scaffolding, USC Classification Table workflow for Public-Law tracking. Phase 9 expansion: AICPA Code of Professional Conduct + SSARS + SAS + SSAE/SOC + SQMS quality management, engagement-letter library across 13 engagement types, FASB ASC research (general + ASC 740 + ASC 606/842) — 45 skills total. Schema split: tax-position vs professional-conduct vs GAAP authority domains.",
+  "version": "0.3.0",
+  "description": "Vibe CPA Skills — Claude Skills pack for CPAs covering all 50 states + DC. Strict citation discipline, AICPA SSTS / Circular 230 compliance scaffolding, USC Classification Table workflow for Public-Law tracking. Phase 9 expansion: AICPA Code of Professional Conduct + SSARS + SAS + SSAE/SOC + SQMS quality management, engagement-letter library across 13 engagement types, FASB ASC research (general + ASC 740 + ASC 606/842). Phase 10a: uniform follow-up-routing prompt on every skill answer (memo / open-point / plan / workpaper / resolution / return). Phase 10b: workpaper-templates skill (PBC list, tickmarks, lead sheets, indexing, audit/review/compilation variants per AU-C §230 / AR-C §60.A24 / AT-C §105.A57). 46 skills total. Schema split: tax-position vs professional-conduct vs GAAP authority domains.",
   "homepage": "https://github.com/KisaesDevLab/vibe-claude-tax-research-skills",
   "license": "BUSL-1.1",
   "author": {
@@ -54,7 +54,8 @@
     "skills/engagement-letter-library",
     "skills/research-financial-reporting",
     "skills/research-asc-740",
-    "skills/research-asc-606-842"
+    "skills/research-asc-606-842",
+    "skills/workpaper-templates"
   ],
   "commands": [
     ".claude/commands/create-skill.md",

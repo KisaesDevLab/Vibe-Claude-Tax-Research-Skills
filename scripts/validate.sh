@@ -468,6 +468,20 @@ run_phase_10a() {
   check_followup_routing
 }
 
+run_phase_10b() {
+  # workpaper-templates skill — closes the workpaper handoff target.
+  # Reuses Phase 10a follow-up-routing check + per-skill validation
+  # for the new skill.
+  check_directory_tree
+  check_shared_files
+  check_json_parse
+  check_skill_frontmatter
+  check_no_sentinels
+  check_followup_routing
+  check_authority_taxonomy
+  [ -d "skills/workpaper-templates" ] && check_skill "workpaper-templates"
+}
+
 run_full() {
   check_directory_tree
   check_root_files
@@ -500,6 +514,7 @@ main() {
         8) run_full ;;
         9) run_phase_9 ;;
         10a) run_phase_10a ;;
+        10b) run_phase_10b ;;
         *) fail "unknown phase: $n"; exit 2 ;;
       esac
     ;;
