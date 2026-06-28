@@ -1,3 +1,5 @@
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I3D3227TTP)
+
 # Vibe CPA Skills
 
 A Claude Skills pack for U.S. CPAs. 37+ skills covering federal
