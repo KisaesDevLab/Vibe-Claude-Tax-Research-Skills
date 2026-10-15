@@ -18,6 +18,10 @@ bundle has:
   and the strategy library; elections; lookups and calculators;
   SSTS / Circular 230; AICPA Code, SSARS, SAS, SSAE / SOC, SQMS;
   engagement letters; workpapers; and FASB ASC research.
+- **A file reader** (`read.py`). claude.ai accepts at most 200 files
+  per skill ZIP, so the four large reference folders (strategies,
+  state files, elections, engagement letters) are each packed into
+  one file. Claude runs `read.py` to pull out a single entry.
 - **The shared rules** (`shared/`): citation discipline, the
   authority hierarchy, confidence bands, compliance checklists, the
   output schema, and the canonical primary-source URL list.
@@ -162,6 +166,7 @@ Every substantive answer follows the same structure:
 | "I can't read that file" or missing references | Code execution is off or blocked by an org policy. Ask your admin to enable it. |
 | Many `[CITATION NEEDED]` sentinels | Web search is off or a source site was unreachable. Turn web search on and ask Claude to retry the retrieval. |
 | An older single skill answers instead | Disable the individually uploaded Vibe CPA skills. |
+| "Zip contains too many files (maximum 200)" | You have an older build (421 files). Download the current ZIP (about 170 files) or rebuild it with the script below. |
 | Upload rejected | Upload the original ZIP without re-zipping it. The ZIP must contain one top-level `vibe-cpa-pack/` folder with `SKILL.md` inside. |
 
 # Updating
@@ -174,7 +179,7 @@ python3 scripts/build-claude-ai-bundle.py
 ```
 
 This writes `dist/vibe-cpa-pack.zip` and checks the result: the
-description length, the SKILL.md line count, that no nested skill
+200-file limit, the description length, the SKILL.md line count, that no nested skill
 files remain, and that every `shared/…` or `skills/…` path cited in
 the bundle exists. In claude.ai, delete or turn off the old version,
 then upload the new ZIP.

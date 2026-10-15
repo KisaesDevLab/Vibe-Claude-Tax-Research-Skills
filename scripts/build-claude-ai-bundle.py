@@ -35,6 +35,67 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 BUNDLE_NAME = "vibe-cpa-pack"
 DISPATCHER = "cpa-pack-index"
+MAX_FILES = 200  # claude.ai rejects skill ZIPs with more files than this
+
+# Directories with many small files. Each is folded into one `<dir>.md`
+# so the ZIP stays under MAX_FILES; `read.py` serves the original paths.
+MERGE_DIRS = [
+    "skills/planning-strategy-library/references/strategies",
+    "skills/tax-research-state-income/references/states",
+    "skills/tax-research-state-salesuse/references/states",
+    "skills/tax-elections-library/references/elections",
+    "skills/engagement-letter-library/references/letters",
+]
+
+READ_PY = """\
+#!/usr/bin/env python3
+\"\"\"Print a bundle reference file by its original path.
+
+Usage (from anywhere): python3 <bundle>/read.py <path> [<path> ...]
+
+<path> is relative to the bundle root, e.g.
+  skills/tax-research-state-income/references/states/CA.md
+Files under merged directories live as sections of `<dir>.md`; this
+script extracts the section. Ordinary files are printed as-is. A
+directory path lists the entries available in it.
+\"\"\"
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+
+
+def read(rel):
+    rel = rel.strip().lstrip("./")
+    real = ROOT / rel
+    if real.is_file():
+        return real.read_text(encoding="utf-8")
+    parent, _, _ = rel.rstrip("/").rpartition("/")
+    for d in (rel.rstrip("/"), parent):
+        merged = ROOT / (d + ".md")
+        if not merged.is_file():
+            continue
+        text = merged.read_text(encoding="utf-8")
+        if d == rel.rstrip("/"):
+            return "\\n".join(l[len("<!-- BEGIN "):-len(" -->")]
+                             for l in text.splitlines() if l.startswith("<!-- BEGIN "))
+        begin, end = f"<!-- BEGIN {rel} -->", f"<!-- END {rel} -->"
+        if begin in text:
+            return text.split(begin, 1)[1].split(end, 1)[0].strip("\\n")
+        names = [l[len("<!-- BEGIN "):-len(" -->")].rsplit("/", 1)[-1]
+                 for l in text.splitlines() if l.startswith("<!-- BEGIN ")]
+        return f"NOT FOUND: {rel}\\nAvailable in {d}/: " + ", ".join(names)
+    return f"NOT FOUND: {rel}"
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        sys.exit(__doc__)
+    for i, arg in enumerate(sys.argv[1:]):
+        if i:
+            print("\\n" + "=" * 72 + "\\n")
+        print(read(arg))
+"""
 
 DESCRIPTION = (
     "Complete Vibe CPA Skills pack (46 workflows) for licensed CPAs, EAs, "
@@ -92,7 +153,15 @@ skill the dispatcher names lives in this bundle as a workflow file.
    JSON sidecar (`shared/output-schema.json`). When the user replies
    to the follow-up block, run the destination workflow from this
    bundle.
-6. **Live sources.** Canonical primary-source URLs are in
+6. **Opening reference files.** Some folders with many small files
+   (`strategies/`, `states/`, `elections/`, `letters/`) are packed
+   into one file each to fit claude.ai's upload limits. Always open
+   reference paths with the helper at this bundle's root:
+   `python3 <bundle-root>/read.py <path>` (paths as written here,
+   e.g. `skills/tax-research-state-income/references/states/CA.md`;
+   several paths may be passed at once). Passing a folder path lists
+   its entries. Never print a whole packed `<folder>.md` file.
+7. **Live sources.** Canonical primary-source URLs are in
    `shared/live-sources.md` and `shared/sources.json`. Retrieve with
    web search / fetch when available. If retrieval is unavailable,
    use the `[CITATION NEEDED — search: <query>]` sentinel; never
@@ -148,6 +217,23 @@ def check_references(bundle):
             if not (bundle / ref).exists():
                 missing.add((ref, str(f.relative_to(bundle))))
     return sorted(missing)
+
+
+def merge_dir(bundle, rel_dir):
+    """Fold every file under bundle/rel_dir into bundle/<rel_dir>.md."""
+    src = bundle / rel_dir
+    if not src.is_dir():
+        sys.exit(f"merge dir not found: {rel_dir}")
+    files = sorted(f for f in src.rglob("*") if f.is_file())
+    entries = [f"{rel_dir}/{f.relative_to(src).as_posix()}" for f in files]
+    parts = [f"# Packed folder: `{rel_dir}/` ({len(files)} files)\n",
+             "Do not read this file whole. Extract one entry with",
+             f"`python3 <bundle-root>/read.py {rel_dir}/<file>`.\n",
+             "Entries: " + ", ".join(e.rsplit("/", 1)[-1] for e in entries) + "\n"]
+    for f, e in zip(files, entries):
+        parts.append(f"<!-- BEGIN {e} -->\n{f.read_text(encoding='utf-8').rstrip()}\n<!-- END {e} -->\n")
+    (bundle / f"{rel_dir}.md").write_text("\n".join(parts), encoding="utf-8")
+    shutil.rmtree(src)
 
 
 def main():
@@ -220,6 +306,13 @@ def main():
     for ref, src in check_references(stage):
         errors.append(f"missing path {ref} (cited in {src})")
 
+    for d in MERGE_DIRS:
+        merge_dir(stage, d)
+    (stage / "read.py").write_text(READ_PY, encoding="utf-8")
+    n_files = sum(1 for f in stage.rglob("*") if f.is_file())
+    if n_files > MAX_FILES:
+        errors.append(f"bundle has {n_files} files (> {MAX_FILES}); add folders to MERGE_DIRS")
+
     zip_path = out_dir / f"{BUNDLE_NAME}.zip"
     if zip_path.exists():
         zip_path.unlink()
@@ -228,7 +321,6 @@ def main():
             if f.is_file():
                 zf.write(f, f.relative_to(out_dir))
 
-    n_files = sum(1 for f in stage.rglob("*") if f.is_file())
     print(f"bundle: {zip_path}")
     print(f"workflows: {len(specialists)} + dispatcher; files: {n_files}; "
           f"zip size: {zip_path.stat().st_size / 1024:.0f} KB; "
