@@ -1,5 +1,11 @@
 # Installing Vibe CPA Skills in claude.ai
 
+> **Easiest path: install the whole pack as one skill.** Run
+> `python3 scripts/build-claude-ai-bundle.py` and upload
+> `dist/vibe-cpa-pack.zip` once. See
+> [install-claude-ai-bundle.md](install-claude-ai-bundle.md). The
+> per-skill steps below remain for installing a subset.
+
 Vibe CPA Skills is distributed as a Claude Skills pack. For
 `claude.ai` (the web app), each skill is installed individually via
 ZIP upload.
