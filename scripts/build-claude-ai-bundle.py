@@ -110,7 +110,7 @@ DESCRIPTION = (
     "dates; penalty and interest; SSTS / Circular 230; AICPA Code, SSARS, "
     "SAS, SSAE / SOC, SQMS; engagement letters; workpapers; FASB ASC, ASC "
     "740, 606, 842. Enforces citation discipline, confidence bands, and a "
-    "verification checklist. Use when the user asks a tax, accounting, "
+    "verification checklist, and interviews the user before researching. Use when the user asks a tax, accounting, "
     "audit, attest, or GAAP question, pastes an IRS notice or return, or "
     "asks which skill to use."
 )
@@ -121,6 +121,24 @@ PREAMBLE = """\
 This one skill contains the entire Vibe CPA Skills pack. The body
 below is the pack dispatcher (`cpa-pack-index`). Every specialist
 skill the dispatcher names lives in this bundle as a workflow file.
+
+## Step 0 — Question mode (ON by default)
+
+Before you answer or do any work, follow `shared/question-mode.md`.
+Read it at the start of every conversation and apply it on every turn:
+
+- Each turn is **Interviewing** (below 95% confidence: ask exactly
+  ONE question, no searching, citing, or answering), **Ready** (95%
+  reached: summary plus a two-line plan, then stop and wait), or
+  **Proceeding** (user said "proceed" / "go ahead" / "yes": run the
+  full workflow below).
+- Pick interview questions from the target workflow's **Intake**
+  section; one question per turn, in plain text with numbered options.
+- "quick answer" / "skip questions" skips the interview for one
+  request; "question mode off" / "on" switches it for the
+  conversation.
+- Everything below (shared files, workflows, citations, checklist,
+  follow-up block, sidecar) applies in the Proceeding state.
 
 ## How to run a specialist inside this bundle
 
@@ -143,10 +161,10 @@ skill the dispatcher names lives in this bundle as a workflow file.
    Paths that start with `shared/` or `skills/` are relative to this
    bundle's root.
 4. **Do not print the routing card when the answer is obvious.**
-   When the request clearly maps to one workflow, load it silently
-   and answer; mention the workflow name in one line at the top.
-   Show the routing card only when the request is ambiguous or the
-   user asks which skill to use.
+   When the request clearly maps to one workflow, name it in the
+   Ready plan; with Question mode off, load it silently and answer,
+   naming the workflow in one line at the top. Show the routing card
+   only when the user asks which skill to use.
 5. **Keep the output contract.** Every specialist answer ends with
    the verification checklist (`shared/compliance.md`), the
    follow-up-routing block (`shared/follow-up-routing.md`), and the

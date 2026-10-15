@@ -70,14 +70,69 @@ Start a new chat and send:
 
 Claude should name `predict-hobby-loss` and briefly explain why. If
 it answers generically without naming a workflow, see
-*Troubleshooting* below.
+*Troubleshooting* below. (Asking *which workflow* is not a research
+request, so Question mode doesn't need to interview you for it. If
+Claude asks a question first, that is Question mode working; answer
+it or say "quick answer".)
 
 # Using the pack
 
 You don't need to name a workflow. Describe the task the way you
-would to a colleague. Claude routes it, names the workflow it is
-using in one line, and follows that workflow's intake → analysis →
-conclusion steps.
+would to a colleague. Claude interviews you first (see *Question
+mode* below), names the workflow it will use, and after your go-ahead
+follows that workflow's analysis → conclusion steps.
+
+## Question mode (on by default)
+
+Before it researches anything, Claude asks you questions **one at a
+time** until it is about 95% confident it understands exactly what
+you are asking. This is the same Question mode as Vibe Tax Research
+Chat. Each turn is one of three stages:
+
+1. **Interviewing.** One question per turn, usually with numbered
+   options. Reply with a number or in your own words. The questions
+   come from the intake facts the chosen workflow needs: taxpayer
+   type, tax year, state, circuit, amounts, and so on. Claude does no
+   searching or citing in this stage.
+2. **Ready.** Claude summarizes what it understood and gives a
+   two-line plan. Nothing happens until you reply **proceed** (or
+   "go ahead", "yes"). If the summary is wrong, correct it instead.
+3. **Proceeding.** Claude runs the full workflow and returns the
+   complete output described in *Reading an output*. Follow-ups on
+   the same matter, such as "memo", don't restart the interview. A
+   new question does.
+
+A short exchange looks like this:
+
+> **You:** Is my client's horse-breeding activity a hobby?
+>
+> **Claude:** **Question 1** · confidence ~40%. Which tax years are
+> at issue, and has the activity shown a profit in any of them?
+>
+> **You:** 2021–2025, losses every year.
+>
+> **Claude:** **Question 2** · confidence ~65%. Is this an IRS
+> exam, or planning before filing? 1. Open exam  2. Notice received
+> 3. Planning
+>
+> **You:** 3
+>
+> *(…two or three more questions…)*
+>
+> **Claude:** **Ready** · confidence ~95%. **What I understood:** …
+> **Plan:** 1. Run `predict-hobby-loss` on the nine §1.183-2(b)
+> factors… 2. Return a band, disclosure call, and checklist. Reply
+> **proceed** to start.
+
+| To… | Say |
+|---|---|
+| Skip the interview for one request | "quick answer" or "skip questions" (in the request) |
+| Turn it off for the rest of the chat | "question mode off" |
+| Turn it back on | "question mode on" |
+
+Give the key facts in your first message and the interview gets
+shorter. If the first message has everything, Claude goes straight
+to Ready.
 
 ## Example requests
 
@@ -167,6 +222,7 @@ Every substantive answer follows the same structure:
 | Many `[CITATION NEEDED]` sentinels | Web search is off or a source site was unreachable. Turn web search on and ask Claude to retry the retrieval. |
 | An older single skill answers instead | Disable the individually uploaded Vibe CPA skills. |
 | "Zip contains too many files (maximum 200)" | You have an older build (421 files). Download the current ZIP (about 170 files) or rebuild it with the script below. |
+| Claude keeps asking questions | That is Question mode. Answer the question, reply "proceed" on the Ready turn, or say "question mode off". |
 | Upload rejected | Upload the original ZIP without re-zipping it. The ZIP must contain one top-level `vibe-cpa-pack/` folder with `SKILL.md` inside. |
 
 # Updating
